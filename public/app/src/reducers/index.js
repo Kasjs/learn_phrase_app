@@ -1,7 +1,8 @@
-const initialState = {
-  page: 'test'
-}
+import {combineReducers} from 'redux'
+import user from './user'
+import page from './page'
 
-export default function pagestate( state = initialState) {
-  return state
-}
+export default combineReducers({
+  page,
+  user
+})

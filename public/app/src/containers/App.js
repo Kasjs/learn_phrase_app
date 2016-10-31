@@ -3,13 +3,18 @@ import {connect} from 'react-redux'
 
 class App extends Component {
   render() {
-    return <div>Hi from {this.props.page} </div>
+    const {user, page} = this.props
+    return <div>
+      <p>Hi from {user.name}</p>
+      <p>You are on {page.page} page</p>
+    </div>
   }
 }
 
 function mapStateToProps(state){
   return {
-    page: state.page
+    page: state.page,
+    user: state.user
   }
 }
 export default connect(mapStateToProps)(App)
