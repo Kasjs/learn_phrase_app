@@ -1,5 +1,9 @@
 import React, {Component, Proptypes} from 'react'
-import {connect} from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import User from '../components/User'
+import Page from '../components/Page'
+import * as pageActions from '../actions/PageActions'
 
 class App extends Component {
   render() {
@@ -11,10 +15,17 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
   return {
     page: state.page,
     user: state.user
   }
 }
-export default connect(mapStateToProps)(App)
+
+function mapDispatchToProps(dispatch) {
+    return {
+      pageActions: bindActionCreators(pageActions, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

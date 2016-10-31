@@ -6,6 +6,6 @@ export default class Page extends Component {
     return <div>You are on {page} page</div>
   }
 }
-User.propTypes = {
+Page.propTypes = {
   page: PropTypes.string.isRequired
 }
