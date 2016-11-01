@@ -4,13 +4,18 @@ import { connect } from 'react-redux'
 import User from '../components/User'
 import Page from '../components/Page'
 import * as pageActions from '../actions/PageActions'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import '../../styles/css/style.lib.css/style.lib.css'
+import '../../styles/css/main.css'
 
 class App extends Component {
   render() {
     const {user, page} = this.props
+    const {getNextPhrase} = this.props.pageActions
+    const {getRandomPhrase} = this.props.pageActions
     return <div>
-      <p>Hi from {user.name}</p>
-      <p>You are on {page.page} page</p>
+      <User name={user.name}/>
+      <Page className='main' page={page.page} phrase={page.phrase} getNextPhrase={getNextPhrase}/>
     </div>
   }
 }

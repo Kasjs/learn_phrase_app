@@ -1,50 +1,50 @@
-var path = require('path')
-var webpack = require('webpack')
-var autoprefixer = require('autoprefixer');
-var precss = require('precss');
+'use strict';
+
+var path = require('path');
+var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'eval-source-map',
   entry: [
-    'webpack-hot-middleware/client',
-    'babel-polyfill',
-    './public/app/src/index'
+    'webpack-hot-middleware/client?reload=true',
+    path.join(__dirname, './public/app/src/main.js')
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/static/'
+    path: path.join(__dirname, '/dist/'),
+    filename: 'boundle.js',
+    publicPath: '/'
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: './public/app/index.tpl.html',
+      inject: 'body',
+      filename: 'index.html'
+    }),
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development')
+    })
   ],
   module: {
-    preLoaders: [
-      {
-        test: /\.js$/,
-        loaders: ['eslint'],
-        include: [
-          path.resolve(__dirname, "./public/app/src"),
-        ],
+    loaders: [{
+      test: /\.jsx?$/,
+      exclude: /node_modules/,
+      loader: 'babel',
+      query: {
+        "presets": ["react", "es2015", "stage-0"]
       }
-    ],
-    loaders: [
-      {
-        loaders: ['babel-loader'],
-        include: [
-          path.resolve(__dirname, "./public/app/src"),
-        ],
-        test: /\.js$/,
-        plugins: ['react-hot-loader/babel','transform-runtime'],
-      },
-      {
-        test:   /\.css$/,
-        loader: "style-loader!css-loader!postcss-loader"
-      }
-    ]
+    }, {
+      test: /\.json?$/,
+      loader: 'json'
+    }, {
+      test: /\.css$/,
+      loader: "style-loader!css-loader!postcss-loader"
+    }]
   },
-  postcss: function () {
+  postss: function() {
     return [autoprefixer, precss];
   }
-}
+};
