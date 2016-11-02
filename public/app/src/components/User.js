@@ -9,7 +9,7 @@ export default class User extends Component {
   render() {
     const { name } = this.props
     return <div>
-      <Row>
+      <Row className='select-comp'>
         <Col xs="65%" sm="40%" md="25%" lg="20%">
           <FormSelect className='select-category' options={[
             {value : 'Food', label: 'Food'},

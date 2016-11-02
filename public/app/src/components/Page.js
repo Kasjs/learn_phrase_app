@@ -17,9 +17,9 @@ export default class Page extends Component {
   }
   render() {
     const { page, phrase, counter } = this.props
-    return <div>
+    return <div className='phrase-col'>
       <Row className='phrase-row'>
-        <Col className='phrase-col' xs="100%" sm="100%" md="70%" lg="50%">
+        <Col xs="100%" sm="100%" md="70%" lg="50%">
           <span>{counter}</span>
           <p><strong className='lead'>{phrase}</strong></p>
         </Col>
