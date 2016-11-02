@@ -11,7 +11,7 @@ import '../../styles/css/main.css'
 class App extends Component {
   render() {
     const {user, page} = this.props
-    const { getNextPhrase, getRandomPhrase, getBackPhrase } = this.props.pageActions
+    const { getNextPhrase, getRandomPhrase, getBackPhrase, switchLanguage, getPhrase } = this.props.pageActions
     return <div>
       <User name={user.name}/>
       <Page className='main' page={page.page}
@@ -19,6 +19,8 @@ class App extends Component {
         getNextPhrase={getNextPhrase}
         getRandomPhrase={getRandomPhrase}
         getBackPhrase={getBackPhrase}
+        switchLanguage={switchLanguage}
+        getPhrase={getPhrase}
       />
     </div>
   }
