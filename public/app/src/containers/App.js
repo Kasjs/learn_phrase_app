@@ -11,11 +11,15 @@ import '../../styles/css/main.css'
 class App extends Component {
   render() {
     const {user, page} = this.props
-    const {getNextPhrase} = this.props.pageActions
-    const {getRandomPhrase} = this.props.pageActions
+    const { getNextPhrase, getRandomPhrase, getBackPhrase } = this.props.pageActions
     return <div>
       <User name={user.name}/>
-      <Page className='main' page={page.page} phrase={page.phrase} getNextPhrase={getNextPhrase}/>
+      <Page className='main' page={page.page}
+        phrase={page.phrase} counter={page.counter}
+        getNextPhrase={getNextPhrase}
+        getRandomPhrase={getRandomPhrase}
+        getBackPhrase={getBackPhrase}
+      />
     </div>
   }
 }

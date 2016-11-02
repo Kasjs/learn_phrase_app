@@ -1,5 +1,5 @@
 .btns-row {
-  margin: auto;
+  text-align: center;
 }
 .btns-row .buttons {
   margin: 5px;
@@ -7,5 +7,15 @@
 }
 .lead {
   font-size: 30px;
-  margin-left: 5em;
+}
+.phrase-row {
+  text-align: center;
+}
+.select-category {
+  margin: 15px;
+  font: Helvetica 15px #666;
+  font-weight: 700;
+}
+.FormSelect {
+  color: #666;
 }
