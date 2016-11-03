@@ -17,7 +17,7 @@ var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('styles', function() {
-  return gulp.src('./public/app/styles/less/main.less')
+    return gulp.src('./public/app/styles/less/main.less')
     .pipe(plumber())
     .pipe(less())
     .pipe(autoprefixer())
@@ -25,7 +25,7 @@ gulp.task('styles', function() {
 });
 
 gulp.task('lib_styles', function() {
-  return gulp.src('./public/app/styles/less/style.lib.less')
+    return gulp.src('./public/app/styles/less/style.lib.less')
     .pipe(plumber())
     .pipe(less())
     .pipe(autoprefixer())
@@ -33,7 +33,7 @@ gulp.task('lib_styles', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('./public/app/styles/less/*.less', ['styles']);
+    gulp.watch('./public/app/styles/less/*.less', ['styles']);
 });
 
 gulp.task('default', ['styles', 'lib_styles', 'watch']);
