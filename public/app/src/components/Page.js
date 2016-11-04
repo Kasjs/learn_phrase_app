@@ -6,8 +6,6 @@ let options = [
     {value : 'Sport', label: 'Sport'},
     {value : 'Nature', label: 'Nature'}];
 
-let setIndex = 0;
-
 function setSelectedOptions() {
     let selectedOptions = JSON.parse(localStorage.getItem('selected'));
     return selectedOptions;
@@ -34,7 +32,7 @@ export default class Page extends Component {
 
     }
     render() {
-        const { page, phrase, counter } = this.props
+        const { page, phrase, counter, rating } = this.props
             return <div className='phrase-col'>
                 <Row className='select-comp'>
                     <Col xs="65%" sm="40%" md="25%" lg="20%">
