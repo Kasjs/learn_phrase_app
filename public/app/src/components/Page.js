@@ -1,5 +1,18 @@
 import { Button, Row, Col, Container, FormSelect, } from 'elemental'
 import React, { PropTypes, Component } from 'react'
+
+let options = [
+    {value : 'Food', label: 'Food'},
+    {value : 'Sport', label: 'Sport'},
+    {value : 'Nature', label: 'Nature'}];
+
+let setIndex = 0;
+
+function setSelectedOptions() {
+    let selectedOptions = JSON.parse(localStorage.getItem('selected'));
+    return selectedOptions;
+}
+
 export default class Page extends Component {
     onBackPhraseBtnClick() {
         this.props.getBackPhrase();
@@ -15,19 +28,22 @@ export default class Page extends Component {
         this.props.getPhrase();
     }
     logChange(val) {
-        console.log("Selected: " + val);
+        console.log(val);
         this.props.getSelectedCategory(val);
+        localStorage.setItem('selected', JSON.stringify(val));
+
     }
     render() {
         const { page, phrase, counter } = this.props
             return <div className='phrase-col'>
                 <Row className='select-comp'>
                     <Col xs="65%" sm="40%" md="25%" lg="20%">
-                        <FormSelect className='select-category' options={[
-                            {value : 'Food', label: 'Food'},
-                            {value : 'Sport', label: 'Sport'},
-                            {value : 'Nature', label: 'Nature'}
-                        ]} firstOption='Select Category' onChange={this.logChange.bind(this)} />
+                        <FormSelect className='select-category' options={options}
+                            firstOption="Select Category"
+                            onChange={this.logChange.bind(this)} />
+                    </Col>
+                    <Col>
+                        <p className='selected-category' >Now selected: <strong>{setSelectedOptions()}</strong></p>
                     </Col>
                 </Row>
                 <Row className='phrase-row'>
