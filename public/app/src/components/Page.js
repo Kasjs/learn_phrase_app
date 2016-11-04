@@ -1,6 +1,5 @@
-import { Button, Row, Col, Container } from 'elemental'
+import { Button, Row, Col, Container, FormSelect, } from 'elemental'
 import React, { PropTypes, Component } from 'react'
-
 export default class Page extends Component {
     onBackPhraseBtnClick() {
         this.props.getBackPhrase();
@@ -15,9 +14,22 @@ export default class Page extends Component {
         this.props.switchLanguage();
         this.props.getPhrase();
     }
+    logChange(val) {
+        console.log("Selected: " + val);
+        this.props.getSelectedCategory(val);
+    }
     render() {
         const { page, phrase, counter } = this.props
             return <div className='phrase-col'>
+                <Row className='select-comp'>
+                    <Col xs="65%" sm="40%" md="25%" lg="20%">
+                        <FormSelect className='select-category' options={[
+                            {value : 'Food', label: 'Food'},
+                            {value : 'Sport', label: 'Sport'},
+                            {value : 'Nature', label: 'Nature'}
+                        ]} firstOption='Select Category' onChange={this.logChange.bind(this)} />
+                    </Col>
+                </Row>
                 <Row className='phrase-row'>
                     <Col xs="100%" sm="100%" md="70%" lg="50%">
                         <span>{counter}</span>
@@ -37,6 +49,5 @@ export default class Page extends Component {
 }
 
 Page.propTypes = {
-    page: PropTypes.string.isRequired,
-    phrase: PropTypes.string.isRequired
+    page: PropTypes.string.isRequired
 }

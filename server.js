@@ -27,8 +27,7 @@ if (isDeveloping) {
         }
     });
 
-    // mongoose.connect(process.env.DB_URL ||  'mongodb://Kasjs:Mantru1985develop@ds027338.mlab.com:27338/learn_phrase_app');
-    mongoose.connect('mongodb://localhost/learn_phrase');
+    mongoose.connect(process.env.DB_URL ||  'mongodb://Kasjs:Mantrudevelop1985@ds027338.mlab.com:27338/learn_phrase_app');
     mongoose.connection.on('error', function (err) {
         console.log('Error: Could not connect to MongoDB');
     });
@@ -50,7 +49,7 @@ if (isDeveloping) {
         res.write(middleware.fileSystem.readFileSync(path.join(__dirname, './public/dist/index.html')));
         res.end();
     });
-    app.get('/category/food', function response (req, res) {
+    app.get('/category', function response (req, res) {
         Category.find({}, function (err, data) {
                 res.send({
                 data: data
@@ -59,9 +58,9 @@ if (isDeveloping) {
     });
 } else {
     app.use(express.static(__dirname + '/dist'));
-    // app.get('*', function response(req, res) {
-    //   res.sendFile(path.join(__dirname, 'dist/index.html'));
-    // });
+    app.get('*', function response(req, res) {
+      res.sendFile(path.join(__dirname, 'dist/index.html'));
+    });
 }
 
 app.listen(port, '0.0.0.0', function onStart(err) {
