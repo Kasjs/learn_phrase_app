@@ -10,18 +10,20 @@ import '../../styles/css/main.css'
 
 class App extends Component {
 	render() {
-		const {user, page} = this.props
+		const { page } = this.props
 		const { getNextPhrase, getRandomPhrase, getBackPhrase, switchLanguage,
             getPhrase, getSelectedCategory } = this.props.pageActions
 		return <div>
-			<User name={user.name} getSelectedCategory={getSelectedCategory} />
 			<Page className='main' page={page.page}
-				phrase={page.phrase} counter={page.counter}
+				phrase={page.phrase}
+                counter={page.counter}
+                rating={page.rating}
 				getNextPhrase={getNextPhrase}
 				getRandomPhrase={getRandomPhrase}
 				getBackPhrase={getBackPhrase}
 				switchLanguage={switchLanguage}
 				getPhrase={getPhrase}
+                getSelectedCategory={getSelectedCategory}
 			/>
 		</div>
 	}
@@ -30,7 +32,6 @@ class App extends Component {
 function mapStateToProps(state) {
 	return {
 		page: state.page,
-		user: state.user
 	}
 }
 
