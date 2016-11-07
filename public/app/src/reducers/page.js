@@ -14,7 +14,7 @@ export default function page( state = initialState, action) {
                 return {
                     ...state,
                     phrase: action.payload[state.counter = 0][state.lang],
-                    rating: action.payload[state.counter].rating++
+                    rating: action.payload[state.counter].rating++ 
                 }
             }
             return {

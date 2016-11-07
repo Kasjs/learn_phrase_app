@@ -15,7 +15,9 @@ class App extends Component {
             getPhrase, getSelectedCategory } = this.props.pageActions
 		return <div>
 			<Page className='main' page={page.page}
-				phrase={page.phrase} counter={page.counter}
+				phrase={page.phrase}
+                counter={page.counter}
+                rating={page.rating}
 				getNextPhrase={getNextPhrase}
 				getRandomPhrase={getRandomPhrase}
 				getBackPhrase={getBackPhrase}

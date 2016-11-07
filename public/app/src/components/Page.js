@@ -46,7 +46,8 @@ export default class Page extends Component {
                 </Row>
                 <Row className='phrase-row'>
                     <Col xs="100%" sm="100%" md="70%" lg="50%">
-                        <span>{counter}</span>
+                        <span>Position: {counter}</span><br/>
+                        <span>Stats: {rating}</span>
                         <p><strong className='lead'>{phrase}</strong></p>
                     </Col>
                 </Row>
