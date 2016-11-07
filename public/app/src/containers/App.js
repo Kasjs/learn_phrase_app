@@ -12,7 +12,7 @@ class App extends Component {
 	render() {
 		const { page } = this.props
 		const { getNextPhrase, getRandomPhrase, getBackPhrase, switchLanguage,
-            getPhrase, getSelectedCategory } = this.props.pageActions
+            getPhrase, getSelectedCategory, syncCatAndRating } = this.props.pageActions
 		return <div>
 			<Page className='main' page={page.page}
 				phrase={page.phrase}
@@ -24,6 +24,7 @@ class App extends Component {
 				switchLanguage={switchLanguage}
 				getPhrase={getPhrase}
                 getSelectedCategory={getSelectedCategory}
+                syncCatAndRating={syncCatAndRating}
 			/>
 		</div>
 	}

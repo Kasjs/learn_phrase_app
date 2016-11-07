@@ -49,12 +49,27 @@ if (isDeveloping) {
         res.write(middleware.fileSystem.readFileSync(path.join(__dirname, './public/dist/index.html')));
         res.end();
     });
-    app.get('/category', function response (req, res) {
+    app.get('/category', function response(req, res) {
         Category.find({}, function (err, data) {
                 res.send({
                 data: data
             });
         });
+    });
+    app.post('/category', function(req, res) {
+        var category = new Category();
+         console.log(category);
+         res.send({
+            message: 'ok'
+         }) //= req.body.data;
+        // category.save(function(err) {
+        //     if(err) {
+        //         return next(err);
+        //     }
+        //     res.status(200).json({
+        //         message: 'successed synchronized'
+        //     });
+        // });
     });
 } else {
     app.use(express.static(__dirname + '/dist'));

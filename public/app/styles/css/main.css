@@ -1,14 +1,24 @@
-.btns-row {
-  text-align: center;
+.phrase-col {
+  margin: 0 3em 0 3em;
 }
-.btns-row .buttons {
-  margin: 15px 10px 0 0;
-  width: 6em;
+.phrase-col .select-comp {
+  padding: 0;
 }
-.lead {
-  font-size: 30px;
+.phrase-col .select-comp .btn-sunc {
+  margin-top: 10px;
 }
-.phrase-row {
+.phrase-col .select-comp .select-category {
+  margin: 10px 0 0 15px;
+  font: Helvetica 15px #666;
+  font-weight: 700;
+}
+.phrase-col .select-comp .select-category .FormSelect {
+  color: #666;
+}
+.phrase-col .select-comp .selected-category {
+  margin: 0 0 0 15px;
+}
+.phrase-col .phrase-row {
   text-align: center;
   background-color: #fafafa;
   border-radius: 5px;
@@ -16,23 +26,16 @@
   margin: 0 20px 0 20px 0;
   color: #1385e5;
 }
-.phrase-col {
-  margin: 0 3em 0 3em;
+.phrase-col .phrase-row .lead {
+  font-size: 30px;
 }
-.select-category {
-  margin: 10px 0 0 15px;
-  font: Helvetica 15px #666;
-  font-weight: 700;
+.phrase-col .btns-row {
+  text-align: center;
 }
-.select-comp {
-  padding: 0;
+.phrase-col .btns-row .buttons {
+  margin: 15px 10px 0 0;
+  width: 6em;
 }
-.FormSelect {
-  color: #666;
-}
-.Row {
+.phrase-col .Row {
   height: 90px;
-}
-.selected-category {
-  margin: 0 0 0 15px;
 }

@@ -38,7 +38,7 @@ export function getSelectedCategory(value) {
     return {
         type: 'GET_SELECTED_CATEGORY',
         payload: function() {
-            $.ajax('/category').then(function(response) {
+            $.get('/category').then(function(response) {
                 switch(value) {
                     case 'Food' : {
                         localStorage.setItem('catagories', JSON.stringify(response.data[0].Food));
@@ -59,6 +59,15 @@ export function getSelectedCategory(value) {
             }, function(error) {
                 console.log(error.data)
             })
+        }
+    }
+}
+
+export function syncCatAndRating() {
+    return {
+        type: 'SYNC_CAT_AND_RATING',
+        payload: function() {
+
         }
     }
 }

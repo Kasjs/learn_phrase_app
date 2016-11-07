@@ -4,23 +4,25 @@ var categorySchema = new mongoose.Schema({
     Food: {
         type: Array,
         default: [
-                {en: 'apple', uk: 'яблуко'}, {en: 'orange', uk: 'апельсин'},
-                {en: 'bread', uk: 'хліб'}, {en: 'milk', uk: 'молоко'}, {en: 'water', uk: 'вода'},
-                {en: 'juice', uk: 'сік'}, {en: 'cake', uk: 'тістечко'}
+            {en: 'apple', uk: 'яблуко', "rating": 0}, {en: 'orange', uk: 'апельсин', "rating": 0},
+            {en: 'bread', uk: 'хліб', "rating": 0}, {en: 'milk', uk: 'молоко', "rating": 0}, {en: 'water', uk: 'вода', "rating": 0},
+            {en: 'juice', uk: 'сік', "rating": 0}, {en: 'cake', uk: 'тістечко', "rating": 0}
         ]
     },
     Sport: {
         type: Array,
         default: [
-            {en: 'run', uk: 'бігти'}, {en: 'walk', uk: 'ходити'}, {en: 'ball', uk: 'м\'яч'}, {en: 'bow', uk: 'лук'}, {en: 'arrow', uk: 'стріла'},
-            {en: 'jump', uk: 'стрибати'}, {en: 'sweam', uk: 'плавати'}, {en: 'football', uk: 'футбол'}
+            {en: 'run', uk: 'бігти', "rating": 0}, {en: 'walk', uk: 'ходити', "rating": 0}, {en: 'ball', uk: 'м\'яч', "rating": 0},
+            {en: 'bow', uk: 'лук', "rating": 0}, {en: 'arrow', uk: 'стріла', "rating": 0},
+            {en: 'jump', uk: 'стрибати', "rating": 0}, {en: 'sweam', uk: 'плавати', "rating": 0}, {en: 'football', uk: 'футбол', "rating": 0}
         ]
     },
     Nature: {
         type: Array,
-        default: [{en: 'sky', uk: 'небо'}, {en: 'moon', uk: 'місяць'}, {en: 'earth', uk: 'земля'}, {en: 'forest', uk: 'ліс'}, {en: 'ocean', uk: 'океан'},
-            {en: 'river', uk: 'річка'}, {en: 'leaf', uk: 'листок'}, {en: 'winter', uk: 'зима'}, {en: 'spring', uk: 'осінь'}, {en: 'ice', uk: 'лід'},
-            {en: 'hot', uk: 'жара'}
+        default: [{en: 'sky', uk: 'небо', "rating": 0}, {en: 'moon', uk: 'місяць', "rating": 0}, {en: 'earth', uk: 'земля', "rating": 0},
+            {en: 'forest', uk: 'ліс', "rating": 0}, {en: 'ocean', uk: 'океан', "rating": 0},
+            {en: 'river', uk: 'річка', "rating": 0}, {en: 'leaf', uk: 'листок', "rating": 0}, {en: 'winter', uk: 'зима', "rating": 0},
+            {en: 'spring', uk: 'осінь', "rating": 0}, {en: 'ice', uk: 'лід', "rating": 0}, {en: 'hot', uk: 'жара', "rating": 0}
         ]
     }
 });
