@@ -29,7 +29,7 @@ export function getCategoryFromServer(value) {
 
 export function syncWithServer() {
     $.post('/category',
-    {   data : setCat,
+    {   data : JSON.parse(localStorage.getItem('catagories_' + getSelected())),
         category: getSelected()
     }
     ).then(function(response) {

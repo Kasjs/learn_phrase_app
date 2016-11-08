@@ -2,11 +2,14 @@ const path = require('path');
 const express = require('express');
 const webpack = require('webpack');
 const mongoose = require('mongoose');
+const request = require('request');
 const bodyParser = require('body-parser');
-const Category = require('./public/server/models/Category');
+const categorySchema = require('./public/server/models/Category');
+const Category = mongoose.model('Category', categorySchema);
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const config = require('./webpack.config.js');
+
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 3000 : process.env.PORT;
@@ -28,7 +31,7 @@ if (isDeveloping) {
     });
 
     mongoose.connect(process.env.DB_URL ||  'mongodb://Kasjs:Mantrudevelop1985@ds027338.mlab.com:27338/learn_phrase_app');
-    mongoose.connection.on('error', function (err) {
+    mongoose.connection.on('error', function(err) {
         console.log('Error: Could not connect to MongoDB');
     });
 
@@ -39,51 +42,32 @@ if (isDeveloping) {
     app.use(bodyParser.urlencoded({
         extended: true
     }));
-    app.use(function (req, res, next) {
+    app.use(function(req, res, next) {
         res.header('Access-Control-Allow-Origin', process.env.allowOrigin || 'http://localhost');
         res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
         res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
         next();
     });
-    app.get('/', function response(req, res) {
+    app.get('/', function(req, res) {
         res.write(middleware.fileSystem.readFileSync(path.join(__dirname, './public/dist/index.html')));
         res.end();
     });
-    app.get('/category', function response(req, res) {
-        Category.find({}, function (err, data) {
+    app.get('/category', function(req, res) {
+        Category.find({}, function(err, data) {
                 res.send({
-                data: data
+                    data: data
             });
         });
     });
-    app.post('/category', function response(req, res) {
-        // var category = new Category();
-        Category.find({} ,function (err, categoryField) {
-            categoryField[req.body.category] = req.body.data;
-            console.log(categoryField);
-            categoryField.save(function(err) {
-                if(err) {
-                    res.status(404).json({
-                        message: 'Error'
-                    });
-                }
-                res.send(200).json({
-                    data : categoryField,
-                    message: 'ok'
+    app.post('/category', function(req, res) {
+        var catName = req.body.category;
+        Category.update({}, {catName : req.body.data}, function(err) {
+            Category.find({}, function(err, data) {
+                    res.send({
+                        data: data
                 });
             });
         });
-        // category[req.body.category] = req.body.data;
-        // category.save(function(err) {
-        //     if(err) {
-        //         res.status(404).json({
-        //             message: "Error msg"
-        //         });
-        //     }
-        //     res.send({
-        //         message: 'ok'
-        //     })
-        // });
     });
 } else {
     app.use(express.static(__dirname + '/dist'));
