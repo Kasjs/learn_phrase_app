@@ -1,0 +1,38 @@
+import { getSelected, getCategoryFromStorage } from '../actions/pageActions'
+export let setCat = [];
+export function getCategoryFromServer(value) {
+    $.get('/category').then(function(response) {
+        switch(value) {
+            case 'Food' : {
+                let selected = JSON.parse(localStorage.getItem('selected'));
+                localStorage.setItem('catagories_' + selected , JSON.stringify(response.data[0].Food));
+                setCat = JSON.parse(localStorage.getItem('catagories_' + getSelected()));
+                return setCat;
+            }
+            case 'Sport' : {
+                let selected = JSON.parse(localStorage.getItem('selected'));
+                localStorage.setItem('catagories_' + selected, JSON.stringify(response.data[0].Sport));
+                setCat = JSON.parse(localStorage.getItem('catagories_' + getSelected()));
+                return setCat;
+            }
+            case 'Nature' : {
+                let selected = JSON.parse(localStorage.getItem('selected'));
+                localStorage.setItem('catagories_' + selected, JSON.stringify(response.data[0].Nature));
+                setCat = JSON.parse(localStorage.getItem('catagories_' + getSelected()));
+                return setCat;
+            }
+        }
+    }, function(error) {
+        console.log(error.data)
+    })
+}
+
+export function syncWithServer() {
+    $.post('/category',
+    {   data : setCat,
+        category: getSelected()
+    }
+    ).then(function(response) {
+        console.log(response.data);
+    });
+}

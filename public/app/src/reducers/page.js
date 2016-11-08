@@ -1,15 +1,11 @@
-let localSync = function(index) {
-    let catagories = JSON.parse(localStorage.getItem('catagories'));
-    ++catagories[index].rating;
-    localStorage.setItem('catagories', JSON.stringify(catagories));
-}
+import { localSync } from '../localStorage/localStorageMethods'
 
 const initialState = {
     page: 'test',
     phrase: '',
     counter: 0,
-    lang: 'en',
-    rating: 0
+    side: 'side_a',
+    hits: 0
 
 }
 
@@ -20,15 +16,15 @@ export default function page( state = initialState, action) {
                 localSync(state.counter);
                 return {
                     ...state,
-                    phrase: action.payload[state.counter = 0][state.lang],
-                    rating: ++action.payload[state.counter].rating,
+                    phrase: action.payload[state.counter = 0][state.side],
+                    hits: ++action.payload[state.counter].hits,
                 }
             }
             localSync(state.counter);
             return {
                 ...state,
-                phrase: action.payload[state.counter = ++state.counter][state.lang],
-                rating: ++action.payload[state.counter].rating
+                phrase: action.payload[state.counter = ++state.counter][state.side],
+                hits: ++action.payload[state.counter].hits
 
             }
         }
@@ -38,15 +34,15 @@ export default function page( state = initialState, action) {
                 localSync(state.counter);
                 return {
                     ...state,
-                    phrase: action.payload[state.counter = action.payload.length - 1][state.lang],
-                    rating: ++action.payload[state.counter].rating
+                    phrase: action.payload[state.counter = action.payload.length - 1][state.side],
+                    hits: ++action.payload[state.counter].hits
                 }
             }
             localSync(state.counter);
             return {
                 ...state,
-                phrase: action.payload[state.counter = --state.counter][state.lang],
-                rating: ++action.payload[state.counter].rating
+                phrase: action.payload[state.counter = --state.counter][state.side],
+                hits: ++action.payload[state.counter].hits
             }
         }
 
@@ -54,35 +50,35 @@ export default function page( state = initialState, action) {
             localSync(state.counter);
             return {
                 ...state,
-                phrase: action.payload[state.counter = Math.floor(Math.random() * action.payload.length)][state.lang],
-                rating: ++action.payload[state.counter].rating
+                phrase: action.payload[state.counter = Math.floor(Math.random() * action.payload.length)][state.side],
+                hits: ++action.payload[state.counter].hits
             }
         }
 
         case 'GET_PHRASE': {
             return {
                 ...state,
-                phrase: action.payload[state.counter][state.lang]
+                phrase: action.payload[state.counter][state.side]
             }
         }
 
         case 'SWITCH_LANGUAGE': {
             return {
                 ...state,
-                lang: state.lang === 'en' ? 'uk' : 'en'
+                side: state.side === 'side_a' ? 'side_b' : 'side_a'
             }
         }
 
         case 'GET_SELECTED_CATEGORY': {
             return {
                 ...state,
-                phrase: state.phrase = action.payload()
+                phrase: state.phrase = action.payload
             }
         }
         case 'SYNC_CAT_AND_RATING': {
             return {
                 ...state,
-                phrase: state.phrase = action.payload()
+                phrase: state.phrase = action.payload
             }
         }
 

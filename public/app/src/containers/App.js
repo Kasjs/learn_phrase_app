@@ -17,7 +17,7 @@ class App extends Component {
 			<Page className='main' page={page.page}
 				phrase={page.phrase}
                 counter={page.counter}
-                rating={page.rating}
+                hits={page.hits}
 				getNextPhrase={getNextPhrase}
 				getRandomPhrase={getRandomPhrase}
 				getBackPhrase={getBackPhrase}

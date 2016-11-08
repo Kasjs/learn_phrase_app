@@ -1,5 +1,6 @@
 import { Button, Row, Col, Container, FormSelect, } from 'elemental'
 import React, { PropTypes, Component } from 'react'
+ import { getCategoryFromServer } from '../ajaxCalls/request'
 
 let options = [
     {value : 'Food', label: 'Food'},
@@ -27,7 +28,7 @@ export default class Page extends Component {
     }
     logChange(val) {
         console.log(val);
-        this.props.getSelectedCategory(val);
+        getCategoryFromServer(val);
         localStorage.setItem('selected', JSON.stringify(val));
 
     }
@@ -35,7 +36,7 @@ export default class Page extends Component {
         this.props.syncCatAndRating();
     }
     render() {
-        const { page, phrase, counter, rating } = this.props
+        const { page, phrase, counter, hits } = this.props
             return <div className='phrase-col'>
                 <Row className='select-comp'>
                     <Col xs="2/3" sm="40%" md="25%" lg="40%">
@@ -46,7 +47,7 @@ export default class Page extends Component {
                     </Col>
                     <Col xs='1/3'>
                         <Button className='btn-sunc' type='primary'
-                            onClick={this.onSyncCatAndRating.bind(this)}>Sunc
+                            onClick={this.onSyncCatAndRating.bind(this)}>Sync
                         </Button>
                     </Col>
                     <Col>
@@ -55,8 +56,8 @@ export default class Page extends Component {
                 </Row>
                 <Row className='phrase-row'>
                     <Col xs="100%" sm="100%" md="70%" lg="50%">
-                        <span>Position: {counter}</span><br/>
-                        <span>Stats: {rating}</span>
+                        <span>Position: {counter} </span><br/>
+                        <span>Hits: {hits} </span>
                         <p><strong className='lead'>{phrase}</strong></p>
                     </Col>
                 </Row>

@@ -56,19 +56,33 @@ if (isDeveloping) {
             });
         });
     });
-    app.post('/category', function(req, res) {
-        var category = new Category();
-         console.log(category);
-         res.send({
-            message: 'ok'
-         }) //= req.body.data;
+    app.post('/category', function response(req, res) {
+        // var category = new Category();
+        Category.find({} ,function (err, categoryField) {
+            categoryField[req.body.category] = req.body.data;
+            console.log(categoryField);
+            categoryField.save(function(err) {
+                if(err) {
+                    res.status(404).json({
+                        message: 'Error'
+                    });
+                }
+                res.send(200).json({
+                    data : categoryField,
+                    message: 'ok'
+                });
+            });
+        });
+        // category[req.body.category] = req.body.data;
         // category.save(function(err) {
         //     if(err) {
-        //         return next(err);
+        //         res.status(404).json({
+        //             message: "Error msg"
+        //         });
         //     }
-        //     res.status(200).json({
-        //         message: 'successed synchronized'
-        //     });
+        //     res.send({
+        //         message: 'ok'
+        //     })
         // });
     });
 } else {

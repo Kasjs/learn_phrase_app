@@ -1,23 +1,30 @@
-let setCat = [];
+import { getCategoryFromServer, syncWithServer, setCat } from '../ajaxCalls/request'
+
+export function getSelected() {
+    return JSON.parse(localStorage.getItem('selected'));
+}
+function getCategoryFromStorage() {
+    return JSON.parse(localStorage.getItem('catagories_' + getSelected()));
+}
 
 export function getBackPhrase() {
     return {
         type: 'GET_BACK_PHRASE_REQUEST',
-        payload: setCat.length === 0 ? JSON.parse(localStorage.getItem('catagories')) : setCat
+        payload: setCat.length === 0 ? getCategoryFromStorage() : setCat
     }
 }
 
 export function getNextPhrase() {
     return {
         type: 'GET_NEXT_PHRASE_REQUEST',
-        payload: setCat.length === 0 ? JSON.parse(localStorage.getItem('catagories')) : setCat
+        payload: setCat.length === 0 ? getCategoryFromStorage() : setCat
     }
 }
 
 export function getRandomPhrase() {
     return {
         type: 'GET_RANDOM_PHRASE_REQUEST',
-        payload: setCat.length === 0 ? JSON.parse(localStorage.getItem('catagories')) : setCat
+        payload: setCat.length === 0 ? getCategoryFromStorage() : setCat
     }
 }
 
@@ -30,44 +37,20 @@ export function switchLanguage() {
 export function getPhrase() {
     return {
         type: 'GET_PHRASE',
-        payload: setCat.length === 0 ? JSON.parse(localStorage.getItem('catagories')) : setCat
+        payload: setCat.length === 0 ? getCategoryFromStorage() : setCat
     }
 }
 
 export function getSelectedCategory(value) {
     return {
         type: 'GET_SELECTED_CATEGORY',
-        payload: function() {
-            $.get('/category').then(function(response) {
-                switch(value) {
-                    case 'Food' : {
-                        localStorage.setItem('catagories', JSON.stringify(response.data[0].Food));
-                        setCat = JSON.parse(localStorage.getItem('catagories'));
-                        return setCat
-                    }
-                    case 'Sport' : {
-                        localStorage.setItem('catagories', JSON.stringify(response.data[0].Sport));
-                        setCat = JSON.parse(localStorage.getItem('catagories'));
-                        return setCat
-                    }
-                    case 'Nature' : {
-                        localStorage.setItem('catagories', JSON.stringify(response.data[0].Nature));
-                        setCat = JSON.parse(localStorage.getItem('catagories'));
-                        return setCat
-                    }
-                }
-            }, function(error) {
-                console.log(error.data)
-            })
-        }
+        payload: getCategoryFromServer()
     }
 }
 
 export function syncCatAndRating() {
     return {
         type: 'SYNC_CAT_AND_RATING',
-        payload: function() {
-
-        }
+        payload: syncWithServer()
     }
 }
