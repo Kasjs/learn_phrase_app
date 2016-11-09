@@ -4,11 +4,12 @@ const webpack = require('webpack');
 const mongoose = require('mongoose');
 const request = require('request');
 const bodyParser = require('body-parser');
-const categorySchema = require('./public/server/models/Category');
-const Category = mongoose.model('Category', categorySchema);
+const Category = require('./public/server/models/Category');
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const config = require('./webpack.config.js');
+var oldData;
+var oldCat;
 
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
@@ -53,19 +54,54 @@ if (isDeveloping) {
         res.end();
     });
     app.get('/category', function(req, res) {
-        Category.find({}, function(err, data) {
+        Category.findOne({}, function(err, data) {
+            if(data) {
                 res.send({
                     data: data
-            });
+                });
+            } else {
+                let category = new Category();
+                category.save(function(err) {
+                    if(err) {
+                        res.send({
+                            msg: 'Error'
+                        });
+                    }
+                    Category.findOne({}, function(err, data) {
+                        res.send({
+                            data: data
+                        });
+                    });
+                });
+            }
         });
     });
     app.post('/category', function(req, res) {
-        var catName = req.body.category;
-        Category.update({}, {catName : req.body.data}, function(err) {
-            Category.find({}, function(err, data) {
+        // oldData = req.body.data;
+        // oldCat = req.body.category;
+        // console.log(oldData, oldCat);
+        // Category.remove({}, function(err) {
+        //     if(err) {
+        //         res.send({
+        //             msg: 'Error'
+        //         });
+        //     }
+        // });
+        // var other = new Category();
+        // other[oldCat] = oldData[req.body.category];
+        // other[req.body.category] = req.body.data;
+        Category.findOne({}, function(err, data) {
+            console.log(data);
+            data[req.body.category] = req.body.data;
+            data.save(function(err) {
+                if(err) {
                     res.send({
-                        data: data
-                });
+                        msg: 'Error'
+                    })
+                }
+            });
+            res.send({
+                data: data
             });
         });
     });

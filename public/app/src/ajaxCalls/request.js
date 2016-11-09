@@ -5,19 +5,19 @@ export function getCategoryFromServer(value) {
         switch(value) {
             case 'Food' : {
                 let selected = JSON.parse(localStorage.getItem('selected'));
-                localStorage.setItem('catagories_' + selected , JSON.stringify(response.data[0].Food));
+                localStorage.setItem('catagories_' + selected , JSON.stringify(response.data.Food));
                 setCat = JSON.parse(localStorage.getItem('catagories_' + getSelected()));
                 return setCat;
             }
             case 'Sport' : {
                 let selected = JSON.parse(localStorage.getItem('selected'));
-                localStorage.setItem('catagories_' + selected, JSON.stringify(response.data[0].Sport));
+                localStorage.setItem('catagories_' + selected, JSON.stringify(response.data.Sport));
                 setCat = JSON.parse(localStorage.getItem('catagories_' + getSelected()));
                 return setCat;
             }
             case 'Nature' : {
                 let selected = JSON.parse(localStorage.getItem('selected'));
-                localStorage.setItem('catagories_' + selected, JSON.stringify(response.data[0].Nature));
+                localStorage.setItem('catagories_' + selected, JSON.stringify(response.data.Nature));
                 setCat = JSON.parse(localStorage.getItem('catagories_' + getSelected()));
                 return setCat;
             }
