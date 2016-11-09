@@ -1,4 +1,5 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
+import { routerReducer } from 'react-router-redux'
 import rootReducer from '../reducers'
 import createLogger from 'redux-logger'
 

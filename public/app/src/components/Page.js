@@ -1,6 +1,7 @@
 import { Button, Row, Col, Container, FormSelect, } from 'elemental'
 import React, { PropTypes, Component } from 'react'
- import { getCategoryFromServer } from '../ajaxCalls/request'
+import { getCategoryFromServer } from '../ajaxCalls/request'
+import { Link, browserHistory } from 'react-router'
 
 let options = [
     {value : 'Food', label: 'Food'},
@@ -39,19 +40,25 @@ export default class Page extends Component {
         const { page, phrase, counter, hits } = this.props
             return <div className='phrase-col'>
                 <Row className='select-comp'>
-                    <Col xs="2/3" sm="40%" md="25%" lg="40%">
+                    <Col xs="50%" sm="40%" md="25%" lg="40%">
                         <FormSelect className='select-category' options={options}
-                            firstOption="Select Category"
+                            firstOption="Select"
                             onChange={this.logChange.bind(this)}
                         />
                     </Col>
                     <Col xs='1/3'>
-                        <Button className='btn-sunc' type='primary'
+                        <Button className='btn-sunc' type='hollow-success'
                             onClick={this.onSyncCatAndRating.bind(this)}>Sync
+                        </Button>
+                        <Button className='login-btn' onClick={() => browserHistory.push('/login')}
+                            type='hollow-primary'>Sign In
+                        </Button>
+                        <Button className='register-btn' onClick={() => browserHistory.push('/register')}
+                            type='hollow-primary'>Sign Up
                         </Button>
                     </Col>
                     <Col>
-                        <p className='selected-category' >Now selected: <strong>{setSelectedOptions()}</strong></p>
+                        <p className='selected-category'>Now selected: <strong>{setSelectedOptions()}</strong></p>
                     </Col>
                 </Row>
                 <Row className='phrase-row'>

@@ -1,4 +1,5 @@
-import React, {Component, Proptypes} from 'react'
+import React, { Component, Proptypes } from 'react'
+import { Router } from 'react-router'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import User from '../components/User'
@@ -13,20 +14,21 @@ class App extends Component {
 		const { page } = this.props
 		const { getNextPhrase, getRandomPhrase, getBackPhrase, switchLanguage,
             getPhrase, getSelectedCategory, syncCatAndRating } = this.props.pageActions
-		return <div>
-			<Page className='main' page={page.page}
-				phrase={page.phrase}
-                counter={page.counter}
-                hits={page.hits}
-				getNextPhrase={getNextPhrase}
-				getRandomPhrase={getRandomPhrase}
-				getBackPhrase={getBackPhrase}
-				switchLanguage={switchLanguage}
-				getPhrase={getPhrase}
-                getSelectedCategory={getSelectedCategory}
-                syncCatAndRating={syncCatAndRating}
-			/>
-		</div>
+		return (
+            <div>
+    			<Page className='main' page={page.page}
+    				phrase={page.phrase}
+                    counter={page.counter}
+                    hits={page.hits}
+    				getNextPhrase={getNextPhrase}
+    				getRandomPhrase={getRandomPhrase}
+    				getBackPhrase={getBackPhrase}
+    				switchLanguage={switchLanguage}
+    				getPhrase={getPhrase}
+                    getSelectedCategory={getSelectedCategory}
+                    syncCatAndRating={syncCatAndRating}/>
+            </div>
+        )
 	}
 }
 

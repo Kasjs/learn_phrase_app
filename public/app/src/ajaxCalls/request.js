@@ -23,16 +23,19 @@ export function getCategoryFromServer(value) {
             }
         }
     }, function(error) {
-        console.log(error.data)
+        console.log('Error get data')
     })
 }
 
 export function syncWithServer() {
     $.post('/category',
-    {   data : JSON.parse(localStorage.getItem('catagories_' + getSelected())),
-        category: getSelected()
-    }
-    ).then(function(response) {
-        console.log(response.data);
-    });
+        {
+            data : JSON.parse(localStorage.getItem('catagories_' + getSelected())),
+            category: getSelected()
+            
+        }).then(function(response) {
+            console.log(response.data);
+        }, function(erro) {
+            console.log('Error sync')
+        });
 }

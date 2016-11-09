@@ -8,9 +8,6 @@ const Category = require('./public/server/models/Category');
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const config = require('./webpack.config.js');
-var oldData;
-var oldCat;
-
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 3000 : process.env.PORT;
@@ -77,19 +74,6 @@ if (isDeveloping) {
         });
     });
     app.post('/category', function(req, res) {
-        // oldData = req.body.data;
-        // oldCat = req.body.category;
-        // console.log(oldData, oldCat);
-        // Category.remove({}, function(err) {
-        //     if(err) {
-        //         res.send({
-        //             msg: 'Error'
-        //         });
-        //     }
-        // });
-        // var other = new Category();
-        // other[oldCat] = oldData[req.body.category];
-        // other[req.body.category] = req.body.data;
         Category.findOne({}, function(err, data) {
             console.log(data);
             data[req.body.category] = req.body.data;
