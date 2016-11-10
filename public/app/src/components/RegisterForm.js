@@ -3,7 +3,7 @@ import React, { PropTypes, Component } from 'react'
 import { Field, Form, actions } from 'react-redux-form';
 import { connect } from 'react-redux'
 
-class RegisterForm extends Component {
+export default class RegisterForm extends Component {
 
     handleSubmit(user) {
         let { dispatch } = this.props;
@@ -42,8 +42,9 @@ class RegisterForm extends Component {
         )
     }
 }
+
 function mapStateToProps(state) {
   return { user: state.user };
 }
 
-export default connect(mapStateToProps)(RegisterForm);
+connect(mapStateToProps)(RegisterForm);

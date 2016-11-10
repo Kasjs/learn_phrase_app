@@ -1,9 +1,16 @@
 import { Button, Row, Col, Container, FormSelect, FormField, FormInput } from 'elemental'
 import React, { PropTypes, Component } from 'react'
-import { Field, Form, actions } from 'react-redux-form';
+import { Field, Form, actions } from 'react-redux-form'
+import { connect } from 'react-redux'
 
-export default class RegForm extends Component {
+export default class LoginForm extends Component {
+
+    handleSubmit(user) {
+        let { dispatch } = this.props;
+    }
+
     render() {
+        let { user } = this.props;
         return (
             <div >
             <Col xs='100%'>
@@ -30,3 +37,9 @@ export default class RegForm extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+  return { user: state.user };
+}
+
+connect(mapStateToProps)(LoginForm);
