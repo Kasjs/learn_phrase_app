@@ -32,10 +32,21 @@ export function syncWithServer() {
         {
             data : JSON.parse(localStorage.getItem('catagories_' + getSelected())),
             category: getSelected()
-            
+
         }).then(function(response) {
             console.log(response.data);
         }, function(erro) {
             console.log('Error sync')
         });
+}
+
+export function register() {
+    $.post('/register',
+    {
+        // email:
+        // password:
+
+    }).then(function(response) {
+
+    });
 }

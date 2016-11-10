@@ -2,11 +2,13 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import App from './containers/App'
-import Form from './components/RegForm'
+import Register from './components/RegisterForm'
+import Login from './components/LoginForm'
 import configureStore from './store/configureStore'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import { Router, Route, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
+import Bootstrap from 'bootstrap/dist/css/bootstrap.css'
 
 injectTapEventPlugin();
 const store = configureStore();
@@ -16,8 +18,9 @@ render(
     <Provider store={store}>
         <Router history={history}>
             <Route path="/" component={App}></Route>
-            <Route path="/login" component={Form}/>
+            <Route path="/login" component={Login}/>
+            <Route path="/register" component={Register}/>
         </Router>
     </Provider>,
-    document.getElementById('root')
+    document.getElementById('app')
 )

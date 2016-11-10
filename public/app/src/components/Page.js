@@ -65,21 +65,21 @@ export default class Page extends Component {
                     <Col xs="100%" sm="100%" md="70%" lg="50%">
                         <span>Position: {counter} </span><br/>
                         <span>Hits: {hits} </span>
-                        <p><strong className='lead'>{phrase}</strong></p>
+                        <p><strong className='phrase'>{phrase}</strong></p>
                     </Col>
                 </Row>
                 <Row className='btns-row'>
                     <Col xs="100%" sm="100%" md="70%" lg="50%">
-                        <Button className='buttons' size='lg'  type='primary'
+                        <Button className='buttons btn btn-lg' type='primary'
                             onClick={this.onBackPhraseBtnClick.bind(this)}>Back
                         </Button>
-                        <Button className='buttons' size='lg'  type='success'
+                        <Button className='buttons btn btn-lg' type='success'
                             onClick={this.onGetNextPhraseBtnClick.bind(this)}>Next
                         </Button>
-                        <Button className='buttons' size='lg'  type='warning'
+                        <Button className='buttons btn btn-lg' type='warning'
                             onClick={this.onSwitchLanguage.bind(this)} >Translate
                         </Button>
-                        <Button className='buttons' size='lg'  type='danger'
+                        <Button className='buttons btn btn-lg' type='danger'
                             onClick={this.onGetRandomPhraseBtnClick.bind(this)}>Random
                         </Button>
                     </Col>

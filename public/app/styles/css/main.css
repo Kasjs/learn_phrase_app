@@ -6,7 +6,7 @@
 }
 .phrase-col .select-comp .btn-sunc {
   margin-top: 10px;
-  padding: 0 5px 0 5px;
+  padding: 0;
   width: 50px;
 }
 .phrase-col .select-comp .select-category {
@@ -21,20 +21,17 @@
   margin: 0 0 0 -10px;
 }
 .phrase-col .login-btn {
-  margin: 10px 22px 0 0;
-  text-align: center;
+  margin: 10px 0 0 0;
   position: absolute;
-  right: 0;
-  padding: 0 5px 0 5px;
-  width: 60px;
+  right: 5%;
+  padding: 0 3px 0 3px;
 }
 .phrase-col .register-btn {
-  text-align: center;
-  padding: 0 5px 0 5px;
-  width: 60px;
-  margin: 10px 0 0 10px;
+  text-align: right;
+  padding: 0 3px 0 3px;
+  margin: 10px 0 0 0;
   position: absolute;
-  right: 90px;
+  right: 15%;
 }
 .phrase-col .phrase-row {
   text-align: center;
@@ -44,8 +41,9 @@
   margin: 0 20px 0 20px 0;
   color: #1385e5;
 }
-.phrase-col .phrase-row .lead {
-  font-size: 30px;
+.phrase-col .phrase-row .phrase {
+  font-size: 20px;
+  color: #000000;
 }
 .phrase-col .btns-row {
   text-align: center;
@@ -58,7 +56,7 @@
   height: 90px;
 }
 .req-form-cont {
-  width: 500px;
+  width: 700px;
   text-align: left;
   margin: 1% auto 0 auto;
   box-shadow: 5px 5px #cccccc;
@@ -75,4 +73,10 @@
 }
 .FormLabel {
   margin: 10px 0 5px 0;
+}
+.email-label {
+  padding-top: 10px;
+}
+.submit-btn {
+  margin-bottom: 10px;
 }

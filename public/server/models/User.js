@@ -11,7 +11,7 @@ var userShema = new mongoose.Schema({
     }
     CategoryDictionary: [
         {   category: String,
-            feeds: [{
+            categories: [{
 				type: mongoose.Schema.Types.ObjectId,
 				ref: 'Category'
 			}]
