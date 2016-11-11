@@ -1,16 +1,22 @@
 import { Button, Row, Col, Container, FormSelect, FormField, FormInput } from 'elemental'
 import React, { PropTypes, Component } from 'react'
-import { Field, Form, actions } from 'react-redux-form';
+import { Field, Form, actions } from 'react-redux-form'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import * as userActions from '../actions/userActions'
+import { registerNewUser } from '../actions/userActions'
+import { browserHistory} from 'react-router'
 
-export default class RegisterForm extends Component {
+class RegisterForm extends Component {
 
     handleSubmit(user) {
         let { dispatch } = this.props;
-    }
+        registerNewUser(user);
 
+    }
     render() {
         let { user } = this.props;
+
         return (
             <div >
                 <Col xs='100%'>
@@ -44,7 +50,17 @@ export default class RegisterForm extends Component {
 }
 
 function mapStateToProps(state) {
-  return { user: state.user };
+    return {
+        user: state.user
+    }
 }
 
-connect(mapStateToProps)(RegisterForm);
+function mapDispatchToProps(dispatch) {
+		return {
+			pageActions: bindActionCreators(userActions, dispatch)
+		}
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm);

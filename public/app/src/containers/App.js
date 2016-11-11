@@ -9,7 +9,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import '../../styles/css/style.lib.css/style.lib.css'
 import '../../styles/css/main.css'
 
-
 class App extends Component {
 	render() {
 		const { page } = this.props

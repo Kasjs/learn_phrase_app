@@ -1,7 +1,7 @@
 import { Button, Row, Col, Container, FormSelect, } from 'elemental'
 import React, { PropTypes, Component } from 'react'
 import { getCategoryFromServer } from '../ajaxCalls/request'
-import { Link, browserHistory } from 'react-router'
+import { Link, browserHistory, hashHistory } from 'react-router'
 
 let options = [
     {value : 'Food', label: 'Food'},
@@ -86,8 +86,4 @@ export default class Page extends Component {
                 </Row>
             </div>
     }
-}
-
-Page.propTypes = {
-    page: PropTypes.string.isRequired
 }

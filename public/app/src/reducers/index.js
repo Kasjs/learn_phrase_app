@@ -6,11 +6,11 @@ import { modelReducer, formReducer } from 'react-redux-form'
 
 const initialUserState= {
     email: '',
-    password: '',
-    repPassword: ''
+    password: ''
 }
 export default combineReducers({
     page,
+    register,
     routing: routerReducer,
     user: modelReducer('user', initialUserState),
     userForm: formReducer('user', initialUserState)

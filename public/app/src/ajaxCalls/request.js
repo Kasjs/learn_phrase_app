@@ -1,4 +1,5 @@
 import { getSelected, getCategoryFromStorage } from '../actions/pageActions'
+import { browserHistory } from 'react-router'
 export let setCat = [];
 export function getCategoryFromServer(value) {
     $.get('/category').then(function(response) {
@@ -40,13 +41,19 @@ export function syncWithServer() {
         });
 }
 
-export function register() {
+export function register(user) {
     $.post('/register',
     {
-        // email:
-        // password:
+        email: user.email,
+        password: user.password
 
     }).then(function(response) {
+        console.log('user was successful auth');
 
+    });
+}
+export function updateRegister() {
+    $.get('/register').then(function() {
+        browserHistory.push('/register');
     });
 }

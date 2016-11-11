@@ -10,13 +10,11 @@ import { Router, Route, browserHistory } from 'react-router'
 
 export default function configureStore(initialState) {
 
-    const middleware = routerMiddleware(browserHistory)
     const logger = createLogger()
     const store = createStore(
         rootReducer,
-        applyMiddleware(thunk),
-        applyMiddleware(logger),
-        initialState);
+        initialState,
+        applyMiddleware(logger))
         if (module.hot) {
             module.hot.accept('../reducers', () => {
                 const nextRootReducer = require('../reducers')

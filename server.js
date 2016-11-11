@@ -1,17 +1,23 @@
-const path = require('path');
-const express = require('express');
-const webpack = require('webpack');
-const mongoose = require('mongoose');
-const request = require('request');
-const bodyParser = require('body-parser');
-const Category = require('./public/server/models/Category');
-const webpackMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddleware = require('webpack-hot-middleware');
-const config = require('./webpack.config.js');
+const path = require('path'),
+fs = require('fs'),
+express = require('express'),
+rewrite = require('express-urlrewrite'),
+webpack = require('webpack'),
+mongoose = require('mongoose'),
+request = require('request'),
+bodyParser = require('body-parser'),
+Category = require('./public/server/models/Category'),
+User = require('./public/server/models/User'),
+webpackMiddleware = require('webpack-dev-middleware'),
+webpackHotMiddleware = require('webpack-hot-middleware'),
+config = require('./webpack.config.js'),
+React = require('react'),
+Router = require('react-router'),
 
-const isDeveloping = process.env.NODE_ENV !== 'production';
-const port = isDeveloping ? 3000 : process.env.PORT;
-const app = express();
+isDeveloping = process.env.NODE_ENV !== 'production',
+port = isDeveloping ? 3000 : process.env.PORT,
+app = express();
+require('node-jsx').install();
 
 if (isDeveloping) {
     const compiler = webpack(config);
@@ -32,6 +38,11 @@ if (isDeveloping) {
     mongoose.connection.on('error', function(err) {
         console.log('Error: Could not connect to MongoDB');
     });
+
+    fs.readdirSync(__dirname).forEach(function (file) {
+        if (fs.statSync(path.join(__dirname, file)).isDirectory())
+        app.use(rewrite('/' + file + '/*', '/' + file + '/index.html'))
+    })
 
     app.use(middleware);
     app.use(webpackHotMiddleware(compiler));
@@ -87,6 +98,35 @@ if (isDeveloping) {
             res.send({
                 data: data
             });
+        });
+    });
+
+    app.post('/register', function(req, res) {
+        User.findOne({ email : req.body.email }, function(err, existingUser) {
+            if(existingUser) {
+                res.send({
+                    user: existingUser,
+                    msg: 'User with this email already exist'
+                })
+            }
+        })
+        let user = new User();
+        user.email = req.body.email;
+        user.password = req.body.password;
+        user.save(function(err) {
+            if(err) {
+                res.status(404).json({
+                    msg: 'Error'
+                })
+            }
+            res.send({
+                user: user
+            });
+        })
+    })
+    app.get('/register', function(req, res) {
+        return res.send({
+            msg: 'update route'
         });
     });
 } else {
