@@ -36,6 +36,7 @@ export default class Page extends Component {
     onSyncCatAndRating() {
         this.props.syncCatAndRating();
     }
+
     render() {
         const { page, phrase, counter, hits } = this.props
             return <div className='phrase-col'>
