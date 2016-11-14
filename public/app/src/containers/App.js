@@ -5,18 +5,21 @@ import { connect } from 'react-redux'
 import User from '../components/User'
 import Page from '../components/Page'
 import * as pageActions from '../actions/pageActions'
+import * as userActions from '../actions/userActions'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import '../../styles/css/style.lib.css/style.lib.css'
 import '../../styles/css/main.css'
 
 class App extends Component {
 	render() {
-		const { page } = this.props
+		const { page, register, user } = this.props
 		const { getNextPhrase, getRandomPhrase, getBackPhrase, switchLanguage,
             getPhrase, getSelectedCategory, syncCatAndRating } = this.props.pageActions
+        const { registerNewUser } = this.props.userActions
 		return (
-            <div>
-    			<Page className='main' page={page.page}
+            <div className='row'>
+    			<Page className='main'
+                    page={page.page}
     				phrase={page.phrase}
                     counter={page.counter}
                     hits={page.hits}
@@ -27,6 +30,9 @@ class App extends Component {
     				getPhrase={getPhrase}
                     getSelectedCategory={getSelectedCategory}
                     syncCatAndRating={syncCatAndRating}/>
+                <User
+                email={user.email}
+                registerNewUser={registerNewUser} />
             </div>
         )
 	}
@@ -35,12 +41,14 @@ class App extends Component {
 function mapStateToProps(state) {
 	return {
 		page: state.page,
+        user: state.user
 	}
 }
 
 function mapDispatchToProps(dispatch) {
 		return {
-			pageActions: bindActionCreators(pageActions, dispatch)
+			pageActions: bindActionCreators(pageActions, dispatch),
+			userActions: bindActionCreators(userActions, dispatch)
 		}
 }
 

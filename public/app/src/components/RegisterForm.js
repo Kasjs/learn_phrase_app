@@ -4,15 +4,19 @@ import { Field, Form, actions } from 'react-redux-form'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as userActions from '../actions/userActions'
-import { registerNewUser } from '../actions/userActions'
-import { browserHistory} from 'react-router'
+import { registerNewUser, toggleUser } from '../actions/userActions'
+import { Link, browserHistory, hashHistory } from 'react-router'
 
 class RegisterForm extends Component {
 
+    setEmail(user) {
+        localStorage.setItem('email', user.email);
+    }
     handleSubmit(user) {
         let { dispatch } = this.props;
         registerNewUser(user);
-
+        this.setEmail(user);
+        toggleUser();
     }
     render() {
         let { user } = this.props;

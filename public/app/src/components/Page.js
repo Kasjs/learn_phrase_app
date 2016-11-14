@@ -38,7 +38,7 @@ export default class Page extends Component {
     }
 
     render() {
-        const { page, phrase, counter, hits } = this.props
+        const { page, phrase, counter, hits} = this.props
             return <div className='phrase-col'>
                 <Row className='select-comp'>
                     <Col xs="50%" sm="40%" md="25%" lg="40%">
@@ -50,12 +50,6 @@ export default class Page extends Component {
                     <Col xs='1/3'>
                         <Button className='btn-sunc' type='hollow-success'
                             onClick={this.onSyncCatAndRating.bind(this)}>Sync
-                        </Button>
-                        <Button className='login-btn' onClick={() => browserHistory.push('/login')}
-                            type='hollow-primary'>Sign In
-                        </Button>
-                        <Button className='register-btn' onClick={() => browserHistory.push('/register')}
-                            type='hollow-primary'>Sign Up
                         </Button>
                     </Col>
                     <Col>

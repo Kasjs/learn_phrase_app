@@ -23,7 +23,7 @@ if (isDeveloping) {
     const compiler = webpack(config);
     const middleware = webpackMiddleware(compiler, {
         publicPath: config.output.publicPath,
-        contentBase: 'src',
+        contentBase: 'app',
         stats: {
             colors: true,
             hash: false,
@@ -39,11 +39,6 @@ if (isDeveloping) {
         console.log('Error: Could not connect to MongoDB');
     });
 
-    fs.readdirSync(__dirname).forEach(function (file) {
-        if (fs.statSync(path.join(__dirname, file)).isDirectory())
-        app.use(rewrite('/' + file + '/*', '/' + file + '/index.html'))
-    })
-
     app.use(middleware);
     app.use(webpackHotMiddleware(compiler));
     app.use(express.static('./public'));
@@ -51,16 +46,20 @@ if (isDeveloping) {
     app.use(bodyParser.urlencoded({
         extended: true
     }));
+
     app.use(function(req, res, next) {
         res.header('Access-Control-Allow-Origin', process.env.allowOrigin || 'http://localhost');
         res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
         res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
         next();
     });
+
+
     app.get('/', function(req, res) {
         res.write(middleware.fileSystem.readFileSync(path.join(__dirname, './public/dist/index.html')));
         res.end();
     });
+    
     app.get('/category', function(req, res) {
         Category.findOne({}, function(err, data) {
             if(data) {
@@ -124,11 +123,8 @@ if (isDeveloping) {
             });
         })
     })
-    app.get('/register', function(req, res) {
-        return res.send({
-            msg: 'update route'
-        });
-    });
+
+
 } else {
     app.use(express.static(__dirname + '/dist'));
     app.get('*', function response(req, res) {
