@@ -22,10 +22,10 @@ const initialUserState= {
 }
 
 const reducer = combineReducers({
-  ...reducers,
-  routing: routerReducer,
-  user: modelReducer('user'),
-  userForm: formReducer('user')
+    ...reducers,
+    routing: routerReducer,
+    user: modelReducer('user'),
+    userForm: formReducer('user')
 })
 
 injectTapEventPlugin();

@@ -1,2 +1,2 @@
 export page from './page'
-export user from './user'
+export userAuth from './userAuth'

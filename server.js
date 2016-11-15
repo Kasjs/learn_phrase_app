@@ -59,7 +59,7 @@ if (isDeveloping) {
         res.write(middleware.fileSystem.readFileSync(path.join(__dirname, './public/dist/index.html')));
         res.end();
     });
-    
+
     app.get('/category', function(req, res) {
         Category.findOne({}, function(err, data) {
             if(data) {
@@ -103,7 +103,7 @@ if (isDeveloping) {
     app.post('/register', function(req, res) {
         User.findOne({ email : req.body.email }, function(err, existingUser) {
             if(existingUser) {
-                res.send({
+                return res.send({
                     user: existingUser,
                     msg: 'User with this email already exist'
                 })
@@ -118,7 +118,7 @@ if (isDeveloping) {
                     msg: 'Error'
                 })
             }
-            res.send({
+            return res.send({
                 user: user
             });
         })

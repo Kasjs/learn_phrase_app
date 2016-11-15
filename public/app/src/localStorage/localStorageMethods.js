@@ -7,3 +7,24 @@ export let localSync = function(index) {
     });
 
 }
+
+export function getEmailFromLocalStrg() {
+    return localStorage.getItem('email');
+}
+
+export function getHiddenFromLocalStrg() {
+    return JSON.parse(localStorage.getItem('hidden'));
+}
+
+export function setEmailToLocalStrg(email) {
+    localStorage.setItem('email', email)
+}
+
+export function setHiddenToLocalStrg() {
+    localStorage.setItem('hidden', true)
+}
+
+export function logOut() {
+    localStorage.removeItem('hidden');
+    localStorage.removeItem('email');
+}

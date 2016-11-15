@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import User from '../components/User'
 import Page from '../components/Page'
+import RegisterForm from '../components/RegisterForm'
 import * as pageActions from '../actions/pageActions'
 import * as userActions from '../actions/userActions'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -12,7 +13,7 @@ import '../../styles/css/main.css'
 
 class App extends Component {
 	render() {
-		const { page, register, user } = this.props
+		const { page, userAuth, user } = this.props
 		const { getNextPhrase, getRandomPhrase, getBackPhrase, switchLanguage,
             getPhrase, getSelectedCategory, syncCatAndRating } = this.props.pageActions
         const { registerNewUser } = this.props.userActions
@@ -31,8 +32,10 @@ class App extends Component {
                     getSelectedCategory={getSelectedCategory}
                     syncCatAndRating={syncCatAndRating}/>
                 <User
-                email={user.email}
-                registerNewUser={registerNewUser} />
+                    email={userAuth.email}
+                    hidden={userAuth.hidden}
+                    isAuth={userAuth.isAuth}
+                    registerNewUser={registerNewUser} />
             </div>
         )
 	}
@@ -41,7 +44,7 @@ class App extends Component {
 function mapStateToProps(state) {
 	return {
 		page: state.page,
-        user: state.user
+        userAuth: state.userAuth
 	}
 }
 
