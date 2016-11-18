@@ -4,13 +4,14 @@ import { Field, Form, actions } from 'react-redux-form'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as userActions from '../actions/userActions'
+import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHiddenFromLocalStrg } from '../localStorage/localStorageMethods'
 import { Link, browserHistory, hashHistory } from 'react-router'
 
 class RegisterForm extends Component {
     handleSubmit(user) {
-        let {dispatch} = this.props;
         this.props.userActions.registerNewUser(user);
-        hashHistory.push('/');
+        setEmailToLocalStrg(user.email);
+        setHiddenToLocalStrg();
     }
 
     render() {

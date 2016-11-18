@@ -1,17 +1,14 @@
 import {register} from '../ajaxCalls/request'
-import { setEmailToLocalStrg, setHiddenToLocalStrg } from '../localStorage/localStorageMethods'
+import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHiddenFromLocalStrg } from '../localStorage/localStorageMethods'
+import { browserHistory, hashHistory } from 'react-router'
 
 export function registerNewUser (user) {
-    console.log(user);
+    register(user);
+    hashHistory.push('/');
     return {
         type: 'POST_NEW_USER',
-        payload: register(user),
-        email: function() {
-            return setEmailToLocalStrg(user.email)
-        },
-        hidden: function() {
-            return setHiddenToLocalStrg()
-        }
+        email: localStorage.setItem('email', user.email),
+        hidden: localStorage.setItem('hidden', true)
     }
 }
 

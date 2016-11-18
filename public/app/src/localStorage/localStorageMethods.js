@@ -9,22 +9,24 @@ export let localSync = function(index) {
 }
 
 export function getEmailFromLocalStrg() {
-    return localStorage.getItem('email');
+    return window.localStorage.getItem('email');
 }
 
 export function getHiddenFromLocalStrg() {
+    var hidden = JSON.parse(localStorage.getItem('hidden'));
+
     return JSON.parse(localStorage.getItem('hidden'));
 }
 
 export function setEmailToLocalStrg(email) {
-    localStorage.setItem('email', email)
+    return localStorage.setItem('email', email)
 }
 
 export function setHiddenToLocalStrg() {
-    localStorage.setItem('hidden', true)
+    return window.localStorage.setItem('hidden', true)
 }
 
 export function logOut() {
-    localStorage.removeItem('hidden');
-    localStorage.removeItem('email');
+    localStorage.clear();
+    location.reload();
 }

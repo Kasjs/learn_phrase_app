@@ -1,24 +1,23 @@
 import { browserHistory, hashHistory } from 'react-router'
 import { register } from '../ajaxCalls/request'
-import { getEmailFromLocalStrg } from '../localStorage/localStorageMethods'
+import { getEmailFromLocalStrg, getHiddenFromLocalStrg } from '../localStorage/localStorageMethods'
 
 const initialState = {
-    email: getEmailFromLocalStrg() !== '' ? getEmailFromLocalStrg() :  '',
+    email: '',
     password: '',
-    isAuth: false,
-    route: '',
+    isAuth: '',
+    clearStorage: '',
     hidden: false
 }
 
 export default function userAuth(state = initialState, action) {
     switch(action.type) {
         case 'POST_NEW_USER': {
-            console.log(action);
             return {
                 ...state,
-                email: action.email(),
-                isAuth: !state.isAuth,
-                hidden: action.hidden()
+                email: getEmailFromLocalStrg(),
+                hidden: getHiddenFromLocalStrg(),
+                clearStorage: localStorage.clear()
             }
         }
 

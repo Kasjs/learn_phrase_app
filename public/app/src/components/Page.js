@@ -38,7 +38,7 @@ export default class Page extends Component {
     }
 
     render() {
-        const { page, phrase, counter, hits} = this.props
+        const { page, phrase, counter, hits, email, hidden} = this.props
             return <div className='phrase-col'>
                 <Row className='select-comp'>
                     <Col xs="50%" sm="40%" md="25%" lg="40%">

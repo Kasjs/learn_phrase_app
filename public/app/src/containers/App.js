@@ -19,11 +19,18 @@ class App extends Component {
         const { registerNewUser } = this.props.userActions
 		return (
             <div className='row'>
+                <User
+                    email={userAuth.email}
+                    hidden={userAuth.hidden}
+                    registerNewUser={registerNewUser} />
     			<Page className='main'
                     page={page.page}
+                    email={userAuth.email}
+                    hidden={userAuth.hidden}
     				phrase={page.phrase}
                     counter={page.counter}
                     hits={page.hits}
+                    registerNewUser={this.props.userActions.registerNewUser}
     				getNextPhrase={getNextPhrase}
     				getRandomPhrase={getRandomPhrase}
     				getBackPhrase={getBackPhrase}
@@ -31,11 +38,6 @@ class App extends Component {
     				getPhrase={getPhrase}
                     getSelectedCategory={getSelectedCategory}
                     syncCatAndRating={syncCatAndRating}/>
-                <User
-                    email={userAuth.email}
-                    hidden={userAuth.hidden}
-                    isAuth={userAuth.isAuth}
-                    registerNewUser={registerNewUser} />
             </div>
         )
 	}
