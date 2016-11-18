@@ -1,5 +1,5 @@
 import {register} from '../ajaxCalls/request'
-import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHiddenFromLocalStrg } from '../localStorage/localStorageMethods'
+import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHiddenFromLocalStrg, logOut } from '../localStorage/localStorageMethods'
 import { browserHistory, hashHistory } from 'react-router'
 
 export function registerNewUser (user) {
@@ -12,9 +12,12 @@ export function registerNewUser (user) {
     }
 }
 
-export function toggleUser() {
+export function logOutUser() {
+    logOut();
     return {
-        type: 'TOGGLE_USER'
+        type: 'LOG_OUT',
+        hidden: false,
+        email: ''
     }
 }
 export function getEmailFromStorage() {

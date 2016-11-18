@@ -16,13 +16,15 @@ class App extends Component {
 		const { page, userAuth, user } = this.props
 		const { getNextPhrase, getRandomPhrase, getBackPhrase, switchLanguage,
             getPhrase, getSelectedCategory, syncCatAndRating } = this.props.pageActions
-        const { registerNewUser } = this.props.userActions
+        const { registerNewUser, logOutUser } = this.props.userActions
 		return (
             <div className='row'>
                 <User
                     email={userAuth.email}
                     hidden={userAuth.hidden}
-                    registerNewUser={registerNewUser} />
+                    registerNewUser={registerNewUser}
+                    logOutUser={logOutUser}
+                    />
     			<Page className='main'
                     page={page.page}
                     email={userAuth.email}

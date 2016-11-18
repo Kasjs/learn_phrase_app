@@ -28,5 +28,5 @@ export function setHiddenToLocalStrg() {
 
 export function logOut() {
     localStorage.clear();
-    location.reload();
+    localStorage.setItem('hidden', false);
 }

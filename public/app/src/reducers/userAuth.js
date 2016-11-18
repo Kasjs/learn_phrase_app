@@ -21,10 +21,11 @@ export default function userAuth(state = initialState, action) {
             }
         }
 
-        case 'TOGGLE_USER': {
+        case 'LOG_OUT': {
             return {
                 ...state,
-                hidden : !state.hidden
+                hidden : action.hidden,
+                email : action.email
             }
         }
 
