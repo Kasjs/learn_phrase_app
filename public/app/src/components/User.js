@@ -8,7 +8,6 @@ export default class User extends Component {
 
     render() {
         const { email, hidden, isAuth, logOutUser } = this.props;
-        console.log(this.props);
         return (
             <Col xs='1/3'>
                 <div className={ getHiddenFromLocalStrg()  ? 'hide' : 'show' }>
@@ -23,7 +22,6 @@ export default class User extends Component {
                 <Button className={ getHiddenFromLocalStrg() ? 'show log-out-btn' : 'hide log-out-btn'}
                     type='hollow-primary' onClick={ () => logOutUser() } >Sign out
                 </Button>
-
             </Col>
         )
     }

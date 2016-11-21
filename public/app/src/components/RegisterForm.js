@@ -6,19 +6,18 @@ import { connect } from 'react-redux'
 import * as userActions from '../actions/userActions'
 import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHiddenFromLocalStrg } from '../localStorage/localStorageMethods'
 import { Link, browserHistory, hashHistory } from 'react-router'
+import { register } from '../ajaxCalls/request'
 
 class RegisterForm extends Component {
     handleSubmit(user) {
-        this.props.userActions.registerNewUser(user);
-        setEmailToLocalStrg(user.email);
-        setHiddenToLocalStrg();
+        register(user);
     }
 
     render() {
         let { user } = this.props;
 
         return (
-            <div >
+            <div>
                 <Col xs='100%'>
                     <h2 className='login-header'>Register</h2>
                 </Col>

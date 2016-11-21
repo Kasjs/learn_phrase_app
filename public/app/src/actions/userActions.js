@@ -1,15 +1,29 @@
-import {register} from '../ajaxCalls/request'
+import {register, login} from '../ajaxCalls/request'
 import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHiddenFromLocalStrg, logOut } from '../localStorage/localStorageMethods'
 import { browserHistory, hashHistory } from 'react-router'
 
 export function registerNewUser (user) {
-    register(user);
-    hashHistory.push('/');
+
+    // hashHistory.push('/');
     return {
         type: 'POST_NEW_USER',
-        email: localStorage.setItem('email', user.email),
-        hidden: localStorage.setItem('hidden', true)
+        status: localStorage.getItem('status'),
+        email: localStorage.getItem('email'),
+        hidden: localStorage.getItem('hidden')
     }
+}
+
+export function loginUser (user) {
+
+    // hashHistory.push('/');
+    return {
+        type: 'LOGIN_USER',
+        status: localStorage.getItem('status'),
+        email: localStorage.getItem('email'),
+        hidden: localStorage.getItem('hidden') ,
+        msg: 'You have entered incorrect email or password'
+    }
+
 }
 
 export function logOutUser() {

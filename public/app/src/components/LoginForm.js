@@ -1,16 +1,22 @@
 import { Button, Row, Col, Container, FormSelect, FormField, FormInput } from 'elemental'
 import React, { PropTypes, Component } from 'react'
 import { Field, Form, actions } from 'react-redux-form'
+import { bindActionCreators } from 'redux'
+import * as userActions from '../actions/userActions'
 import { connect } from 'react-redux'
+import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHiddenFromLocalStrg } from '../localStorage/localStorageMethods'
+import { login } from '../ajaxCalls/request'
 
-export default class LoginForm extends Component {
+class LoginForm extends Component {
 
     handleSubmit(user) {
-        let { dispatch } = this.props;
+        login(user);
     }
 
     render() {
         let { user } = this.props;
+        let { userAuth } = this.props.userAuth;
+
         return (
             <div >
                 <Col xs='100%'>
@@ -30,6 +36,8 @@ export default class LoginForm extends Component {
                             </Field>
 
                             <Button submit className='submit-btn' type="hollow-primary">Submit</Button>
+                            <span className='log-err-msg'>{ userAuth }</span>
+
                         </Form>
                     </Col>
                 </Row>
@@ -39,7 +47,15 @@ export default class LoginForm extends Component {
 }
 
 function mapStateToProps(state) {
-  return { user: state.user };
+    return {
+        userAuth: state.userAuth
+    }
 }
 
-connect(mapStateToProps)(LoginForm);
+function mapDispatchToProps(dispatch) {
+		return {
+			userActions: bindActionCreators(userActions, dispatch)
+		}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

@@ -2,6 +2,7 @@ import { Button, Row, Col, Container, FormSelect, } from 'elemental'
 import React, { PropTypes, Component } from 'react'
 import { getCategoryFromServer } from '../ajaxCalls/request'
 import { Link, browserHistory, hashHistory } from 'react-router'
+import { getUserCategory } from '../ajaxCalls/request'
 
 let options = [
     {value : 'Food', label: 'Food'},
@@ -37,6 +38,10 @@ export default class Page extends Component {
         this.props.syncCatAndRating();
     }
 
+    onGetUsercategory() {
+        getUserCategory();
+    }
+
     render() {
         const { page, phrase, counter, hits, email, hidden} = this.props
             return <div className='phrase-col'>
@@ -50,6 +55,9 @@ export default class Page extends Component {
                     <Col xs='1/3'>
                         <Button className='btn-sunc' type='hollow-success'
                             onClick={this.onSyncCatAndRating.bind(this)}>Sync
+                        </Button>
+                        <Button className='btn-sunc' type='hollow-success'
+                            onClick={this.onGetUsercategory.bind(this)}>cat
                         </Button>
                     </Col>
                     <Col>

@@ -1,10 +1,10 @@
 import { getSelected, getCategoryFromStorage } from '../actions/pageActions'
 import { browserHistory, hashHistory } from 'react-router'
-import { registerNewUser } from '../actions/userActions'
+import { registerNewUser, loginUser } from '../actions/userActions'
 
 export let setCat = [];
 export function getCategoryFromServer(value) {
-    $.get('/category').then(function(response) {
+    $.get('/category', {email : localStorage.getItem('email')}).then(function(response) {
         switch(value) {
             case 'Food' : {
                 let selected = JSON.parse(localStorage.getItem('selected'));
@@ -29,12 +29,20 @@ export function getCategoryFromServer(value) {
         console.log('Error get data')
     })
 }
+// export function getUserCategory(value) {
+//     $.get('/user/cat', {email : localStorage.getItem('email')}).then(function(response) {
+//         console.log(response);
+//     }, function(error) {
+//         console.log('Error get data')
+//     })
+// }
 
 export function syncWithServer() {
     $.post('/category',
         {
             data : JSON.parse(localStorage.getItem('catagories_' + getSelected())),
-            category: getSelected()
+            category: getSelected(),
+            email: localStorage.getItem('email')
 
         }).then(function(response) {
             console.log(response.data);
@@ -51,9 +59,36 @@ export function register(user) {
                 password: user.password
 
             }).then(function(response) {
-                console.log(response);
+                localStorage.setItem('status', 200);
+                localStorage.setItem('email', response.user.email);
+                localStorage.setItem('hidden', true);
+                registerNewUser(response.user);
+                hashHistory.push('/');
+
+            }, function(response) {
+                localStorage.setItem('status', 400);
+                localStorage.setItem('email', '');
+                localStorage.setItem('hidden', false);
+
             });
+}
+export function login(user) {
 
+        $.post('/login',
+            {
+                email: user.email,
+                password: user.password
 
+            }).then(function(response) {
+                localStorage.setItem('status', 200);
+                localStorage.setItem('email', response.user.email);
+                localStorage.setItem('hidden', true);
+                loginUser(response.user);
+                hashHistory.push('/');
 
+            }, function(response) {
+                localStorage.setItem('status', 400);
+                localStorage.setItem('email', '');
+                localStorage.setItem('hidden', false);
+            });
 }

@@ -9,14 +9,11 @@ var userSchema = new mongoose.Schema({
         type: String,
         selected: false
     },
-    CategoryDictionary: [
-        {   category: String,
-            categories: [{
-				type: mongoose.Schema.Types.ObjectId,
-				ref: 'Category'
-			}]
-        }
-    ]
+    category: {
+		type: Array
+	}
+
+
 });
 
 module.exports = mongoose.model('User', userSchema);
