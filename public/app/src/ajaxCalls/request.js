@@ -3,7 +3,9 @@ import { browserHistory, hashHistory } from 'react-router'
 import { registerNewUser, loginUser } from '../actions/userActions'
 
 export let setCat = [];
+
 export function getCategoryFromServer(value) {
+
     $.get('/category', {email : localStorage.getItem('email')}).then(function(response) {
         switch(value) {
             case 'Food' : {
@@ -29,21 +31,14 @@ export function getCategoryFromServer(value) {
         console.log('Error get data')
     })
 }
-// export function getUserCategory(value) {
-//     $.get('/user/cat', {email : localStorage.getItem('email')}).then(function(response) {
-//         console.log(response);
-//     }, function(error) {
-//         console.log('Error get data')
-//     })
-// }
 
 export function syncWithServer() {
+
     $.post('/category',
         {
             data : JSON.parse(localStorage.getItem('catagories_' + getSelected())),
             category: getSelected(),
             email: localStorage.getItem('email')
-
         }).then(function(response) {
             console.log(response.data);
         }, function(erro) {
@@ -57,20 +52,18 @@ export function register(user) {
             {
                 email: user.email,
                 password: user.password
-
             }).then(function(response) {
                 localStorage.setItem('status', 200);
                 localStorage.setItem('email', response.user.email);
-                localStorage.setItem('hidden', true);
+                localStorage.setItem('isAuthButtonsHidden', true);
                 registerNewUser(response.user);
                 hashHistory.push('/');
 
             }, function(response) {
                 localStorage.setItem('status', 400);
                 localStorage.setItem('email', '');
-                localStorage.setItem('hidden', false);
-
-            });
+                localStorage.setItem('isAuthButtonsHidden', false);
+                });
 }
 export function login(user) {
 
@@ -82,13 +75,13 @@ export function login(user) {
             }).then(function(response) {
                 localStorage.setItem('status', 200);
                 localStorage.setItem('email', response.user.email);
-                localStorage.setItem('hidden', true);
+                localStorage.setItem('isAuthButtonsHidden', true);
                 loginUser(response.user);
                 hashHistory.push('/');
 
             }, function(response) {
                 localStorage.setItem('status', 400);
                 localStorage.setItem('email', '');
-                localStorage.setItem('hidden', false);
+                localStorage.setItem('isAuthButtonsHidden', false);
             });
 }

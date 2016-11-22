@@ -61,88 +61,28 @@ if (isDeveloping) {
     });
 
     app.get('/category', function(req, res) {
-        // Category.findOne({}, function(err, data) {
-        //     if (data) {
-        //         res.send({
-        //             data: data
-        //         });
-        //     } else {
-        //         let category = new Category();
-        //         category.save(function(err) {
-        //             if (err) {
-        //                 res.send({
-        //                     msg: 'Error'
-        //                 });
-        //             }
-        //             Category.findOne({}, function(err, data) {
-        //                 res.send({
-        //                     data: data
-        //                 });
-        //             });
-        //         });
-        //     }
-        // });
         User.findOne({email : req.query.email}, function(err, user) {
             if (user) {
                 res.send({
                     data : user.category[0]
-                })
+                });
             } else {
                 res.status(400).json({
                     msg: 'Error not found category'
-                })
+                });
             }
-        })
+        });
     });
-
-    // app.get('/user/cat', function(req, res) {
-    //     User.findOne({email : req.query.email}, function(err, user) {
-    //         if (user) {
-    //             res.send({
-    //                 data : user.category[0]
-    //             })
-    //         } else {
-    //             res.status(400).json({
-    //                 msg: 'Error not found category'
-    //             })
-    //         }
-    //     })
-    // });
 
     app.post('/category', function(req, res) {
         User.findOne({ email: req.body.email }, function(err, user) {
-            console.log(req.body.data,'----------------->', user.category[0][req.body.category] );
             user.category[0][req.body.category] = req.body.data;
-            user.save(function(err , user) {
-                if (err) {
-                    res.send({
-                        msg: 'Error'
-                    })
-                }
-            });
-            res.send({
+            user.markModified('category');
+            user.save();
+            return res.send({
                 data: user.category[0]
-            })
-            // res.send({
-            //     data: user.category[0]
-            // })
-        })
-
-
-        // Category.findOne({}, function(err, data) {
-        //     console.log(data);
-        //     data[req.body.category] = req.body.data;
-        //     data.save(function(err) {
-        //         if (err) {
-        //             res.send({
-        //                 msg: 'Error'
-        //             })
-        //         }
-        //     });
-        //     res.send({
-        //         data: data
-        //     });
-        // });
+            });
+        });
     });
 
     app.post('/register', function(req, res) {
@@ -152,156 +92,22 @@ if (isDeveloping) {
                     msg: 'User with this email already exist'
                 })
             }
-            let user = new User();
+            var category = new Category();
+            var user = new User({
+                category : [category]
+            });
             user.email = req.body.email;
             user.password = req.body.password;
-            user.category = {
-                Food : [{
-                    "side_a": "яблуко",
-                    "side_b": "apple",
-                    "hits": 0
-                },
-                {
-                    "side_a": "апельсин",
-                    "side_b": "orange",
-                    "hits": 0
-                },
-                {
-                    "side_a": "хліб",
-                    "side_b": "bread",
-                    "hits": 0
-                },
-                {
-                    "side_a": "молоко",
-                    "side_b": "milk",
-                    "hits": 0
-                },
-                {
-                    "side_a": "вода",
-                    "side_b": "water",
-                    "hits": 0
-                },
-                {
-                    "side_a": "сік",
-                    "side_b": "juice",
-                    "hits": 0
-                },
-                {
-                    "side_a": "тістечко",
-                    "side_b": "cake",
-                    "hits": 0
-                }],
-                Nature: [{
-                    "side_a": "небо",
-                    "side_b": "sky",
-                    "hits": 0
-                },
-                {
-                    "side_a": "місяць",
-                    "side_b": "moon",
-                    "hits": 0
-                },
-                {
-                    "side_a": "земля",
-                    "side_b": "earth",
-                    "hits": 0
-                },
-                {
-                    "side_a": "ліс",
-                    "side_b": "forest",
-                    "hits": 0
-                },
-                {
-                    "side_a": "океан",
-                    "side_b": "ocean",
-                    "hits": 0
-                },
-                {
-                    "side_a": "річка",
-                    "side_b": "river",
-                    "hits": 0
-                },
-                {
-                    "side_a": "листок",
-                    "side_b": "leaf",
-                    "hits": 0
-                },
-                {
-                    "side_a": "зима",
-                    "side_b": "winter",
-                    "hits": 0
-                },
-                {
-                    "side_a": "осінь",
-                    "side_b": "spring",
-                    "hits": 0
-                },
-                {
-                    "side_a": "лід",
-                    "side_b": "ice",
-                    "hits": 0
-                },
-                {
-                    "side_a": "жара",
-                    "side_b": "hot",
-                    "hits": 0
-                }],
-                Sport: [{
-                    "side_a": "бігти",
-                    "side_b": "run",
-                    "hits": 0
-                },
-                {
-                    "side_a": "ходити",
-                    "side_b": "walk",
-                    "hits": 0
-                },
-                {
-                    "side_a": "м'яч",
-                    "side_b": "ball",
-                    "hits": 0
-                },
-                {
-                    "side_a": "лук",
-                    "side_b": "bow",
-                    "hits": 0
-                },
-                {
-                    "side_a": "стріла",
-                    "side_b": "arrow",
-                    "hits": 0
-                },
-                {
-                    "side_a": "стрибати",
-                    "side_b": "jump",
-                    "hits": 0
-                },
-                {
-                    "side_a": "плавати",
-                    "side_b": "sweam",
-                    "hits": 0
-                },
-                {
-                    "side_a": "футбол",
-                    "side_b": "football",
-                    "hits": 0
-                },
-                {
-                    "side_a": "гольф",
-                    "side_b": "golf",
-                    "hits": 0
-                }]
-            }
             user.save(function(err) {
                 if (err) {
                     res.status(404).json({
                         msg: 'Error'
                     })
                 }
-                return res.send({
-                    user: user
-                });
             })
+            return res.send({
+                user: user
+            });
         })
     })
 

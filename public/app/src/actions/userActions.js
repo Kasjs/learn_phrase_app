@@ -4,23 +4,21 @@ import { browserHistory, hashHistory } from 'react-router'
 
 export function registerNewUser (user) {
 
-    // hashHistory.push('/');
     return {
         type: 'POST_NEW_USER',
         status: localStorage.getItem('status'),
         email: localStorage.getItem('email'),
-        hidden: localStorage.getItem('hidden')
+        isAuthButtonsHidden: localStorage.getItem('isAuthButtonsHidden')
     }
 }
 
 export function loginUser (user) {
 
-    // hashHistory.push('/');
     return {
         type: 'LOGIN_USER',
         status: localStorage.getItem('status'),
         email: localStorage.getItem('email'),
-        hidden: localStorage.getItem('hidden') ,
+        isAuthButtonsHidden: localStorage.getItem('isAuthButtonsHidden') ,
         msg: 'You have entered incorrect email or password'
     }
 
@@ -30,7 +28,7 @@ export function logOutUser() {
     logOut();
     return {
         type: 'LOG_OUT',
-        hidden: false,
+        isAuthButtonsHidden: false,
         email: ''
     }
 }

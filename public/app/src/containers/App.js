@@ -21,7 +21,7 @@ class App extends Component {
             <div className='row'>
                 <User
                     email={userAuth.email}
-                    hidden={userAuth.hidden}
+                    isAuthButtonsHidden={userAuth.isAuthButtonsHidden}
                     status={userAuth.status}
                     msg={userAuth.msg}
                     registerNewUser={registerNewUser}
@@ -31,7 +31,7 @@ class App extends Component {
     			<Page className='main'
                     page={page.page}
                     email={userAuth.email}
-                    hidden={userAuth.hidden}
+                    isAuthButtonsHidden={userAuth.isAuthButtonsHidden}
     				phrase={page.phrase}
                     counter={page.counter}
                     hits={page.hits}

@@ -6,7 +6,7 @@ const initialState = {
     email: getEmailFromLocalStrg() !== '' ?  getEmailFromLocalStrg() : '',
     password: '',
     status: 0,
-    hidden: getHiddenFromLocalStrg() !== '' ? getHiddenFromLocalStrg() : '',
+    isAuthButtonsHidden: getHiddenFromLocalStrg() !== '' ? getHiddenFromLocalStrg() : '',
     msg: 'test'
 }
 
@@ -16,7 +16,7 @@ export default function userAuth(state = initialState, action) {
             return {
                 ...state,
                 email: localStorage.getItem('email'),
-                hidden: localStorage.getItem('hidden'),
+                isAuthButtonsHidden: localStorage.getItem('isAuthButtonsHidden'),
                 msg: ''
             }
         }
@@ -25,7 +25,7 @@ export default function userAuth(state = initialState, action) {
                 return {
                     ...state,
                     email: '',
-                    hidden: false,
+                    isAuthButtonsHidden: false,
                     status: 400,
                     msg: 'You have entered incorrect email or password'
                 }
@@ -33,7 +33,7 @@ export default function userAuth(state = initialState, action) {
                 return {
                     ...state,
                     email: localStorage.getItem('email'),
-                    hidden: localStorage.getItem('hidden'),
+                    isAuthButtonsHidden: localStorage.getItem('isAuthButtonsHidden'),
                     status: 200,
                     msg: 'ok'
                 }
@@ -43,7 +43,7 @@ export default function userAuth(state = initialState, action) {
         case 'LOG_OUT': {
             return {
                 ...state,
-                hidden : action.hidden,
+                isAuthButtonsHidden : action.hidden,
                 email : action.email
             }
         }

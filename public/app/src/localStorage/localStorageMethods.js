@@ -13,9 +13,9 @@ export function getEmailFromLocalStrg() {
 }
 
 export function getHiddenFromLocalStrg() {
-    var hidden = JSON.parse(localStorage.getItem('hidden'));
+    var hidden = JSON.parse(localStorage.getItem('isAuthButtonsHidden'));
 
-    return JSON.parse(localStorage.getItem('hidden'));
+    return JSON.parse(localStorage.getItem('isAuthButtonsHidden'));
 }
 
 export function setEmailToLocalStrg(email) {
@@ -23,10 +23,10 @@ export function setEmailToLocalStrg(email) {
 }
 
 export function setHiddenToLocalStrg() {
-    return window.localStorage.setItem('hidden', true)
+    return window.localStorage.setItem('isAuthButtonsHidden', true)
 }
 
 export function logOut() {
     localStorage.clear();
-    localStorage.setItem('hidden', false);
+    localStorage.setItem('isAuthButtonsHidden', false);
 }

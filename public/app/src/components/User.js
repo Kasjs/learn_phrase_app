@@ -7,7 +7,7 @@ import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHi
 export default class User extends Component {
 
     render() {
-        const { email, hidden, isAuth, logOutUser } = this.props;
+        const { email, isAuthButtonsHidden, isAuth, logOutUser } = this.props;
         return (
             <Col xs='1/3'>
                 <div className={ getHiddenFromLocalStrg()  ? 'hide' : 'show' }>
