@@ -15,7 +15,7 @@ class App extends Component {
 	render() {
 		const { page, userAuth, user } = this.props
 		const { getNextPhrase, getRandomPhrase, getBackPhrase, switchLanguage,
-            getPhrase, getSelectedCategory, syncCatAndRating } = this.props.pageActions
+            getPhrase, getSelectedCategory, syncCatAndRating, clearPageInfo } = this.props.pageActions
         const { registerNewUser, logOutUser, loginUser } = this.props.userActions
 		return (
             <div className='row'>
@@ -24,6 +24,10 @@ class App extends Component {
                     isAuthButtonsHidden={userAuth.isAuthButtonsHidden}
                     status={userAuth.status}
                     msg={userAuth.msg}
+                    phrase={page.phrase}
+                    counter={page.counter}
+                    clearPageInfo={this.props.pageActions.clearPageInfo}
+                    hits={page.hits}
                     registerNewUser={registerNewUser}
                     logOutUser={logOutUser}
                     loginUser={loginUser}

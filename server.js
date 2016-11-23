@@ -4,25 +4,32 @@ express = require('express'),
 rewrite = require('express-urlrewrite'),
 webpack = require('webpack'),
 mongoose = require('mongoose'),
+passport = require('passport'),
 request = require('request'),
 bodyParser = require('body-parser'),
-Category = require('./public/server/models/Category'),
-User = require('./public/server/models/User'),
 webpackMiddleware = require('webpack-dev-middleware'),
 webpackHotMiddleware = require('webpack-hot-middleware'),
-config = require('./webpack.config.js'),
+webpackConfig = require('./webpack.config.js'),
 React = require('react'),
 Router = require('react-router'),
+config = require('./config'),
 
 isDeveloping = process.env.NODE_ENV !== 'production',
 port = isDeveloping ? 3000 : process.env.PORT,
 app = express();
+app.use(passport.initialize());
+
 require('node-jsx').install();
+require('./server/models/User');
+require('./server/models/Category');
+require('./server/passport')(config);
+const routes = require('./server/routes/index');
+const authCheckMiddleware = require('./server/middlewares/auth-check')(config);
 
 if (isDeveloping) {
-    const compiler = webpack(config);
+    const compiler = webpack(webpackConfig);
     const middleware = webpackMiddleware(compiler, {
-        publicPath: config.output.publicPath,
+        publicPath: webpackConfig.output.publicPath,
         contentBase: 'app',
         stats: {
             colors: true,
@@ -34,7 +41,7 @@ if (isDeveloping) {
         }
     });
 
-    mongoose.connect(process.env.DB_URL ||  'mongodb://Kasjs:Mantrudevelop1985@ds027338.mlab.com:27338/learn_phrase_app');
+    mongoose.connect(process.env.DB_URL || config.db);
     mongoose.connection.on('error', function(err) {
         console.log('Error: Could not connect to MongoDB');
     });
@@ -46,92 +53,18 @@ if (isDeveloping) {
     app.use(bodyParser.urlencoded({
         extended: true
     }));
-
     app.use(function(req, res, next) {
         res.header('Access-Control-Allow-Origin', process.env.allowOrigin || 'http://localhost');
         res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
         res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
         next();
     });
-
-
     app.get('/', function(req, res) {
         res.write(middleware.fileSystem.readFileSync(path.join(__dirname, './public/dist/index.html')));
         res.end();
     });
-
-    app.get('/category', function(req, res) {
-        User.findOne({email : req.query.email}, function(err, user) {
-            if (user) {
-                res.send({
-                    data : user.category[0]
-                });
-            } else {
-                res.status(400).json({
-                    msg: 'Error not found category'
-                });
-            }
-        });
-    });
-
-    app.post('/category', function(req, res) {
-        User.findOne({ email: req.body.email }, function(err, user) {
-            user.category[0][req.body.category] = req.body.data;
-            user.markModified('category');
-            user.save();
-            return res.send({
-                data: user.category[0]
-            });
-        });
-    });
-
-    app.post('/register', function(req, res) {
-        User.findOne({ email : req.body.email }, function(err, existingUser) {
-            if (existingUser) {
-                return res.status(400).json({
-                    msg: 'User with this email already exist'
-                })
-            }
-            var category = new Category();
-            var user = new User({
-                category : [category]
-            });
-            user.email = req.body.email;
-            user.password = req.body.password;
-            user.save(function(err) {
-                if (err) {
-                    res.status(404).json({
-                        msg: 'Error'
-                    })
-                }
-            })
-            return res.send({
-                user: user
-            });
-        })
-    })
-
-    app.post('/login', function(req, res) {
-        User.findOne({ email : req.body.email }, function(err, existingUser) {
-            if (!existingUser) {
-                return res.status(400).json({
-                    msg: 'User with this email not found'
-                })
-            }
-
-            if (existingUser.password === req.body.password) {
-                return res.send({
-                    user: existingUser
-                })
-            } else {
-                res.status(400).json({
-                    msg: 'You enter incorrect password or email'
-                })
-            }
-        })
-    })
-
-
+    //app.use('/', authCheckMiddleware);
+    app.use('/', routes);
 } else {
     app.use(express.static(__dirname + '/dist'));
     app.get('*', function response(req, res) {

@@ -5,9 +5,16 @@ import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHi
 
 
 export default class User extends Component {
-
+    logoutAndClearPageInfo() {
+        this.props.logOutUser();
+        return function(dispatch) {
+            dispatch({
+                type: 'CLEAR_PAGE_INFO_AND_LOGOUT'
+            })
+        }
+    }
     render() {
-        const { email, isAuthButtonsHidden, isAuth, logOutUser } = this.props;
+        const { email, isAuthButtonsHidden, isAuth, logOutUser, counter, phrase, hits } = this.props;
         return (
             <Col xs='1/3'>
                 <div className={ getHiddenFromLocalStrg()  ? 'hide' : 'show' }>
@@ -20,7 +27,7 @@ export default class User extends Component {
                 </div>
                 <span className='user-email'>{ getEmailFromLocalStrg() }</span>
                 <Button className={ getHiddenFromLocalStrg() ? 'show log-out-btn' : 'hide log-out-btn'}
-                    type='hollow-primary' onClick={ () => logOutUser() } >Sign out
+                    type='hollow-primary' onClick={ () => this.logoutAndClearPageInfo() } >Sign out
                 </Button>
             </Col>
         )

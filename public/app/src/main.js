@@ -34,7 +34,7 @@ const logger = createLogger();
 
 const store = createStore(
     reducer,
-    applyMiddleware(logger)
+    applyMiddleware(thunk, logger)
 );
 
 const history = syncHistoryWithStore(hashHistory, store);

@@ -9,21 +9,28 @@ export let localSync = function(index) {
 }
 
 export function getEmailFromLocalStrg() {
-    return window.localStorage.getItem('email');
+    return localStorage.getItem('email');
 }
 
 export function getHiddenFromLocalStrg() {
-    var hidden = JSON.parse(localStorage.getItem('isAuthButtonsHidden'));
-
     return JSON.parse(localStorage.getItem('isAuthButtonsHidden'));
 }
 
-export function setEmailToLocalStrg(email) {
-    return localStorage.setItem('email', email)
+export function getStatusFromLocalStrg() {
+    return JSON.parse(localStorage.getItem('status'));
 }
 
-export function setHiddenToLocalStrg() {
-    return window.localStorage.setItem('isAuthButtonsHidden', true)
+export function setLoginWhenSuccess(response) {
+    localStorage.setItem('status', 200);
+    localStorage.setItem('email', response.user.email);
+    localStorage.setItem('token', response.token);
+    localStorage.setItem('isAuthButtonsHidden', true);
+}
+
+export function setLoginWhenError() {
+    localStorage.setItem('status', 400);
+    localStorage.setItem('email', '');
+    localStorage.setItem('isAuthButtonsHidden', false);
 }
 
 export function logOut() {

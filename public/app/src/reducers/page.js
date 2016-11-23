@@ -25,7 +25,6 @@ export default function page( state = initialState, action) {
                 ...state,
                 phrase: action.payload[state.counter = ++state.counter][state.side],
                 hits: ++action.payload[state.counter].hits
-
             }
         }
 
@@ -79,6 +78,15 @@ export default function page( state = initialState, action) {
             return {
                 ...state,
                 phrase: state.phrase = action.payload
+            }
+        }
+
+        case 'CLEAR_PAGE_INFO_AND_LOGOUT': {
+            return {
+                ...state,
+                phrase: '',
+                hits: 0,
+                counter: 0
             }
         }
 

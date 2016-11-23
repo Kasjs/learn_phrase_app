@@ -56,9 +56,6 @@ export default class Page extends Component {
                         <Button className='btn-sunc' type='hollow-success'
                             onClick={this.onSyncCatAndRating.bind(this)}>Sync
                         </Button>
-                        <Button className='btn-sunc' type='hollow-success'
-                            onClick={this.onGetUsercategory.bind(this)}>cat
-                        </Button>
                     </Col>
                     <Col>
                         <p className='selected-category'>Now selected: <strong>{setSelectedOptions()}</strong></p>

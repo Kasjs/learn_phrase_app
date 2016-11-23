@@ -54,3 +54,9 @@ export function syncCatAndRating() {
         payload: syncWithServer()
     }
 }
+
+export function clearPageInfo() {
+    return {
+        type: 'CLEAR_PAGE_INFO_AND_LOGOUT'
+    }
+}

@@ -14,10 +14,7 @@ export default function userAuth(state = initialState, action) {
     switch(action.type) {
         case 'POST_NEW_USER': {
             return {
-                ...state,
-                email: localStorage.getItem('email'),
-                isAuthButtonsHidden: localStorage.getItem('isAuthButtonsHidden'),
-                msg: ''
+                ...state
             }
         }
         case 'LOGIN_USER': {
@@ -40,7 +37,7 @@ export default function userAuth(state = initialState, action) {
             }
         }
 
-        case 'LOG_OUT': {
+        case 'CLEAR_PAGE_INFO_AND_LOGOUT': {
             return {
                 ...state,
                 isAuthButtonsHidden : action.hidden,
