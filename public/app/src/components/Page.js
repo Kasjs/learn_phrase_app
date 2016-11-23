@@ -29,13 +29,9 @@ export default class Page extends Component {
         this.props.getPhrase();
     }
     logChange(val) {
-        console.log(val);
-        getCategoryFromServer(val);
-        localStorage.setItem('selected', JSON.stringify(val));
-
-    }
-    onSyncCatAndRating() {
         this.props.syncCatAndRating();
+        localStorage.setItem('selected', JSON.stringify(val));
+        getCategoryFromServer(localStorage.getItem('selected'));
     }
 
     onGetUsercategory() {
@@ -54,7 +50,7 @@ export default class Page extends Component {
                     </Col>
                     <Col xs='1/3'>
                         <Button className='btn-sunc' type='hollow-success'
-                            onClick={this.onSyncCatAndRating.bind(this)}>Sync
+                            >Add +
                         </Button>
                     </Col>
                     <Col>

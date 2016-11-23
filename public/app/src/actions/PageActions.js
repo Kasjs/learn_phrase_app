@@ -1,4 +1,5 @@
-import { getCategoryFromServer, syncWithServer, setCat } from '../ajaxCalls/request'
+import { getCategoryFromServer, syncWithServer } from '../ajaxCalls/request'
+import { setCat } from '../localStorage/localStorageMethods'
 
 export function getSelected() {
     return JSON.parse(localStorage.getItem('selected'));

@@ -1,31 +1,16 @@
-import { getSelected, getCategoryFromStorage } from '../actions/pageActions'
+import { getSelected } from '../actions/pageActions'
 import { browserHistory, hashHistory } from 'react-router'
 import { registerNewUser, loginUser } from '../actions/userActions'
-import { setLoginWhenSuccess, setLoginWhenError } from '../localStorage/localStorageMethods'
+import { setLoginWhenSuccess, setLoginWhenError, setCategory, getSelectedCategory } from '../localStorage/localStorageMethods'
 
-export let setCat = [];
+
 
 export function getCategoryFromServer(value) {
 
     $.get('/category', {email : localStorage.getItem('email')}).then(function(response) {
         switch(value) {
-            case 'Food' : {
-                let selected = JSON.parse(localStorage.getItem('selected'));
-                localStorage.setItem('catagories_' + selected , JSON.stringify(response.data.Food));
-                setCat = JSON.parse(localStorage.getItem('catagories_' + getSelected()));
-                return setCat;
-            }
-            case 'Sport' : {
-                let selected = JSON.parse(localStorage.getItem('selected'));
-                localStorage.setItem('catagories_' + selected, JSON.stringify(response.data.Sport));
-                setCat = JSON.parse(localStorage.getItem('catagories_' + getSelected()));
-                return setCat;
-            }
-            case 'Nature' : {
-                let selected = JSON.parse(localStorage.getItem('selected'));
-                localStorage.setItem('catagories_' + selected, JSON.stringify(response.data.Nature));
-                setCat = JSON.parse(localStorage.getItem('catagories_' + getSelected()));
-                return setCat;
+            case getSelectedCategory() : {
+                setCategory(response);
             }
         }
     }, function(error) {
