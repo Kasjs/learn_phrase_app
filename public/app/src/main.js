@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import App from './containers/App'
 import Register from './components/RegisterForm'
 import Login from './components/LoginForm'
+import Category from './components/Category'
 import Home from './components/Page'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import { Router, Route, hashHistory, IndexRoute, browserHistory, useRouterHistory  } from 'react-router'
@@ -25,7 +26,9 @@ const reducer = combineReducers({
     ...reducers,
     routing: routerReducer,
     user: modelReducer('user'),
-    userForm: formReducer('user')
+    userForm: formReducer('user'),
+    category: modelReducer('category'),
+    categoryForm: formReducer('category')
 })
 
 injectTapEventPlugin();
@@ -46,6 +49,7 @@ render(
                 <Route path="/" component={App}/>
                 <Route path="login" component={Login}/>
                 <Route path="register" component={Register}/>
+                <Route path="addCategory" component={Category}/>
             </Router>
         </div>
     </Provider>,

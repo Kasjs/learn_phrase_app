@@ -16,16 +16,18 @@ class App extends Component {
 		const { page, userAuth, user } = this.props
 		const { getNextPhrase, getRandomPhrase, getBackPhrase, switchLanguage,
             getPhrase, getSelectedCategory, syncCatAndRating, clearPageInfo } = this.props.pageActions
-        const { registerNewUser, logOutUser, loginUser } = this.props.userActions
+        const { registerNewUser, logOutUser, loginUser, showMassage } = this.props.userActions
 		return (
             <div className='row'>
                 <User
                     email={userAuth.email}
                     isAuthButtonsHidden={userAuth.isAuthButtonsHidden}
                     status={userAuth.status}
-                    msg={userAuth.msg}
+                    msgEmail={userAuth.msgEmail}
+                    msgPassword={userAuth.msgPassword}
                     phrase={page.phrase}
                     counter={page.counter}
+                    showMassage={showMassage}
                     clearPageInfo={this.props.pageActions.clearPageInfo}
                     hits={page.hits}
                     registerNewUser={registerNewUser}
@@ -55,14 +57,16 @@ class App extends Component {
 function mapStateToProps(state) {
 	return {
 		page: state.page,
-        userAuth: state.userAuth
+        userAuth: state.userAuth,
+        RegisterForm: state.RegisterForm
 	}
 }
 
 function mapDispatchToProps(dispatch) {
 		return {
 			pageActions: bindActionCreators(pageActions, dispatch),
-			userActions: bindActionCreators(userActions, dispatch)
+			userActions: bindActionCreators(userActions, dispatch),
+            RegisterFormActions: bindActionCreators(userActions, dispatch)
 		}
 }
 

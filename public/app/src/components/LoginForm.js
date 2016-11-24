@@ -10,7 +10,7 @@ import { login } from '../ajaxCalls/request'
 class LoginForm extends Component {
 
     handleSubmit(user) {
-        login(user);
+        this.props.userActions.loginUser(user);
     }
 
     render() {

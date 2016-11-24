@@ -4,18 +4,21 @@ import { Field, Form, actions } from 'react-redux-form'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as userActions from '../actions/userActions'
-import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHiddenFromLocalStrg } from '../localStorage/localStorageMethods'
+import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHiddenFromLocalStrg, getEmailErrorMsg, getPasswordErrorMsg } from '../localStorage/localStorageMethods'
 import { Link, browserHistory, hashHistory } from 'react-router'
-import { register } from '../ajaxCalls/request'
+import { register, transferMessages } from '../ajaxCalls/request'
 
 class RegisterForm extends Component {
+
     handleSubmit(user) {
-        register(user);
+        this.props.userActions.registerNewUser(user);
+        this.props.userActions.showMassage(localStorage.getItem('msg-email'), localStorage.getItem('msg-password'));
+
     }
 
     render() {
         let { user } = this.props;
-
+        let { msgEmail, msgPassword } = this.props.userAuth;
         return (
             <div>
                 <Col xs='100%'>
@@ -40,6 +43,8 @@ class RegisterForm extends Component {
                             </Field>
 
                             <Button submit className='submit-btn' type="hollow-primary">Submit</Button>
+                            <span className={ getEmailErrorMsg() === 'undefined' ? 'hide msg-email-error' : 'show msg-email-error' }>{ msgEmail }</span>
+                            <span className={ getPasswordErrorMsg() === 'undefined' ? 'hide msg-password-error' : 'show msg-password-error' }>{ msgPassword }</span>
                         </Form>
                     </Col>
                 </Row>

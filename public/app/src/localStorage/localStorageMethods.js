@@ -9,7 +9,6 @@ export let localSync = function(index) {
         ++catagories[index].hits;
         localStorage.setItem('catagories_' + selected, JSON.stringify(catagories))
     });
-
 }
 
 export function setCategory(response) {
@@ -25,7 +24,7 @@ export function getEmailFromLocalStrg() {
 }
 
 export function getSelectedCategory() {
-        return localStorage.getItem('selected');
+    return localStorage.getItem('selected');
 }
 
 export function getHiddenFromLocalStrg() {
@@ -52,4 +51,12 @@ export function setLoginWhenError() {
 export function logOut() {
     localStorage.clear();
     localStorage.setItem('isAuthButtonsHidden', false);
+}
+
+export function getEmailErrorMsg() {
+    return localStorage.getItem('msg-email');
+}
+
+export function getPasswordErrorMsg() {
+    return localStorage.getItem('msg-password');
 }

@@ -1,9 +1,12 @@
 import { getSelected } from '../actions/pageActions'
+import { showMassage } from '../actions/userActions'
 import { browserHistory, hashHistory } from 'react-router'
 import { registerNewUser, loginUser } from '../actions/userActions'
-import { setLoginWhenSuccess, setLoginWhenError, setCategory, getSelectedCategory } from '../localStorage/localStorageMethods'
+import { setLoginWhenSuccess, setLoginWhenError, setCategory, getSelectedCategory, getEmailFromLocalStrg } from '../localStorage/localStorageMethods'
 
-
+export function transferMessages(msg) {
+    return msg;
+}
 
 export function getCategoryFromServer(value) {
 
@@ -41,9 +44,10 @@ export function register(user) {
             repPassword: user.repPassword
 
         }).then(function(response) {
-            registerNewUser(response.user);
             hashHistory.push('/login');
         }, function(response) {
+            localStorage.setItem('msg-email', response.responseJSON.errors.email);
+            localStorage.setItem('msg-password', response.responseJSON.errors.password);
             setLoginWhenError();
         });
 }
@@ -56,7 +60,6 @@ export function login(user) {
 
         }).then(function(response) {
             setLoginWhenSuccess(response);
-            loginUser(response.user);
             hashHistory.push('/');
 
         }, function(response) {

@@ -4,7 +4,7 @@ import { getCategoryFromServer } from '../ajaxCalls/request'
 import { Link, browserHistory, hashHistory } from 'react-router'
 import { getUserCategory } from '../ajaxCalls/request'
 
-let options = [
+export let options = [
     {value : 'Food', label: 'Food'},
     {value : 'Sport', label: 'Sport'},
     {value : 'Nature', label: 'Nature'}];
@@ -49,8 +49,7 @@ export default class Page extends Component {
                         />
                     </Col>
                     <Col xs='1/3'>
-                        <Button className='btn-sunc' type='hollow-success'
-                            >Add +
+                        <Button className='btn-sunc' onClick={() => hashHistory.push('addCategory')} type='hollow-success'>Add +
                         </Button>
                     </Col>
                     <Col>

@@ -3,18 +3,19 @@ import { getEmailFromLocalStrg, getHiddenFromLocalStrg, getStatusFromLocalStrg, 
 import { browserHistory, hashHistory } from 'react-router'
 
 export function registerNewUser (user) {
+    register(user);
     return {
         type: 'POST_NEW_USER'
     }
 }
 
 export function loginUser (user) {
+    login(user);
     return {
         type: 'LOGIN_USER',
         status: getStatusFromLocalStrg(),
         email: getEmailFromLocalStrg(),
-        isAuthButtonsHidden: getHiddenFromLocalStrg(),
-        msg: 'You have entered incorrect email or password'
+        isAuthButtonsHidden: getHiddenFromLocalStrg()
     }
 }
 
@@ -24,5 +25,13 @@ export function logOutUser() {
         type: 'CLEAR_PAGE_INFO_AND_LOGOUT',
         isAuthButtonsHidden: false,
         email: ''
+    }
+}
+
+export function showMassage(msgEmail, msgPassword) {
+    return {
+        type: 'SHOW_MASSAGE',
+        msgEmail: msgEmail,
+        msgPassword: msgPassword
     }
 }

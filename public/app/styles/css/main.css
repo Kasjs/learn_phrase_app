@@ -121,3 +121,15 @@
   color: #ff0000;
   margin-left: 10px;
 }
+.validation-msg-success {
+  display: block;
+  color: #00ff00;
+}
+.msg-email-error {
+  display: block;
+  color: #ff0000;
+}
+.msg-password-error {
+  display: block;
+  color: #ff0000;
+}
