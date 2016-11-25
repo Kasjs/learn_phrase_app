@@ -1,7 +1,7 @@
 .login-btn {
     margin: 10px 0 0 0;
     position: absolute;
-    right: 5%;
+    right: 15px;
     top: 0;
     padding: 0 3px 0 3px;
 }
@@ -10,22 +10,26 @@
     padding: 0 3px 0 3px;
     margin: 10px 0 0 0;
     position: absolute;
-    right: 15%;
+    right: 80px;
     top: 0;
 }
 .user-email {
     margin-left: 5%;
     position: absolute;
-    right: 14%;
-    top: 3%;
-    border: 1px solid #1385e5;
+    right: 98px;
+    top: 10px;
+    border: 1px solid #1872ab;
+    color: #1872ab;
     padding: 6px;
     border-radius: 5px;
 }
 .log-out-btn {
     .user-email;
     right: 2.8%;
+    top: 10px;
     padding: 0 3px 0 3px;
+    color: #16987e;
+    border: 1px solid #16987e;
 }
 .user-hidden {
     position: absolute;
@@ -56,4 +60,36 @@
 .msg-password-error {
     display: block;
     color: #ff0000;
+}
+
+@media screen and (max-width: 473px) {
+    .user-email,.log-out-btn {
+        top: 10px;
+    }
+
+    .user-email {
+        top: 10px;
+        right: 69px;
+        width: 40px;
+    }
+    .log-out-btn {
+        width: 40px;
+        top: 10px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .user-email,.log-out-btn {
+        top: 10px;
+    }
+
+    .user-email {
+        top: 10px;
+        right: 69px;
+        width: 40px;
+    }
+    .log-out-btn {
+        top: 10px;
+        width: 40px;
+    }
 }

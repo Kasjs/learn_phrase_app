@@ -35,6 +35,20 @@ export function syncWithServer() {
         });
 }
 
+export function updateCategory(newCategoryName, categoryContent) {
+    console.log(newCategoryName);
+    $.post('/addNewCategory',
+        {
+            name : newCategoryName.value,
+            content: categoryContent,
+            email: localStorage.getItem('email')
+        }).then(function(response) {
+            console.log(response.data);
+        }, function(erro) {
+            console.log('Error sync')
+        });
+}
+
 export function register(user) {
 
     $.post('/register',

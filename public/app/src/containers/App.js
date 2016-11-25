@@ -13,7 +13,7 @@ import '../../styles/css/main.css'
 
 class App extends Component {
 	render() {
-		const { page, userAuth, user } = this.props
+		const { page, userAuth, user, category } = this.props
 		const { getNextPhrase, getRandomPhrase, getBackPhrase, switchLanguage,
             getPhrase, getSelectedCategory, syncCatAndRating, clearPageInfo } = this.props.pageActions
         const { registerNewUser, logOutUser, loginUser, showMassage } = this.props.userActions

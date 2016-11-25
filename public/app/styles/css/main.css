@@ -11,6 +11,8 @@
   margin-top: 10px;
   padding: 0;
   width: 50px;
+  color: #23c6c8;
+  border: 1px solid #23c6c8;
 }
 .phrase-col .select-comp .select-category {
   margin: 10px 0 0 -10px;
@@ -18,10 +20,11 @@
   font-weight: 700;
 }
 .phrase-col .select-comp .select-category .FormSelect {
-  color: #666;
+  color: #1c84c6;
 }
 .phrase-col .select-comp .selected-category {
   margin: 0 0 0 -10px;
+  color: #1c84c6;
 }
 .phrase-col .phrase-row {
   text-align: center;
@@ -29,11 +32,11 @@
   border-radius: 5px;
   border: 1px solid #ccc;
   margin: 0 20px 0 20px 0;
-  color: #1385e5;
+  color: #1c84c6;
 }
 .phrase-col .phrase-row .phrase {
   font-size: 20px;
-  color: #000000;
+  color: #2f4050;
 }
 .phrase-col .btns-row {
   text-align: center;
@@ -41,6 +44,26 @@
 .phrase-col .btns-row .buttons {
   margin: 15px 10px 0 0;
   width: 6em;
+}
+.phrase-col .btns-row .btn-back {
+  background-color: #ffffff;
+  border: 1px solid #1872ab;
+  color: #1872ab;
+}
+.phrase-col .btns-row .btn-next {
+  background-color: #ffffff;
+  border: 1px solid #23c6c8;
+  color: #23c6c8;
+}
+.phrase-col .btns-row .btn-random {
+  background-color: #ffffff;
+  border: 1px solid #ea394c;
+  color: #ea394c;
+}
+.phrase-col .btns-row .btn-translate {
+  background-color: #ffffff;
+  border: 1px solid #f79d3c;
+  color: #f79d3c;
 }
 .phrase-col .Row {
   height: 90px;
@@ -73,7 +96,7 @@
 .login-btn {
   margin: 10px 0 0 0;
   position: absolute;
-  right: 5%;
+  right: 15px;
   top: 0;
   padding: 0 3px 0 3px;
 }
@@ -82,28 +105,32 @@
   padding: 0 3px 0 3px;
   margin: 10px 0 0 0;
   position: absolute;
-  right: 15%;
+  right: 80px;
   top: 0;
 }
 .user-email {
   margin-left: 5%;
   position: absolute;
-  right: 14%;
-  top: 3%;
-  border: 1px solid #1385e5;
+  right: 98px;
+  top: 10px;
+  border: 1px solid #1872ab;
+  color: #1872ab;
   padding: 6px;
   border-radius: 5px;
 }
 .log-out-btn {
   margin-left: 5%;
   position: absolute;
-  right: 14%;
-  top: 3%;
-  border: 1px solid #1385e5;
+  right: 98px;
+  border: 1px solid #1872ab;
+  color: #1872ab;
   padding: 6px;
   border-radius: 5px;
   right: 2.8%;
+  top: 10px;
   padding: 0 3px 0 3px;
+  color: #16987e;
+  border: 1px solid #16987e;
 }
 .user-hidden {
   position: absolute;
@@ -132,4 +159,34 @@
 .msg-password-error {
   display: block;
   color: #ff0000;
+}
+@media screen and (max-width: 473px) {
+  .user-email,
+  .log-out-btn {
+    top: 10px;
+  }
+  .user-email {
+    top: 10px;
+    right: 69px;
+    width: 40px;
+  }
+  .log-out-btn {
+    width: 40px;
+    top: 10px;
+  }
+}
+@media screen and (max-width: 375px) {
+  .user-email,
+  .log-out-btn {
+    top: 10px;
+  }
+  .user-email {
+    top: 10px;
+    right: 69px;
+    width: 40px;
+  }
+  .log-out-btn {
+    top: 10px;
+    width: 40px;
+  }
 }

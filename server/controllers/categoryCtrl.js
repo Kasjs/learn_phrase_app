@@ -27,3 +27,24 @@ module.exports.postCategory = function(req, res) {
         });
     });
 };
+
+module.exports.addNewCategory = function(req, res) {
+    User.findOne({ email: req.body.email }, function(err, user) {
+        if( user.category[0][req.body.name] ) {
+            user.category[0][req.body.name].push(req.body.content);
+            user.markModified('category');
+            user.save();
+            return res.send({
+                data: user.category[0]
+            });
+        } else {
+            user.category[0][req.body.name] = [];
+            user.category[0][req.body.name].push(req.body.content);
+            user.markModified('category');
+            user.save();
+            return res.send({
+                data: user.category[0]
+            });
+        }
+    });
+};

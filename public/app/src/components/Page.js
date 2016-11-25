@@ -4,10 +4,14 @@ import { getCategoryFromServer } from '../ajaxCalls/request'
 import { Link, browserHistory, hashHistory } from 'react-router'
 import { getUserCategory } from '../ajaxCalls/request'
 
-export let options = [
+let defaultOptions = [
     {value : 'Food', label: 'Food'},
     {value : 'Sport', label: 'Sport'},
-    {value : 'Nature', label: 'Nature'}];
+    {value : 'Nature', label: 'Nature'}
+];
+
+localStorage.setItem('options', JSON.stringify(defaultOptions));
+var options = JSON.parse(localStorage.getItem('options'));
 
 function setSelectedOptions() {
     let selectedOptions = JSON.parse(localStorage.getItem('selected'));
@@ -57,24 +61,24 @@ export default class Page extends Component {
                     </Col>
                 </Row>
                 <Row className='phrase-row'>
-                    <Col xs="100%" sm="100%" md="70%" lg="50%">
+                    <Col xs="100%" sm="100%" md="100%" lg="100%">
                         <span>Position: {counter} </span><br/>
                         <span>Hits: {hits} </span>
                         <p><strong className='phrase'>{phrase}</strong></p>
                     </Col>
                 </Row>
                 <Row className='btns-row'>
-                    <Col xs="100%" sm="100%" md="70%" lg="50%">
-                        <Button className='buttons btn btn-lg' type='primary'
+                    <Col xs="100%" sm="100%" md="100%" lg="100%">
+                        <Button className='buttons btn-back btn btn-lg'
                             onClick={this.onBackPhraseBtnClick.bind(this)}>Back
                         </Button>
-                        <Button className='buttons btn btn-lg' type='success'
+                        <Button className='buttons btn-next btn btn-lg'
                             onClick={this.onGetNextPhraseBtnClick.bind(this)}>Next
                         </Button>
-                        <Button className='buttons btn btn-lg' type='warning'
+                        <Button className='buttons btn-translate btn btn-lg'
                             onClick={this.onSwitchLanguage.bind(this)} >Translate
                         </Button>
-                        <Button className='buttons btn btn-lg' type='danger'
+                        <Button className='buttons btn-random btn btn-lg'
                             onClick={this.onGetRandomPhraseBtnClick.bind(this)}>Random
                         </Button>
                     </Col>
