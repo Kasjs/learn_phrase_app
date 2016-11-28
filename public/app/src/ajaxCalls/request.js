@@ -1,3 +1,4 @@
+'use strict'
 import { getSelected } from '../actions/pageActions'
 import { showMassage } from '../actions/userActions'
 import { browserHistory, hashHistory } from 'react-router'
@@ -43,7 +44,11 @@ export function updateCategory(newCategoryName, categoryContent) {
             content: categoryContent,
             email: localStorage.getItem('email')
         }).then(function(response) {
-            console.log(response.data);
+            console.log(response.categoryNames);
+            localStorage.setItem('options', JSON.stringify(response.categoryNames));
+            setTimeout(function() {
+                location.reload();
+            },300);
         }, function(erro) {
             console.log('Error sync')
         });
@@ -73,6 +78,8 @@ export function login(user) {
             password: user.password
 
         }).then(function(response) {
+            console.log(response);
+            localStorage.setItem('options', JSON.stringify(response.user.defaultCategory));
             setLoginWhenSuccess(response);
             hashHistory.push('/');
 

@@ -37,7 +37,8 @@ module.exports = function(config) {
         };
         let token = jwt.sign(payload, config.jwtSecret);
         let userData = {
-            email: user.email
+            email: user.email,
+            defaultCategory: user.defaultCategory
         };
 
         return done(null, token, userData);

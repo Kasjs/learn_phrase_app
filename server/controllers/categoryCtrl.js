@@ -7,7 +7,8 @@ module.exports.getCategory = function(req, res) {
     User.findOne({email : req.query.email}, function(err, user) {
         if (user) {
             res.send({
-                data : user.category[0]
+                data : user.category[0],
+                categoryNames: user.defaultCategory
             });
         } else {
             res.status(400).json({
@@ -30,20 +31,31 @@ module.exports.postCategory = function(req, res) {
 
 module.exports.addNewCategory = function(req, res) {
     User.findOne({ email: req.body.email }, function(err, user) {
-        if( user.category[0][req.body.name] ) {
+        if ( user.category[0][req.body.name] ) {
             user.category[0][req.body.name].push(req.body.content);
+            console.log(user.category[0][req.body.name]);
             user.markModified('category');
+            user.markModified(req.body.name);
             user.save();
             return res.send({
-                data: user.category[0]
+                data: user.category[0],
+                categoryNames : user.defaultCategory
             });
         } else {
             user.category[0][req.body.name] = [];
             user.category[0][req.body.name].push(req.body.content);
             user.markModified('category');
+            let newCategoryOption = {
+                value : req.body.name,
+                label: req.body.name
+
+            };
+            user.defaultCategory.push(newCategoryOption);
+            user.markModified('defaultCategory');
             user.save();
             return res.send({
-                data: user.category[0]
+                data: user.category[0],
+                categoryNames : user.defaultCategory
             });
         }
     });

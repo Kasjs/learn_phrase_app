@@ -8,11 +8,11 @@ import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHi
 import { browserHistory, hashHistory } from 'react-router'
 import { updateCategory } from '../ajaxCalls/request'
 
-function addCategoryAndContent(newCategory) {
-    let allCategory = JSON.parse(localStorage.getItem('options'));
-    allCategory.push(newCategory);
-    localStorage.setItem('options', JSON.stringify(allCategory));
-}
+// function addCategoryAndContent(newCategory) {
+//     let allCategory = JSON.parse(localStorage.getItem('options'));
+//     allCategory.push(newCategory);
+//     localStorage.setItem('options', JSON.stringify(allCategory));
+// }
 
 class Category extends Component {
 
@@ -27,7 +27,6 @@ class Category extends Component {
             side_b: category.side_b
         };
         updateCategory(newCategory, categoryContent);
-        addCategoryAndContent(newCategory);
         hashHistory.push('/');
     }
 
@@ -37,7 +36,7 @@ class Category extends Component {
         console.log(this.props);
 
         return (
-            <div >
+            <div>
                 <Col xs='100%'>
                     <h2 className='login-header'>Add New Category</h2>
                 </Col>
@@ -70,6 +69,10 @@ class Category extends Component {
             </div>
         )
     }
+}
+
+Category.propTypes = {
+    category : React.PropTypes.object
 }
 
 function mapStateToProps(state) {

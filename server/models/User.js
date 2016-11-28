@@ -13,7 +13,15 @@ var UserSchema = new mongoose.Schema({
     },
     category: {
 		type: Array
-	}
+	},
+    defaultCategory: {
+        type: Array,
+        default: [
+            {value : 'Sport', label: 'Sport'},
+            {value : 'Food', label: 'Food'},
+            {value : 'Nature', label: 'Nature'}
+        ]
+    }
 });
 
 UserSchema.methods.comparePassword = function(password, callback) {

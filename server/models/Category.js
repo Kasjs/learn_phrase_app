@@ -2,6 +2,12 @@ var mongoose = require('mongoose');
 var categorySchema = new mongoose.Schema({
     Food: {
         type: Array,
+        nested: {
+            side_a : {
+                type: String,
+                unique: true
+            }
+        },
         default: [
             {
                 "side_a": "яблуко",

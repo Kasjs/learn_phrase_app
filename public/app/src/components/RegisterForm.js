@@ -54,6 +54,12 @@ class RegisterForm extends Component {
     }
 }
 
+RegisterForm.propTypes = {
+    user : React.PropTypes.object,
+    msgEmail : React.PropTypes.string,
+    msgPassword : React.PropTypes.string
+}
+
 function mapStateToProps(state) {
     return {
         userAuth: state.userAuth

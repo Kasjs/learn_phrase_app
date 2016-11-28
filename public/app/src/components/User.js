@@ -16,7 +16,7 @@ export default class User extends Component {
 
     render() {
 
-        const { email, isAuthButtonsHidden, isAuth, logOutUser, counter, phrase, hits } = this.props;
+        const { email, logOutUser } = this.props;
 
         return (
             <Col xs='1/3'>
@@ -37,4 +37,10 @@ export default class User extends Component {
             </Col>
         )
     }
+}
+
+User.propTypes = {
+    email : React.PropTypes.string,
+    logOutUser : React.PropTypes.func
+
 }

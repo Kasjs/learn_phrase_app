@@ -46,6 +46,11 @@ class LoginForm extends Component {
     }
 }
 
+LoginForm.propTypes = {
+    user : React.PropTypes.string
+
+}
+
 function mapStateToProps(state) {
     return {
         userAuth: state.userAuth
