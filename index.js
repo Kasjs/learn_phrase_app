@@ -4,6 +4,7 @@ express = require('express'),
 rewrite = require('express-urlrewrite'),
 webpack = require('webpack'),
 mongoose = require('mongoose'),
+favicon = require('serve-favicon'),
 passport = require('passport'),
 request = require('request'),
 bodyParser = require('body-parser'),
@@ -18,6 +19,8 @@ isDeveloping = process.env.NODE_ENV !== 'production',
 port = isDeveloping ? 3000 : process.env.PORT,
 app = express();
 app.use(passport.initialize());
+
+app.use(favicon(path.join(__dirname, 'server', 'assets', 'images', 'favicon.png')));
 
 require('node-jsx').install();
 require('./server/models/User');
