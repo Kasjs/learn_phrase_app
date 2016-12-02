@@ -1,0 +1,99 @@
+#app {
+  font-family: 'Roboto', sans-serif;
+}
+.phrase-col {
+  margin: 0 3em 0 3em;
+}
+.phrase-col .select-comp {
+  padding: 0;
+}
+.phrase-col .select-comp .btn-sunc {
+  margin-top: 10px;
+  padding: 0;
+  width: 50px;
+}
+.phrase-col .select-comp .select-category {
+  margin: 10px 0 0 -10px;
+  font: Helvetica 15px #666;
+  font-weight: 700;
+}
+.phrase-col .select-comp .select-category .FormSelect {
+  color: #666;
+}
+.phrase-col .select-comp .selected-category {
+  margin: 0 0 0 -10px;
+}
+.phrase-col .phrase-row {
+  text-align: center;
+  background-color: #fafafa;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin: 0 20px 0 20px 0;
+  color: #1385e5;
+}
+.phrase-col .phrase-row .phrase {
+  font-size: 20px;
+  color: #000000;
+}
+.phrase-col .btns-row {
+  text-align: center;
+}
+.phrase-col .btns-row .buttons {
+  margin: 15px 10px 0 0;
+  width: 6em;
+}
+.phrase-col .Row {
+  height: 90px;
+}
+.req-form-cont {
+  width: 700px;
+  text-align: left;
+  margin: 1% auto 0 auto;
+  box-shadow: 5px 5px #cccccc;
+  border-radius: 5px;
+  border: 1px solid #ccccff;
+}
+.reg-form .submit-btn {
+  margin: 0 0 10px 0;
+}
+.login-header {
+  text-align: center;
+  margin: 10px 0 0 0;
+  color: #676565;
+}
+.FormLabel {
+  margin: 10px 0 5px 0;
+}
+.email-label {
+  padding-top: 10px;
+}
+.submit-btn {
+  margin-bottom: 10px;
+}
+.login-btn {
+  margin: 10px 0 0 0;
+  position: absolute;
+  right: 5%;
+  top: 0;
+  padding: 0 3px 0 3px;
+}
+.register-btn {
+  text-align: right;
+  padding: 0 3px 0 3px;
+  margin: 10px 0 0 0;
+  position: absolute;
+  right: 15%;
+  top: 0;
+}
+.user-email {
+  margin-left: 40%;
+  position: absolute;
+  right: 30%;
+  top: 1%;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}

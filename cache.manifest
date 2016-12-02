@@ -1,0 +1,15 @@
+CACHE MANIFEST
+
+CACHE:
+
+# v1.0.1
+/public/dist/index.html
+/public/dist/main.js
+/public/dist/main.js.map
+/public/af7ae505a9eed503f8b8e6982036873e.woff2
+/public/fee66e712a8a08eef5805a46892932ad.woff
+/public/b06871f281fee6b241d60582ae9369b9.ttf
+https://fonts.gstatic.com/s/roboto/v15/RxZJdnzeo3R5zSexge8UUbO3LdcAZYWl9Si6vvxL-qU.woff
+
+NETWORK:
+*
