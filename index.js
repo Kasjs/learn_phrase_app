@@ -68,7 +68,7 @@ if (isDeveloping) {
         res.write(middleware.fileSystem.readFileSync(path.join(__dirname, './public/dist/index.html')));
         res.end();
     });
-    //app.use('/', authCheckMiddleware);
+
     app.use('/', routes);
 
 } else {
