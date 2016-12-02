@@ -1,14 +1,12 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var public_dir = "src/frontend";
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 
 module.exports = {
-  devtool: 'cheap-module-source-map',
+  devtool: 'source-map',
   entry: [
-    'webpack-hot-middleware/client?reload=true',
     path.join(__dirname, './public/app/src' , 'main.js')
   ],
   output: {
@@ -32,17 +30,12 @@ module.exports = {
         $: "jquery",
         jQuery: "jquery"
     }),
-    new webpack.DefinePlugin({
-        'process.env': {
-            'NODE_ENV': JSON.stringify('production')
-        }
-    })
-      //new ExtractTextPlugin("style.css")
+
   ],
-  resolve: {
-    root: [path.resolve('./public/dist')],
-    extensions: ['', '.js', '.css']
-  },
+  // resolve: {
+  //   root: [path.resolve('./public/dist')],
+  //   extensions: ['', '.js', '.css']
+  // },
 
   module: {
       loaders: [{

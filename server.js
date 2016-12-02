@@ -9,7 +9,7 @@ request = require('request'),
 bodyParser = require('body-parser'),
 webpackMiddleware = require('webpack-dev-middleware'),
 webpackHotMiddleware = require('webpack-hot-middleware'),
-webpackConfig = require('./webpack.config.js'),
+webpackConfig = require('./webpack.production.config.js'),
 React = require('react'),
 Router = require('react-router'),
 config = require('./config'),
@@ -74,6 +74,8 @@ if (isDeveloping) {
     app.get('*', function response(req, res) {
       res.sendFile(path.join(__dirname, 'dist/index.html'));
     });
+
+    app.use('/', routes);
 }
 
 app.listen(port, '0.0.0.0', function onStart(err) {
