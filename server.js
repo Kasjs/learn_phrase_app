@@ -53,19 +53,23 @@ if (isDeveloping) {
     app.use(bodyParser.urlencoded({
         extended: true
     }));
+
     app.use(function(req, res, next) {
         res.header('Access-Control-Allow-Origin', process.env.allowOrigin || 'http://localhost');
         res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
         res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
         next();
     });
+
     app.get('/', function(req, res) {
         res.write(middleware.fileSystem.readFileSync(path.join(__dirname, './public/dist/index.html')));
         res.end();
     });
     //app.use('/', authCheckMiddleware);
     app.use('/', routes);
+
 } else {
+
     app.use(express.static(__dirname + '/dist'));
     app.get('*', function response(req, res) {
       res.sendFile(path.join(__dirname, 'dist/index.html'));

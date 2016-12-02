@@ -14,7 +14,6 @@ export let localSync = function(index) {
 export function setCategory(response) {
     let selected = JSON.parse(localStorage.getItem('selected'));
     localStorage.setItem('catagories_' + selected , JSON.stringify(response.data[selected]));
-    console.log(response.data[selected]);
     setCat = JSON.parse(localStorage.getItem('catagories_' + getSelected()));
     return setCat;
 }
@@ -59,4 +58,8 @@ export function getEmailErrorMsg() {
 
 export function getPasswordErrorMsg() {
     return localStorage.getItem('msg-password');
+}
+
+export function setCategoryOptions(response) {
+    localStorage.setItem('options', JSON.stringify(response));
 }

@@ -90,6 +90,15 @@ export default function page( state = initialState, action) {
             }
         }
 
+        case 'UPDATE_CATEGORY_CONTENT': {
+            return {
+                ...state,
+                phrase: '',
+                hits: 0,
+                counter: 0
+            }
+        }
+
         default:
         return state
     }

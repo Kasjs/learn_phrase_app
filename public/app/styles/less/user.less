@@ -2,8 +2,12 @@
     margin: 10px 0 0 0;
     position: absolute;
     right: 15px;
-    top: 0;
+    width: 40px;
+    top: 30px;
     padding: 0 3px 0 3px;
+    color: #ffffff;
+    background-image: none;
+    background-color: #1872ab;
 }
 .register-btn {
     text-align: right;
@@ -11,13 +15,22 @@
     margin: 10px 0 0 0;
     position: absolute;
     right: 80px;
-    top: 0;
+    color: #ffffff;
+    background-image: none;
+    background-color: #1872ab;
+    top: 30px;
+}
+.fa-user-circle-o {
+    margin-left: 5px;
+    display: inline-block;
 }
 .user-email {
+    text-align: center;
     margin-left: 5%;
     position: absolute;
-    right: 98px;
-    top: 10px;
+    width: 40px;
+    right: 78px;
+    top: 40px;
     border: 1px solid #1872ab;
     color: #1872ab;
     padding: 6px;
@@ -26,10 +39,12 @@
 .log-out-btn {
     .user-email;
     right: 2.8%;
-    top: 10px;
+    width: 40px;
+    top: 40px;
     padding: 0 3px 0 3px;
-    color: #16987e;
-    border: 1px solid #16987e;
+    color: #ffffff;
+    background-color: #1872ab;
+    background-image: none;
 }
 .user-hidden {
     position: absolute;
@@ -57,6 +72,12 @@
     color: #ff0000;
 }
 
+.msg-category {
+    margin: 0 0 20px 30px;
+    display: inline;
+    color: #ff0000;
+}
+
 .msg-password-error {
     display: block;
     color: #ff0000;
@@ -64,32 +85,39 @@
 
 @media screen and (max-width: 473px) {
     .user-email,.log-out-btn {
-        top: 10px;
+        top: 30px;
     }
 
     .user-email {
-        top: 10px;
+        top: 40px;
         right: 69px;
         width: 40px;
     }
     .log-out-btn {
         width: 40px;
-        top: 10px;
+        top: 40px;
     }
 }
 
 @media screen and (max-width: 375px) {
     .user-email,.log-out-btn {
-        top: 10px;
+        top: 40px;
     }
-
+    .register-btn {
+        top: 30px;
+        width: 55px;
+        right: 63px;
+    }
+    .login-btn {
+        top: 30px;
+    }
     .user-email {
-        top: 10px;
+        top: 40px;
         right: 69px;
         width: 40px;
     }
     .log-out-btn {
-        top: 10px;
+        top: 40px;
         width: 40px;
     }
 }

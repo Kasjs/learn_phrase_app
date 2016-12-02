@@ -1,8 +1,9 @@
-import { Button, Row, Col, Container, FormSelect, } from 'elemental'
+import { Row, Col, Container, FormSelect, } from 'elemental'
+import { Button } from 'react-bootstrap'
 import React, { PropTypes, Component } from 'react'
 import { getCategoryFromServer } from '../ajaxCalls/request'
 import { Link, browserHistory, hashHistory } from 'react-router'
-import { getUserCategory } from '../ajaxCalls/request'
+import { getUserCategory, syncWithServer } from '../ajaxCalls/request'
 
 function setOptions() {
     var optionsFromServer;
@@ -45,8 +46,11 @@ export default class Page extends Component {
     }
 
     render() {
-        const { page, phrase, counter, hits, email, hidden} = this.props
-        return <div className='phrase-col'>
+        const { page, phrase, counter, hits, email, hidden, } = this.props
+        return <div className='phrase-col container-fluid'>
+            <div className='header'>
+                <p className='header-text'>Phrase generator </p>
+            </div>
             <Row className='select-comp'>
                 <Col xs="50%" sm="40%" md="25%" lg="40%">
                     <FormSelect className='select-category' options={setOptions()}
@@ -55,36 +59,46 @@ export default class Page extends Component {
                     />
                 </Col>
                 <Col xs='1/3'>
-                    <Button className='btn-sunc' onClick={() => hashHistory.push('addCategory')} type='hollow-success'>Add +
+                    <Button className='btn-sunc btn-default' onClick={() => {
+                        getCategoryFromServer(localStorage.getItem('selected')),
+                        syncWithServer(),
+                        hashHistory.push('addCategory'); }}>
+                        <i className="fa fa-plus" aria-hidden="truen"></i>
                     </Button>
                 </Col>
                 <Col>
                     <p className='selected-category'>Now selected: <strong>{setSelectedOptions()}</strong></p>
                 </Col>
             </Row>
-            <Row className='phrase-row'>
-                <Col xs="100%" sm="100%" md="100%" lg="100%">
-                    <span>Position: {counter} </span><br/>
-                    <span>Hits: {hits} </span>
+            <div className='phrase-row row'>
+                <div className='col-xs-6 position-col'>
+                    <span className='position'>Position: {counter} </span>
+                </div>
+                <div className='col-xs-6 hits-col'>
+                    <span className='hits'>Hits: {hits} </span>
+                </div>
+                <div className='phrase col-xs-12'>
                     <p><strong className='phrase'>{phrase}</strong></p>
-                </Col>
-            </Row>
-            <Row className='btns-row'>
-                <Col xs="100%" sm="100%" md="100%" lg="100%">
-                    <Button className='buttons btn-back btn btn-lg'
-                        onClick={this.onBackPhraseBtnClick.bind(this)}>Back
+                </div>
+            </div>
+            <div className='row btns-row'>
+                <div className='col-xs-12'>
+                    <Button className='buttons btn-back btn btn-sm'
+                        onClick={this.onBackPhraseBtnClick.bind(this)}>
+                        <i className="fa fa-arrow-left" aria-hidden="true"></i>
                     </Button>
-                    <Button className='buttons btn-next btn btn-lg'
-                        onClick={this.onGetNextPhraseBtnClick.bind(this)}>Next
+                    <Button className='buttons btn-next btn btn-sm'
+                        onClick={this.onGetNextPhraseBtnClick.bind(this)}>
+                        <i className="fa fa-arrow-right" aria-hidden="true"></i>
                     </Button>
-                    <Button className='buttons btn-translate btn btn-lg'
+                    <Button className='buttons btn-translate btn btn-sm'
                         onClick={this.onSwitchLanguage.bind(this)} >Translate
                     </Button>
-                    <Button className='buttons btn-random btn btn-lg'
+                    <Button className='buttons btn-random btn btn-sm'
                         onClick={this.onGetRandomPhraseBtnClick.bind(this)}>Random
                     </Button>
-                </Col>
-            </Row>
+                </div>
+            </div>
         </div>
     }
 }

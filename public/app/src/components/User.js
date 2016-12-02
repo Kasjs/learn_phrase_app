@@ -21,18 +21,19 @@ export default class User extends Component {
         return (
             <Col xs='1/3'>
                 <div className={ getHiddenFromLocalStrg()  ? 'hide' : 'show' }>
-                    <Button className='login-btn' onClick={() => hashHistory.push('login')}
-                    type='hollow-primary'>Sign In
+                    <Button className='login-btn' onClick={() => hashHistory.push('login')}>
+                        <i className="fa fa-sign-in" aria-hidden="true"></i>
                     </Button>
                     <Button className='register-btn' onClick={() => hashHistory.push('register')}
-                    type='hollow-primary'>Sign Up
+                        >Sign Up
                     </Button>
                 </div>
                 <span className={ getHiddenFromLocalStrg() ? 'show user-email' : 'hide user-email' }>
-                    <span>{ getEmailFromLocalStrg() }</span>
+                    <i className='fa fa-user' aria-hiden='true'></i>
                 </span>
                 <Button className={ getHiddenFromLocalStrg() ? 'show log-out-btn' : 'hide log-out-btn'}
-                    type='hollow-primary' onClick={ () => this.logoutAndClearPageInfo() } >Sign out
+                    onClick={ () => this.logoutAndClearPageInfo() } >
+                    <i className="fa fa-sign-out" aria-hidden="true"></i>
                 </Button>
             </Col>
         )

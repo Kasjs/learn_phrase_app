@@ -145,3 +145,4 @@
     ],
     "__v": 0
 }
+manifest="cache.manifest" type="text/cache-manifest"

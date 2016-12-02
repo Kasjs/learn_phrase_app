@@ -3,7 +3,7 @@ import { getSelected } from '../actions/pageActions'
 import { showMassage } from '../actions/userActions'
 import { browserHistory, hashHistory } from 'react-router'
 import { registerNewUser, loginUser } from '../actions/userActions'
-import { setLoginWhenSuccess, setLoginWhenError, setCategory, getSelectedCategory, getEmailFromLocalStrg } from '../localStorage/localStorageMethods'
+import { setLoginWhenSuccess, setLoginWhenError, setCategory, getSelectedCategory, getEmailFromLocalStrg, setCategoryOptions } from '../localStorage/localStorageMethods'
 
 export function transferMessages(msg) {
     return msg;
@@ -37,18 +37,16 @@ export function syncWithServer() {
 }
 
 export function updateCategory(newCategoryName, categoryContent) {
-    console.log(newCategoryName);
+
     $.post('/addNewCategory',
         {
             name : newCategoryName.value,
             content: categoryContent,
             email: localStorage.getItem('email')
         }).then(function(response) {
-            console.log(response.categoryNames);
-            localStorage.setItem('options', JSON.stringify(response.categoryNames));
-            setTimeout(function() {
-                location.reload();
-            },300);
+            setCategoryOptions(response.categoryNames);
+            localStorage.setItem('catagories_' + newCategoryName.label , JSON.stringify(response.data[newCategoryName.label]));
+            location.reload();
         }, function(erro) {
             console.log('Error sync')
         });
@@ -78,8 +76,7 @@ export function login(user) {
             password: user.password
 
         }).then(function(response) {
-            console.log(response);
-            localStorage.setItem('options', JSON.stringify(response.user.defaultCategory));
+            setCategoryOptions(response.user.defaultCategory);
             setLoginWhenSuccess(response);
             hashHistory.push('/');
 

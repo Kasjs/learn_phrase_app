@@ -28,10 +28,16 @@ export function logOutUser() {
     }
 }
 
-export function showMassage(msgEmail, msgPassword) {
+export function showEmailMassage() {
     return {
-        type: 'SHOW_MASSAGE',
-        msgEmail: msgEmail,
-        msgPassword: msgPassword
+        type: 'SHOW_MASSAGE_EMAIL',
+        payload: 'Please fill out all fields'
+    }
+}
+
+export function showCategoryMassage() {
+    return {
+        type: 'SHOW_CATEGORY_MESSAGE',
+        payload: 'Please fill out all fields'
     }
 }

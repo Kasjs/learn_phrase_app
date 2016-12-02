@@ -11,8 +11,11 @@ import { register, transferMessages } from '../ajaxCalls/request'
 class RegisterForm extends Component {
 
     handleSubmit(user) {
-        this.props.userActions.registerNewUser(user);
-        this.props.userActions.showMassage(localStorage.getItem('msg-email'), localStorage.getItem('msg-password'));
+        if ( user.email && user.password && user.repPassword ) {
+            this.props.userActions.registerNewUser(user);
+        } else {
+            this.props.userActions.showEmailMassage();
+        }
 
     }
 
@@ -44,8 +47,9 @@ class RegisterForm extends Component {
                             </Field>
 
                             <Button submit className='submit-btn' type="hollow-primary">Submit</Button>
-                            <span className={ getEmailErrorMsg() === 'undefined' ? 'hide msg-email-error' : 'show msg-email-error' }>{ msgEmail }</span>
-                            <span className={ getPasswordErrorMsg() === 'undefined' ? 'hide msg-password-error' : 'show msg-password-error' }>{ msgPassword }</span>
+                            <span className='msg-email-error'>{ msgEmail }</span>
+                            <span className='msg-password-error'>{ msgPassword }</span>
+
                         </Form>
                     </Col>
                 </Row>

@@ -8,7 +8,8 @@ const initialState = {
     status: 0,
     isAuthButtonsHidden: getHiddenFromLocalStrg() !== '' ? getHiddenFromLocalStrg() : '',
     msgEmail: '',
-    msgPassword: ''
+    msgPassword: '',
+    msgCategory: ''
 }
 
 export default function userAuth(state = initialState, action) {
@@ -44,11 +45,17 @@ export default function userAuth(state = initialState, action) {
             }
         }
 
-        case 'SHOW_MASSAGE': {
+        case 'SHOW_MASSAGE_EMAIL': {
             return {
                 ...state,
-                msgEmail: action.msgEmail,
-                msgPassword: action.msgPassword
+                msgEmail: action.payload
+            }
+        }
+
+        case 'SHOW_CATEGORY_MESSAGE': {
+            return {
+                ...state,
+                msgCategory : action.payload
             }
         }
 

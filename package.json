@@ -5,6 +5,7 @@
     "main": "./public/app/main.js",
     "scripts": {
         "start": "nodemon --ignore ./public server.js",
+        "build": "webpack -p --config ./webpack.production.config.js",
         "watch": "node server.js"
     },
     "dependencies": {
@@ -22,6 +23,7 @@
         "elemental": "^0.6.1",
         "express": "^4.13.3",
         "express-urlrewrite": "^1.2.0",
+        "font-awesome": "^4.7.0",
         "fs": "0.0.1-security",
         "history": "^1.13.0",
         "jquery": "^3.1.1",
@@ -70,6 +72,7 @@
         "eslint": "^3.8.1",
         "eslint-loader": "^1.6.0",
         "eslint-plugin-react": "^6.4.1",
+        "extract-text-webpack-plugin": "^1.0.1",
         "file-loader": "^0.9.0",
         "gulp": "^3.9.0",
         "gulp-autoprefixer": "^3.1.0",

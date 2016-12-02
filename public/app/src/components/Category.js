@@ -3,16 +3,11 @@ import React, { PropTypes, Component } from 'react'
 import { Field, Form, actions } from 'react-redux-form'
 import { bindActionCreators } from 'redux'
 import * as userActions from '../actions/userActions'
+import * as pageActions from '../actions/pageActions'
 import { connect } from 'react-redux'
 import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHiddenFromLocalStrg } from '../localStorage/localStorageMethods'
 import { browserHistory, hashHistory } from 'react-router'
 import { updateCategory } from '../ajaxCalls/request'
-
-// function addCategoryAndContent(newCategory) {
-//     let allCategory = JSON.parse(localStorage.getItem('options'));
-//     allCategory.push(newCategory);
-//     localStorage.setItem('options', JSON.stringify(allCategory));
-// }
 
 class Category extends Component {
 
@@ -26,13 +21,19 @@ class Category extends Component {
             side_a: category.side_a,
             side_b: category.side_b
         };
-        updateCategory(newCategory, categoryContent);
-        hashHistory.push('/');
+        if (category.name && category.side_a && category.side_b ) {
+            updateCategory(newCategory, categoryContent);
+            this.props.pageActions.updateCategoryContent();
+            hashHistory.push('/');
+        } else {
+            this.props.userActions.showCategoryMassage();
+        }
     }
 
     render() {
 
         let { category } = this.props;
+        let { msgCategory } = this.props.userAuth;
         console.log(this.props);
 
         return (
@@ -52,7 +53,7 @@ class Category extends Component {
                                 <input className='form-control' type="text" placeholder='side_a value' />
                             </Field>
                             <Field className='form-group' model="category.side_b">
-                                <label>Side B Value</label>
+                                <label>Side B Value(translated)</label>
                                 <input className='form-control' type="text" placeholder='side_b value' />
                             </Field>
                             <Field className='form-group' model="category.example">
@@ -62,7 +63,9 @@ class Category extends Component {
                                                   side_b: небо'
                                 ></textarea>
                             </Field>
-                            <Button submit className='submit-btn' type="hollow-primary">Create</Button>
+                            <Button submit className='submit-btn' type="hollow-primary">Create
+                            </Button>
+                            <span className='msg-category'>{ msgCategory }</span>
                         </Form>
                     </Col>
                 </Row>
@@ -77,13 +80,15 @@ Category.propTypes = {
 
 function mapStateToProps(state) {
     return {
-        userAuth: state.userAuth
+        userAuth: state.userAuth,
+        page: state.page
     }
 }
 
 function mapDispatchToProps(dispatch) {
 		return {
-			userActions: bindActionCreators(userActions, dispatch)
+			userActions: bindActionCreators(userActions, dispatch),
+            pageActions: bindActionCreators(pageActions, dispatch)
 		}
 }
 

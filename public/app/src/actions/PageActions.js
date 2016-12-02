@@ -61,3 +61,9 @@ export function clearPageInfo() {
         type: 'CLEAR_PAGE_INFO_AND_LOGOUT'
     }
 }
+
+export function updateCategoryContent() {
+    return {
+        type: 'UPDATE_CATEGORY_CONTENT',
+    }
+}

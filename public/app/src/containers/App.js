@@ -15,16 +15,18 @@ class App extends Component {
 	render() {
 		const { page, userAuth, user, category } = this.props
 		const { getNextPhrase, getRandomPhrase, getBackPhrase, switchLanguage,
-            getPhrase, getSelectedCategory, syncCatAndRating, clearPageInfo } = this.props.pageActions
-        const { registerNewUser, logOutUser, loginUser, showMassage } = this.props.userActions
+            getPhrase, getSelectedCategory, syncCatAndRating, clearPageInfo, logChange, updateCategoryContent } = this.props.pageActions
+        const { registerNewUser, logOutUser, loginUser, showMassage, showCategoryMassage } = this.props.userActions
 		return (
             <div className='row'>
                 <User
                     email={userAuth.email}
                     isAuthButtonsHidden={userAuth.isAuthButtonsHidden}
                     status={userAuth.status}
+                    msgCategory={userAuth.msgCategory}
                     msgEmail={userAuth.msgEmail}
                     msgPassword={userAuth.msgPassword}
+                    showCategoryMassage={showCategoryMassage}
                     phrase={page.phrase}
                     counter={page.counter}
                     showMassage={showMassage}
@@ -45,7 +47,9 @@ class App extends Component {
     				getNextPhrase={getNextPhrase}
     				getRandomPhrase={getRandomPhrase}
     				getBackPhrase={getBackPhrase}
+                    updateCategoryContent={updateCategoryContent}
     				switchLanguage={switchLanguage}
+                    logChange={logChange}
     				getPhrase={getPhrase}
                     getSelectedCategory={getSelectedCategory}
                     syncCatAndRating={syncCatAndRating}/>

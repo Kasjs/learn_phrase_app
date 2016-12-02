@@ -1,48 +1,67 @@
 #app {
   font-family: 'Roboto', sans-serif;
 }
+.header {
+  height: 30px;
+  background-color: #676a6c;
+  margin: 0;
+}
+.header-text {
+  color: #ffffff;
+  margin-left: 10px;
+  padding-top: 5px;
+}
+.phrase {
+  font-size: 20px;
+  color: #2f4050;
+  text-align: center;
+}
 .phrase-col {
-  margin: 0 3em 0 3em;
+  margin: 0 0 0 0;
 }
 .phrase-col .select-comp {
   padding: 0;
 }
 .phrase-col .select-comp .btn-sunc {
+  background-color: #1ab394;
   margin-top: 10px;
-  padding: 0;
   width: 50px;
-  color: #23c6c8;
-  border: 1px solid #23c6c8;
+  color: #ffffff;
 }
 .phrase-col .select-comp .select-category {
-  margin: 10px 0 0 -10px;
+  margin: 10px 0 0 10px;
   font: Helvetica 15px #666;
   font-weight: 700;
 }
 .phrase-col .select-comp .select-category .FormSelect {
-  color: #1c84c6;
+  color: #1872ab;
 }
 .phrase-col .select-comp .selected-category {
-  margin: 0 0 0 -10px;
-  color: #1c84c6;
+  margin: 0 15px 0 10px;
+  color: #1872ab;
 }
 .phrase-col .phrase-row {
-  text-align: center;
+  height: 80px;
   background-color: #fafafa;
   border-radius: 5px;
   border: 1px solid #ccc;
-  margin: 0 20px 0 20px 0;
-  color: #1c84c6;
+  margin: 0 10px 0 10px;
+  color: #1872ab;
 }
-.phrase-col .phrase-row .phrase {
-  font-size: 20px;
-  color: #2f4050;
+.phrase-col .phrase-row .position {
+  position: relative;
+  text-align: left;
+  left: 0;
+}
+.phrase-col .phrase-row .hits {
+  position: absolute;
+  right: 15px;
 }
 .phrase-col .btns-row {
   text-align: center;
 }
 .phrase-col .btns-row .buttons {
-  margin: 15px 10px 0 0;
+  margin: 20px 10px 0 0;
   width: 6em;
 }
 .phrase-col .btns-row .btn-back {
@@ -52,21 +71,23 @@
 }
 .phrase-col .btns-row .btn-next {
   background-color: #ffffff;
-  border: 1px solid #23c6c8;
-  color: #23c6c8;
+  border: 1px solid #1872ab;
+  color: #1872ab;
 }
 .phrase-col .btns-row .btn-random {
   background-color: #ffffff;
-  border: 1px solid #ea394c;
-  color: #ea394c;
+  border: 1px solid #23c6c8;
+  color: #23c6c8;
+  margin-right: 0;
 }
 .phrase-col .btns-row .btn-translate {
   background-color: #ffffff;
-  border: 1px solid #f79d3c;
-  color: #f79d3c;
+  border: 1px solid #23c6c8;
+  color: #23c6c8;
 }
 .phrase-col .Row {
   height: 90px;
+  margin: 0;
 }
 .req-form-cont {
   width: 700px;
@@ -97,8 +118,12 @@
   margin: 10px 0 0 0;
   position: absolute;
   right: 15px;
-  top: 0;
+  width: 40px;
+  top: 30px;
   padding: 0 3px 0 3px;
+  color: #ffffff;
+  background-image: none;
+  background-color: #1872ab;
 }
 .register-btn {
   text-align: right;
@@ -106,31 +131,43 @@
   margin: 10px 0 0 0;
   position: absolute;
   right: 80px;
-  top: 0;
+  color: #ffffff;
+  background-image: none;
+  background-color: #1872ab;
+  top: 30px;
+}
+.fa-user-circle-o {
+  margin-left: 5px;
+  display: inline-block;
 }
 .user-email {
+  text-align: center;
   margin-left: 5%;
   position: absolute;
-  right: 98px;
-  top: 10px;
+  width: 40px;
+  right: 78px;
+  top: 40px;
   border: 1px solid #1872ab;
   color: #1872ab;
   padding: 6px;
   border-radius: 5px;
 }
 .log-out-btn {
+  text-align: center;
   margin-left: 5%;
   position: absolute;
-  right: 98px;
+  right: 78px;
   border: 1px solid #1872ab;
   color: #1872ab;
   padding: 6px;
   border-radius: 5px;
   right: 2.8%;
-  top: 10px;
+  width: 40px;
+  top: 40px;
   padding: 0 3px 0 3px;
-  color: #16987e;
-  border: 1px solid #16987e;
+  color: #ffffff;
+  background-color: #1872ab;
+  background-image: none;
 }
 .user-hidden {
   position: absolute;
@@ -156,6 +193,11 @@
   display: block;
   color: #ff0000;
 }
+.msg-category {
+  margin: 0 0 20px 30px;
+  display: inline;
+  color: #ff0000;
+}
 .msg-password-error {
   display: block;
   color: #ff0000;
@@ -163,30 +205,38 @@
 @media screen and (max-width: 473px) {
   .user-email,
   .log-out-btn {
-    top: 10px;
+    top: 30px;
   }
   .user-email {
-    top: 10px;
+    top: 40px;
     right: 69px;
     width: 40px;
   }
   .log-out-btn {
     width: 40px;
-    top: 10px;
+    top: 40px;
   }
 }
 @media screen and (max-width: 375px) {
   .user-email,
   .log-out-btn {
-    top: 10px;
+    top: 40px;
+  }
+  .register-btn {
+    top: 30px;
+    width: 55px;
+    right: 63px;
+  }
+  .login-btn {
+    top: 30px;
   }
   .user-email {
-    top: 10px;
+    top: 40px;
     right: 69px;
     width: 40px;
   }
   .log-out-btn {
-    top: 10px;
+    top: 40px;
     width: 40px;
   }
 }
