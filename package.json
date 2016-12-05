@@ -7,7 +7,7 @@
     },
     "main": "index.js",
     "scripts": {
-        "start": "node index.js"
+        "start": "nodemon --ignore ./public index.dev.js"
     },
     "dependencies": {
         "alt": "^0.17.8",
