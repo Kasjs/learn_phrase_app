@@ -1,7 +1,7 @@
 import { localSync } from '../localStorage/localStorageMethods'
 
 const initialState = {
-    page: 'test',
+    isOffline: false,
     phrase: '',
     counter: 0,
     side: 'side_a',
@@ -96,6 +96,12 @@ export default function page( state = initialState, action) {
                 phrase: '',
                 hits: 0,
                 counter: 0
+            }
+        }
+        case 'SWITCH_OFFLINE_ONLINE_MODE': {
+            return {
+                ...state,
+                isOffline: !state.isOffline
             }
         }
 

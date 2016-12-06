@@ -43,7 +43,7 @@ const history = syncHistoryWithStore(hashHistory, store);
 
 render(
     <Provider store={store}>
-        <div className='main'>
+        <div className='main container-fluid'>
             <Router history={history}>
                 <Route path="/" component={App}/>
                 <Route path="login" component={Login}/>
@@ -54,3 +54,5 @@ render(
     </Provider>,
     document.getElementById('app')
 )
+
+require('offline-plugin/runtime').install();

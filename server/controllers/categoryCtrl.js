@@ -29,6 +29,19 @@ module.exports.postCategory = function(req, res) {
     });
 };
 
+module.exports.syncAllCategory = function(req, res) {
+    User.findOne({email: req.body.email}, function(err, user) {
+        user.category[0] = req.body.categoryData;
+        user.markModified('category');
+        user.defaultCategory = req.body.categoryNames;
+        user.markModified('defaultCategory');
+        user.save();
+        return res.send({
+            data: user.category[0]
+        })
+    });
+}
+
 module.exports.addNewCategory = function(req, res) {
     User.findOne({ email: req.body.email }, function(err, user) {
         if ( user.category[0][req.body.name] ) {

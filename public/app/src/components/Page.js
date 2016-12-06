@@ -1,9 +1,8 @@
 import { Row, Col, Container, FormSelect, } from 'elemental'
 import { Button } from 'react-bootstrap'
 import React, { PropTypes, Component } from 'react'
-import { getCategoryFromServer } from '../ajaxCalls/request'
 import { Link, browserHistory, hashHistory } from 'react-router'
-import { getUserCategory, syncWithServer } from '../ajaxCalls/request'
+import { getUserCategory, syncWithServer, getCategoryFromServer, getAllCategory, syncAllCategoryAndContent } from '../ajaxCalls/request'
 
 function setOptions() {
     var optionsFromServer;
@@ -15,6 +14,7 @@ function setOptions() {
     optionsFromServer = JSON.parse(localStorage.getItem('options'));
     return optionsFromServer ? optionsFromServer : defaultOptions;
 }
+
 
 function setSelectedOptions() {
     let selectedOptions = JSON.parse(localStorage.getItem('selected'));
@@ -40,17 +40,23 @@ export default class Page extends Component {
         localStorage.setItem('selected', JSON.stringify(val));
         getCategoryFromServer(localStorage.getItem('selected'));
     }
-
-    onGetUsercategory() {
-        getUserCategory();
+    preparingToOffline() {
+        this.props.switchOfflineOnLineMode();
+        getAllCategory();
+        if(this.props.isOffline) {
+            syncAllCategoryAndContent();
+        }
     }
 
+
     render() {
-        const { page, phrase, counter, hits, email, hidden, } = this.props
-        return <div className='phrase-col container-fluid'>
+        const { page, phrase, counter, hits, email, hidden, isOffline } = this.props
+        return <div className='phrase-col'>
+
             <div className='header'>
                 <p className='header-text'>Phrase generator </p>
             </div>
+
             <Row className='select-comp'>
                 <Col xs="50%" sm="40%" md="25%" lg="40%">
                     <FormSelect className='select-category' options={setOptions()}
@@ -66,10 +72,11 @@ export default class Page extends Component {
                         <i className="fa fa-plus" aria-hidden="truen"></i>
                     </Button>
                 </Col>
-                <Col>
+                <div className='col-xs-12'>
                     <p className='selected-category'>Now selected: <strong>{setSelectedOptions()}</strong></p>
-                </Col>
+                </div>
             </Row>
+
             <div className='phrase-row row'>
                 <div className='col-xs-6 position-col'>
                     <span className='position'>Position: {counter} </span>
@@ -81,6 +88,24 @@ export default class Page extends Component {
                     <p><strong className='phrase'>{phrase}</strong></p>
                 </div>
             </div>
+
+            <div className={isOffline ? 'row offline-row hide' : 'row offline-row'}>
+                <div className='col-xs-12'>
+                    <span>Go OffLine</span>
+                    <Button onClick={this.preparingToOffline.bind(this)} className='btn btn-default offline-btn'>
+                        <i className="fa fa-toggle-on" aria-hidden="true"></i>
+                    </Button>
+                </div>
+            </div>
+            <div className={isOffline ? 'row online-row' : 'row online-row hide'}>
+                <div className='col-xs-12'>
+                    <span>Go OnLine </span>
+                    <Button onClick={this.preparingToOffline.bind(this)} className='btn btn-default offline-btn'>
+                        <i className="fa fa-toggle-off" aria-hidden="true"></i>
+                    </Button>
+                </div>
+            </div>
+
             <div className='row btns-row'>
                 <div className='col-xs-12'>
                     <Button className='buttons btn-back btn btn-sm'
@@ -97,6 +122,16 @@ export default class Page extends Component {
                     <Button className='buttons btn-random btn btn-sm'
                         onClick={this.onGetRandomPhraseBtnClick.bind(this)}>Random
                     </Button>
+                </div>
+            </div>
+
+            <div className='row footer'>
+                <div className='col-xs-12 footer-text'>
+                    <span>
+                        2016 Phrase generator
+                        <i className="fa fa-apple apple-icon" aria-hidden="true"></i>
+                        <i className="fa fa-android android-icon" aria-hidden="true"></i>
+                    </span>
                 </div>
             </div>
         </div>

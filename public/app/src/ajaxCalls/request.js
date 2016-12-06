@@ -26,7 +26,7 @@ export function syncWithServer() {
 
     $.post('/category',
         {
-            data : JSON.parse(localStorage.getItem('catagories_' + getSelected())),
+            data : JSON.parse(localStorage.getItem('categories_' + getSelected())),
             category: getSelected(),
             email: localStorage.getItem('email')
         }).then(function(response) {
@@ -45,11 +45,42 @@ export function updateCategory(newCategoryName, categoryContent) {
             email: localStorage.getItem('email')
         }).then(function(response) {
             setCategoryOptions(response.categoryNames);
-            localStorage.setItem('catagories_' + newCategoryName.label , JSON.stringify(response.data[newCategoryName.label]));
+            localStorage.setItem('categories_' + newCategoryName.label , JSON.stringify(response.data[newCategoryName.label]));
             location.reload();
         }, function(erro) {
             console.log('Error sync')
         });
+}
+
+export function getAllCategory() {
+    $.get('/category', {email : localStorage.getItem('email')}).then(function(res) {
+        let categoryLength = res.categoryNames.length
+        for (let i = 0; i < categoryLength; i++) {
+            let categoryName = res.categoryNames[i].label;
+            localStorage.setItem('categories_' + categoryName , JSON.stringify(res.data[categoryName]));
+        }
+        localStorage.setItem('selected', JSON.stringify(res.categoryNames[0].label));
+    }, function(error) {
+        console.log('Error get data')
+    })
+}
+
+export function syncAllCategoryAndContent() {
+    var categoryNames = JSON.parse(localStorage.getItem('options'));
+    var categoryData = {};
+    for (let i = 0; i < categoryNames.length; i++) {
+        categoryData[categoryNames[i].label] = JSON.parse(localStorage.getItem('categories_' + categoryNames[i].label));
+    }
+    console.log(categoryData, categoryNames);
+    $.post('/syncAllCategory',
+        {
+            email : localStorage.getItem('email'),
+            categoryNames : categoryNames,
+            categoryData : categoryData
+        }).then(function(res) {
+    }, function(error) {
+        console.log('Error get data')
+    })
 }
 
 export function register(user) {

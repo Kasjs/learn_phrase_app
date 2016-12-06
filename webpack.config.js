@@ -1,8 +1,9 @@
 'use strict';
 
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+var path = require('path'),
+    webpack = require('webpack'),
+    HtmlWebpackPlugin = require('html-webpack-plugin');
+    // OfflinePlugin = require('offline-plugin');
 
 module.exports = {
     devtool: 'eval',
@@ -30,7 +31,17 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"
-        })
+        }),
+        // new OfflinePlugin({
+        //     cacheMaps: [
+        //         {
+        //             match: function(requestUrl) {
+        //                 return new URL('/', location);
+        //             },
+        //             requestTypes: ['navigate']
+        //         }
+        //     ]
+        // })
     ],
     module: {
         loaders: [{

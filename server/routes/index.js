@@ -9,5 +9,6 @@ router.post('/register', auth.signUp);
 router.get('/category', categoryCtrl.getCategory);
 router.post('/category', categoryCtrl.postCategory);
 router.post('/addNewCategory', categoryCtrl.addNewCategory);
+router.post('/syncAllCategory', categoryCtrl.syncAllCategory);
 
 module.exports = router;

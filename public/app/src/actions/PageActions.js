@@ -64,6 +64,11 @@ export function clearPageInfo() {
 
 export function updateCategoryContent() {
     return {
-        type: 'UPDATE_CATEGORY_CONTENT',
+        type: 'UPDATE_CATEGORY_CONTENT'
+    }
+}
+export function switchOfflineOnLineMode() {
+    return {
+        type: 'SWITCH_OFFLINE_ONLINE_MODE'
     }
 }

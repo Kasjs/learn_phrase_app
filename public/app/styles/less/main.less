@@ -4,21 +4,19 @@
 .header {
     height: 30px;
     background-color: #676a6c;
-    margin: 0
-
+    margin: 0;
+    width : 105%;
 }
 .header-text {
     color: #ffffff;
     margin-left: 10px;
     padding-top: 5px;
 }
-
 .phrase {
     font-size: 20px;
     color: #2f4050;
     text-align: center;
 }
-
 .phrase-col {
     margin: 0 0 0 0;
     .select-comp {
@@ -47,7 +45,7 @@
         background-color: #fafafa;
         border-radius: 5px;
         border: 1px solid #ccc;
-        margin: 0 10px 0 10px;
+        margin: 0 9px 0 10px;
         color: #1872ab;
         .position {
             position: relative;
@@ -59,7 +57,6 @@
             right: 15px;
         }
     }
-
     .btns-row {
         text-align: center;
         .buttons {
@@ -93,6 +90,53 @@
         margin: 0;
     }
 }
+.offline-row {
+    padding: 10px 0 0 10px;
+    color: #1872ab;
+    .fa-toggle-on {
+        display: inline-block;
+        width: 20px;
+        height: 10px;
+        color: #1872ab;
+    }
+    .offline-btn {
+        border: none;
+    }
+}
+.online-row {
+    .offline-row;
+}
+.phrase-col {
+    padding-right: 0 !important;
+}
+html {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+.footer {
+    .footer-text {
+        padding-top: 5px;
+        color: #ffffff;
+        text-align: center;
+    }
+    .apple-icon {
+        position: absolute;
+        right: 30px;
+    }
+    .android-icon {
+        color: #99cc33;
+        position: absolute;
+        right: 12%;
+    }
+    background-color: #1872ab;
+    height: 30px;
+    width: 110%;
+    position: absolute;;
+    bottom: -2px;
+    z-index: 999;
+}
+
 
 @import "form";
 @import "user";

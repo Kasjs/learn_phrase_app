@@ -4,17 +4,17 @@ export let setCat = [];
 
 export let localSync = function(index) {
     let selected = JSON.parse(localStorage.getItem('selected'));
-    let catagories = JSON.parse(localStorage.getItem('catagories_' + selected ));
+    let catagories = JSON.parse(localStorage.getItem('categories_' + selected ));
     let promise = Promise.resolve(selected, catagories).then(function() {
         ++catagories[index].hits;
-        localStorage.setItem('catagories_' + selected, JSON.stringify(catagories))
+        localStorage.setItem('categories_' + selected, JSON.stringify(catagories))
     });
 }
 
 export function setCategory(response) {
     let selected = JSON.parse(localStorage.getItem('selected'));
-    localStorage.setItem('catagories_' + selected , JSON.stringify(response.data[selected]));
-    setCat = JSON.parse(localStorage.getItem('catagories_' + getSelected()));
+    localStorage.setItem('categories_' + selected , JSON.stringify(response.data[selected]));
+    setCat = JSON.parse(localStorage.getItem('categories_' + getSelected()));
     return setCat;
 }
 

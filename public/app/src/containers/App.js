@@ -15,7 +15,8 @@ class App extends Component {
 	render() {
 		const { page, userAuth, user, category } = this.props
 		const { getNextPhrase, getRandomPhrase, getBackPhrase, switchLanguage,
-            getPhrase, getSelectedCategory, syncCatAndRating, clearPageInfo, logChange, updateCategoryContent } = this.props.pageActions
+            getPhrase, getSelectedCategory, syncCatAndRating, clearPageInfo, logChange,
+            updateCategoryContent, preparingToOffline, switchOfflineOnLineMode } = this.props.pageActions
         const { registerNewUser, logOutUser, loginUser, showMassage, showCategoryMassage } = this.props.userActions
 		return (
             <div className='row'>
@@ -38,17 +39,20 @@ class App extends Component {
                     />
     			<Page className='main'
                     page={page.page}
+                    isOffline={page.isOffline}
                     email={userAuth.email}
                     isAuthButtonsHidden={userAuth.isAuthButtonsHidden}
     				phrase={page.phrase}
                     counter={page.counter}
                     hits={page.hits}
                     registerNewUser={this.props.userActions.registerNewUser}
+                    preparingToOffline={preparingToOffline}
     				getNextPhrase={getNextPhrase}
     				getRandomPhrase={getRandomPhrase}
     				getBackPhrase={getBackPhrase}
                     updateCategoryContent={updateCategoryContent}
     				switchLanguage={switchLanguage}
+                    switchOfflineOnLineMode={switchOfflineOnLineMode}
                     logChange={logChange}
     				getPhrase={getPhrase}
                     getSelectedCategory={getSelectedCategory}
