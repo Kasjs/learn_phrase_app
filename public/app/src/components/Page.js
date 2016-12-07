@@ -15,7 +15,6 @@ function setOptions() {
     return optionsFromServer ? optionsFromServer : defaultOptions;
 }
 
-
 function setSelectedOptions() {
     let selectedOptions = JSON.parse(localStorage.getItem('selected'));
     return selectedOptions;
@@ -43,11 +42,12 @@ export default class Page extends Component {
     preparingToOffline() {
         this.props.switchOfflineOnLineMode();
         getAllCategory();
+        localStorage.setItem('isOffline', !this.props.isOffline);
         if(this.props.isOffline) {
             syncAllCategoryAndContent();
+            getAllCategory();
         }
     }
-
 
     render() {
         const { page, phrase, counter, hits, email, hidden, isOffline } = this.props
@@ -66,8 +66,6 @@ export default class Page extends Component {
                 </Col>
                 <Col xs='1/3'>
                     <Button className='btn-sunc btn-default' onClick={() => {
-                        getCategoryFromServer(localStorage.getItem('selected')),
-                        syncWithServer(),
                         hashHistory.push('addCategory'); }}>
                         <i className="fa fa-plus" aria-hidden="truen"></i>
                     </Button>
@@ -90,7 +88,7 @@ export default class Page extends Component {
             </div>
 
             <div className={isOffline ? 'row offline-row hide' : 'row offline-row'}>
-                <div className='col-xs-12'>
+                <div className='col-xs-6'>
                     <span>Go OffLine</span>
                     <Button onClick={this.preparingToOffline.bind(this)} className='btn btn-default offline-btn'>
                         <i className="fa fa-toggle-on" aria-hidden="true"></i>

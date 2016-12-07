@@ -3,14 +3,44 @@ import { getSelected } from '../actions/pageActions'
 import { showMassage } from '../actions/userActions'
 import { browserHistory, hashHistory } from 'react-router'
 import { registerNewUser, loginUser } from '../actions/userActions'
-import { setLoginWhenSuccess, setLoginWhenError, setCategory, getSelectedCategory, getEmailFromLocalStrg, setCategoryOptions } from '../localStorage/localStorageMethods'
+import { setLoginWhenSuccess, setLoginWhenError, setCategory, getSelectedCategory,
+        getEmailFromLocalStrg, setCategoryOptions, setCategoryOffline, offlineUpdateCategory,
+        setCategoryField, getCategoryField } from '../localStorage/localStorageMethods'
+
+//var isOffline = localStorage.getItem('isOffline');
 
 export function transferMessages(msg) {
     return msg;
 }
 
-export function getCategoryFromServer(value) {
+function calculateAllCategory(res) {
+    let categoryLength = res.categoryNames.length
+    for (let i = 0; i < categoryLength; i++) {
+        let categoryName = res.categoryNames[i].label;
+        setCategoryField(categoryName, res.data[categoryName]);
+        // localStorage.setItem('categories_' + categoryName , JSON.stringify(res.data[categoryName]));
+    }
+    localStorage.setItem('selected', JSON.stringify(res.categoryNames[0].label));
+}
 
+function calculateAllCategoryAndContent() {
+    let categoryNames = JSON.parse(localStorage.getItem('options'));
+    let categoryData = {};
+    for (let i = 0; i < categoryNames.length; i++) {
+        categoryData[categoryNames[i].label] = getCategoryField(categoryNames[i].label); //JSON.parse(localStorage.getItem('categories_' + categoryNames[i].label))
+    }
+    return {
+        categoryNames : categoryNames,
+        categoryData : categoryData
+    }
+}
+
+export function getCategoryFromServer(value) {
+    let isOffline = localStorage.getItem('isOffline');
+    if (isOffline) {
+        setCategoryOffline();
+        return;
+    }
     $.get('/category', {email : localStorage.getItem('email')}).then(function(response) {
         switch(value) {
             case getSelectedCategory() : {
@@ -23,7 +53,10 @@ export function getCategoryFromServer(value) {
 }
 
 export function syncWithServer() {
-
+    let isOffline = localStorage.getItem('isOffline');
+    if (isOffline) {
+        return;
+    }
     $.post('/category',
         {
             data : JSON.parse(localStorage.getItem('categories_' + getSelected())),
@@ -37,7 +70,11 @@ export function syncWithServer() {
 }
 
 export function updateCategory(newCategoryName, categoryContent) {
-
+    let isOffline = localStorage.getItem('isOffline');
+    if (isOffline) {
+        offlineUpdateCategory(newCategoryName, categoryContent);
+        return;
+    }
     $.post('/addNewCategory',
         {
             name : newCategoryName.value,
@@ -45,7 +82,7 @@ export function updateCategory(newCategoryName, categoryContent) {
             email: localStorage.getItem('email')
         }).then(function(response) {
             setCategoryOptions(response.categoryNames);
-            localStorage.setItem('categories_' + newCategoryName.label , JSON.stringify(response.data[newCategoryName.label]));
+            setCategoryField(newCategoryName.label, response.data[newCategoryName.label]);
             location.reload();
         }, function(erro) {
             console.log('Error sync')
@@ -54,29 +91,19 @@ export function updateCategory(newCategoryName, categoryContent) {
 
 export function getAllCategory() {
     $.get('/category', {email : localStorage.getItem('email')}).then(function(res) {
-        let categoryLength = res.categoryNames.length
-        for (let i = 0; i < categoryLength; i++) {
-            let categoryName = res.categoryNames[i].label;
-            localStorage.setItem('categories_' + categoryName , JSON.stringify(res.data[categoryName]));
-        }
-        localStorage.setItem('selected', JSON.stringify(res.categoryNames[0].label));
+        calculateAllCategory(res);
     }, function(error) {
         console.log('Error get data')
     })
 }
 
 export function syncAllCategoryAndContent() {
-    var categoryNames = JSON.parse(localStorage.getItem('options'));
-    var categoryData = {};
-    for (let i = 0; i < categoryNames.length; i++) {
-        categoryData[categoryNames[i].label] = JSON.parse(localStorage.getItem('categories_' + categoryNames[i].label));
-    }
-    console.log(categoryData, categoryNames);
+    calculateAllCategoryAndContent();
     $.post('/syncAllCategory',
         {
             email : localStorage.getItem('email'),
-            categoryNames : categoryNames,
-            categoryData : categoryData
+            categoryNames : calculateAllCategoryAndContent().categoryNames,
+            categoryData : calculateAllCategoryAndContent().categoryData
         }).then(function(res) {
     }, function(error) {
         console.log('Error get data')
@@ -84,33 +111,26 @@ export function syncAllCategoryAndContent() {
 }
 
 export function register(user) {
-
     $.post('/register',
         {
             email: user.email,
             password: user.password,
             repPassword: user.repPassword
-
         }).then(function(response) {
             hashHistory.push('/login');
         }, function(response) {
-            localStorage.setItem('msg-email', response.responseJSON.errors.email);
-            localStorage.setItem('msg-password', response.responseJSON.errors.password);
             setLoginWhenError();
         });
 }
 export function login(user) {
-
     $.post('/login',
         {
             email: user.email,
             password: user.password
-
         }).then(function(response) {
             setCategoryOptions(response.user.defaultCategory);
             setLoginWhenSuccess(response);
             hashHistory.push('/');
-
         }, function(response) {
             setLoginWhenError();
         });

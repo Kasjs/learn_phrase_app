@@ -3,7 +3,7 @@
 var path = require('path'),
     webpack = require('webpack'),
     HtmlWebpackPlugin = require('html-webpack-plugin');
-    // OfflinePlugin = require('offline-plugin');
+    //OfflinePlugin = require('offline-plugin');
 
 module.exports = {
     devtool: 'eval',

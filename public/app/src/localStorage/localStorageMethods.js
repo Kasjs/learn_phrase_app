@@ -18,6 +18,36 @@ export function setCategory(response) {
     return setCat;
 }
 
+export function offlineUpdateCategory(newCategoryName, categoryContent) {
+    let categoryNames = JSON.parse(localStorage.getItem('options'));
+    console.log(categoryNames);
+    let newCategoryField = [];
+    newCategoryField.push(categoryContent);
+    categoryNames.push(newCategoryName);
+    localStorage.setItem('options', JSON.stringify(categoryNames));
+    localStorage.setItem('categories_' + newCategoryName.label, JSON.stringify(newCategoryField));
+}
+
+export function setCategoryOffline() {
+    let selected = JSON.parse(localStorage.getItem('selected'));
+    localStorage.setItem('categories_' + selected, localStorage.getItem('categories_' + getSelected()));
+    setCat = JSON.parse(localStorage.getItem('categories_' + getSelected()));
+    return setCat;
+}
+
+export function setCategoryOptions(response) {
+    localStorage.setItem('options', JSON.stringify(response));
+}
+
+export function setCategoryField(name, data) {
+    localStorage.setItem('categories_' + name , JSON.stringify(data));
+}
+
+export function getCategoryField(category) {
+    return JSON.parse(localStorage.getItem('categories_' + category));
+
+}
+
 export function getEmailFromLocalStrg() {
     return localStorage.getItem('email');
 }
@@ -58,8 +88,4 @@ export function getEmailErrorMsg() {
 
 export function getPasswordErrorMsg() {
     return localStorage.getItem('msg-password');
-}
-
-export function setCategoryOptions(response) {
-    localStorage.setItem('options', JSON.stringify(response));
 }

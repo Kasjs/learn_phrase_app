@@ -5,7 +5,7 @@ export function getSelected() {
     return JSON.parse(localStorage.getItem('selected'));
 }
 function getCategoryFromStorage() {
-    return JSON.parse(localStorage.getItem('catagories_' + getSelected()));
+    return JSON.parse(localStorage.getItem('categories_' + getSelected()));
 }
 
 export function getBackPhrase() {

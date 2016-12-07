@@ -96,8 +96,6 @@
 }
 .offline-row .fa-toggle-on {
   display: inline-block;
-  width: 20px;
-  height: 10px;
   color: #1872ab;
 }
 .offline-row .offline-btn {
@@ -109,8 +107,6 @@
 }
 .online-row .fa-toggle-on {
   display: inline-block;
-  width: 20px;
-  height: 10px;
   color: #1872ab;
 }
 .online-row .offline-btn {
@@ -232,10 +228,10 @@ html {
   top: 12%;
 }
 .hide {
-  display: none;
+  visibility: hidden;
 }
 .show {
-  display: block;
+  visibility: visible;
 }
 .log-err-msg {
   display: block;

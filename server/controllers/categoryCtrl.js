@@ -36,6 +36,7 @@ module.exports.syncAllCategory = function(req, res) {
         user.defaultCategory = req.body.categoryNames;
         user.markModified('defaultCategory');
         user.save();
+        console.log(user.category[0]);
         return res.send({
             data: user.category[0]
         })
