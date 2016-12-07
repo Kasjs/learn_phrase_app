@@ -100,9 +100,10 @@ export default class Page extends Component {
                     <span>Go OnLine </span>
                     <Button onClick={this.preparingToOffline.bind(this)} className='btn btn-default offline-btn'>
                         <i className="fa fa-toggle-off" aria-hidden="true"></i>
-                    </Button>
+                    </Button><span className='ready-msg'>Now you can go offline</span>
                 </div>
             </div>
+
 
             <div className='row btns-row'>
                 <div className='col-xs-12'>

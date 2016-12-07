@@ -112,6 +112,10 @@
 .online-row .offline-btn {
   border: none;
 }
+.ready-msg {
+  color: green;
+  padding-left: 10px;
+}
 .phrase-col {
   padding-right: 0 !important;
 }
