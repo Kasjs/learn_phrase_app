@@ -13,6 +13,10 @@ var __wpo = {
       "/912ec66d7572ff821749319396470bde.svg",
       "/main.js",
       "/",
+      "/login",
+      "/register",
+      "/addNewCategory",
+      "/category",
       "https://fonts.googleapis.com/css?family=Roboto:500",
       "/main.js.map",
       "/"
@@ -94,7 +98,7 @@ var __wpo = {
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
+
 	      'use strict';
 
 	if (false) {
@@ -717,13 +721,13 @@ var __wpo = {
 	    ],
 	});
 	      module.exports = __webpack_require__(1)
-	    
+
 
 /***/ },
 /* 1 */
 /***/ function(module, exports) {
 
-	
+
 
 /***/ }
 /******/ ]);
