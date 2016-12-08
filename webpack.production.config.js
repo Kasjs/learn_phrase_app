@@ -39,7 +39,11 @@ module.exports = {
                 requestTypes: ['navigate']
             }
         ],
-        externals: ["https://fonts.googleapis.com/css?family=Roboto:500"]
+        externals: [
+            "https://fonts.googleapis.com/css?family=Roboto:500",
+            "main.js.map",
+            "index.html",
+        ]
     })
 
   ],
