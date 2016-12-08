@@ -51848,70 +51848,18 @@
 /* 602 */
 /***/ function(module, exports) {
 
-	var appCacheIframe;
+	var warn = "offline-plugin: runtime was installed without OfflinePlugin being added to the webpack.config.js. See https://goo.gl/2Ca7NO for details.";
 	
-	function hasSW() {
-	  return 'serviceWorker' in navigator &&
-	    // This is how I block Chrome 40 and detect Chrome 41, because first has
-	    // bugs with history.pustState and/or hashchange
-	    (window.fetch || 'imageRendering' in document.documentElement.style) &&
-	    (window.location.protocol === 'https:' || window.location.hostname === 'localhost')
+	if (window.console) {
+	  if (console.info) {
+	    console.info(warn);
+	  } else if (console.log) {
+	    console.log(warn);
+	  }
 	}
 	
-	function install(options) {
-	  options || (options = {});
-	
-	  
-	    if (hasSW()) {
-	      var registration = navigator.serviceWorker
-	        .register(
-	          "\\sw.js"
-	          
-	        );
-	
-	      
-	
-	      return;
-	    }
-	  
-	
-	  
-	    if (window.applicationCache) {
-	      var directory = "\\appcache\\";
-	      var name = "manifest";
-	
-	      var doLoad = function() {
-	        var page = directory + name + '.html';
-	        var iframe = document.createElement('iframe');
-	
-	        
-	
-	        iframe.src = page;
-	        iframe.style.display = 'none';
-	
-	        appCacheIframe = iframe;
-	        document.body.appendChild(iframe);
-	      };
-	
-	      if (document.readyState === 'complete') {
-	        setTimeout(doLoad);
-	      } else {
-	        window.addEventListener('load', doLoad);
-	      }
-	
-	      return;
-	    }
-	  
-	}
-	
-	function applyUpdate(callback, errback) {
-	  
-	
-	  
-	}
-	
-	exports.install = install;
-	exports.applyUpdate = applyUpdate;
+	exports.install = function() {};
+	exports.applyUpdate = function() {};
 
 /***/ },
 /* 603 */
