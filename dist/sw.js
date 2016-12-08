@@ -13,13 +13,17 @@ var __wpo = {
       "/912ec66d7572ff821749319396470bde.svg",
       "/main.js",
       "/",
-      "https://fonts.googleapis.com/css?family=Roboto:500"
+      "https://fonts.googleapis.com/css?family=Roboto:500",
+      "/main.js.map",
+      "/"
     ],
     "additional": [],
     "optional": []
   },
   "externals": [
-    "https://fonts.googleapis.com/css?family=Roboto:500"
+    "https://fonts.googleapis.com/css?family=Roboto:500",
+    "/main.js.map",
+    "/"
   ],
   "hashesMap": {
     "86b6f62b7853e67d3e635f6512a5a5efc58ea3c3": "/f4769f9bdb7466be65088239c12046d1.eot",
@@ -33,11 +37,12 @@ var __wpo = {
     "de51a8494180a6db074af2dee2383f0a363c5b08": "/89889688147bd7575d6327160d64e760.svg",
     "98a8aa5cf7d62c2eff5f07ede8d844b874ef06ed": "/912ec66d7572ff821749319396470bde.svg",
     "43d0cd627003131ccf1227ff1556287eba754a66": "/main.js",
+    "13967ada4c84efb9404eef649ea9ea1731069411": "/main.js.map",
     "5e936dc63565c7bb1283dbd6475b69dc7e5e5013": "/"
   },
   "strategy": "changed",
   "responseStrategy": "cache-first",
-  "version": "2016-12-08 11:11:17",
+  "version": "2016-12-08 11:42:14",
   "name": "webpack-offline",
   "pluginVersion": "4.5.2",
   "relativePaths": false
