@@ -1,8 +1,8 @@
 let path = require('path'),
 webpack = require('webpack'),
 HtmlWebpackPlugin = require('html-webpack-plugin'),
-ExtractTextPlugin = require('extract-text-webpack-plugin');
-// OfflinePlugin = require('offline-plugin');
+ExtractTextPlugin = require('extract-text-webpack-plugin'),
+OfflinePlugin = require('offline-plugin');
 
 
 module.exports = {
@@ -30,21 +30,21 @@ module.exports = {
         $: "jquery",
         jQuery: "jquery"
     }),
-    // new OfflinePlugin({
-    //     cacheMaps: [
-    //         {
-    //             match: function(requestUrl) {
-    //                 return new URL('/', location);
-    //             },
-    //             requestTypes: ['navigate']
-    //         }
-    //     ],
-    //     externals: [
-    //         "https://fonts.googleapis.com/css?family=Roboto:500",
-    //         "main.js.map",
-    //         "index.html",
-    //     ]
-    // })
+    new OfflinePlugin({
+        cacheMaps: [
+            {
+                match: function(requestUrl) {
+                    return new URL('/', location);
+                },
+                requestTypes: ['navigate']
+            }
+        ],
+        externals: [
+            "https://fonts.googleapis.com/css?family=Roboto:500",
+            "main.js.map",
+            "index.html"
+        ]
+    })
 
   ],
   resolve: {
