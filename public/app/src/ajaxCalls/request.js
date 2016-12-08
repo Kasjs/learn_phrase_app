@@ -7,8 +7,6 @@ import { setLoginWhenSuccess, setLoginWhenError, setCategory, getSelectedCategor
         getEmailFromLocalStrg, setCategoryOptions, setCategoryOffline, offlineUpdateCategory,
         setCategoryField, getCategoryField } from '../localStorage/localStorageMethods'
 
-//var isOffline = localStorage.getItem('isOffline');
-
 export function transferMessages(msg) {
     return msg;
 }
@@ -18,7 +16,6 @@ function calculateAllCategory(res) {
     for (let i = 0; i < categoryLength; i++) {
         let categoryName = res.categoryNames[i].label;
         setCategoryField(categoryName, res.data[categoryName]);
-        // localStorage.setItem('categories_' + categoryName , JSON.stringify(res.data[categoryName]));
     }
     localStorage.setItem('selected', JSON.stringify(res.categoryNames[0].label));
 }
@@ -27,7 +24,7 @@ function calculateAllCategoryAndContent() {
     let categoryNames = JSON.parse(localStorage.getItem('options'));
     let categoryData = {};
     for (let i = 0; i < categoryNames.length; i++) {
-        categoryData[categoryNames[i].label] = getCategoryField(categoryNames[i].label); //JSON.parse(localStorage.getItem('categories_' + categoryNames[i].label))
+        categoryData[categoryNames[i].label] = getCategoryField(categoryNames[i].label);
     }
     return {
         categoryNames : categoryNames,
@@ -62,9 +59,7 @@ export function syncWithServer() {
             data : JSON.parse(localStorage.getItem('categories_' + getSelected())),
             category: getSelected(),
             email: localStorage.getItem('email')
-        }).then(function(response) {
-            console.log(response.data);
-        }, function(erro) {
+        }).then(function(response) {}, function(erro) {
             console.log('Error sync')
         });
 }

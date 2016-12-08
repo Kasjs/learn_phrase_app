@@ -34,7 +34,6 @@ class Category extends Component {
 
         let { category } = this.props;
         let { msgCategory } = this.props.userAuth;
-        console.log(this.props);
 
         return (
             <div>

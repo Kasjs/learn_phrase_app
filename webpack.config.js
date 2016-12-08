@@ -2,8 +2,8 @@
 
 var path = require('path'),
     webpack = require('webpack'),
-    HtmlWebpackPlugin = require('html-webpack-plugin');
-    //OfflinePlugin = require('offline-plugin');
+    HtmlWebpackPlugin = require('html-webpack-plugin'),
+    OfflinePlugin = require('offline-plugin');
 
 module.exports = {
     devtool: 'eval',
@@ -32,16 +32,16 @@ module.exports = {
             $: "jquery",
             jQuery: "jquery"
         }),
-        // new OfflinePlugin({
-        //     cacheMaps: [
-        //         {
-        //             match: function(requestUrl) {
-        //                 return new URL('/', location);
-        //             },
-        //             requestTypes: ['navigate']
-        //         }
-        //     ]
-        // })
+        new OfflinePlugin({
+            cacheMaps: [
+                {
+                    match: function(requestUrl) {
+                        return new URL('/', location);
+                    },
+                    requestTypes: ['navigate']
+                }
+            ]
+        })
     ],
     module: {
         loaders: [{

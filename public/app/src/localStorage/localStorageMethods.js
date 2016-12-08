@@ -20,7 +20,6 @@ export function setCategory(response) {
 
 export function offlineUpdateCategory(newCategoryName, categoryContent) {
     let categoryNames = JSON.parse(localStorage.getItem('options'));
-    console.log(categoryNames);
     let newCategoryField = [];
     newCategoryField.push(categoryContent);
     categoryNames.push(newCategoryName);

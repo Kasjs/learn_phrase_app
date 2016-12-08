@@ -58,7 +58,6 @@ export default function userAuth(state = initialState, action) {
                 msgCategory : action.payload
             }
         }
-
         default:
         return state
     }

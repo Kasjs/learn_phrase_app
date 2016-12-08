@@ -6,7 +6,6 @@ const initialState = {
     counter: 0,
     side: 'side_a',
     hits: 0
-
 }
 
 export default function page( state = initialState, action) {
@@ -104,7 +103,6 @@ export default function page( state = initialState, action) {
                 isOffline: !state.isOffline
             }
         }
-
         default:
         return state
     }

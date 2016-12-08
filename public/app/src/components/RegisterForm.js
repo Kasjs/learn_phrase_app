@@ -20,9 +20,10 @@ class RegisterForm extends Component {
     }
 
     render() {
-        console.log(this.props);
+
         let { user } = this.props;
         let { msgEmail, msgPassword } = this.props.userAuth;
+
         return (
             <div>
                 <Col xs='100%'>

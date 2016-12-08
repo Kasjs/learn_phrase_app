@@ -1,7 +1,8 @@
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+let path = require('path'),
+webpack = require('webpack'),
+HtmlWebpackPlugin = require('html-webpack-plugin'),
+ExtractTextPlugin = require('extract-text-webpack-plugin'),
+OfflinePlugin = require('offline-plugin');
 
 
 module.exports = {
@@ -21,7 +22,6 @@ module.exports = {
         filename: 'index.html'
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
-    // new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('production')
@@ -30,6 +30,17 @@ module.exports = {
         $: "jquery",
         jQuery: "jquery"
     }),
+    new OfflinePlugin({
+        cacheMaps: [
+            {
+                match: function(requestUrl) {
+                    return new URL('/', location);
+                },
+                requestTypes: ['navigate']
+            }
+        ],
+        externals: ["https://fonts.googleapis.com/css?family=Roboto:500"]
+    })
 
   ],
   resolve: {
