@@ -54,7 +54,7 @@ if (isProduction) {
     app.use(favicon(path.join(__dirname, 'server', 'assets', 'images', 'favicon.ico')));
     app.use(middleware);
     app.use(webpackHotMiddleware(compiler));
-    app.use(express.static('./public/dist'));
+    app.use(express.static('./dist'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
         extended: true
@@ -68,7 +68,7 @@ if (isProduction) {
     });
 
     app.get('/', function(req, res) {
-        res.write(middleware.fileSystem.readFileSync(path.join(__dirname, './public/dist/index.html')));
+        res.write(middleware.fileSystem.readFileSync(path.join(__dirname, './dist/index.html')));
         res.end();
     });
 
