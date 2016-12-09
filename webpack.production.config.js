@@ -11,7 +11,7 @@ module.exports = {
     path.join(__dirname, './public/app/src' , 'main.js')
   ],
   output: {
-    path: path.join(__dirname, '/dist/'),
+    path: path.join(__dirname, './dist'),
     filename: 'main.js',
     publicPath: '/'
   },
@@ -23,11 +23,11 @@ module.exports = {
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.NoErrorsPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-        compress : {
-            warnings : false,
-        }
-    }),
+    // new webpack.optimize.UglifyJsPlugin({
+    //     compress : {
+    //         warnings : false,
+    //     }
+    // }),
     new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('production')
     }),
