@@ -10,12 +10,12 @@ request = require('request'),
 bodyParser = require('body-parser'),
 webpackMiddleware = require('webpack-dev-middleware'),
 webpackHotMiddleware = require('webpack-hot-middleware'),
-webpackConfig = require('./webpack.config.js'),
+webpackConfig = require('./webpack.production.config.js'),
 React = require('react'),
 Router = require('react-router'),
 config = require('./config'),
 
-isDeveloping = process.env.NODE_ENV !== 'production',
+isDeveloping = process.env.NODE_ENV === 'production',
 port = isDeveloping ? 3000 : process.env.PORT,
 app = express();
 app.use(passport.initialize());
@@ -73,9 +73,9 @@ if (isDeveloping) {
 
 } else {
 
-    app.use(express.static(__dirname + './dist'));
+    app.use(express.static(__dirname + '/dist'));
     app.get('*', function response(req, res) {
-      res.sendFile(path.join(__dirname, './dist/index.html'));
+      res.sendFile(path.join(__dirname, 'dist/index.html'));
     });
 
     app.use('/', routes);
