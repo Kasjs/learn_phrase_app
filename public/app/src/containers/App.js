@@ -12,13 +12,10 @@ import '../../styles/css/style.lib.css/style.lib.css'
 import '../../styles/css/main.css'
 
 class App extends Component {
-	render() {
-		const { page, userAuth, user, category } = this.props
-		const { getNextPhrase, getRandomPhrase, getBackPhrase, switchLanguage,
-            getPhrase, getSelectedCategory, syncCatAndRating, clearPageInfo, logChange,
-            updateCategoryContent, preparingToOffline, switchOfflineOnLineMode } = this.props.pageActions
-        const { registerNewUser, logOutUser, loginUser, showMassage, showCategoryMassage } = this.props.userActions
-		return (
+
+    render() {
+        const { page, userAuth, user, category } = this.props
+        return (
             <div className='row'>
                 <User
                     {...page}

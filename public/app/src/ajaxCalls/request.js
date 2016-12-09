@@ -46,6 +46,7 @@ export function getCategoryFromServer(value) {
         }
     }, function(error) {
         console.log('Error get data')
+
     })
 }
 

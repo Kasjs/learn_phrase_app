@@ -4,9 +4,10 @@ import { Field, Form, actions } from 'react-redux-form'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as userActions from '../actions/userActions'
-import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHiddenFromLocalStrg, getEmailErrorMsg, getPasswordErrorMsg } from '../localStorage/localStorageMethods'
 import { Link, browserHistory, hashHistory } from 'react-router'
 import { register, transferMessages } from '../ajaxCalls/request'
+import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHiddenFromLocalStrg,
+    getEmailErrorMsg, getPasswordErrorMsg } from '../localStorage/localStorageMethods'
 
 class RegisterForm extends Component {
 
@@ -16,7 +17,6 @@ class RegisterForm extends Component {
         } else {
             this.props.userActions.showEmailMassage();
         }
-
     }
 
     render() {

@@ -25,8 +25,7 @@ module.exports = {
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.UglifyJsPlugin({
         compress : {
-            warnings : true,
-            beautify : true,
+            warnings : false,
         }
     }),
     new webpack.DefinePlugin({

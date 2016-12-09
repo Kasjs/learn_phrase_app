@@ -4,27 +4,49 @@ export let setCat = [];
 
 export let localSync = function(index) {
     let selected = JSON.parse(localStorage.getItem('selected'));
-    let catagories = JSON.parse(localStorage.getItem('categories_' + selected ));
-    let promise = Promise.resolve(selected, catagories).then(function() {
-        ++catagories[index].hits;
-        localStorage.setItem('categories_' + selected, JSON.stringify(catagories))
+    let categories = JSON.parse(localStorage.getItem('categories_' + selected ));
+    let promise = Promise.resolve(selected, categories).then(function() {
+        ++categories[index].hits;
+        setCategoryField(selected, categories);
     });
 }
 
 export function setCategory(response) {
     let selected = JSON.parse(localStorage.getItem('selected'));
-    localStorage.setItem('categories_' + selected , JSON.stringify(response.data[selected]));
+    setCategoryField(selected, response.data[selected]);
     setCat = JSON.parse(localStorage.getItem('categories_' + getSelected()));
     return setCat;
 }
 
-export function offlineUpdateCategory(newCategoryName, categoryContent) {
+function createNewCategory(newCategoryName, categoryContent) {
     let categoryNames = JSON.parse(localStorage.getItem('options'));
-    let newCategoryField = [];
-    newCategoryField.push(categoryContent);
     categoryNames.push(newCategoryName);
     localStorage.setItem('options', JSON.stringify(categoryNames));
-    localStorage.setItem('categories_' + newCategoryName.label, JSON.stringify(newCategoryField));
+    let newCategoryField = [];
+    newCategoryField.push(categoryContent);
+    setCategoryField(newCategoryName.label, newCategoryField);
+}
+
+export function offlineUpdateCategory(newCategoryName, categoryContent) {
+    var categoryNames = JSON.parse(localStorage.getItem('options'));
+    var same = false;
+    categoryNames.forEach(function(item) {
+        if (item.label === newCategoryName.label) {
+            let categoryData = getCategoryField(item.label);
+            categoryData.forEach(function(item) {
+                if (item.side_b === categoryContent.side_b) {
+                    setCategoryField(newCategoryName.label, categoryData);
+                }
+            });
+            categoryData.push(categoryContent);
+            setCategoryField(newCategoryName.label, categoryData);
+            setCategoryOptions(categoryNames);
+            same = true;
+        }
+    });
+    if (!same) {
+        createNewCategory(newCategoryName, categoryContent);
+    }
 }
 
 export function setCategoryOffline() {
