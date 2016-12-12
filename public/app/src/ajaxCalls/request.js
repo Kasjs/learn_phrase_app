@@ -6,10 +6,7 @@ import { registerNewUser, loginUser } from '../actions/userActions'
 import { setLoginWhenSuccess, setLoginWhenError, setCategory, getSelectedCategory,
         getEmailFromLocalStrg, setCategoryOptions, setCategoryOffline, offlineUpdateCategory,
         setCategoryField, getCategoryField } from '../localStorage/localStorageMethods'
-
-export function transferMessages(msg) {
-    return msg;
-}
+export let msgErrorObj = {};
 
 function calculateAllCategory(res) {
     let categoryLength = res.categoryNames.length
@@ -115,7 +112,11 @@ export function register(user) {
         }).then(function(response) {
             hashHistory.push('/login');
         }, function(response) {
-            setLoginWhenError();
+            let errorMsg = response.responseJSON.errors.email ?
+            response.responseJSON.errors.email :
+            response.responseJSON.errors.password;
+            console.log(errorMsg);
+            localStorage.setItem('errorMsg', errorMsg);
         });
 }
 export function login(user) {

@@ -26,6 +26,7 @@ class App extends Component {
     			<Page className='main'
                     {...page}
                     {...userAuth}
+                    {...this.props.userActions}
                     {...this.props.pageActions}
                     registerNewUser={this.props.userActions.registerNewUser}
                     />

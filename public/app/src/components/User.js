@@ -15,16 +15,14 @@ export default class User extends Component {
     }
 
     render() {
-
-        const { email, logOutUser } = this.props;
-
+        const { email, logOutUser, clearErrorMsg } = this.props;
         return (
             <Col xs='1/3'>
                 <div className={ getHiddenFromLocalStrg()  ? 'hide' : 'show' }>
-                    <Button className='login-btn' onClick={() => hashHistory.push('login')}>
+                    <Button className='login-btn' onClick={() => {hashHistory.push('login'), clearErrorMsg()}}>
                         <i className="fa fa-sign-in" aria-hidden="true"></i>
                     </Button>
-                    <Button className='register-btn' onClick={() => hashHistory.push('register')}
+                    <Button className='register-btn' onClick={() => {hashHistory.push('register'), clearErrorMsg()}}
                         >Sign Up
                     </Button>
                 </div>
@@ -32,7 +30,7 @@ export default class User extends Component {
                     <i className='fa fa-user' aria-hiden='true'></i>
                 </span>
                 <Button className={ getHiddenFromLocalStrg() ? 'show log-out-btn' : 'hide log-out-btn'}
-                    onClick={ () => this.logoutAndClearPageInfo() } >
+                    onClick={() => this.logoutAndClearPageInfo() } >
                     <i className="fa fa-sign-out" aria-hidden="true"></i>
                 </Button>
             </Col>

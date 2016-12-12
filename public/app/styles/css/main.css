@@ -174,6 +174,16 @@ html {
   background-color: #1ab394;
   color: #ffffff;
 }
+.category-form {
+  padding-top: 40%;
+}
+.category-form .category-header {
+  text-align: center;
+}
+.form-control:focus {
+  box-shadow: inset 0 1px 1px #23c6c8;
+  border-color: #23c6c8 !important;
+}
 .login-btn {
   margin: 10px 0 0 0;
   position: absolute;
@@ -240,26 +250,13 @@ html {
 .show {
   visibility: visible;
 }
-.log-err-msg {
-  display: block;
-  color: #ff0000;
-  margin-left: 10px;
-}
 .validation-msg-success {
   display: block;
   color: #00ff00;
 }
-.msg-email-error {
-  display: block;
-  color: #ff0000;
-}
+.msg-server-error,
+.msg-client-error,
 .msg-category {
-  margin: 0 0 20px 30px;
-  display: inline;
-  color: #ff0000;
-}
-.msg-password-error {
-  display: block;
   color: #ff0000;
 }
 @media screen and (max-width: 473px) {
@@ -285,14 +282,14 @@ html {
   .register-btn {
     top: 30px;
     width: 55px;
-    right: 63px;
+    right: 60px;
   }
   .login-btn {
     top: 30px;
   }
   .user-email {
     top: 40px;
-    right: 65px;
+    right: 68px;
     width: 40px;
   }
   .log-out-btn {

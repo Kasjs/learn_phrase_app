@@ -1,11 +1,12 @@
-import {register, login} from '../ajaxCalls/request'
+import { register, login, transferServerMsg } from '../ajaxCalls/request'
 import { getEmailFromLocalStrg, getHiddenFromLocalStrg, getStatusFromLocalStrg, logOut } from '../localStorage/localStorageMethods'
 import { browserHistory, hashHistory } from 'react-router'
 
 export function registerNewUser (user) {
     register(user);
     return {
-        type: 'POST_NEW_USER'
+        type: 'POST_NEW_USER',
+        payload: localStorage.getItem('errorMsg')
     }
 }
 
@@ -28,10 +29,18 @@ export function logOutUser() {
     }
 }
 
-export function showEmailMassage() {
+export function showErrorMsg() {
     return {
-        type: 'SHOW_MASSAGE_EMAIL',
-        payload: 'Please fill out all fields'
+        type: 'SHOW_ERROR_MESSAGE',
+        clientMsg: 'Please fill out all fields'
+    }
+}
+
+export function clearErrorMsg() {
+    localStorage.setItem('errorMsg', '');
+    return {
+        type: 'CLEAR_ERROR_MESSAGE',
+        clientMsg: ''
     }
 }
 

@@ -10,12 +10,16 @@ import { login } from '../ajaxCalls/request'
 class LoginForm extends Component {
 
     handleSubmit(user) {
-        this.props.userActions.loginUser(user);
+        if (user.email && user.password) {
+            this.props.userActions.loginUser(user);
+        } else {
+            this.props.userActions.showErrorMsg();
+        }
     }
 
     render() {
         let { user } = this.props;
-        let { userAuth } = this.props.userAuth;
+        let { clientMsg, serverMsg } = this.props.userAuth;
 
         return (
             <div >
@@ -32,7 +36,8 @@ class LoginForm extends Component {
                                 <input className='form-control' type="password" placeholder='Password' />
                             </Field>
                             <Button submit className='submit-btn col-xs-12' type="hollow-primary">Submit</Button>
-                            <span className='log-err-msg'>{ userAuth }</span>
+                            <span className='msg-client-error'>{ clientMsg }</span>
+                            <span className='msg-server-error'>{ serverMsg }</span>
                         </Form>
                     </div>
                 </div>

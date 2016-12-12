@@ -33,7 +33,7 @@ const reducer = combineReducers({
 })
 
 injectTapEventPlugin();
-
+//const logger = createLogger();
 const store = createStore(
     reducer,
     applyMiddleware(thunk)

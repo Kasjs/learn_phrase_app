@@ -7,7 +7,7 @@
     padding: 0 3px 0 3px;
     color: #ffffff;
     background-image: none;
-    background-color: #1872ab;
+    background-color: @main-color;
 }
 .register-btn {
     text-align: right;
@@ -17,7 +17,7 @@
     right: 70px;
     color: #ffffff;
     background-image: none;
-    background-color: #1872ab;
+    background-color: @main-color;
     top: 30px;
 }
 .fa-user-circle-o {
@@ -31,8 +31,8 @@
     width: 40px;
     right: 70px;
     top: 40px;
-    border: 1px solid #1872ab;
-    color: #1872ab;
+    border: 1px solid @main-color;
+    color: @main-color;
     padding: 6px;
     border-radius: 5px;
 }
@@ -43,7 +43,7 @@
     top: 40px;
     padding: 0 3px 0 3px;
     color: #ffffff;
-    background-color: #1872ab;
+    background-color: @main-color;
     background-image: none;
 }
 .user-hidden {
@@ -57,29 +57,12 @@
 .show {
     visibility: visible;
 }
-.log-err-msg {
-    display: block;
-    color: #ff0000;
-    margin-left: 10px
-}
 .validation-msg-success {
     display: block;
     color: #00ff00;
 }
 
-.msg-email-error {
-    display: block;
-    color: #ff0000;
-}
-
-.msg-category {
-    margin: 0 0 20px 30px;
-    display: inline;
-    color: #ff0000;
-}
-
-.msg-password-error {
-    display: block;
+.msg-server-error, .msg-client-error, .msg-category, {
     color: #ff0000;
 }
 
@@ -106,14 +89,14 @@
     .register-btn {
         top: 30px;
         width: 55px;
-        right: 63px;
+        right: 60px;
     }
     .login-btn {
         top: 30px;
     }
     .user-email {
         top: 40px;
-        right: 65px;
+        right: 68px;
         width: 40px;
     }
     .log-out-btn {

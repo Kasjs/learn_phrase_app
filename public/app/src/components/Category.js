@@ -37,22 +37,19 @@ class Category extends Component {
 
         return (
             <div>
-                <Col xs='100%'>
-                    <h2 className='login-header'>Add New Category</h2>
-                </Col>
-                <Row>
-                    <Col className='req-form-cont' xs='50%'>
+                <div className='row category-form'>
+                    <div className='col-xs-12'>
+                        <h2 className='category-header'>Add New Category</h2>
+                    </div>
+                    <div className='col-xs-10 col-xs-offset-1' >
                         <Form className='form' model="category" onSubmit={(category) => this.handleCreate(category)}>
                             <Field className='form-group email-label' model="category.name">
-                                <label>Category Name</label>
                                 <input className='form-control' type="text" placeholder='Category Name' />
                             </Field>
                             <Field className='form-group' model="category.side_a">
-                                <label>Side A Value</label>
                                 <input className='form-control' type="text" placeholder='side_a value' />
                             </Field>
                             <Field className='form-group' model="category.side_b">
-                                <label>Side B Value(translated)</label>
                                 <input className='form-control' type="text" placeholder='side_b value' />
                             </Field>
                             <Field className='form-group' model="category.example">
@@ -62,12 +59,13 @@ class Category extends Component {
                                                   side_b: небо'
                                 ></textarea>
                             </Field>
-                            <Button submit className='submit-btn' type="hollow-primary">Create
+                            <Button submit className='submit-btn col-xs-12' type="hollow-primary">Create
                             </Button>
                             <span className='msg-category'>{ msgCategory }</span>
                         </Form>
-                    </Col>
-                </Row>
+                    </div>
+                </div>
+
             </div>
         )
     }

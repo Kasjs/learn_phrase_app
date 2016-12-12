@@ -14,15 +14,16 @@ class RegisterForm extends Component {
     handleSubmit(user) {
         if ( user.email && user.password && user.repPassword ) {
             this.props.userActions.registerNewUser(user);
+            this.props.userActions.clearErrorMsg();
         } else {
-            this.props.userActions.showEmailMassage();
+            this.props.userActions.showErrorMsg();
         }
     }
 
     render() {
 
         let { user } = this.props;
-        let { msgEmail, msgPassword } = this.props.userAuth;
+        let { clientMsg, serverMsg } = this.props.userAuth;
 
         return (
             <div>
@@ -46,8 +47,8 @@ class RegisterForm extends Component {
                             </Field>
 
                             <Button submit className='submit-btn col-xs-12' type="hollow-primary">Submit</Button>
-                            <span className='msg-email-error'>{ msgEmail }</span>
-                            <span className='msg-password-error'>{ msgPassword }</span>
+                            <span className='msg-client-error'>{ clientMsg }</span>
+                            <span className='msg-server-error'>{ serverMsg }</span>
                         </Form>
                     </div>
                 </div>

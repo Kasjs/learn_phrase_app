@@ -50,7 +50,7 @@ export default class Page extends Component {
     }
 
     render() {
-        const { page, phrase, counter, hits, email, hidden, isOffline } = this.props
+        const { page, phrase, counter, hits, email, hidden, isOffline, clearErrorMsg } = this.props
         return <div className='phrase-col'>
 
             <div className='header'>
@@ -65,8 +65,8 @@ export default class Page extends Component {
                     />
                 </Col>
                 <Col xs='1/3'>
-                    <Button className='btn-sunc btn-default' onClick={() => {
-                        hashHistory.push('addCategory'); }}>
+                    <Button className='btn-sunc btn-default'
+                        onClick={() => {hashHistory.push('addCategory'), clearErrorMsg()}}>
                         <i className="fa fa-plus" aria-hidden="truen"></i>
                     </Button>
                 </Col>
