@@ -19,28 +19,23 @@ class LoginForm extends Component {
 
         return (
             <div >
-                <Col xs='100%'>
-                    <h2 className='login-header'>Login</h2>
-                </Col>
-                <Row>
-                    <Col className='req-form-cont' xs='50%'>
+                <div className='row req-form-cont'>
+                    <div className='col-xs-12'>
+                        <h2 className='login-header'>Login</h2>
+                    </div>
+                    <div className='col-xs-offset-1 col-xs-10'>
                         <Form className='form' model="user" onSubmit={(user) => this.handleSubmit(user)}>
                             <Field className='form-group email-label' model="user.email">
-                                <label>Email addres:</label>
                                 <input className='form-control' type="email" placeholder='Email' />
                             </Field>
-
                             <Field className='form-group' model="user.password">
-                                <label>Password: </label>
                                 <input className='form-control' type="password" placeholder='Password' />
                             </Field>
-
-                            <Button submit className='submit-btn' type="hollow-primary">Submit</Button>
+                            <Button submit className='submit-btn col-xs-12' type="hollow-primary">Submit</Button>
                             <span className='log-err-msg'>{ userAuth }</span>
-
                         </Form>
-                    </Col>
-                </Row>
+                    </div>
+                </div>
             </div>
         )
     }

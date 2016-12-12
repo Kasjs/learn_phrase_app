@@ -147,12 +147,10 @@ html {
   right: 12%;
 }
 .req-form-cont {
-  width: 700px;
+  padding-top: 50%;
   text-align: left;
   margin: 1% auto 0 auto;
-  box-shadow: 5px 5px #cccccc;
   border-radius: 5px;
-  border: 1px solid #ccccff;
 }
 .reg-form .submit-btn {
   margin: 0 0 10px 0;
@@ -165,11 +163,16 @@ html {
 .FormLabel {
   margin: 10px 0 5px 0;
 }
+.label-text {
+  color: #1872ab;
+}
 .email-label {
   padding-top: 10px;
 }
 .submit-btn {
   margin-bottom: 10px;
+  background-color: #1ab394;
+  color: #ffffff;
 }
 .login-btn {
   margin: 10px 0 0 0;
