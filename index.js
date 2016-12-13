@@ -20,7 +20,7 @@ port = isProduction ? 3000 : process.env.PORT,
 app = express();
 app.use(passport.initialize());
 
-app.use(favicon(path.join(__dirname, 'server', 'assets', 'images', 'favicon.png')));
+app.use(favicon(path.join(__dirname, 'server', 'assets', 'images', 'favicon.ico')));
 
 require('node-jsx').install();
 require('./server/models/User');
