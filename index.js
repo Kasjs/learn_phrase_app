@@ -16,7 +16,7 @@ Router = require('react-router'),
 config = require('./config'),
 
 isProduction = process.env.NODE_ENV === 'production',
-port = isProduction ? 3000 : process.env.PORT,
+port = isProduction ? process.env.PORT : process.env.PORT,
 app = express();
 app.use(passport.initialize());
 
