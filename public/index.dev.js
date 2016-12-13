@@ -15,8 +15,8 @@ React = require('react'),
 Router = require('react-router'),
 config = require('./config'),
 
-isDeveloping = process.env.NODE_ENV !== 'production',
-port = isDeveloping ? 3000 : process.env.PORT,
+isProduction = process.env.NODE_ENV === 'production',
+port = isProduction ? 3000 : process.env.PORT,
 app = express();
 app.use(passport.initialize());
 
@@ -29,7 +29,7 @@ require('./server/passport')(config);
 const routes = require('./server/routes/index');
 const authCheckMiddleware = require('./server/middlewares/auth-check')(config);
 
-if (isDeveloping) {
+if (isProduction) {
     const compiler = webpack(webpackConfig);
     const middleware = webpackMiddleware(compiler, {
         publicPath: webpackConfig.output.publicPath,
