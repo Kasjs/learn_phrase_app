@@ -67,7 +67,7 @@ if (isProduction) {
     });
 
     app.get('/', function(req, res) {
-        res.write(middleware.fileSystem.readFileSync(path.join(__dirname, './public/dist/index.html')));
+        res.write(middleware.fileSystem.readFileSync(path.join(__dirname, './dist/index.html')));
         res.end();
     });
 
