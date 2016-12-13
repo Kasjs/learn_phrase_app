@@ -16,12 +16,12 @@ module.exports = {
     publicPath: '/'
   },
   plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
     new HtmlWebpackPlugin({
         template: './public/app/index.tpl.html',
         inject: 'body',
         filename: 'index.html'
     }),
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.NoErrorsPlugin(),
     // new webpack.optimize.UglifyJsPlugin({
     //     compress : {
