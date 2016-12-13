@@ -33,10 +33,10 @@ const reducer = combineReducers({
 })
 
 injectTapEventPlugin();
-//const logger = createLogger();
+const logger = createLogger();
 const store = createStore(
     reducer,
-    applyMiddleware(thunk)
+    applyMiddleware(thunk, logger)
 );
 
 const history = syncHistoryWithStore(hashHistory, store);

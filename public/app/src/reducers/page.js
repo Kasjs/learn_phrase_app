@@ -5,7 +5,8 @@ const initialState = {
     phrase: '',
     counter: 0,
     side: 'side_a',
-    hits: 0
+    hits: 0,
+    unAuthorizedMsg: ''
 }
 
 export default function page( state = initialState, action) {
@@ -101,6 +102,18 @@ export default function page( state = initialState, action) {
             return {
                 ...state,
                 isOffline: !state.isOffline
+            }
+        }
+        case 'SHOW_MSG_UNAUTHORIZED_UZERS': {
+            return {
+                ...state,
+                unAuthorizedMsg: action.payload
+            }
+        }
+        case 'CLEAR_MSG_UNAUTHORIZED_UZERS': {
+            return {
+                ...state,
+                unAuthorizedMsg: ''
             }
         }
         default:

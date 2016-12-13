@@ -72,3 +72,15 @@ export function switchOfflineOnLineMode() {
         type: 'SWITCH_OFFLINE_ONLINE_MODE'
     }
 }
+export function showMsgUnauthorizedUsers() {
+    return {
+        type: 'SHOW_MSG_UNAUTHORIZED_UZERS',
+        payload: 'First you have to SignIn or SignUp'
+    }
+}
+export function clearMsgUnauthorizedUsers() {
+    return {
+        type: 'CLEAR_MSG_UNAUTHORIZED_UZERS',
+        payload: ''
+    }
+}

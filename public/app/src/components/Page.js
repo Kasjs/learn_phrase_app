@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap'
 import React, { PropTypes, Component } from 'react'
 import { Link, browserHistory, hashHistory } from 'react-router'
 import { getUserCategory, syncWithServer, getCategoryFromServer, getAllCategory, syncAllCategoryAndContent } from '../ajaxCalls/request'
+import { getEmailFromLocalStrg } from '../localStorage/localStorageMethods'
 
 function setOptions() {
     var optionsFromServer;
@@ -35,9 +36,20 @@ export default class Page extends Component {
         this.props.getPhrase();
     }
     logChange(val) {
-        this.props.syncCatAndRating();
-        localStorage.setItem('selected', JSON.stringify(val));
-        getCategoryFromServer(localStorage.getItem('selected'));
+        if (getEmailFromLocalStrg()) {
+            this.props.syncCatAndRating();
+            localStorage.setItem('selected', JSON.stringify(val));
+            getCategoryFromServer(localStorage.getItem('selected'));
+            this.props.clearMsgUnauthorizedUsers();
+        }
+        this.props.showMsgUnauthorizedUsers();
+    }
+    addCategory() {
+        if (getEmailFromLocalStrg()) {
+            hashHistory.push('addCategory');
+            this.props.clearErrorMsg();
+        }
+        this.props.showMsgUnauthorizedUsers();
     }
     preparingToOffline() {
         this.props.switchOfflineOnLineMode();
@@ -50,23 +62,21 @@ export default class Page extends Component {
     }
 
     render() {
-        const { page, phrase, counter, hits, email, hidden, isOffline, clearErrorMsg } = this.props
+        const { page, phrase, counter, hits, email, hidden, isOffline, clearErrorMsg, unAuthorizedMsg } = this.props
         return <div className='phrase-col'>
 
             <div className='header'>
                 <p className='header-text'>Phrase generator </p>
             </div>
-
             <Row className='select-comp'>
                 <Col xs="50%" sm="40%" md="25%" lg="40%">
                     <FormSelect className='select-category' options={setOptions()}
-                        firstOption="Select"
                         onChange={this.logChange.bind(this)}
                     />
                 </Col>
                 <Col xs='1/3'>
                     <Button className='btn-sunc btn-default'
-                        onClick={() => {hashHistory.push('addCategory'), clearErrorMsg()}}>
+                        onClick={ this.addCategory.bind(this) }>
                         <i className="fa fa-plus" aria-hidden="truen"></i>
                     </Button>
                 </Col>
@@ -74,7 +84,6 @@ export default class Page extends Component {
                     <p className='selected-category'>Now selected: <strong>{setSelectedOptions()}</strong></p>
                 </div>
             </Row>
-
             <div className='phrase-row row'>
                 <div className='col-xs-6 position-col'>
                     <span className='position'>Position: {counter} </span>
@@ -86,7 +95,6 @@ export default class Page extends Component {
                     <p><strong className='phrase'>{phrase}</strong></p>
                 </div>
             </div>
-
             <div className={isOffline ? 'row offline-row hide' : 'row offline-row'}>
                 <div className='col-xs-6'>
                     <span>Go OffLine</span>
@@ -103,8 +111,6 @@ export default class Page extends Component {
                     </Button><span className='ready-msg'>Now you can go offline</span>
                 </div>
             </div>
-
-
             <div className='row btns-row'>
                 <div className='col-xs-12'>
                     <Button className='buttons btn-back btn btn-sm'
@@ -123,7 +129,9 @@ export default class Page extends Component {
                     </Button>
                 </div>
             </div>
-
+            <div className={ getEmailFromLocalStrg() ? 'col-xs-12 unauthorized-msg hide' : 'col-xs-12 unauthorized-msg' }>
+                <span>{ unAuthorizedMsg }</span>
+            </div>
             <div className='row footer'>
                 <div className='col-xs-12 footer-text'>
                     <span>
