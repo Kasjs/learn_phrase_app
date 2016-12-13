@@ -20,7 +20,6 @@ port = isProduction ? 3000 : process.env.PORT,
 app = express();
 app.use(passport.initialize());
 
-app.use(favicon(path.join(__dirname, 'server', 'assets', 'images', 'favicon.ico')));
 
 require('node-jsx').install();
 require('./server/models/User');
@@ -49,6 +48,7 @@ if (isProduction) {
         console.log('Error: Could not connect to MongoDB');
     });
 
+    app.use(favicon(path.join(__dirname, 'server', 'assets', 'images', 'favicon.ico')));
     app.use(middleware);
     app.use(webpackHotMiddleware(compiler));
     app.use(express.static('./public'));
