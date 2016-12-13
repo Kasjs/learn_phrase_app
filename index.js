@@ -15,7 +15,7 @@ React = require('react'),
 Router = require('react-router'),
 config = require('./config'),
 
-isDeveloping = process.env.NODE_ENV === 'production',
+isDeveloping = process.env.NODE_ENV !== 'production',
 port = isDeveloping ? 3000 : process.env.PORT,
 app = express();
 app.use(passport.initialize());
@@ -52,6 +52,7 @@ if (isDeveloping) {
     app.use(middleware);
     app.use(webpackHotMiddleware(compiler));
     app.use(express.static('./public'));
+    app.use(express.static('./dist'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
         extended: true
