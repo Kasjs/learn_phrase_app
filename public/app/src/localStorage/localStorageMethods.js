@@ -1,3 +1,4 @@
+'use scrict'
 import { getSelected } from '../actions/pageActions'
 
 export let setCat = [];
@@ -58,6 +59,9 @@ export function setCategoryOffline() {
 
 export function setCategoryOptions(response) {
     localStorage.setItem('options', JSON.stringify(response));
+}
+export function getCategoryOptions() {
+    return localStorage.getItem('options');
 }
 
 export function setCategoryField(name, data) {

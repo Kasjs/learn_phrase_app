@@ -1,3 +1,4 @@
+'use scrict'
 const User = require('mongoose').model('User');
 const Category = require('mongoose').model('Category');
 const passportLocalStrategy = require('passport-local').Strategy;

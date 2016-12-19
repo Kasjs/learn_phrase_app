@@ -1,8 +1,10 @@
+'use scrict'
+
 import { browserHistory, hashHistory } from 'react-router'
 import { register } from '../ajaxCalls/request'
 import { getEmailFromLocalStrg, getHiddenFromLocalStrg } from '../localStorage/localStorageMethods'
 
-const initialState = {
+export const initialState = {
     email: getEmailFromLocalStrg() !== '' ?  getEmailFromLocalStrg() : '',
     password: '',
     status: 0,

@@ -1,3 +1,4 @@
+'use scrict'
 import { register, login, transferServerMsg } from '../ajaxCalls/request'
 import { getEmailFromLocalStrg, getHiddenFromLocalStrg, getStatusFromLocalStrg, logOut } from '../localStorage/localStorageMethods'
 import { browserHistory, hashHistory } from 'react-router'

@@ -1,3 +1,4 @@
+'use scrict'
 import { getCategoryFromServer, syncWithServer } from '../ajaxCalls/request'
 import { setCat } from '../localStorage/localStorageMethods'
 

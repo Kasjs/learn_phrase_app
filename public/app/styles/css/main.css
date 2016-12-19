@@ -3,7 +3,7 @@
 }
 .header {
   height: 30px;
-  background-color: #676a6c;
+  background-color: #1872ab;
   margin: 0;
   width: 105%;
 }
@@ -24,12 +24,15 @@
   padding: 0;
 }
 .phrase-col .select-comp .btn-sunc {
-  background-color: #1ab394;
+  background-color: #23c6c8;
   margin-top: 10px;
   width: 50px;
   color: #ffffff;
+  margin-left: -7px;
 }
 .phrase-col .select-comp .select-category {
+  border: 1px solid #23c6c8;
+  border-radius: 5px;
   margin: 10px 0 0 10px;
   font: Helvetica 15px #666;
   font-weight: 700;
@@ -58,40 +61,42 @@
   position: absolute;
   right: 15px;
 }
-.phrase-col .btns-row {
+.btns-row {
+  margin-top: 0;
   text-align: center;
 }
-.phrase-col .btns-row .buttons {
-  margin: 20px 10px 0 0;
+.btns-row .buttons {
+  margin: 5px 10px 0 0;
   width: 6em;
 }
-.phrase-col .btns-row .btn-back {
-  background-color: #ffffff;
+.btns-row .btn-back {
+  background-color: #1872ab;
   border: 1px solid #1872ab;
-  color: #1872ab;
+  color: #ffffff;
 }
-.phrase-col .btns-row .btn-next {
-  background-color: #ffffff;
+.btns-row .btn-next {
+  background-color: #1872ab;
   border: 1px solid #1872ab;
-  color: #1872ab;
+  color: #ffffff;
 }
-.phrase-col .btns-row .btn-random {
-  background-color: #ffffff;
+.btns-row .btn-random {
+  background-color: #23c6c8;
   border: 1px solid #23c6c8;
-  color: #23c6c8;
+  color: #ffffff;
   margin-right: 0;
 }
-.phrase-col .btns-row .btn-translate {
-  background-color: #ffffff;
+.btns-row .btn-translate {
+  background-color: #23c6c8;
   border: 1px solid #23c6c8;
-  color: #23c6c8;
+  color: #ffffff;
 }
-.phrase-col .Row {
+.Row {
   height: 90px;
   margin: 0;
 }
 .offline-row {
   padding: 10px 0 0 10px;
+  margin: 0;
   color: #1872ab;
 }
 .offline-row .fa-toggle-on {
@@ -103,6 +108,7 @@
 }
 .online-row {
   padding: 10px 0 0 10px;
+  margin: 0;
   color: #1872ab;
 }
 .online-row .fa-toggle-on {
@@ -147,7 +153,7 @@ html {
   right: 12%;
 }
 .unauthorized-msg {
-  padding-top: 40px;
+  padding-top: 0;
   text-align: center;
   color: #ff0000;
   font-size: 20px;
@@ -176,9 +182,9 @@ html {
   padding-top: 10px;
 }
 .submit-btn {
-  margin-bottom: 10px;
-  background-color: #1ab394;
-  color: #ffffff;
+  margin-bottom: 15px;
+  background-color: #23c6c8 !important;
+  color: #ffffff !important;
 }
 .category-form {
   padding-top: 40%;
@@ -197,19 +203,18 @@ html {
   width: 40px;
   top: 30px;
   padding: 0 3px 0 3px;
-  color: #ffffff;
+  color: #ffffff !important;
   background-image: none;
-  background-color: #1872ab;
+  background-color: #1872ab !important;
 }
 .register-btn {
   text-align: right;
-  padding: 0 3px 0 3px;
   margin: 10px 0 0 0;
   position: absolute;
   right: 70px;
-  color: #ffffff;
+  color: #ffffff !important;
   background-image: none;
-  background-color: #1872ab;
+  background-color: #1872ab !important;
   top: 30px;
 }
 .fa-user-circle-o {
@@ -221,10 +226,11 @@ html {
   margin-left: 5%;
   position: absolute;
   width: 40px;
-  right: 70px;
+  right: 63px;
   top: 40px;
   border: 1px solid #1872ab;
-  color: #1872ab;
+  color: #ffffff;
+  background-color: #1872ab;
   padding: 6px;
   border-radius: 5px;
 }
@@ -232,17 +238,18 @@ html {
   text-align: center;
   margin-left: 5%;
   position: absolute;
-  right: 70px;
+  right: 63px;
   border: 1px solid #1872ab;
-  color: #1872ab;
+  color: #ffffff;
+  background-color: #1872ab;
   padding: 6px;
   border-radius: 5px;
   right: 10px;
   width: 40px;
   top: 40px;
   padding: 0 3px 0 3px;
-  color: #ffffff;
-  background-color: #1872ab;
+  color: #ffffff !important;
+  background-color: #1872ab !important;
   background-image: none;
 }
 .user-hidden {
@@ -272,7 +279,7 @@ html {
   }
   .user-email {
     top: 40px;
-    right: 65px;
+    right: 61px;
     width: 40px;
   }
   .log-out-btn {
@@ -287,7 +294,7 @@ html {
   }
   .register-btn {
     top: 30px;
-    width: 55px;
+    padding: 6px 3px !important;
     right: 60px;
   }
   .login-btn {
@@ -295,7 +302,7 @@ html {
   }
   .user-email {
     top: 40px;
-    right: 68px;
+    right: 61px;
     width: 40px;
   }
   .log-out-btn {

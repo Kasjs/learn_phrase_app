@@ -1,4 +1,5 @@
-import { Button, Row, Col, Container, FormSelect, FormField, FormInput } from 'elemental'
+'use scrict'
+import Button from 'react-bootstrap/lib/Button'
 import React, { PropTypes, Component } from 'react'
 import { Field, Form, actions } from 'react-redux-form'
 import { bindActionCreators } from 'redux'
@@ -6,7 +7,7 @@ import * as userActions from '../actions/userActions'
 import * as pageActions from '../actions/pageActions'
 import { connect } from 'react-redux'
 import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHiddenFromLocalStrg } from '../localStorage/localStorageMethods'
-import { browserHistory, hashHistory } from 'react-router'
+import hashHistory from 'react-router/lib/hashHistory'
 import { updateCategory } from '../ajaxCalls/request'
 
 class Category extends Component {
@@ -59,8 +60,7 @@ class Category extends Component {
                                                   side_b: небо'
                                 ></textarea>
                             </Field>
-                            <Button submit className='submit-btn col-xs-12' type="hollow-primary">Create
-                            </Button>
+                            <Button type='submit' className='submit-btn col-xs-12'>Create</Button>
                             <span className='msg-category'>{ msgCategory }</span>
                         </Form>
                     </div>
@@ -72,7 +72,8 @@ class Category extends Component {
 }
 
 Category.propTypes = {
-    category : React.PropTypes.object
+    category : React.PropTypes.object,
+    msgCategory: React.PropTypes.string
 }
 
 function mapStateToProps(state) {

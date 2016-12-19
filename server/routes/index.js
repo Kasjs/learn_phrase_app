@@ -1,3 +1,4 @@
+'use scrict'
 const mongoose = require('mongoose'),
 express = require('express'),
 router = express.Router(),

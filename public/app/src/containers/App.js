@@ -1,15 +1,18 @@
-import React, { Component, Proptypes } from 'react'
-import { Router } from 'react-router'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import User from '../components/User'
-import Page from '../components/Page'
-import RegisterForm from '../components/RegisterForm'
-import * as pageActions from '../actions/pageActions'
-import * as userActions from '../actions/userActions'
+'use scrict'
+import React, { Component, Proptypes } from 'react';
+import { Router } from 'react-router';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import User from '../components/User';
+import Buttons_Row from '../components/sub-components/Buttons_Row';
+import Page from '../components/Page';
+import RegisterForm from '../components/RegisterForm';
+import LoginForm from '../components/LoginForm';
+import * as pageActions from '../actions/pageActions';
+import * as userActions from '../actions/userActions';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import '../../styles/css/style.lib.css/style.lib.css'
-import '../../styles/css/main.css'
+import '../../styles/css/style.lib.css/style.lib.css';
+import '../../styles/css/main.css';
 
 class App extends Component {
 
@@ -30,6 +33,9 @@ class App extends Component {
                     {...this.props.pageActions}
                     registerNewUser={this.props.userActions.registerNewUser}
                     />
+                <Buttons_Row
+                    {...this.props.pageActions}
+                />
             </div>
         )
 	}
@@ -39,7 +45,8 @@ function mapStateToProps(state) {
 	return {
 		page: state.page,
         userAuth: state.userAuth,
-        RegisterForm: state.RegisterForm
+        RegisterForm: state.RegisterForm,
+        LoginForm: state.LoginForm
 	}
 }
 
@@ -47,7 +54,8 @@ function mapDispatchToProps(dispatch) {
 		return {
 			pageActions: bindActionCreators(pageActions, dispatch),
 			userActions: bindActionCreators(userActions, dispatch),
-            RegisterFormActions: bindActionCreators(userActions, dispatch)
+            RegisterFormActions: bindActionCreators(userActions, dispatch),
+            LoginFormActions: bindActionCreators(userActions, dispatch)
 		}
 }
 

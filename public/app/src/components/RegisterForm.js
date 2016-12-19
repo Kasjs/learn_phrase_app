@@ -1,10 +1,12 @@
-import { Button, Row, Col, Container, FormSelect, FormField, FormInput } from 'elemental'
+'use scrict'
+import Button from 'react-bootstrap/lib/Button'
 import React, { PropTypes, Component } from 'react'
-import { Field, Form, actions } from 'react-redux-form'
+import Field  from 'react-redux-form/lib/components/field-component'
+import Form  from 'react-redux-form/lib/components/form-component'
+import actions  from 'react-redux-form/lib/actions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as userActions from '../actions/userActions'
-import { Link, browserHistory, hashHistory } from 'react-router'
 import { register, transferMessages } from '../ajaxCalls/request'
 import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHiddenFromLocalStrg,
     getEmailErrorMsg, getPasswordErrorMsg } from '../localStorage/localStorageMethods'
@@ -46,7 +48,7 @@ class RegisterForm extends Component {
                                 <input className='form-control register-input' type="password" placeholder='Repeat Password' />
                             </Field>
 
-                            <Button submit className='submit-btn col-xs-12' type="hollow-primary">Submit</Button>
+                            <Button type='submit' className='submit-btn col-xs-12'>Submit</Button>
                             <span className='msg-client-error'>{ clientMsg }</span>
                             <span className='msg-server-error'>{ serverMsg }</span>
                         </Form>
@@ -60,8 +62,8 @@ class RegisterForm extends Component {
 
 RegisterForm.propTypes = {
     user : React.PropTypes.object,
-    msgEmail : React.PropTypes.string,
-    msgPassword : React.PropTypes.string
+    clientMsg : React.PropTypes.string,
+    serverMsg : React.PropTypes.string
 }
 
 function mapStateToProps(state) {

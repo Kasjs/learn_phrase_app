@@ -1,4 +1,5 @@
-import { Button, Row, Col, Container, FormSelect, FormField, FormInput } from 'elemental'
+'use scrict'
+import Button from 'react-bootstrap/lib/Button'
 import React, { PropTypes, Component } from 'react'
 import { Field, Form, actions } from 'react-redux-form'
 import { bindActionCreators } from 'redux'
@@ -6,6 +7,7 @@ import * as userActions from '../actions/userActions'
 import { connect } from 'react-redux'
 import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHiddenFromLocalStrg } from '../localStorage/localStorageMethods'
 import { login } from '../ajaxCalls/request'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
 
 class LoginForm extends Component {
 
@@ -35,7 +37,7 @@ class LoginForm extends Component {
                             <Field className='form-group' model="user.password">
                                 <input className='form-control' type="password" placeholder='Password' />
                             </Field>
-                            <Button submit className='submit-btn col-xs-12' type="hollow-primary">Submit</Button>
+                            <Button type='submit' className='submit-btn col-xs-12'>Submit</Button>
                             <span className='msg-client-error'>{ clientMsg }</span>
                             <span className='msg-server-error'>{ serverMsg }</span>
                         </Form>
@@ -47,8 +49,9 @@ class LoginForm extends Component {
 }
 
 LoginForm.propTypes = {
-    user : React.PropTypes.string
-
+    user : React.PropTypes.string,
+    clientMsg: React.PropTypes.string,
+    serverMsg: React.PropTypes.string
 }
 
 function mapStateToProps(state) {

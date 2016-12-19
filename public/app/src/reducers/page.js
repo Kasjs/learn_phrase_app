@@ -1,6 +1,8 @@
+'use scrict'
+
 import { localSync } from '../localStorage/localStorageMethods'
 
-const initialState = {
+export const initialState = {
     isOffline: false,
     phrase: '',
     counter: 0,

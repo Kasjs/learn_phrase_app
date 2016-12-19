@@ -1,3 +1,4 @@
+'use scrict'
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('mongoose').model('User');

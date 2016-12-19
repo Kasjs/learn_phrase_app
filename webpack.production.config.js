@@ -1,3 +1,5 @@
+'use scrict'
+
 let path = require('path'),
 webpack = require('webpack'),
 HtmlWebpackPlugin = require('html-webpack-plugin'),
@@ -23,13 +25,15 @@ module.exports = {
         filename: 'index.html'
     }),
     new webpack.NoErrorsPlugin(),
-    // new webpack.optimize.UglifyJsPlugin({
-    //     compress : {
-    //         warnings : false,
-    //     }
-    // }),
+    new webpack.optimize.UglifyJsPlugin({
+        compress : {
+            warnings : false,
+        }
+    }),
     new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify('production')
+        'process.env': {
+                'NODE_ENV': JSON.stringify('production')
+            }
     }),
     new webpack.ProvidePlugin({
         $: "jquery",

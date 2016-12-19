@@ -16,6 +16,11 @@ module.exports = {
         filename: './boundle.js',
         publicPath: '/'
     },
+    externals: {
+        'react/addons': true,
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': true
+    },
     plugins: [
         new HtmlWebpackPlugin({
             template: './public/app/index.tpl.html',
@@ -49,7 +54,7 @@ module.exports = {
             exclude: /node_modules/,
             loader: 'babel',
             query: {
-                "presets": ["react", "es2015", "stage-0"]
+                "presets": ["airbnb","react", "es2015", "stage-0", "stage-1"]
             }
         },
             {
@@ -59,6 +64,9 @@ module.exports = {
             {
                 test: /\.css$/,
                 loader: "style-loader!css-loader!postcss-loader"
+            },
+            {
+                 test: /\.less$/, loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!autoprefixer?browsers=last 2 version!less?outputStyle=expanded&sourceMap'
             },
             {
                 test: /\.png$/,
