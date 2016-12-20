@@ -7,9 +7,15 @@ import * as userActions from '../actions/userActions'
 import { connect } from 'react-redux'
 import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHiddenFromLocalStrg } from '../localStorage/localStorageMethods'
 import { login } from '../ajaxCalls/request'
-import { createStore, applyMiddleware, combineReducers } from 'redux'
+import { initialState } from '../reducers/userAuth'
 
 class LoginForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            userAuth: initialState
+        }
+    }
 
     handleSubmit(user) {
         if (user.email && user.password) {
@@ -20,6 +26,7 @@ class LoginForm extends Component {
     }
 
     render() {
+
         let { user } = this.props;
         let { clientMsg, serverMsg } = this.props.userAuth;
 
@@ -54,13 +61,13 @@ LoginForm.propTypes = {
     serverMsg: React.PropTypes.string
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
     return {
         userAuth: state.userAuth
     }
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
 		return {
 			userActions: bindActionCreators(userActions, dispatch)
 		}

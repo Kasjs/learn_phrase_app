@@ -27,7 +27,6 @@ const reducer = combineReducers({
     categoryForm: formReducer('category')
 })
 
-// injectTapEventPlugin();
 const logger = createLogger();
 const store = createStore(
     reducer,

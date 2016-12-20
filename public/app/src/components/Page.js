@@ -28,7 +28,7 @@ function setSelectedOptions() {
 }
 
 export default class Page extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             page: initialState

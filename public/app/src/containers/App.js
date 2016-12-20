@@ -7,7 +7,6 @@ import User from '../components/User';
 import Buttons_Row from '../components/sub-components/Buttons_Row';
 import Page from '../components/Page';
 import RegisterForm from '../components/RegisterForm';
-import LoginForm from '../components/LoginForm';
 import * as pageActions from '../actions/pageActions';
 import * as userActions from '../actions/userActions';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -45,8 +44,7 @@ function mapStateToProps(state) {
 	return {
 		page: state.page,
         userAuth: state.userAuth,
-        RegisterForm: state.RegisterForm,
-        LoginForm: state.LoginForm
+        RegisterForm: state.RegisterForm
 	}
 }
 
@@ -54,8 +52,7 @@ function mapDispatchToProps(dispatch) {
 		return {
 			pageActions: bindActionCreators(pageActions, dispatch),
 			userActions: bindActionCreators(userActions, dispatch),
-            RegisterFormActions: bindActionCreators(userActions, dispatch),
-            LoginFormActions: bindActionCreators(userActions, dispatch)
+            RegisterFormActions: bindActionCreators(userActions, dispatch)
 		}
 }
 

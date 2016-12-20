@@ -33,28 +33,23 @@ class RegisterForm extends Component {
                     <div className='col-xs-12'>
                         <h2 className='login-header'>Register</h2>
                     </div>
-
                     <div className='col-xs-offset-1 col-xs-10'>
                         <Form className='form' model="user" onSubmit={(user) => this.handleSubmit(user)}>
                             <Field className='form-group email-label' model="user.email">
                                 <input className='form-control register-input' type="email" placeholder='Email' />
                             </Field>
-
                             <Field className='form-group' model="user.password">
                                 <input className='form-control register-input' type="password" placeholder='Password' />
                             </Field>
-
                             <Field className='form-group' model="user.repPassword">
                                 <input className='form-control register-input' type="password" placeholder='Repeat Password' />
                             </Field>
-
                             <Button type='submit' className='submit-btn col-xs-12'>Submit</Button>
                             <span className='msg-client-error'>{ clientMsg }</span>
                             <span className='msg-server-error'>{ serverMsg }</span>
                         </Form>
                     </div>
                 </div>
-
             </div>
         )
     }
