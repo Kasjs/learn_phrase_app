@@ -58,9 +58,9 @@ export default function userAuth(state = initialState, action) {
         case 'CLEAR_ERROR_MESSAGE': {
             return {
                 ...state,
-                clientMsg: action.clientMsg,
-                serverMsg: action.serverMsg,
-                msgCategory: action.clientMsg
+                clientMsg: '',
+                serverMsg: '',
+                msgCategory: ''
             }
         }
 
