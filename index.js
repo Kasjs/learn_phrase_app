@@ -1,4 +1,3 @@
-'use scrict'
 const path = require('path'),
 fs = require('fs'),
 express = require('express'),
