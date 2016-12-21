@@ -10,16 +10,17 @@ request = require('request'),
 bodyParser = require('body-parser'),
 webpackMiddleware = require('webpack-dev-middleware'),
 webpackHotMiddleware = require('webpack-hot-middleware'),
-webpackConfig = require('./webpack.production.config.js'),
+webpackConfig = require('./webpack.config.js'),
 React = require('react'),
 Router = require('react-router'),
 config = require('./config'),
 
-isProduction = process.env.NODE_ENV === 'production',
-port = isProduction ? process.env.PORT : process.env.PORT,
+isDeveloping = process.env.NODE_ENV !== 'production',
+port = isDeveloping ? 3000 : process.env.PORT,
 app = express();
 app.use(passport.initialize());
 
+app.use(favicon(path.join(__dirname, 'server', 'assets', 'images', 'favicon.ico')));
 
 require('node-jsx').install();
 require('./server/models/User');
@@ -28,7 +29,7 @@ require('./server/passport')(config);
 const routes = require('./server/routes/index');
 const authCheckMiddleware = require('./server/middlewares/auth-check')(config);
 
-if (isProduction) {
+if (isDeveloping) {
     const compiler = webpack(webpackConfig);
     const middleware = webpackMiddleware(compiler, {
         publicPath: webpackConfig.output.publicPath,
@@ -48,12 +49,9 @@ if (isProduction) {
         console.log('Error: Could not connect to MongoDB');
     });
 
-    app.use(favicon(path.join(__dirname, 'server', 'assets', 'images', 'favicon.ico')));
     app.use(middleware);
     app.use(webpackHotMiddleware(compiler));
     app.use(express.static('./public'));
-    app.use(express.static('./server'));
-    app.use(express.static('./dist'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
         extended: true
@@ -75,9 +73,9 @@ if (isProduction) {
 
 } else {
 
-    app.use(express.static(__dirname + '/dist'));
+    app.use(express.static(__dirname + './dist'));
     app.get('*', function response(req, res) {
-      res.sendFile(path.join(__dirname, 'dist/index.html'));
+      res.sendFile(path.join(__dirname, './dist/index.html'));
     });
 
     app.use('/', routes);
