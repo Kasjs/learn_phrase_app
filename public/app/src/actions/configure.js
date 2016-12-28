@@ -1,4 +1,4 @@
-import { deleteCategory } from '../components/categoryConfigure'
+import { deleteCategory, deleteItem } from '../components/categoryConfigure'
 
 export function getSelectedCategoryForChange (category, items) {
     return {
@@ -11,5 +11,11 @@ export function deleteSelectedCategory (category) {
     return {
         type: 'DELETE_SELECTED_CATEGORY',
         payload: deleteCategory(category)
+    }
+}
+export function deleteItemInSelectedCategory (category, item) {
+    return {
+        type: 'DELETE_ITEM_IN_SELECTED_CATEGORY',
+        payload: deleteItem(category, item)
     }
 }

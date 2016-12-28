@@ -6,7 +6,7 @@ import { Field, Form, actions } from 'react-redux-form'
 import { bindActionCreators } from 'redux'
 import * as configureActions from '../actions/configure'
 import { connect } from 'react-redux'
-import { getCategoryField, getCategoryOptions, setCategoryOptions, removeCategoryField } from '../localStorage/localStorageMethods'
+import { getCategoryField, getCategoryOptions, setCategoryOptions, removeCategoryField, setCategoryField } from '../localStorage/localStorageMethods'
 import { login, getCategoryFromServer, getAllCategory, syncAllCategoryAndContent  } from '../ajaxCalls/request'
 import { initialState } from '../reducers/configure'
 
@@ -18,12 +18,11 @@ function setOptions() {
 
 function setDataOfCategory(category) {
     var items = getCategoryField(category);
-    console.log(items);
     let lists = [];
     items.map(function(item) {
         lists.push(
             <li className='list-element' key={item.side_b}>{item.side_b}
-                <button onClick={() => deleteItem(item.side_b)} className='del-category-btn btn'>
+                <button onClick={() => deleteItem(category, item.side_b)} className='del-category-btn btn'>
                     <i className="fa fa-times" aria-hidden="true"></i>
                 </button>
             </li>
@@ -31,14 +30,27 @@ function setDataOfCategory(category) {
     });
     return lists;
 }
+
+function deleteItem(category, item) {
+    let itemsOfCategory = getCategoryField(category);
+    console.log(itemsOfCategory);
+    itemsOfCategory.map(function(element, index) {
+        if ( element.side_b === item) {
+            console.log(element.side_b, item);
+            itemsOfCategory.splice(index, 1);
+        }
+    });
+    console.log(itemsOfCategory);
+    setCategoryField(category, itemsOfCategory);
+    syncAllCategoryAndContent();
+}
+
 export function deleteCategory(category) {
     let options = JSON.parse(getCategoryOptions());
-    console.log(options);
     options.map(function(item, index) {
         if (item.label === category) {
             options.splice(index, 1);
             removeCategoryField(item.label);
-            console.log(index, item);
         }
     });
     setCategoryOptions(options);
@@ -58,14 +70,11 @@ class categoryConfigure extends Component {
         options.forEach(function(item) {
             if(item.label === val) {
                 getAllCategory();
-                console.log(item.label);
                 let listsOfCategoryItems = setDataOfCategory(item.label);
                 that.configureActions.getSelectedCategoryForChange(item.label, listsOfCategoryItems);
             }
         })
     }
-
-
 
     render() {
         let { selectedCategory, itemsInCategory } = this.props.cat;
