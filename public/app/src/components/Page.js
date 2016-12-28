@@ -5,6 +5,7 @@ import Container from 'elemental/lib/components/Container'
 import FormSelect from 'elemental/lib/components/FormSelect'
 import Button from 'react-bootstrap/lib/Button'
 import React, { PropTypes, Component } from 'react'
+import browserHistory from 'react-router/lib/browserHistory'
 import hashHistory from 'react-router/lib/hashHistory'
 import { getUserCategory, syncWithServer, getCategoryFromServer, getAllCategory, syncAllCategoryAndContent } from '../ajaxCalls/request'
 import { getEmailFromLocalStrg } from '../localStorage/localStorageMethods'
@@ -52,12 +53,17 @@ export default class Page extends Component {
         this.props.showMsgUnauthorizedUsers();
     }
     preparingToOffline() {
+        let isDelOffline = true;
         this.props.switchOfflineOnLineMode();
         getAllCategory();
         localStorage.setItem('isOffline', !this.props.isOffline);
-        if(this.props.isOffline) {
+        if(this.props.isOffline === true) {
             syncAllCategoryAndContent();
             getAllCategory();
+            isDelOffline = !isDelOffline;
+        }
+        if(!isDelOffline) {
+            localStorage.removeItem('isOffline');
         }
     }
 
@@ -81,8 +87,13 @@ export default class Page extends Component {
                             <i className="fa fa-plus" aria-hidden="truen"></i>
                         </Button>
                     </Col>
-                    <div className='col-xs-12'>
-                        <p className='selected-category'>Now selected: <strong>{setSelectedOptions()}</strong></p>
+                    <div className='col-xs-6'>
+                        <span className='selected-category'>Now selected: <strong>{setSelectedOptions()}</strong></span>
+                    </div>
+                    <div className='col-xs-6'>
+                        <button className='btn btn-configure' onClick={ () => { hashHistory.push('configure') } }>
+                            <span className="fa fa-wrench configure "></span>
+                        </button>
                     </div>
                 </Row>
                 <div className='phrase-row row'>
@@ -94,6 +105,7 @@ export default class Page extends Component {
                     </div>
                     <div className='phrase col-xs-12'>
                         <p><strong className='phrase'>{phrase}</strong></p>
+                        
                     </div>
                 </div>
                 <div className={isOffline ? 'row offline-row hide' : 'row offline-row'}>

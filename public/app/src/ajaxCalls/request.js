@@ -30,11 +30,17 @@ function calculateAllCategoryAndContent() {
 }
 
 export function getCategoryFromServer(value) {
+    let data = value;
     let isOffline = localStorage.getItem('isOffline');
     if (isOffline) {
         setCategoryOffline();
         return;
+    } else {
+        getCategory(data);
     }
+}
+
+let getCategory = (value) => {
     $.get('/category', {email : localStorage.getItem('email')}).then(function(response) {
         switch(value) {
             case getSelectedCategory() : {
@@ -51,24 +57,29 @@ export function syncWithServer() {
     let isOffline = localStorage.getItem('isOffline');
     if (isOffline) {
         return;
+    } else {
+        changeCategory();
     }
+}
+
+let changeCategory = () => {
     $.post('/category',
-        {
-            data : JSON.parse(localStorage.getItem('categories_' + getSelected())),
-            category: getSelected(),
-            email: localStorage.getItem('email')
-        }).then(function(response) {}, function(erro) {
-            console.log('Error sync')
-        });
+    {
+        data : JSON.parse(localStorage.getItem('categories_' + getSelected())),
+        category: getSelected(),
+        email: localStorage.getItem('email')
+    }).then(function(response) {}, function(erro) {
+        console.log('Error sync')
+    });
 }
 
 export function updateCategory(newCategoryName, categoryContent) {
     let isOffline = localStorage.getItem('isOffline');
-    if (isOffline) {
+    console.log(isOffline);
+    if ( isOffline ) {
         offlineUpdateCategory(newCategoryName, categoryContent);
-        return;
-    }
-    $.post('/addNewCategory',
+    } else {
+        $.post('/addNewCategory',
         {
             name : newCategoryName.value,
             content: categoryContent,
@@ -77,9 +88,11 @@ export function updateCategory(newCategoryName, categoryContent) {
             setCategoryOptions(response.categoryNames);
             setCategoryField(newCategoryName.label, response.data[newCategoryName.label]);
             location.reload();
+            hashHistory.push('/addCategory');
         }, function(erro) {
             console.log('Error sync')
         });
+    }
 }
 
 export function getAllCategory() {

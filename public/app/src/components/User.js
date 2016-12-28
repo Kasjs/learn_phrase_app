@@ -1,6 +1,7 @@
 'use scrict'
 import Button from 'react-bootstrap/lib/Button'
 import React, { PropTypes, Component } from 'react'
+import browserHistory from 'react-router/lib/browserHistory'
 import hashHistory from 'react-router/lib/hashHistory'
 import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHiddenFromLocalStrg } from '../localStorage/localStorageMethods'
 import { initialState } from '../reducers/userAuth'

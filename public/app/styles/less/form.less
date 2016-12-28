@@ -8,7 +8,6 @@
     .submit-btn {
         margin: 0 0 10px 0;
     }
-
 }
 .login-header {
     text-align: center;
@@ -38,4 +37,67 @@
 .form-control:focus {
     box-shadow: inset 0 1px 1px  @secondary-color;
     border-color: @secondary-color !important;
+}
+.config-form {
+    .select-category {
+
+        margin-top: 10px;
+    }
+    .configure-header {
+        .login-header;
+    }
+    .submit-category-btn {
+        margin-top: 20px;
+        background-color: @secondary-color;
+        color: #ffffff;
+    }
+}
+
+.configure-select {
+    .FormSelect {
+        color: @main-color;
+    }
+    font: 14px 'Roboto';
+    font-weight: bold;
+    margin-top: 10px;
+    border: 1px solid @secondary-color;
+    border-radius: 5px 5px;
+}
+.selected-category {
+    display: block-inline;
+    margin-right: 5px;
+}
+.configure-category {
+    display: block-inline;
+    color: #ffffff;
+    border-radius: 2px 2px;
+    background-color: @secondary-color;
+    padding: 4px;
+    .list-element {
+        background-color: @main-color;
+    }
+}
+.category-name-text {
+    font: 16px 'Roboto';
+    font-weight: bold;
+}
+.items-list-text {
+    font: 16px 'Roboto';
+    color: @main-color;
+    .items {
+        color: @secondary-color;
+        .fa-times {
+            background-image: none;
+            color: #ff0000;
+        }
+    }
+}
+
+.del-category-btn {
+    .fa-times {
+        background-image: none;
+        color: #ff0000;
+    }
+    background-color: #ffffff;
+    clear: both;
 }

@@ -45,23 +45,36 @@ module.exports.syncAllCategory = function(req, res) {
 }
 
 module.exports.addNewCategory = function(req, res) {
+    var same = false;
     User.findOne({ email: req.body.email }, function(err, user) {
         if ( user.category[0][req.body.name] ) {
-            user.category[0][req.body.name].push(req.body.content);
-            user.markModified('category');
-            console.log(user.category[0][req.body.name]);
-            user.save(function(err,result) {
-                if (err) {
-                    res.status(400).json({
-                        msg: 'Can\'t save data'
-                    });
+            user.category[0][req.body.name].forEach(function(item) {
+                if (item.side_b === req.body.content.side_b) {
+                    same = true;
                 }
             });
-            console.log(user.category[0][req.body.name]);
-            return res.send({
-                data: user.category[0],
-                categoryNames : user.defaultCategory
-            });
+            if (same) {
+                return res.send({
+                    data: user.category[0],
+                    categoryNames : user.defaultCategory
+                });
+            } else {
+                user.category[0][req.body.name].push(req.body.content);
+                user.markModified('category');
+                console.log(user.category[0][req.body.name]);
+                user.save(function(err,result) {
+                    if (err) {
+                        res.status(400).json({
+                            msg: 'Can\'t save data'
+                        });
+                    }
+                });
+                console.log(user.category[0][req.body.name]);
+                return res.send({
+                    data: user.category[0],
+                    categoryNames : user.defaultCategory
+                });
+            }
         } else {
             user.category[0][req.body.name] = [];
             user.markModified('category');
@@ -74,7 +87,7 @@ module.exports.addNewCategory = function(req, res) {
             };
             user.defaultCategory.push(newCategoryOption);
             user.markModified('defaultCategory');
-            user.save(function(err,result) {
+            user.save(function(err, result) {
                 if (err) {
                     res.status(400).json({
                         msg: 'Can\'t save data'

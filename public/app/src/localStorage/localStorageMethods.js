@@ -29,23 +29,30 @@ function createNewCategory(newCategoryName, categoryContent) {
 }
 
 export function offlineUpdateCategory(newCategoryName, categoryContent) {
-    var categoryNames = JSON.parse(localStorage.getItem('options'));
-    var same = false;
+    var categoryNames = JSON.parse(localStorage.getItem('options')),
+    sameContent = false,
+    sameCategory = false,
+    categoryData = [];
     categoryNames.forEach(function(item) {
-        if (item.label === newCategoryName.label) {
-            let categoryData = getCategoryField(item.label);
-            categoryData.forEach(function(item) {
-                if (item.side_b === categoryContent.side_b) {
-                    setCategoryField(newCategoryName.label, categoryData);
+        if( item.label === newCategoryName.label ) {
+            sameCategory = true;
+            categoryData = getCategoryField(item.label);
+            categoryData.forEach(function(itemData) {
+                if ( itemData.side_b === categoryContent.side_b ) {
+                    sameContent = true;
                 }
             });
-            categoryData.push(categoryContent);
-            setCategoryField(newCategoryName.label, categoryData);
-            setCategoryOptions(categoryNames);
-            same = true;
         }
     });
-    if (!same) {
+    if (sameContent) {
+        setCategoryOptions(categoryNames);
+        setCategoryField(newCategoryName.label, categoryData);
+    } else {
+        setCategoryOptions(categoryNames);
+        categoryData.push(categoryContent);
+        setCategoryField(newCategoryName.label, categoryData);
+    }
+    if (!sameCategory) {
         createNewCategory(newCategoryName, categoryContent);
     }
 }
@@ -60,12 +67,16 @@ export function setCategoryOffline() {
 export function setCategoryOptions(response) {
     localStorage.setItem('options', JSON.stringify(response));
 }
+
 export function getCategoryOptions() {
     return localStorage.getItem('options');
 }
 
 export function setCategoryField(name, data) {
     localStorage.setItem('categories_' + name , JSON.stringify(data));
+}
+export function removeCategoryField(name) {
+    localStorage.removeItem('categories_' + name);
 }
 
 export function getCategoryField(category) {

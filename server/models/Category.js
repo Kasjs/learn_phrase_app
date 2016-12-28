@@ -1,14 +1,14 @@
 'use scrict'
 var mongoose = require('mongoose');
 var categorySchema = new mongoose.Schema({
+    nested: {
+        side_b : {
+            type: String,
+            unique: true
+        }
+    },
     Food: {
         type: Array,
-        nested: {
-            side_a : {
-                type: String,
-                unique: true
-            }
-        },
         default: [
             {
                 "side_a": "яблуко",

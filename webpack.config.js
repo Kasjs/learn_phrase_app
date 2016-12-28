@@ -3,7 +3,7 @@
 var path = require('path'),
     webpack = require('webpack'),
     HtmlWebpackPlugin = require('html-webpack-plugin');
-    //OfflinePlugin = require('offline-plugin');
+    // OfflinePlugin = require('offline-plugin');
 
 module.exports = {
     devtool: 'eval',
@@ -36,7 +36,7 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"
-        }),
+        })
         // new OfflinePlugin({
         //     cacheMaps: [
         //         {
@@ -93,8 +93,8 @@ module.exports = {
                 loader: 'url?limit=10000&mimetype=image/svg+xml'
             }
         ]
-    },
-    postss: function() {
-        return [autoprefixer, precss];
     }
+    // postss: function() {
+    //     return [autoprefixer, precss];
+    // }
 };
