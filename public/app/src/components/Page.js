@@ -45,6 +45,7 @@ export default class Page extends Component {
         }
         this.props.showMsgUnauthorizedUsers();
     }
+
     addCategory() {
         if (getEmailFromLocalStrg()) {
             hashHistory.push('addCategory');
@@ -52,6 +53,7 @@ export default class Page extends Component {
         }
         this.props.showMsgUnauthorizedUsers();
     }
+
     preparingToOffline() {
         let isDelOffline = true;
         this.props.switchOfflineOnLineMode();
@@ -70,64 +72,65 @@ export default class Page extends Component {
     render() {
         const { phrase, counter, hits, email, hidden, isOffline, clearErrorMsg, unAuthorizedMsg } = this.props
         return (
-                <div className='phrase-col'>
+                <div className='phrase-row'>
 
-                <div className='header'>
+                <header className='header'>
                     <p className='header-text'>Phrase generator </p>
-                </div>
-                <Row className='select-comp'>
-                    <Col xs="50%" sm="40%" md="25%" lg="40%">
+                </header>
+                <section className='select-comp row'>
+                    <div className='col-xs-6 col-sm-4 col-md-3 col-lg-4'>
                         <FormSelect className='select-category' options={setOptions()}
                             onChange={this.logChange.bind(this)}
                         />
-                    </Col>
-                    <Col xs='1/3'>
+                    </div>
+                    <div className='col-xs-1'>
                         <Button className='btn-sunc btn-default'
                             onClick={ this.addCategory.bind(this) }>
                             <i className="fa fa-plus" aria-hidden="truen"></i>
                         </Button>
-                    </Col>
+                    </div>
+                </section>
+                <section className='row selected-row'>
                     <div className='col-xs-6'>
                         <span className='selected-category'>Now selected: <strong>{setSelectedOptions()}</strong></span>
                     </div>
-                    <div className='col-xs-6'>
-                        <button className='btn btn-configure' onClick={ () => { hashHistory.push('configure') } }>
+                    <div className='col-xs-6 configure-col'>
+                        <button className='btn-configure btn' onClick={ () => { hashHistory.push('configure') } }>
                             <span className="fa fa-wrench configure "></span>
                         </button>
                     </div>
-                </Row>
-                <div className='phrase-row row'>
+                </section>
+                <section className='phrase-row row'>
                     <div className='col-xs-6 position-col'>
-                        <span className='position'>Position: {counter} </span>
+                        <span className='position'>Position: { counter } </span>
                     </div>
                     <div className='col-xs-6 hits-col'>
-                        <span className='hits'>Hits: {hits} </span>
+                        <span className='hits'>Hits: { hits } </span>
                     </div>
                     <div className='phrase col-xs-12'>
-                        <p><strong className='phrase'>{phrase}</strong></p>
-                        
+                        <p><strong className='phrase'>{ phrase }</strong></p>
                     </div>
-                </div>
-                <div className={isOffline ? 'row offline-row hide' : 'row offline-row'}>
+                </section>
+                <section className={ isOffline ? 'row offline-row hide' : 'row offline-row' }>
                     <div className='col-xs-6'>
                         <span>Go OffLine</span>
-                        <Button onClick={this.preparingToOffline.bind(this)} className='btn btn-default offline-btn'>
+                        <Button onClick={ this.preparingToOffline.bind(this) } className='btn btn-default offline-btn'>
                             <i className="fa fa-toggle-on"></i>
                         </Button>
                     </div>
-                </div>
-                <div className={isOffline ? 'row online-row' : 'row online-row hide'}>
+                </section>
+                <section className={ isOffline ? 'row online-row' : 'row online-row hide' }>
                     <div className='col-xs-12'>
                         <span>Go OnLine </span>
-                        <Button onClick={this.preparingToOffline.bind(this)} className='btn btn-default offline-btn'>
+                        <Button onClick={ this.preparingToOffline.bind(this) } className='btn btn-default offline-btn'>
                             <i className="fa fa-toggle-off"></i>
                         </Button><span className='ready-msg'>Now you can go offline</span>
                     </div>
-                </div>
+                </section>
                 <span className={ getEmailFromLocalStrg() ? 'col-xs-12 unauthorized-msg hide' : 'col-xs-12 unauthorized-msg' }>
                     <span>{ unAuthorizedMsg }</span>
                 </span>
-                <div className='row footer'>
+                <footer className='row footer'>
                     <div className='col-xs-12 footer-text'>
                         <span>
                             2016 Phrase generator
@@ -135,7 +138,7 @@ export default class Page extends Component {
                             <i className="fa fa-android android-icon"></i>
                         </span>
                     </div>
-                </div>
+                </footer>
             </div>
         )
     }

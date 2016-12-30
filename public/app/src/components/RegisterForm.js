@@ -29,7 +29,7 @@ class RegisterForm extends Component {
 
         return (
             <div>
-                <div className='row req-form-cont'>
+                <section className='row req-form-cont'>
                     <div className='col-xs-12'>
                         <h2 className='login-header'>Register</h2>
                     </div>
@@ -49,7 +49,7 @@ class RegisterForm extends Component {
                             <span className='msg-server-error'>{ serverMsg }</span>
                         </Form>
                     </div>
-                </div>
+                </section>
             </div>
         )
     }

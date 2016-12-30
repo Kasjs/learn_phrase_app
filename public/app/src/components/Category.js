@@ -38,33 +38,33 @@ class Category extends Component {
 
         return (
             <div>
-                <div className='row category-form'>
-                    <div className='col-xs-12'>
+                <section className='row category-form'>
+                    <header className='col-xs-12'>
                         <h2 className='category-header'>Add New Category</h2>
-                    </div>
-                    <div className='col-xs-10 col-xs-offset-1' >
+                    </header>
+                    <section className='col-xs-10 col-xs-offset-1' >
                         <Form className='form' model="category" onSubmit={(category) => this.handleCreate(category)}>
                             <Field className='form-group email-label' model="category.name">
                                 <input className='form-control' type="text" placeholder='Category Name' />
                             </Field>
                             <Field className='form-group' model="category.side_a">
-                                <input className='form-control' type="text" placeholder='side_a value' />
+                                <input className='form-control' type="text" placeholder='side_a value (native language)' />
                             </Field>
                             <Field className='form-group' model="category.side_b">
-                                <input className='form-control' type="text" placeholder='side_b value' />
+                                <input className='form-control' type="text" placeholder='side_b value (foreign language)' />
                             </Field>
                             <Field className='form-group' model="category.example">
                                 <label>Example of Content</label>
                                 <textarea rows='2' cols='5' maxLength='80' disabled className='form-control' type="text"
-                                    placeholder=' side_a: sky,
-                                                  side_b: небо'
+                                    placeholder=' side_a: небо,
+                                                  side_b: sky'
                                 ></textarea>
                             </Field>
                             <Button type='submit' className='submit-btn col-xs-12'>Create</Button>
                             <span className='msg-category'>{ msgCategory }</span>
                         </Form>
-                    </div>
-                </div>
+                    </section>
+                </section>
 
             </div>
         )

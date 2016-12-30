@@ -1,5 +1,5 @@
 export const initialState = {
-    selectedCategory: 'test',
+    selectedCategory: '',
     itemsInCategory: []
 }
 
@@ -17,6 +17,12 @@ export default function category( state = initialState, action) {
                 ...state,
                 selectedCategory: '',
                 itemsInCategory: ''
+            }
+        }
+        case 'DELETE_ITEM_IN_SELECTED_CATEGORY': {
+            return {
+                ...state,
+                itemsInCategory: action.payload
             }
         }
         default:

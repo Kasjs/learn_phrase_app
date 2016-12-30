@@ -13,9 +13,9 @@ export function deleteSelectedCategory (category) {
         payload: deleteCategory(category)
     }
 }
-export function deleteItemInSelectedCategory (category, item) {
+export function deleteItemInSelectedCategory (itemsInCategory) {
     return {
         type: 'DELETE_ITEM_IN_SELECTED_CATEGORY',
-        payload: deleteItem(category, item)
+        payload: itemsInCategory
     }
 }

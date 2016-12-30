@@ -19,45 +19,52 @@
     color: @main-color;
     text-align: center;
 }
-.phrase-col {
-    margin: 0 0 0 0;
+.phrase-row {
+    // margin: 0 0 0 0;
     .select-comp {
-        padding: 0;
+        margin: 0 0 0 0;
+        // padding: 0;
         .btn-sunc {
             background-color: @secondary-color;
             margin-top: 10px;
             width: 50px;
             color: #ffffff;
-            margin-left: -7px;
+            margin-left: 0;
         }
         .select-category {
             font: 14px 'Roboto';
             border: 1px solid @secondary-color;
             border-radius: 5px;
-            margin: 10px 0 0 10px;
+            margin: 10px 0 10px -5px;
             font: Helvetica 15px #666;
             font-weight: 700;
             .FormSelect {
                 color: @main-color;
             }
         }
-        .selected-category {
-            font: 16px 'Roboto';
-            margin: 0 15px 0 10px;
-            color: @main-color;
-            padding-right: 70px;
-            .configure {
-
-            }
-        }
+    }
+    .configure-col {
+        text-align: right;
         .btn-configure {
-            position: absolute;
-            right: 20px;
+            text-align: center;
+            position: relative;
+            right: 10px;
             bottom: 5px;
             background-color: #666666;
             color: #ffffff;
             width: 40px;
         }
+    }
+    .selected-category {
+        display: inline;
+        font: 16px 'Roboto';
+        margin: 10px 0 0 10px;
+        padding-top: 10px;
+        color: @main-color;
+        padding-right: 70px;
+        // .configure {
+        //
+        // }
     }
     .phrase-row {
         height: 80px;
@@ -108,10 +115,7 @@
         color: #ffffff;
     }
 }
-.Row {
-    height: 90px;
-    margin: 0;
-}
+
 .offline-row {
     font: 16px 'Roboto';
     padding: 10px 0 0 10px;
@@ -160,7 +164,6 @@ html {
     width: 110%;
     position: absolute;;
     bottom: -2px;
-    z-index: 999;
 }
 .unauthorized-msg {
     padding-top: 0;

@@ -26,7 +26,7 @@ export default class User extends Component {
     render() {
         const { email, logOutUser, clearErrorMsg } = this.props;
         return (
-            <div className='col-xs-12 auth-btn'>
+            <section className='col-xs-12 auth-btn'>
                 <div className={ getHiddenFromLocalStrg()  ? 'hide' : 'show' }>
                     <Button className='login-btn' onClick={() => {hashHistory.push('login'), clearErrorMsg()}}>
                         <i className="fa fa-sign-in"></i>
@@ -38,11 +38,11 @@ export default class User extends Component {
                 <span className={ getHiddenFromLocalStrg() ? 'show user-email' : 'hide user-email' }>
                     <i className='fa fa-user'></i>
                 </span>
-                <Button className={ getHiddenFromLocalStrg() ? 'show log-out-btn' : 'hide log-out-btn'}
+                <button className={ getHiddenFromLocalStrg() ? 'show log-out-btn' : 'hide log-out-btn'}
                     onClick={() => this.logoutAndClearPageInfo() } >
                     <i className="fa fa-sign-out"></i>
-                </Button>
-            </div>
+                </button>
+            </section>
         )
     }
 }
