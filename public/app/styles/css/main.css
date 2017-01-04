@@ -61,11 +61,11 @@
   padding-right: 70px;
 }
 .phrase-row .phrase-row {
-  height: 80px;
+  height: 70px;
   background-color: #fafafa;
   border-radius: 5px;
   border: 1px solid #ccc;
-  margin: 0 9px 0 10px;
+  margin: 2px 9px 0 10px;
   color: #1872ab;
 }
 .phrase-row .phrase-row .position {
@@ -306,7 +306,7 @@ html {
   text-align: right;
   margin: 10px 0 0 0;
   position: absolute;
-  right: 70px;
+  right: 56px;
   color: #ffffff !important;
   background-image: none;
   background-color: #1872ab !important;
