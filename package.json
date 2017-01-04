@@ -7,7 +7,7 @@
     },
     "main": "index.js",
     "scripts": {
-        "start": "node index.dev.js",
+        "start": "node index.js",
         "build": "webpack --config ./webpack.production.config.js --progress --profile --colors",
         "deploy": "git add . && git commit -m \"new deploy\" && git push origin developing",
         "test": "node_modules/.bin/istanbul cover node_modules/mocha/bin/_mocha -- ./test/*.spec.js",
