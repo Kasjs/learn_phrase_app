@@ -24,13 +24,14 @@
   background-color: #23c6c8;
   margin-top: 10px;
   width: 50px;
+  height: 34px;
   color: #ffffff;
   margin-left: -23px;
 }
 .phrase-row .select-comp .select-category {
   font: 14px 'Roboto';
-  border: 1px solid #23c6c8;
-  border-radius: 3px;
+  border-radius: 5px;
+  height: 34px;
   margin: 10px 0 10px -5px;
   font: Helvetica 15px #666;
   font-weight: 700;
@@ -45,11 +46,11 @@
   text-align: center;
   position: relative;
   right: 10px;
-  bottom: 6px;
+  bottom: 4px;
   background-color: #666666;
   color: #ffffff;
   width: 40px;
-  border-radius: 4px;
+  border-radius: 3px;
 }
 .phrase-row .selected-category {
   display: inline;
@@ -147,8 +148,10 @@
 html {
   height: 100%;
   overflow-x: hidden;
+  min-width: 357px;
 }
 .footer {
+  min-width: 357px;
   background-color: #1872ab;
   height: 30px;
   width: 110%;
@@ -161,19 +164,24 @@ html {
   text-align: center;
 }
 .footer .apple-icon {
-  position: absolute;
-  right: 30px;
+  position: relative;
+  right: -10px;
 }
 .footer .android-icon {
   color: #99cc33;
-  position: absolute;
-  right: 12%;
+  position: relative;
+  right: -20px;
 }
 .unauthorized-msg {
   padding-top: 0;
   text-align: center;
   color: #ff0000;
   font-size: 20px;
+}
+@media screen and (max-height: 315px) {
+  .footer {
+    display: none;
+  }
 }
 .req-form-cont {
   padding-top: 40%;
@@ -383,7 +391,7 @@ html {
   .register-btn {
     top: 30px;
     padding: 6px 3px !important;
-    right: 60px;
+    right: 55px;
   }
   .login-btn {
     top: 30px;

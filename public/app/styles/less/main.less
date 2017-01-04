@@ -27,13 +27,15 @@
             background-color: @secondary-color;
             margin-top: 10px;
             width: 50px;
+            height: 34px;
             color: #ffffff;
             margin-left: -23px;
         }
         .select-category {
             font: 14px 'Roboto';
-            border: 1px solid @secondary-color;
-            border-radius: 3px;
+            // border: 1px solid @secondary-color;
+            border-radius: 5px;
+            height: 34px;
             margin: 10px 0 10px -5px;
             font: Helvetica 15px #666;
             font-weight: 700;
@@ -48,11 +50,11 @@
             text-align: center;
             position: relative;
             right: 10px;
-            bottom: 6px;
+            bottom: 4px;
             background-color: #666666;
             color: #ffffff;
             width: 40px;
-            border-radius: 4px;
+            border-radius: 3px;
         }
     }
     .selected-category {
@@ -143,22 +145,24 @@
 html {
     height: 100%;
     overflow-x: hidden;
+    min-width: 357px;
     // overflow-y: hidden;
 }
 .footer {
+    min-width: 357px;
     .footer-text {
         padding-top: 5px;
         color: #ffffff;
         text-align: center;
     }
     .apple-icon {
-        position: absolute;
-        right: 30px;
+        position: relative;
+        right: -10px;
     }
     .android-icon {
         color: #99cc33;
-        position: absolute;
-        right: 12%;
+        position: relative;
+        right: -20px;
     }
     background-color: @main-color;
     height: 30px;
@@ -171,6 +175,12 @@ html {
     text-align: center;
     color: #ff0000;
     font-size: 20px;
+}
+
+@media screen and (max-height: 315px) {
+    .footer {
+        display: none;
+    }
 }
 
 @import "form";
