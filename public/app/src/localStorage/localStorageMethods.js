@@ -60,7 +60,7 @@ export function offlineUpdateCategory(newCategoryName, categoryContent) {
 export function setCategoryOffline() {
     let selected = JSON.parse(getSelectedCategory());
     localStorage.setItem('categories_' + selected, localStorage.getItem('categories_' + getSelected()));
-    setCat = JSON.parse(getCategoryField(getSelected()));
+    setCat = getCategoryField(getSelected());
     return setCat;
 }
 
@@ -75,13 +75,13 @@ export function getCategoryOptions() {
 export function setCategoryField(name, data) {
     localStorage.setItem('categories_' + name , JSON.stringify(data));
 }
+
 export function removeCategoryField(name) {
     localStorage.removeItem('categories_' + name);
 }
 
 export function getCategoryField(category) {
     return JSON.parse(localStorage.getItem('categories_' + category));
-
 }
 
 export function getEmailFromLocalStrg() {

@@ -17,8 +17,7 @@ export function loginUser (user) {
         type: 'LOGIN_USER',
         status: getStatusFromLocalStrg(),
         email: user.email,
-        isAuthButtonsHidden: getHiddenFromLocalStrg(),
-        admin: getAdminField()
+        isAuthButtonsHidden: getHiddenFromLocalStrg()
     }
 }
 

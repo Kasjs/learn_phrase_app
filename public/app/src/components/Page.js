@@ -111,6 +111,9 @@ export default class Page extends Component {
                         <span className='hits'> Hits: { hits } </span>
                     </div>
                     <div className='phrase col-xs-12'>
+                        <span className={ getEmailFromLocalStrg() ? 'col-xs-12 unauthorized-msg hide' : 'col-xs-12 unauthorized-msg' }>
+                            <span>{ unAuthorizedMsg }</span>
+                        </span>
                         <p><strong className='phrase'>{ phrase }</strong></p>
                     </div>
                 </section>
@@ -130,9 +133,7 @@ export default class Page extends Component {
                         </Button><span className='ready-msg'> Now you can go offline</span>
                     </div>
                 </section>
-                <span className={ getEmailFromLocalStrg() ? 'col-xs-12 unauthorized-msg hide' : 'col-xs-12 unauthorized-msg' }>
-                    <span>{ unAuthorizedMsg }</span>
-                </span>
+
                 <footer className='row footer'>
                     <div className='col-xs-12 footer-text'>
                         <span>

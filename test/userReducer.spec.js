@@ -34,7 +34,7 @@ describe('page reducers', () => {
     });
     it('should return login state', () => {
         expect(userReducer({}, { type: 'LOGIN_USER' })).to.eql({
-            email: '{}',
+            email: undefined,
             isAuthButtonsHidden: '{}',
             status: 200
         });
@@ -44,7 +44,7 @@ describe('page reducers', () => {
             status: 400
         });
         expect(userReducer({}, { type: 'LOGIN_USER', status: 200 })).to.eql({
-            email: "{}",
+            email: undefined,
             isAuthButtonsHidden: "{}",
             status: 200
         });

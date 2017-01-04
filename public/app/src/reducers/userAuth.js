@@ -5,7 +5,6 @@ import { register } from '../ajaxCalls/request'
 import { getEmailFromLocalStrg, getHiddenFromLocalStrg } from '../localStorage/localStorageMethods'
 
 export const initialState = {
-    admin: false,
     email: '',
     password: '',
     status: 0,

@@ -15,7 +15,7 @@ describe('userAction', () => {
     });
     it('should create an action to loginUser', () => {
         const user = {
-            email: 'test@email.com',
+            email: '{}',
             password: 12345678
         };
         const expectedAction = {

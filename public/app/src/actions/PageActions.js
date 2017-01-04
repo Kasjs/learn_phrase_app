@@ -76,7 +76,7 @@ export function switchOfflineOnLineMode() {
 export function showMsgUnauthorizedUsers() {
     return {
         type: 'SHOW_MSG_UNAUTHORIZED_UZERS',
-        payload: 'First you have to SignIn or SignUp'
+        payload: 'First you have to SignIn.'
     }
 }
 export function clearMsgUnauthorizedUsers() {

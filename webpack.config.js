@@ -2,8 +2,8 @@
 
 var path = require('path'),
     webpack = require('webpack'),
-    HtmlWebpackPlugin = require('html-webpack-plugin'),
-    OfflinePlugin = require('offline-plugin');
+    HtmlWebpackPlugin = require('html-webpack-plugin');
+    // OfflinePlugin = require('offline-plugin');
 
 module.exports = {
     devtool: 'eval',
@@ -36,37 +36,43 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"
-        }),
-        new OfflinePlugin({
-            cacheMaps: [
-                {
-                    match: function(requestUrl) {
-                        return new URL('/', location);
-                    },
-                    requestTypes: ['navigate']
-                }
-            ]
         })
+        // new OfflinePlugin({
+        //     cacheMaps: [
+        //         {
+        //             match: function(requestUrl) {
+        //                 return new URL('/', location);
+        //             },
+        //             requestTypes: ['navigate']
+        //         }
+        //     ]
+        // })
     ],
     module: {
-        loaders: [{
-            test: /\.jsx?$/,
-            exclude: /node_modules/,
-            loader: 'babel',
-            query: {
-                "presets": ["airbnb","react", "es2015", "stage-0", "stage-1"]
-            }
-        },
+        loaders: [
+            {
+                test: /\.jsx?$/,
+                exclude: /node_modules/,
+                loader: 'babel',
+                query: {
+                    "presets": ["airbnb","react", "es2015", "stage-0", "stage-1"]
+                }
+            },
             {
                 test: /\.json?$/,
                 loader: 'json'
             },
             {
                 test: /\.css$/,
-                loader: "style-loader!css-loader!postcss-loader"
+                loaders: [
+                    'style-loader',
+                    'css-loader?importLoaders=1',
+                    'postcss-loader'
+                ]
             },
             {
-                 test: /\.less$/, loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!autoprefixer?browsers=last 2 version!less?outputStyle=expanded&sourceMap'
+                test: /\.less$/,
+                loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!autoprefixer?browsers=last 2 version!less?outputStyle=expanded&sourceMap'
             },
             {
                 test: /\.png$/,

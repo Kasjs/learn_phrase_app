@@ -11,9 +11,9 @@ chai.use(chaiEnzyme())
 import  Page  from '../public/app/src/components/Page';
 
 describe ('<Page/>', () => {
-    it('should have a class named phrase-col', () => {
+    it('should have a class named phrase-row', () => {
         const wrapper = shallow(<Page />);
-        expect(wrapper.is('.phrase-col')).to.equal(true);
+        expect(wrapper.is('.phrase-row')).to.equal(true);
     });
     it('should have 7 children', () => {
         const wrapper = shallow(<Page />);

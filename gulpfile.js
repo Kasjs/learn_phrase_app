@@ -1,20 +1,20 @@
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-var gulpif = require('gulp-if');
-var autoprefixer = require('gulp-autoprefixer');
-var cssmin = require('gulp-cssmin');
-var less = require('gulp-less');
-var concat = require('gulp-concat');
-var plumber = require('gulp-plumber');
-var buffer = require('vinyl-buffer');
-var source = require('vinyl-source-stream');
-var babelify = require('babelify');
-var webpack = require('webpack');
-var WebpackDevServer = require("webpack-dev-server");
-var webpackConfig = require("./webpack.config.js");
-var watchify = require('watchify');
-var uglify = require('gulp-uglify');
-var sourcemaps = require('gulp-sourcemaps');
+var gulp = require('gulp'),
+gutil = require('gulp-util'),
+gulpif = require('gulp-if'),
+autoprefixer = require('gulp-autoprefixer'),
+cssmin = require('gulp-cssmin'),
+less = require('gulp-less'),
+concat = require('gulp-concat'),
+plumber = require('gulp-plumber'),
+buffer = require('vinyl-buffer'),
+source = require('vinyl-source-stream'),
+babelify = require('babelify'),
+webpack = require('webpack'),
+WebpackDevServer = require("webpack-dev-server"),
+webpackConfig = require("./webpack.config.js"),
+watchify = require('watchify'),
+uglify = require('gulp-uglify'),
+sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('styles', function() {
     return gulp.src('./public/app/styles/less/main.less')
