@@ -20,9 +20,9 @@ export function setCategory(response) {
 }
 
 function createNewCategory(newCategoryName, categoryContent) {
-    let categoryNames = JSON.parse(localStorage.getItem('options'));
+    let categoryNames = JSON.parse(getCategoryOptions());
     categoryNames.push(newCategoryName);
-    localStorage.setItem('options', JSON.stringify(categoryNames));
+    setCategoryOptions(categoryNames);
     let newCategoryField = [];
     newCategoryField.push(categoryContent);
     setCategoryField(newCategoryName.label, newCategoryField);
