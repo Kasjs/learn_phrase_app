@@ -7,8 +7,10 @@ import Button from 'react-bootstrap/lib/Button'
 import React, { PropTypes, Component } from 'react'
 import browserHistory from 'react-router/lib/browserHistory'
 import hashHistory from 'react-router/lib/hashHistory'
-import { getUserCategory, syncWithServer, getCategoryFromServer, getAllCategory, syncAllCategoryAndContent } from '../ajaxCalls/request'
-import { getEmailFromLocalStrg } from '../localStorage/localStorageMethods'
+import { getUserCategory, syncWithServer, getCategoryFromServer, getAllCategory,
+    syncAllCategoryAndContent } from '../ajaxCalls/request'
+import { getEmailFromLocalStrg, getCategoryOptions, getSelectedCategory, setSelectedCategory,
+    setIsOfflineField, removeIsOfflineField } from '../localStorage/localStorageMethods'
 import { initialState } from '../reducers/page'
 import Buttons_Row from './sub-components/Buttons_Row'
 
@@ -19,12 +21,12 @@ function setOptions() {
         {value : 'Food', label: 'Food'},
         {value : 'Nature', label: 'Nature'}
     ];
-    optionsFromServer = JSON.parse(localStorage.getItem('options'));
+    optionsFromServer = JSON.parse(getCategoryOptions());
     return optionsFromServer ? optionsFromServer : defaultOptions;
 }
 
 function setSelectedOptions() {
-    let selectedOptions = JSON.parse(localStorage.getItem('selected'));
+    let selectedOptions = JSON.parse(getSelectedCategory());
     return selectedOptions;
 }
 
@@ -36,11 +38,11 @@ export default class Page extends Component {
         }
     }
 
-    logChange(val) {
+    selectCategory(val) {
         if (getEmailFromLocalStrg()) {
             this.props.syncCatAndRating();
-            localStorage.setItem('selected', JSON.stringify(val));
-            getCategoryFromServer(localStorage.getItem('selected'));
+            setSelectedCategory(JSON.stringify(val));
+            getCategoryFromServer(getSelectedCategory());
             this.props.clearMsgUnauthorizedUsers();
         }
         this.props.showMsgUnauthorizedUsers();
@@ -58,32 +60,33 @@ export default class Page extends Component {
         let isDelOffline = true;
         this.props.switchOfflineOnLineMode();
         getAllCategory();
-        localStorage.setItem('isOffline', !this.props.isOffline);
+        setIsOfflineField(!this.props.isOffline);
         if(this.props.isOffline === true) {
             syncAllCategoryAndContent();
             getAllCategory();
             isDelOffline = !isDelOffline;
         }
         if(!isDelOffline) {
-            localStorage.removeItem('isOffline');
+            removeIsOfflineField();
         }
     }
 
     render() {
-        const { phrase, counter, hits, email, hidden, isOffline, clearErrorMsg, unAuthorizedMsg } = this.props
+        const { phrase, counter, hits, email, hidden, isOffline, clearErrorMsg,
+            unAuthorizedMsg } = this.props
         return (
                 <div className='phrase-row'>
 
                 <header className='header'>
-                    <p className='header-text'>Phrase generator </p>
+                    <p className='header-text'> Phrase generator </p>
                 </header>
                 <section className='select-comp row'>
                     <div className='col-xs-6 col-sm-4 col-md-3 col-lg-4'>
                         <FormSelect className='select-category' options={setOptions()}
-                            onChange={this.logChange.bind(this)}
+                            onChange={this.selectCategory.bind(this)}
                         />
                     </div>
-                    <div className='col-xs-1'>
+                    <div className='col-xs-1 btn-sunc-col'>
                         <Button className='btn-sunc btn-default'
                             onClick={ this.addCategory.bind(this) }>
                             <i className="fa fa-plus" aria-hidden="truen"></i>
@@ -92,7 +95,7 @@ export default class Page extends Component {
                 </section>
                 <section className='row selected-row'>
                     <div className='col-xs-6'>
-                        <span className='selected-category'>Now selected: <strong>{setSelectedOptions()}</strong></span>
+                        <span className='selected-category'> Now selected: <strong>{setSelectedOptions()}</strong></span>
                     </div>
                     <div className='col-xs-6 configure-col'>
                         <button className='btn-configure btn' onClick={ () => { hashHistory.push('configure') } }>
@@ -102,10 +105,10 @@ export default class Page extends Component {
                 </section>
                 <section className='phrase-row row'>
                     <div className='col-xs-6 position-col'>
-                        <span className='position'>Position: { counter } </span>
+                        <span className='position'> Position: { counter } </span>
                     </div>
                     <div className='col-xs-6 hits-col'>
-                        <span className='hits'>Hits: { hits } </span>
+                        <span className='hits'> Hits: { hits } </span>
                     </div>
                     <div className='phrase col-xs-12'>
                         <p><strong className='phrase'>{ phrase }</strong></p>
@@ -113,7 +116,7 @@ export default class Page extends Component {
                 </section>
                 <section className={ isOffline ? 'row offline-row hide' : 'row offline-row' }>
                     <div className='col-xs-6'>
-                        <span>Go OffLine</span>
+                        <span> Go OffLine </span>
                         <Button onClick={ this.preparingToOffline.bind(this) } className='btn btn-default offline-btn'>
                             <i className="fa fa-toggle-on"></i>
                         </Button>
@@ -121,10 +124,10 @@ export default class Page extends Component {
                 </section>
                 <section className={ isOffline ? 'row online-row' : 'row online-row hide' }>
                     <div className='col-xs-12'>
-                        <span>Go OnLine </span>
+                        <span> Go OnLine </span>
                         <Button onClick={ this.preparingToOffline.bind(this) } className='btn btn-default offline-btn'>
                             <i className="fa fa-toggle-off"></i>
-                        </Button><span className='ready-msg'>Now you can go offline</span>
+                        </Button><span className='ready-msg'> Now you can go offline</span>
                     </div>
                 </section>
                 <span className={ getEmailFromLocalStrg() ? 'col-xs-12 unauthorized-msg hide' : 'col-xs-12 unauthorized-msg' }>

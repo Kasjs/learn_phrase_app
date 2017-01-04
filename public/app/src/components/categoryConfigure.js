@@ -7,17 +7,18 @@ import { bindActionCreators } from 'redux'
 import * as configureActions from '../actions/configure'
 import { deleteItemInSelectedCategory } from '../actions/configure'
 import { connect } from 'react-redux'
-import { getCategoryField, getCategoryOptions, setCategoryOptions, removeCategoryField, setCategoryField } from '../localStorage/localStorageMethods'
+import { getCategoryField, getCategoryOptions, setCategoryOptions, removeCategoryField, setCategoryField, getIsOfflineField } from '../localStorage/localStorageMethods'
 import { login, getCategoryFromServer, getAllCategory, syncAllCategoryAndContent  } from '../ajaxCalls/request'
 import { initialState } from '../reducers/configure'
 
 function setOptions() {
     let optionsFromStorage;
-    optionsFromStorage = JSON.parse(localStorage.getItem('options'));
+    optionsFromStorage = JSON.parse(getCategoryOptions());
     return optionsFromStorage;
 }
 
 export function deleteCategory(category) {
+    let isOffline = getIsOfflineField();
     let options = JSON.parse(getCategoryOptions());
     options.map(function(item, index) {
         if (item.label === category) {
@@ -26,7 +27,9 @@ export function deleteCategory(category) {
         }
     });
     setCategoryOptions(options);
-    syncAllCategoryAndContent();
+    if (!isOffline) {
+        syncAllCategoryAndContent();
+    }
 }
 
 class categoryConfigure extends Component {
@@ -41,12 +44,15 @@ class categoryConfigure extends Component {
         let that = this;
         let { selectedCategory, itemsInCategory } = this.props.category;
         let { deleteSelectedCategory, deleteItemInSelectedCategory, getSelectedCategoryForChange } = this.props.configureActions;
+        let isOffline = localStorage.getItem('isOffline');
 
         let loadCategory = function(val) {
             let options = setOptions();
             options.forEach(function(item) {
                 if (item.label === val) {
-                    getAllCategory();
+                    if (!isOffline) {
+                        getAllCategory();
+                    }
                     let listsOfCategoryItems = setDataOfCategory(item.label);
                     getSelectedCategoryForChange(item.label, listsOfCategoryItems);
                 }
@@ -66,7 +72,9 @@ class categoryConfigure extends Component {
                 }
             });
             setCategoryField(category, itemsOfCategory);
-            syncAllCategoryAndContent();
+            if (!isOffline) {
+                syncAllCategoryAndContent();
+            }
             return itemsOfCategory;
         }
 
@@ -91,7 +99,7 @@ class categoryConfigure extends Component {
             <div>
                 <section className='row config-form'>
                     <header className='col-xs-12'>
-                        <h2 className='configure-header'>Category configuration</h2>
+                        <h2 className='configure-header'> Category configuration</h2>
                     </header>
                     <section className='col-xs-offset-1 col-xs-10'>
                         <Form action='' className='form' model="category">
@@ -99,13 +107,13 @@ class categoryConfigure extends Component {
                                 onChange={ loadCategory.bind(this) }
                             />
                         </Form>
-                        <span className='category-name-text'>Category name: </span>
+                        <span className='category-name-text'> Category name: </span>
                         <span className={ selectedCategory ? 'configure-category' : 'configure-category hide'}>{ selectedCategory }</span>
                         <button onClick={ () => deleteSelectedCategory(selectedCategory) } className='del-category-btn btn'>
                             <i className={ selectedCategory ? 'fa fa-times' : 'fa fa-times hide' } aria-hidden="true"></i>
                         </button>
                         <br/>
-                        <span className='items-list-text'>Items of category:<ul className='items'>{ itemsInCategory }</ul></span>
+                        <span className='items-list-text'> Items of category:<ul className='items'>{ itemsInCategory }</ul></span>
                         <button className={ itemsInCategory.length === 0 ? 'btn del-selected-btn btn-danger hide' : 'btn del-selected-btn btn-danger' }
                             onClick= { () => { deleteItemInSelectedCategory(that.props.category.itemsInCategory) }}>delete selected
                         </button>

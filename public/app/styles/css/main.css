@@ -25,12 +25,12 @@
   margin-top: 10px;
   width: 50px;
   color: #ffffff;
-  margin-left: 0;
+  margin-left: -23px;
 }
 .phrase-row .select-comp .select-category {
   font: 14px 'Roboto';
   border: 1px solid #23c6c8;
-  border-radius: 5px;
+  border-radius: 3px;
   margin: 10px 0 10px -5px;
   font: Helvetica 15px #666;
   font-weight: 700;
@@ -45,10 +45,11 @@
   text-align: center;
   position: relative;
   right: 10px;
-  bottom: 5px;
+  bottom: 6px;
   background-color: #666666;
   color: #ffffff;
   width: 40px;
+  border-radius: 4px;
 }
 .phrase-row .selected-category {
   display: inline;
@@ -80,18 +81,20 @@
   text-align: center;
 }
 .btns-row .buttons {
-  margin: 5px 10px 0 0;
+  margin: 3px 8px 0 0;
   width: 6em;
 }
 .btns-row .btn-back {
   background-color: #1872ab;
   border: 1px solid #1872ab;
-  color: #ffffff;
+  color: #23c6c8;
+  border-radius: 3px;
 }
 .btns-row .btn-next {
   background-color: #1872ab;
   border: 1px solid #1872ab;
-  color: #ffffff;
+  color: #23c6c8;
+  border-radius: 3px;
 }
 .btns-row .btn-random {
   font: 15px 'Roboto';
@@ -99,12 +102,14 @@
   border: 1px solid #23c6c8;
   color: #ffffff;
   margin-right: 0;
+  border-radius: 3px;
 }
 .btns-row .btn-translate {
   font: 15px 'Roboto';
   background-color: #23c6c8;
   border: 1px solid #23c6c8;
   color: #ffffff;
+  border-radius: 3px;
 }
 .offline-row {
   font: 16px 'Roboto';
@@ -253,10 +258,13 @@ html {
   font-weight: bold;
 }
 .items-list-text {
+  display: block;
+  margin-top: 5px;
   font: 16px 'Roboto';
   color: #1872ab;
 }
 .items-list-text .items {
+  display: block;
   color: #23c6c8;
 }
 .items-list-text .items .fa-times {
@@ -305,24 +313,23 @@ html {
   margin-left: 5%;
   position: absolute;
   width: 40px;
-  right: 63px;
+  right: 57px;
   top: 40px;
   border: 1px solid #1872ab;
   color: #ffffff;
   background-color: #1872ab;
   padding: 6px;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 .log-out-btn {
   text-align: center;
   margin-left: 5%;
   position: absolute;
-  right: 63px;
+  right: 57px;
   border: 1px solid #1872ab;
   color: #ffffff;
   background-color: #1872ab;
   padding: 6px;
-  border-radius: 5px;
   height: 34px;
   right: 10px;
   width: 40px;
@@ -331,6 +338,7 @@ html {
   color: #ffffff !important;
   background-color: #1872ab !important;
   background-image: none;
+  border-radius: 3px;
 }
 .user-hidden {
   position: absolute;
@@ -359,7 +367,7 @@ html {
   }
   .user-email {
     top: 40px;
-    right: 61px;
+    right: 57px;
     width: 40px;
   }
   .log-out-btn {
@@ -382,7 +390,7 @@ html {
   }
   .user-email {
     top: 40px;
-    right: 61px;
+    right: 57px;
     width: 40px;
   }
   .log-out-btn {

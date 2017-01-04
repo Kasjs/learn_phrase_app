@@ -6,7 +6,8 @@ import { bindActionCreators } from 'redux'
 import * as userActions from '../actions/userActions'
 import * as pageActions from '../actions/pageActions'
 import { connect } from 'react-redux'
-import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHiddenFromLocalStrg } from '../localStorage/localStorageMethods'
+import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg,
+    getHiddenFromLocalStrg } from '../localStorage/localStorageMethods'
 import hashHistory from 'react-router/lib/hashHistory'
 import { updateCategory } from '../ajaxCalls/request'
 
@@ -40,7 +41,7 @@ class Category extends Component {
             <div>
                 <section className='row category-form'>
                     <header className='col-xs-12'>
-                        <h2 className='category-header'>Add New Category</h2>
+                        <h2 className='category-header'> Add New Category</h2>
                     </header>
                     <section className='col-xs-10 col-xs-offset-1' >
                         <Form className='form' model="category" onSubmit={(category) => this.handleCreate(category)}>
@@ -54,13 +55,13 @@ class Category extends Component {
                                 <input className='form-control' type="text" placeholder='side_b value (foreign language)' />
                             </Field>
                             <Field className='form-group' model="category.example">
-                                <label>Example of Content</label>
+                                <label> Example of Content</label>
                                 <textarea rows='2' cols='5' maxLength='80' disabled className='form-control' type="text"
                                     placeholder=' side_a: небо,
                                                   side_b: sky'
                                 ></textarea>
                             </Field>
-                            <Button type='submit' className='submit-btn col-xs-12'>Create</Button>
+                            <Button type='submit' className='submit-btn col-xs-12'> Create</Button>
                             <span className='msg-category'>{ msgCategory }</span>
                         </Form>
                     </section>

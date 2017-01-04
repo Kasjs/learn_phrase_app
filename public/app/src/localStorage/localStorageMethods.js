@@ -4,8 +4,8 @@ import { getSelected } from '../actions/pageActions'
 export let setCat = [];
 
 export let localSync = function(index) {
-    let selected = JSON.parse(localStorage.getItem('selected'));
-    let categories = JSON.parse(localStorage.getItem('categories_' + selected ));
+    let selected = JSON.parse(getSelectedCategory());
+    let categories = getCategoryField(selected);
     let promise = Promise.resolve(selected, categories).then(function() {
         ++categories[index].hits;
         setCategoryField(selected, categories);
@@ -13,9 +13,9 @@ export let localSync = function(index) {
 }
 
 export function setCategory(response) {
-    let selected = JSON.parse(localStorage.getItem('selected'));
+    let selected = JSON.parse(getSelectedCategory());
     setCategoryField(selected, response.data[selected]);
-    setCat = JSON.parse(localStorage.getItem('categories_' + getSelected()));
+    setCat = getCategoryField(getSelected());
     return setCat;
 }
 
@@ -29,7 +29,7 @@ function createNewCategory(newCategoryName, categoryContent) {
 }
 
 export function offlineUpdateCategory(newCategoryName, categoryContent) {
-    var categoryNames = JSON.parse(localStorage.getItem('options')),
+    var categoryNames = JSON.parse(getCategoryOptions()),
     sameContent = false,
     sameCategory = false,
     categoryData = [];
@@ -58,9 +58,9 @@ export function offlineUpdateCategory(newCategoryName, categoryContent) {
 }
 
 export function setCategoryOffline() {
-    let selected = JSON.parse(localStorage.getItem('selected'));
+    let selected = JSON.parse(getSelectedCategory());
     localStorage.setItem('categories_' + selected, localStorage.getItem('categories_' + getSelected()));
-    setCat = JSON.parse(localStorage.getItem('categories_' + getSelected()));
+    setCat = JSON.parse(getCategoryField(getSelected()));
     return setCat;
 }
 
@@ -92,6 +92,22 @@ export function getSelectedCategory() {
     return localStorage.getItem('selected');
 }
 
+export function setSelectedCategory(selected) {
+    localStorage.setItem('selected', selected);
+}
+
+export function setIsOfflineField(isOffline) {
+    localStorage.setItem('isOffline', isOffline);
+}
+
+export function getIsOfflineField() {
+    return localStorage.getItem('isOffline');
+}
+
+export function removeIsOfflineField() {
+    localStorage.removeItem('isOffline');
+}
+
 export function getHiddenFromLocalStrg() {
     return JSON.parse(localStorage.getItem('isAuthButtonsHidden'));
 }
@@ -116,6 +132,14 @@ export function setLoginWhenError() {
 export function logOut() {
     localStorage.clear();
     localStorage.setItem('isAuthButtonsHidden', false);
+}
+
+export function setAdminField(adminField) {
+    localStorage.setItem('admin', adminField);
+}
+
+export function getAdminField() {
+    return localStorage.getItem('admin');
 }
 
 export function getEmailErrorMsg() {

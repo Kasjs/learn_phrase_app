@@ -5,7 +5,8 @@ import { browserHistory, hashHistory } from 'react-router'
 import { registerNewUser, loginUser } from '../actions/userActions'
 import { setLoginWhenSuccess, setLoginWhenError, setCategory, getSelectedCategory,
         getEmailFromLocalStrg, setCategoryOptions, setCategoryOffline, offlineUpdateCategory,
-        setCategoryField, getCategoryField } from '../localStorage/localStorageMethods'
+        setCategoryField, getCategoryField, setAdminField } from '../localStorage/localStorageMethods'
+
 export let msgErrorObj = {};
 
 function calculateAllCategory(res) {
@@ -41,7 +42,7 @@ export function getCategoryFromServer(value) {
 }
 
 let getCategory = (value) => {
-    $.get('/category', {email : localStorage.getItem('email')}).then(function(response) {
+    $.get('/category', { email : localStorage.getItem('email') }).then(function(response) {
         switch(value) {
             case getSelectedCategory() : {
                 setCategory(response);
@@ -75,7 +76,6 @@ let changeCategory = () => {
 
 export function updateCategory(newCategoryName, categoryContent) {
     let isOffline = localStorage.getItem('isOffline');
-    console.log(isOffline);
     if ( isOffline ) {
         offlineUpdateCategory(newCategoryName, categoryContent);
     } else {
@@ -96,7 +96,7 @@ export function updateCategory(newCategoryName, categoryContent) {
 }
 
 export function getAllCategory() {
-    $.get('/category', {email : localStorage.getItem('email')}).then(function(res) {
+    $.get('/category', { email : localStorage.getItem('email') }).then(function(res) {
         calculateAllCategory(res);
     }, function(error) {
         console.log('Error get data')
@@ -121,14 +121,14 @@ export function register(user) {
         {
             email: user.email,
             password: user.password,
-            repPassword: user.repPassword
+            repPassword: user.repPassword,
+            secretWord: user.secretWord
         }).then(function(response) {
             hashHistory.push('/login');
         }, function(response) {
             let errorMsg = response.responseJSON.errors.email ?
             response.responseJSON.errors.email :
             response.responseJSON.errors.password;
-            console.log(errorMsg);
             localStorage.setItem('errorMsg', errorMsg);
         });
 }
@@ -140,6 +140,7 @@ export function login(user) {
         }).then(function(response) {
             setCategoryOptions(response.user.defaultCategory);
             setLoginWhenSuccess(response);
+            setAdminField(response.user.admin);
             hashHistory.push('/');
         }, function(response) {
             setLoginWhenError();

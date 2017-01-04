@@ -14,7 +14,7 @@ module.exports = function(config) {
   }, function(req, email, password, done) {
     let userData = {
         email: email.trim(),
-        password: password.trim(),
+        password: password.trim()
     };
 
     User.findOne({email: userData.email}, function(err, user) {

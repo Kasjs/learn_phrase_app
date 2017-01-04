@@ -6,7 +6,6 @@ HtmlWebpackPlugin = require('html-webpack-plugin'),
 ExtractTextPlugin = require('extract-text-webpack-plugin'),
 OfflinePlugin = require('offline-plugin');
 
-//
 module.exports = {
   devtool: 'source-map',
   entry: [

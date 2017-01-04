@@ -42,3 +42,9 @@ export default class Buttons_Row  extends Component {
         )
     }
 }
+Buttons_Row.propTypes = {
+    getBackPhrase : React.PropTypes.func,
+    getNextPhrase: React.PropTypes.func,
+    getRandomPhrase: React.PropTypes.func,
+    switchLanguage : React.PropTypes.func
+}

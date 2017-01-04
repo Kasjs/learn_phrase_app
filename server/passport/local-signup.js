@@ -11,12 +11,15 @@ module.exports = function(config) {
         passwordField: 'password',
         session: false,
         passReqToCallback: true
-        }, function(req, email, password, done) {
+    }, function(req, email, password, done) {
+
+
         let userData = {
             email: email.trim(),
             password: password.trim(),
             category: new Category()
         };
+
 
         let newUser = new User(userData);
         newUser.save(function(err) {

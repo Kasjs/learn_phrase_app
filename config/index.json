@@ -1,4 +1,5 @@
 {
     "db": "mongodb://Kasjs:Mantrudevelop1985@ds027338.mlab.com:27338/learn_phrase_app",
-    "jwtSecret": "react_learn_phrase!@#$@!"
+    "jwtSecret": "react_learn_phrase!@#$@!",
+    "secretWord": "softserve"
 }

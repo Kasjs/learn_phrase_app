@@ -14,7 +14,7 @@ import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHi
 class RegisterForm extends Component {
 
     handleSubmit(user) {
-        if ( user.email && user.password && user.repPassword ) {
+        if ( user.email && user.password && user.repPassword && user.secretWord ) {
             this.props.userActions.registerNewUser(user);
             this.props.userActions.clearErrorMsg();
         } else {
@@ -43,6 +43,9 @@ class RegisterForm extends Component {
                             </Field>
                             <Field className='form-group' model="user.repPassword">
                                 <input className='form-control register-input' type="password" placeholder='Repeat Password' />
+                            </Field>
+                            <Field className='form-group' model="user.secretWord">
+                                <input className='form-control register-input' type="password" placeholder='Secret Word' />
                             </Field>
                             <Button type='submit' className='submit-btn col-xs-12'>Submit</Button>
                             <span className='msg-client-error'>{ clientMsg }</span>

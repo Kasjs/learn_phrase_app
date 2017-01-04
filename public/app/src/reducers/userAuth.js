@@ -5,13 +5,15 @@ import { register } from '../ajaxCalls/request'
 import { getEmailFromLocalStrg, getHiddenFromLocalStrg } from '../localStorage/localStorageMethods'
 
 export const initialState = {
-    email: getEmailFromLocalStrg() !== '' ?  getEmailFromLocalStrg() : '',
+    admin: false,
+    email: '',
     password: '',
     status: 0,
-    isAuthButtonsHidden: getHiddenFromLocalStrg() !== '' ? getHiddenFromLocalStrg() : '',
+    isAuthButtonsHidden: false,
     clientMsg: '',
     serverMsg: '',
     msgCategory: ''
+
 }
 
 export default function userAuth(state = initialState, action) {
@@ -33,7 +35,7 @@ export default function userAuth(state = initialState, action) {
             } else {
                 return {
                     ...state,
-                    email: localStorage.getItem('email'),
+                    email: action.email,
                     isAuthButtonsHidden: localStorage.getItem('isAuthButtonsHidden'),
                     status: 200
                 }
