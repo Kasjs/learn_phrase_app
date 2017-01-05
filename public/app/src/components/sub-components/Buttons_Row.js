@@ -1,5 +1,5 @@
 'use strict'
-import Button  from 'react-bootstrap/lib/Button'
+
 import React, { PropTypes, Component } from 'react'
 import * as pageActions from '../../actions/pageActions';
 export default class Buttons_Row  extends Component {
@@ -23,20 +23,20 @@ export default class Buttons_Row  extends Component {
         return (
             <div className='row btns-row'>
                 <div className='col-xs-12'>
-                    <Button className='buttons btn-back btn btn-sm'
+                    <button className='buttons btn-back btn btn-sm'
                         onClick={ this.onBackPhraseBtnClick.bind(this) }>
                         <i className="fa fa-arrow-left"></i>
-                    </Button>
-                    <Button className='buttons btn-next btn btn-sm'
+                    </button>
+                    <button className='buttons btn-next btn btn-sm'
                         onClick={ this.onGetNextPhraseBtnClick.bind(this) }>
                         <i className="fa fa-arrow-right"></i>
-                    </Button>
-                    <Button className='buttons btn-translate btn btn-sm'
+                    </button>
+                    <button className='buttons btn-translate btn btn-sm'
                         onClick={ this.onSwitchLanguage.bind(this) }>Translate
-                    </Button>
-                    <Button className='buttons btn-random btn btn-sm'
+                    </button>
+                    <button className='buttons btn-random btn btn-sm'
                         onClick={ this.onGetRandomPhraseBtnClick.bind(this) }>Random
-                    </Button>
+                    </button>
                 </div>
             </div>
         )

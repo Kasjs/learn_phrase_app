@@ -1,5 +1,5 @@
 'use scrict'
-import Button from 'react-bootstrap/lib/Button'
+
 import React, { PropTypes, Component } from 'react'
 import browserHistory from 'react-router/lib/browserHistory'
 import hashHistory from 'react-router/lib/hashHistory'
@@ -28,12 +28,12 @@ export default class User extends Component {
         return (
             <section className='col-xs-12 auth-btn'>
                 <div className={ getHiddenFromLocalStrg()  ? 'hide' : 'show' }>
-                    <Button className='login-btn' onClick={() => {hashHistory.push('login'), clearErrorMsg()}}>
+                    <button className='login-btn btn' onClick={() => {hashHistory.push('login'), clearErrorMsg()}}>
                         <i className="fa fa-sign-in"></i>
-                    </Button>
-                    <Button className='register-btn' onClick={() => {hashHistory.push('register'), clearErrorMsg()}}
+                    </button>
+                    <button className='register-btn btn' onClick={() => {hashHistory.push('register'), clearErrorMsg()}}
                         >Sign Up
-                    </Button>
+                    </button>
                 </div>
                 <span className={ getHiddenFromLocalStrg() ? 'show user-email' : 'hide user-email' }>
                     <i className='fa fa-user'></i>

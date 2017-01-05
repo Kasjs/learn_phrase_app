@@ -5,7 +5,6 @@ import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import sinon, { spy } from 'sinon';
 import { Field, Form, actions } from 'react-redux-form';
-import Button from 'react-bootstrap/lib/Button';
 import { initialState } from '../public/app/src/reducers/userAuth';
 
 

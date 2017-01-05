@@ -1,5 +1,5 @@
 'use scrict'
-import Button from 'react-bootstrap/lib/Button'
+
 import React, { PropTypes, Component } from 'react'
 import FormSelect from 'elemental/lib/components/FormSelect'
 import { Field, Form, actions } from 'react-redux-form'
@@ -114,7 +114,7 @@ class categoryConfigure extends Component {
                         </button>
                         <br/>
                         <span className='items-list-text'> Items of category:<ul className='items'>{ itemsInCategory }</ul></span>
-                        <button className={ itemsInCategory.length === 0 ? 'btn del-selected-btn btn-danger hide' : 'btn del-selected-btn btn-danger' }
+                        <button className={ itemsInCategory.length === 0 ? 'hide del-selected-btn btn-danger btn' : 'del-selected-btn btn-danger btn' }
                             onClick= { () => { deleteItemInSelectedCategory(that.props.category.itemsInCategory) }}>delete selected
                         </button>
                     </section>

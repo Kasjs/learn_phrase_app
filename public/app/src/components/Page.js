@@ -1,9 +1,6 @@
 'use scrict'
-import Row from 'elemental/lib/components/Row'
-import Col from 'elemental/lib/components/Col'
-import Container from 'elemental/lib/components/Container'
+
 import FormSelect from 'elemental/lib/components/FormSelect'
-import Button from 'react-bootstrap/lib/Button'
 import React, { PropTypes, Component } from 'react'
 import browserHistory from 'react-router/lib/browserHistory'
 import hashHistory from 'react-router/lib/hashHistory'
@@ -87,10 +84,10 @@ export default class Page extends Component {
                         />
                     </div>
                     <div className='col-xs-1 btn-sunc-col'>
-                        <Button className='btn-sunc btn-default'
+                        <button className='btn-sunc btn'
                             onClick={ this.addCategory.bind(this) }>
                             <i className="fa fa-plus" aria-hidden="truen"></i>
-                        </Button>
+                        </button>
                     </div>
                 </section>
                 <section className='row selected-row'>
@@ -120,17 +117,17 @@ export default class Page extends Component {
                 <section className={ isOffline ? 'row offline-row hide' : 'row offline-row' }>
                     <div className='col-xs-6'>
                         <span> Go OffLine </span>
-                        <Button onClick={ this.preparingToOffline.bind(this) } className='btn btn-default offline-btn'>
+                        <button onClick={ this.preparingToOffline.bind(this) } className='btn btn-default offline-btn'>
                             <i className="fa fa-toggle-on"></i>
-                        </Button>
+                        </button>
                     </div>
                 </section>
                 <section className={ isOffline ? 'row online-row' : 'row online-row hide' }>
                     <div className='col-xs-12'>
                         <span> Go OnLine </span>
-                        <Button onClick={ this.preparingToOffline.bind(this) } className='btn btn-default offline-btn'>
+                        <button onClick={ this.preparingToOffline.bind(this) } className='btn btn-default offline-btn'>
                             <i className="fa fa-toggle-off"></i>
-                        </Button><span className='ready-msg'> Now you can go offline</span>
+                        </button><span className='ready-msg'> Now you can go offline</span>
                     </div>
                 </section>
 

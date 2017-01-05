@@ -1,4 +1,5 @@
 'use scrict'
+
 import React, { Component, Proptypes } from 'react';
 import { Router } from 'react-router';
 import { bindActionCreators } from 'redux';

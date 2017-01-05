@@ -1,5 +1,5 @@
 'use scrict'
-import Button from 'react-bootstrap/lib/Button'
+
 import React, { PropTypes, Component } from 'react'
 import Field  from 'react-redux-form/lib/components/field-component'
 import Form  from 'react-redux-form/lib/components/form-component'
@@ -47,7 +47,7 @@ class RegisterForm extends Component {
                             <Field className='form-group' model="user.secretWord">
                                 <input className='form-control register-input' type="password" placeholder='Secret Word' />
                             </Field>
-                            <Button type='submit' className='submit-btn col-xs-12'>Submit</Button>
+                            <button type='submit' className='submit-btn btn col-xs-12'>Submit</button>
                             <span className='msg-client-error'>{ clientMsg }</span>
                             <span className='msg-server-error'>{ serverMsg }</span>
                         </Form>

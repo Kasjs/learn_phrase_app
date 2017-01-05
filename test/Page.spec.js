@@ -4,7 +4,6 @@ import { mount, shallow, render } from 'enzyme';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import sinon, { spy } from 'sinon';
-import { Button } from 'react-bootstrap'
 import { page } from '../public/app/src/reducers/page'
 
 chai.use(chaiEnzyme())

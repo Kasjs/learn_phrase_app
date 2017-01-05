@@ -1,5 +1,12 @@
 @main-color: #1872ab;
 @secondary-color: #23c6c8;
+
+html {
+    height: 100%;
+    overflow-x: hidden;
+    // overflow-y: hidden;
+    min-width: 357px;
+}
 #app {
     font-family: 'Roboto', sans-serif;
 }
@@ -57,6 +64,7 @@
         }
     }
     .selected-category {
+        white-space: nowrap;
         display: inline;
         font: 16px 'Roboto';
         margin: 10px 0 0 10px;
@@ -139,14 +147,9 @@
     padding-left: 10px;
 }
 .phrase-col {
-    padding-right: 0 !important;
+    padding-right: 0;
 }
-html {
-    height: 100%;
-    overflow-x: hidden;
-    // overflow-y: hidden;
-    min-width: 357px;
-}
+
 .footer {
     min-width: 357px;
     .footer-text {
@@ -181,6 +184,7 @@ html {
         display: none;
     }
 }
+
 
 @import "form";
 @import "user";

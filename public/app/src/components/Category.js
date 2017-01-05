@@ -1,5 +1,5 @@
 'use scrict'
-import Button from 'react-bootstrap/lib/Button'
+
 import React, { PropTypes, Component } from 'react'
 import { Field, Form, actions } from 'react-redux-form'
 import { bindActionCreators } from 'redux'
@@ -61,7 +61,7 @@ class Category extends Component {
                                                   side_b: sky'
                                 ></textarea>
                             </Field>
-                            <Button type='submit' className='submit-btn col-xs-12'> Create</Button>
+                            <button type='submit' className='submit-btn btn col-xs-12'> Create</button>
                             <span className='msg-category'>{ msgCategory }</span>
                         </Form>
                     </section>
