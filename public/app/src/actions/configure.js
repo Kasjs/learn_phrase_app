@@ -1,4 +1,4 @@
-import { deleteCategory, deleteItem } from '../components/categoryConfigure'
+import { deleteCategory } from '../components/categoryConfigure'
 
 export function getSelectedCategoryForChange (category, items) {
     return {

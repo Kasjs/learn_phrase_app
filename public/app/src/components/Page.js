@@ -12,7 +12,7 @@ import { initialState } from '../reducers/page'
 import Buttons_Row from './sub-components/Buttons_Row'
 
 function setOptions() {
-    var optionsFromServer;
+    let optionsFromServer;
     let defaultOptions = [
         {value : 'Sport', label: 'Sport'},
         {value : 'Food', label: 'Food'},

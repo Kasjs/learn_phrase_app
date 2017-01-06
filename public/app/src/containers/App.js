@@ -25,14 +25,14 @@ class App extends Component {
                     {...userAuth}
                     {...this.props.userActions}
                     clearPageInfo={this.props.pageActions.clearPageInfo}
-                    />
-    			<Page className='main'
+                />
+                <Page className='main'
                     {...page}
                     {...userAuth}
                     {...this.props.userActions}
                     {...this.props.pageActions}
                     registerNewUser={this.props.userActions.registerNewUser}
-                    />
+                />
                 <Buttons_Row
                     {...this.props.pageActions}
                 />

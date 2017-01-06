@@ -1,5 +1,3 @@
-'use strict'
-
 import React, { PropTypes, Component } from 'react'
 import * as pageActions from '../../actions/pageActions';
 export default class Buttons_Row  extends Component {

@@ -1,11 +1,12 @@
-'use strict'
 import { getSelected } from '../actions/pageActions'
 import { showMassage } from '../actions/userActions'
 import { browserHistory, hashHistory } from 'react-router'
 import { registerNewUser, loginUser } from '../actions/userActions'
 import { setLoginWhenSuccess, setLoginWhenError, setCategory, getSelectedCategory,
         getEmailFromLocalStrg, setCategoryOptions, setCategoryOffline, offlineUpdateCategory,
-        setCategoryField, getCategoryField, setAdminField } from '../localStorage/localStorageMethods'
+        setCategoryField, getCategoryField, setAdminField, getIsOfflineField,
+        setSelectedCategory, getCategoryOptions
+    } from '../localStorage/localStorageMethods'
 
 export let msgErrorObj = {};
 
@@ -15,11 +16,11 @@ function calculateAllCategory(res) {
         let categoryName = res.categoryNames[i].label;
         setCategoryField(categoryName, res.data[categoryName]);
     }
-    localStorage.setItem('selected', JSON.stringify(res.categoryNames[0].label));
+    setSelectedCategory(JSON.stringify(res.categoryNames[0].label));
 }
 
 function calculateAllCategoryAndContent() {
-    let categoryNames = JSON.parse(localStorage.getItem('options'));
+    let categoryNames = JSON.parse(getCategoryOptions());
     let categoryData = {};
     for (let i = 0; i < categoryNames.length; i++) {
         categoryData[categoryNames[i].label] = getCategoryField(categoryNames[i].label);
@@ -32,7 +33,7 @@ function calculateAllCategoryAndContent() {
 
 export function getCategoryFromServer(value) {
     let data = value;
-    let isOffline = localStorage.getItem('isOffline');
+    let isOffline = getIsOfflineField();
     if (isOffline) {
         setCategoryOffline();
         return;
@@ -42,20 +43,20 @@ export function getCategoryFromServer(value) {
 }
 
 let getCategory = (value) => {
-    $.get('/category', { email : localStorage.getItem('email') }).then(function(response) {
+    $.get('/category', { email : getEmailFromLocalStrg() }).then(function(response) {
         switch(value) {
             case getSelectedCategory() : {
                 setCategory(response);
             }
         }
     }, function(error) {
-        console.log('Error get data')
+        console.log('Error can\'t get data')
 
     })
 }
 
 export function syncWithServer() {
-    let isOffline = localStorage.getItem('isOffline');
+    let isOffline = getIsOfflineField();
     if (isOffline) {
         return;
     } else {
@@ -66,16 +67,16 @@ export function syncWithServer() {
 let changeCategory = () => {
     $.post('/category',
     {
-        data : JSON.parse(localStorage.getItem('categories_' + getSelected())),
+        data : getCategoryField(getSelected()),
         category: getSelected(),
-        email: localStorage.getItem('email')
-    }).then(function(response) {}, function(erro) {
-        console.log('Error sync')
+        email: getEmailFromLocalStrg()
+    }).then(function(response) {}, function(error) {
+        console.log('Error can\'t sync')
     });
 }
 
 export function updateCategory(newCategoryName, categoryContent) {
-    let isOffline = localStorage.getItem('isOffline');
+    let isOffline = getIsOfflineField();
     if ( isOffline ) {
         offlineUpdateCategory(newCategoryName, categoryContent);
     } else {
@@ -83,23 +84,23 @@ export function updateCategory(newCategoryName, categoryContent) {
         {
             name : newCategoryName.value,
             content: categoryContent,
-            email: localStorage.getItem('email')
+            email: getEmailFromLocalStrg()
         }).then(function(response) {
             setCategoryOptions(response.categoryNames);
             setCategoryField(newCategoryName.label, response.data[newCategoryName.label]);
             location.reload();
             hashHistory.push('/addCategory');
-        }, function(erro) {
-            console.log('Error sync')
+        }, function(error) {
+            console.log('Error can\'t sync')
         });
     }
 }
 
 export function getAllCategory() {
-    $.get('/category', { email : localStorage.getItem('email') }).then(function(res) {
+    $.get('/category', { email : getEmailFromLocalStrg() }).then(function(res) {
         calculateAllCategory(res);
     }, function(error) {
-        console.log('Error get data')
+        console.log('Error can\'t get the data')
     })
 }
 
@@ -107,12 +108,12 @@ export function syncAllCategoryAndContent() {
     calculateAllCategoryAndContent();
     $.post('/syncAllCategory',
         {
-            email : localStorage.getItem('email'),
+            email : getEmailFromLocalStrg(),
             categoryNames : calculateAllCategoryAndContent().categoryNames,
             categoryData : calculateAllCategoryAndContent().categoryData
         }).then(function(res) {
     }, function(error) {
-        console.log('Error get data')
+        console.log('Error can\'t get the data')
     })
 }
 
@@ -132,6 +133,7 @@ export function register(user) {
             localStorage.setItem('errorMsg', errorMsg);
         });
 }
+
 export function login(user) {
     $.post('/login',
         {

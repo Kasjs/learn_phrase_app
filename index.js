@@ -11,12 +11,12 @@ bodyParser = require('body-parser'),
 webpackMiddleware = require('webpack-dev-middleware'),
 webpackHotMiddleware = require('webpack-hot-middleware'),
 webpackConfig = require('./webpack.production.config.js'),
-React = require('react'),
-Router = require('react-router'),
+// React = require('react'),
+// Router = require('react-router'),
 config = require('./config'),
 
-isProduction = process.env.NODE_ENV === 'production',
-port = isProduction ? process.env.PORT : process.env.PORT,
+isProduction = process.env.NODE_ENV !== 'development',
+port = isProduction ? 3000 : process.env.PORT,
 app = express();
 app.use(passport.initialize());
 
@@ -73,14 +73,6 @@ if (isProduction) {
 
     app.use('/', routes);
 
-} else {
-
-    app.use(express.static(__dirname + '/dist'));
-    app.get('*', function response(req, res) {
-      res.sendFile(path.join(__dirname, 'dist/index.html'));
-    });
-
-    app.use('/', routes);
 }
 
 app.listen(port, '0.0.0.0', function onStart(err) {

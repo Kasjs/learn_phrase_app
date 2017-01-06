@@ -29,7 +29,7 @@ function createNewCategory(newCategoryName, categoryContent) {
 }
 
 export function offlineUpdateCategory(newCategoryName, categoryContent) {
-    var categoryNames = JSON.parse(getCategoryOptions()),
+    let categoryNames = JSON.parse(getCategoryOptions()),
     sameContent = false,
     sameCategory = false,
     categoryData = [];

@@ -31,7 +31,7 @@ html {
   width: 50px;
   height: 34px;
   color: #ffffff;
-  margin-left: -23px;
+  margin-left: -22px;
 }
 .phrase-row .select-comp .select-category {
   font: 14px 'Roboto';
@@ -51,7 +51,7 @@ html {
   text-align: center;
   position: relative;
   right: 9px;
-  bottom: 3px;
+  bottom: 2px;
   background-color: #666666;
   color: #ffffff;
   width: 40px;
@@ -71,7 +71,7 @@ html {
   background-color: #fafafa;
   border-radius: 5px;
   border: 1px solid #ccc;
-  margin: 3px 9px 0 10px;
+  margin: 5px 9px 0 10px;
   color: #1872ab;
 }
 .phrase-row .phrase-row .position {
@@ -280,6 +280,21 @@ html {
   background-image: none;
   color: #ff0000;
 }
+.msg-client-error {
+  padding-top: 10px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font: 16px 'Roboto';
+}
+.msg-category {
+  padding-top: 10px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font: 16px 'Roboto';
+  color: #ff0000;
+}
 .del-category-btn {
   background-color: #ffffff;
   clear: both;
@@ -291,6 +306,9 @@ html {
 .del-selected-btn {
   font: 16px 'Roboto' !important;
   padding: 5px 5px !important;
+}
+.btn:hover {
+  color: #ffffff !important;
 }
 .login-btn {
   margin: 10px 0 0 0;
@@ -396,7 +414,7 @@ html {
   .register-btn {
     top: 30px;
     padding: 6px 3px;
-    right: 55px;
+    right: 56px;
   }
   .login-btn {
     top: 30px;

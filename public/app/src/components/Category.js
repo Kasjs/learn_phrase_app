@@ -55,7 +55,7 @@ class Category extends Component {
                                 <input className='form-control' type="text" placeholder='side_b value (foreign language)' />
                             </Field>
                             <Field className='form-group' model="category.example">
-                                <label> Example of Content</label>
+                                <label className='example-label'> Example of Content</label>
                                 <textarea rows='2' cols='5' maxLength='80' disabled className='form-control' type="text"
                                     placeholder=' side_a: небо,
                                                   side_b: sky'
