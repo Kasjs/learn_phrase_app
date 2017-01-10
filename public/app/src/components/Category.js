@@ -12,6 +12,9 @@ import hashHistory from 'react-router/lib/hashHistory'
 import { updateCategory } from '../ajaxCalls/request'
 
 class Category extends Component {
+    constructor(props) {
+        super(props);
+    }
 
     handleCreate(category) {
         let newCategory = {

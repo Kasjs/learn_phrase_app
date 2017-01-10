@@ -155,3 +155,7 @@ Page.propTypes = {
     clearErrorMsg: React.PropTypes.func,
     unAuthorizedMsg: React.PropTypes.string
 }
+
+Page.defaultProps = {
+    hidden: false
+}

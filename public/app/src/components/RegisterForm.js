@@ -12,6 +12,9 @@ import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHi
     getEmailErrorMsg, getPasswordErrorMsg } from '../localStorage/localStorageMethods'
 
 class RegisterForm extends Component {
+    constructor(props) {
+        super(props);
+    }
 
     handleSubmit(user) {
         if ( user.email && user.password && user.repPassword && user.secretWord ) {

@@ -11,8 +11,6 @@ bodyParser = require('body-parser'),
 webpackMiddleware = require('webpack-dev-middleware'),
 webpackHotMiddleware = require('webpack-hot-middleware'),
 webpackConfig = require('./webpack.production.config.js'),
-// React = require('react'),
-// Router = require('react-router'),
 config = require('./config'),
 
 isProduction = process.env.NODE_ENV !== 'development',
