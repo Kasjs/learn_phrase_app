@@ -13,7 +13,7 @@ webpackHotMiddleware = require('webpack-hot-middleware'),
 webpackConfig = require('./webpack.production.config.js'),
 config = require('./config'),
 
-isProduction = process.env.NODE_ENV !== 'development',
+isProduction = process.env.NODE_ENV === 'production',
 port = isProduction ? 3000 : process.env.PORT,
 app = express();
 app.use(passport.initialize());
