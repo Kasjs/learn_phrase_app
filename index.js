@@ -15,13 +15,11 @@ config = require('./config'),
 React = require('react'),
 Router = require('react-router'),
 
-isProduction = process.env.NODE_ENV === 'production',
-port = isProduction ? process.env.PORT : process.env.PORT,
+isProduction = process.env.NODE_ENV !== 'developing',
+port = isProduction ? 3000 : process.env.PORT,
 app = express();
 app.use(passport.initialize());
-app.use(express.static('./public'));
-app.use(express.static('./server'));
-app.use(express.static('./dist'));
+
 
 
 require('node-jsx').install();
@@ -54,6 +52,9 @@ if (isProduction) {
     app.use(favicon(path.join(__dirname, 'server', 'assets', 'images', 'favicon.ico')));
     app.use(middleware);
     app.use(webpackHotMiddleware(compiler));
+    app.use(express.static('./public'));
+    app.use(express.static('./server'));
+    app.use(express.static('./dist'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
         extended: true
@@ -69,10 +70,6 @@ if (isProduction) {
     app.get('/', function(req, res) {
         res.write(middleware.fileSystem.readFileSync(path.join(__dirname, './dist/index.html')));
         res.end();
-    });
-
-    app.get('*', function response(req, res) {
-        res.sendFile(path.join(__dirname, 'dist/index.html'));
     });
 
     app.use('/', routes);

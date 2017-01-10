@@ -142,7 +142,6 @@ export function login(user) {
         }).then(function(response) {
             setCategoryOptions(response.user.defaultCategory);
             setLoginWhenSuccess(response);
-            setAdminField(response.user.admin);
             hashHistory.push('/');
         }, function(response) {
             setLoginWhenError();
