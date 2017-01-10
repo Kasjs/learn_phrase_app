@@ -12,6 +12,8 @@ webpackMiddleware = require('webpack-dev-middleware'),
 webpackHotMiddleware = require('webpack-hot-middleware'),
 webpackConfig = require('./webpack.production.config.js'),
 config = require('./config'),
+React = require('react'),
+Router = require('react-router'),
 
 isProduction = process.env.NODE_ENV === 'production',
 port = isProduction ? 3000 : process.env.PORT,
