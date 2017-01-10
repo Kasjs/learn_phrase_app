@@ -17,6 +17,9 @@ isProduction = process.env.NODE_ENV !== 'development',
 port = isProduction ? 3000 : process.env.PORT,
 app = express();
 app.use(passport.initialize());
+app.use(express.static('./public'));
+app.use(express.static('./server'));
+app.use(express.static('./dist'));
 
 
 require('node-jsx').install();
@@ -49,9 +52,6 @@ if (isProduction) {
     app.use(favicon(path.join(__dirname, 'server', 'assets', 'images', 'favicon.ico')));
     app.use(middleware);
     app.use(webpackHotMiddleware(compiler));
-    app.use(express.static('./public'));
-    app.use(express.static('./server'));
-    app.use(express.static('./dist'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
         extended: true
