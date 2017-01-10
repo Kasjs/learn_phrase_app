@@ -22200,7 +22200,7 @@
 	}));
 
 	var logger = (0, _reduxLogger2['default'])();
-	var store = (0, _redux.createStore)(reducer, (0, _redux.applyMiddleware)(_reduxThunk2['default'], logger));
+	var store = (0, _redux.createStore)(reducer, (0, _redux.applyMiddleware)(_reduxThunk2['default']));
 
 	var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.hashHistory, store);
 
