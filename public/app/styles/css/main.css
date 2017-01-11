@@ -3,6 +3,9 @@ html {
   overflow-x: hidden;
   min-width: 357px;
 }
+.hide-block {
+  visibility: hidden;
+}
 #app {
   font-family: 'Roboto', sans-serif;
 }
@@ -18,11 +21,18 @@ html {
   padding-top: 5px;
 }
 .phrase {
-  font-size: 20px;
+  position: relative;
+  top: 7px;
+  font: 20px 'Roboto';
+  font-weight: bolder;
   color: #1872ab;
   text-align: center;
 }
+.select-row {
+  margin: 5px 0 15px 0;
+}
 .phrase-row .select-comp {
+  min-width: 384px;
   margin: 0 0 0 0;
 }
 .phrase-row .select-comp .btn-sunc {
@@ -31,7 +41,8 @@ html {
   width: 50px;
   height: 34px;
   color: #ffffff;
-  margin-left: -22px;
+  margin-left: -20px;
+  border-radius: .3em;
 }
 .phrase-row .select-comp .select-category {
   font: 14px 'Roboto';
@@ -44,18 +55,15 @@ html {
 .phrase-row .select-comp .select-category .FormSelect {
   color: #1872ab;
 }
-.phrase-row .configure-col {
-  text-align: right;
-}
-.phrase-row .configure-col .btn-configure {
+.phrase-row .btn-configure {
   text-align: center;
   position: relative;
-  right: 9px;
-  bottom: 2px;
+  left: 10px;
+  top: 5px;
   background-color: #666666;
   color: #ffffff;
-  width: 40px;
-  border-radius: 3px;
+  width: 50px;
+  border-radius: .3em;
 }
 .phrase-row .selected-category {
   white-space: nowrap;
@@ -67,82 +75,102 @@ html {
   padding-right: 70px;
 }
 .phrase-row .phrase-row {
-  height: 70px;
+  height: 100px;
   background-color: #fafafa;
   border-radius: 5px;
-  border: 1px solid #ccc;
-  margin: 5px 9px 0 10px;
+  border: 1px solid #23c6c8;
+  margin: 15px 9px 0 10px;
   color: #1872ab;
 }
-.phrase-row .phrase-row .position {
-  position: relative;
-  text-align: left;
-  left: 0;
+.counter {
+  color: #23c6c8;
 }
-.phrase-row .phrase-row .hits {
+.hits-number {
+  color: #23c6c8;
+}
+.hits {
   position: absolute;
   right: 15px;
+  top: 0;
 }
 .btns-row {
+  min-width: 420px;
   margin-top: 0;
   text-align: center;
 }
 .btns-row .buttons {
-  margin: 3px 8px 0 0;
-  width: 6em;
+  margin: 0 10px 10px 0;
+  width: 150px;
+  height: 45px;
+  border-radius: .3em;
+  outline: none !important;
+  font: 20px 'Roboto';
 }
 .btns-row .btn-back {
+  border-radius: .3em;
   background-color: #1872ab;
   border: 1px solid #1872ab;
   color: #23c6c8;
-  border-radius: 3px;
 }
 .btns-row .btn-next {
   background-color: #1872ab;
   border: 1px solid #1872ab;
   color: #23c6c8;
-  border-radius: 3px;
 }
 .btns-row .btn-random {
-  font: 15px 'Roboto';
   background-color: #23c6c8;
   border: 1px solid #23c6c8;
   color: #ffffff;
   margin-right: 0;
-  border-radius: 3px;
 }
 .btns-row .btn-translate {
-  font: 15px 'Roboto';
   background-color: #23c6c8;
   border: 1px solid #23c6c8;
   color: #ffffff;
-  border-radius: 3px;
 }
 .offline-row {
   font: 16px 'Roboto';
   padding: 10px 0 0 10px;
-  margin: 0;
+  margin: 5px 0 10px 0;
   color: #1872ab;
 }
 .offline-row .fa-toggle-on {
   display: inline-block;
   color: #1872ab;
 }
-.offline-row .offline-btn {
+.offline-row .offline-btn,
+.offline-row .online-btn {
   border: none;
+  background-color: transparent;
+  outline: none !important;
+}
+.offline-row .offline-btn:hover,
+.offline-row .online-btn:hover {
+  background-color: transparent;
+  box-shadow: none;
+  color: #1872ab !important;
 }
 .online-row {
   font: 16px 'Roboto';
   padding: 10px 0 0 10px;
-  margin: 0;
+  margin: 5px 0 10px 0;
   color: #1872ab;
 }
 .online-row .fa-toggle-on {
   display: inline-block;
   color: #1872ab;
 }
-.online-row .offline-btn {
+.online-row .offline-btn,
+.online-row .online-btn {
   border: none;
+  background-color: transparent;
+  outline: none !important;
+}
+.online-row .offline-btn:hover,
+.online-row .online-btn:hover {
+  background-color: transparent;
+  box-shadow: none;
+  color: #1872ab !important;
 }
 .ready-msg {
   color: green;
@@ -152,7 +180,6 @@ html {
   padding-right: 0;
 }
 .footer {
-  min-width: 357px;
   background-color: #1872ab;
   height: 30px;
   width: 110%;
@@ -184,8 +211,113 @@ html {
     display: none;
   }
 }
+@media screen and (max-width: 605px) {
+  .btns-row .buttons {
+    margin-right: 10px;
+    width: 110px;
+    height: 40px;
+    font: 20px 'Roboto';
+  }
+}
+@media screen and (min-width: 980px) {
+  .btns-row .buttons {
+    margin: 0 10px 10px 0;
+    width: 150px;
+    height: 45px;
+    font: 20px 'Roboto';
+    font-weight: bolder;
+    border-radius: .3em;
+  }
+  .btns-row {
+    margin-top: 15px;
+  }
+  .log-out-btn,
+  .btn-sunc,
+  .btn-configure {
+    padding: 0 !important;
+    height: 34px;
+  }
+  .fa-sign-out:before,
+  .fa-plus:before,
+  .fa-wrench:before,
+  .fa-toggle-on:before,
+  .fa-toggle-off:before {
+    font-size: 25px;
+  }
+  .FormInput {
+    height: 40px;
+    font-size: 25px;
+  }
+  .FormSelect__arrows {
+    bottom: 3px;
+  }
+  .phrase-row .phrase-row {
+    height: 150px;
+  }
+  .phrase {
+    position: relative;
+    top: 15px;
+    font: 30px 'Roboto';
+    font-weight: bolder;
+    color: #1872ab;
+    text-align: center;
+  }
+  .hits,
+  .position {
+    font: 20px 'Roboto';
+  }
+  .phrase-row .selected-category {
+    font: 25px 'Roboto';
+  }
+  .select-row {
+    margin: 15px 0 25px 0;
+  }
+  .offline-row,
+  .online-row {
+    font: 25px 'Roboto';
+  }
+  .offline-row .offline-btn,
+  .online-row .offline-btn {
+    width: 70px;
+  }
+  .phrase-row .select-comp .btn-sunc,
+  .phrase-row .btn-configure,
+  .auth-btn .log-out-btn {
+    width: 90px;
+    height: 40px;
+    border-radius: .5em;
+  }
+}
+@media screen and (min-width: 1500px) {
+  .btns-row .buttons {
+    margin: 0 10px 10px 0;
+    width: 250px;
+    height: 55px;
+    font: 30px 'Roboto';
+    font-weight: bolder;
+  }
+  .phrase-row .phrase-row {
+    height: 250px;
+  }
+  .phrase {
+    position: relative;
+    top: 35px;
+    font: 40px 'Roboto';
+    font-weight: bolder;
+    color: #1872ab;
+    text-align: center;
+  }
+  .hits,
+  .position,
+  .offline-row {
+    font: 25px 'Roboto';
+  }
+  .phrase-row .selected-category {
+    font: 30px 'Roboto';
+  }
+}
 .req-form-cont {
-  padding-top: 40%;
+  padding-top: 4%;
   text-align: left;
   margin: 1% auto 0 auto;
   border-radius: 5px;
@@ -201,6 +333,9 @@ html {
 .FormLabel {
   margin: 10px 0 5px 0;
 }
+.example-label {
+  margin-bottom: 0;
+}
 .label-text {
   color: #1872ab;
 }
@@ -213,7 +348,7 @@ html {
   color: #ffffff;
 }
 .category-form {
-  padding-top: 30%;
+  padding-top: 4%;
 }
 .category-form .category-header {
   text-align: center;
@@ -313,8 +448,7 @@ html {
 .login-btn {
   margin: 10px 0 0 0;
   position: absolute;
-  right: 9px;
-  width: 40px;
+  right: 10px;
   top: 30px;
   padding: 0 3px 0 3px;
   color: #ffffff;
@@ -326,7 +460,7 @@ html {
   text-align: right;
   margin: 10px 0 0 0;
   position: absolute;
-  right: 56px;
+  right: 88px;
   background-image: none;
   background-color: #1872ab;
   top: 30px;
@@ -335,26 +469,8 @@ html {
   margin-left: 5px;
   display: inline-block;
 }
-.user-email {
-  text-align: center;
-  margin-left: 5%;
-  position: absolute;
-  width: 40px;
-  right: 57px;
-  top: 40px;
-  border: 1px solid #1872ab;
-  color: #ffffff;
-  background-color: #1872ab;
-  padding: 6px;
-  border-radius: 3px;
-}
 .log-out-btn {
-  text-align: center;
-  margin-left: 5%;
   position: absolute;
-  right: 57px;
-  border: 1px solid #1872ab;
-  padding: 6px;
   height: 34px;
   right: 9px;
   width: 40px;
@@ -363,7 +479,7 @@ html {
   color: #ffffff;
   background-color: #1872ab;
   background-image: none;
-  border-radius: 3px;
+  border-radius: .3em;
 }
 .user-hidden {
   position: absolute;
@@ -386,15 +502,9 @@ html {
   color: #ff0000;
 }
 @media screen and (max-width: 473px) {
-  .user-email,
   .log-out-btn {
     top: 30px;
     right: 9px;
-  }
-  .user-email {
-    top: 40px;
-    right: 57px;
-    width: 40px;
   }
   .log-out-btn {
     width: 40px;
@@ -406,7 +516,6 @@ html {
   }
 }
 @media screen and (max-width: 375px) {
-  .user-email,
   .log-out-btn {
     top: 40px;
     right: 9px;
@@ -414,16 +523,11 @@ html {
   .register-btn {
     top: 30px;
     padding: 6px 3px;
-    right: 56px;
+    right: 86px;
   }
   .login-btn {
     top: 30px;
     right: 9px;
-  }
-  .user-email {
-    top: 40px;
-    right: 57px;
-    width: 40px;
   }
   .log-out-btn {
     top: 40px;

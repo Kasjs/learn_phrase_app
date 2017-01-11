@@ -33,10 +33,10 @@ class RegisterForm extends Component {
         return (
             <div>
                 <section className='row req-form-cont'>
-                    <div className='col-xs-12'>
+                    <header className='col-xs-12'>
                         <h2 className='login-header'>Register</h2>
-                    </div>
-                    <div className='col-xs-offset-1 col-xs-10'>
+                    </header>
+                    <section className='col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4'>
                         <Form className='form' model="user" onSubmit={(user) => this.handleSubmit(user)}>
                             <Field className='form-group email-label' model="user.email">
                                 <input className='form-control register-input' type="email" placeholder='Email' />
@@ -54,7 +54,7 @@ class RegisterForm extends Component {
                             <span className='msg-client-error'>{ clientMsg }</span>
                             <span className='msg-server-error'>{ serverMsg }</span>
                         </Form>
-                    </div>
+                    </section>
                 </section>
             </div>
         )

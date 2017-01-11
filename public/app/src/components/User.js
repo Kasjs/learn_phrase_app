@@ -28,19 +28,16 @@ export default class User extends Component {
         return (
             <section className='col-xs-12 auth-btn'>
                 <div className={ getHiddenFromLocalStrg()  ? 'hide' : 'show' }>
-                    <button className='login-btn btn' onClick={() => {hashHistory.push('login'), clearErrorMsg()}}>
-                        <i className="fa fa-sign-in"></i>
+                    <button className='login-btn btn' onClick={() => {hashHistory.push('login'), clearErrorMsg()}}
+                        >Sign In
                     </button>
                     <button className='register-btn btn' onClick={() => {hashHistory.push('register'), clearErrorMsg()}}
                         >Sign Up
                     </button>
                 </div>
-                <span className={ getHiddenFromLocalStrg() ? 'show user-email' : 'hide user-email' }>
-                    <i className='fa fa-user'></i>
-                </span>
-                <button className={ getHiddenFromLocalStrg() ? 'show log-out-btn' : 'hide log-out-btn'}
+                <button className={ getHiddenFromLocalStrg() ? 'log-out-btn show btn' : 'hide log-out-btn btn'}
                     onClick={() => this.logoutAndClearPageInfo() } >
-                    <i className="fa fa-sign-out"></i>
+                    <i aria-hidden='true' className="fa fa-sign-out fa-1x"></i>
                 </button>
             </section>
         )

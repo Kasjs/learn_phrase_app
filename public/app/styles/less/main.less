@@ -4,8 +4,10 @@
 html {
     height: 100%;
     overflow-x: hidden;
-    // overflow-y: hidden;
     min-width: 357px;
+}
+.hide-block {
+    visibility: hidden;
 }
 #app {
     font-family: 'Roboto', sans-serif;
@@ -22,13 +24,19 @@ html {
     padding-top: 5px;
 }
 .phrase {
-    font-size: 20px;
+    position: relative;
+    top: 7px;
+    font: 20px 'Roboto';
+    font-weight: bolder;
     color: @main-color;
     text-align: center;
 }
-
+.select-row {
+    margin: 5px 0 15px 0;
+}
 .phrase-row {
     .select-comp {
+        min-width: 384px;
         margin: 0 0 0 0;
         .btn-sunc {
             background-color: @secondary-color;
@@ -36,7 +44,8 @@ html {
             width: 50px;
             height: 34px;
             color: #ffffff;
-            margin-left: -22px;
+            margin-left: -20px;
+            border-radius: .3em;
         }
         .select-category {
             font: 14px 'Roboto';
@@ -50,18 +59,15 @@ html {
             }
         }
     }
-    .configure-col {
-        text-align: right;
-        .btn-configure {
-            text-align: center;
-            position: relative;
-            right: 9px;
-            bottom: 2px;
-            background-color: #666666;
-            color: #ffffff;
-            width: 40px;
-            border-radius: 3px;
-        }
+    .btn-configure {
+        text-align: center;
+        position: relative;
+        left: 10px;
+        top: 5px;
+        background-color: #666666;
+        color: #ffffff;
+        width: 50px;
+        border-radius: .3em;
     }
     .selected-category {
         white-space: nowrap;
@@ -73,70 +79,78 @@ html {
         padding-right: 70px;
     }
     .phrase-row {
-        height: 70px;
+        height: 100px;
         background-color: #fafafa;
         border-radius: 5px;
-        border: 1px solid #ccc;
-        margin: 5px 9px 0 10px;
+        border: 1px solid @secondary-color;
+        margin: 15px 9px 0 10px;
         color: @main-color;
-        .position {
-            position: relative;
-            text-align: left;
-            left: 0;
-        }
-        .hits {
-            position: absolute;
-            right: 15px;
-        }
     }
 }
+.counter {
+    color: @secondary-color;
+}
+.hits-number {
+    color: @secondary-color;
+}
+.hits {
+    position: absolute;
+    right: 15px;
+    top: 0;
+}
 .btns-row {
+    min-width: 420px;
     margin-top: 0;
     text-align: center;
     .buttons {
-        margin: 3px 8px 0 0;
-        width: 6em;
+        margin: 0 10px 10px 0;
+        width: 150px;
+        height: 45px;
+        border-radius: .3em;
+        outline: none !important;
+        font: 20px 'Roboto';
     }
     .btn-back {
+        border-radius: .3em;
         background-color: @main-color;
         border: 1px solid @main-color;
         color: @secondary-color;
-        border-radius: 3px;
     }
     .btn-next {
         background-color: @main-color;
         border: 1px solid @main-color;
         color: @secondary-color;
-        border-radius: 3px;
     }
     .btn-random {
-        font: 15px 'Roboto';
         background-color: @secondary-color;
         border: 1px solid @secondary-color;
         color: #ffffff;
         margin-right: 0;
-        border-radius: 3px;
     }
     .btn-translate {
-        font: 15px 'Roboto';
         background-color: @secondary-color;
         border: 1px solid @secondary-color;
         color: #ffffff;
-        border-radius: 3px;
     }
 }
-
 .offline-row {
     font: 16px 'Roboto';
     padding: 10px 0 0 10px;
-    margin: 0;
+    margin: 5px 0 10px 0;
     color: @main-color;
     .fa-toggle-on {
         display: inline-block;
         color: @main-color;
     }
-    .offline-btn {
+    .offline-btn, .online-btn {
         border: none;
+        background-color: transparent;
+        outline: none !important;
+    }
+    .offline-btn:hover, .online-btn:hover {
+        background-color: transparent;
+        box-shadow: none;
+        color: @main-color !important;
     }
 }
 .online-row {
@@ -149,9 +163,7 @@ html {
 .phrase-col {
     padding-right: 0;
 }
-
 .footer {
-    min-width: 357px;
     .footer-text {
         padding-top: 5px;
         color: #ffffff;
@@ -185,6 +197,100 @@ html {
     }
 }
 
+@media screen and (max-width: 605px) {
+    .btns-row .buttons {
+        margin-right: 10px;
+        width: 110px;
+        height: 40px;
+        font: 20px 'Roboto';
+    }
+}
+
+@media screen and (min-width: 980px) {
+    .btns-row .buttons {
+        margin: 0 10px 10px 0;
+        width: 150px;
+        height: 45px;
+        font: 20px 'Roboto';
+        font-weight: bolder;
+        border-radius: .3em;
+    }
+    .btns-row {
+        margin-top: 15px;
+    }
+    .log-out-btn, .btn-sunc, .btn-configure {
+        padding: 0 !important;
+        height: 34px;
+    }
+    .fa-sign-out:before, .fa-plus:before, .fa-wrench:before, .fa-toggle-on:before, .fa-toggle-off:before  {
+        font-size: 25px;
+    }
+    .FormInput {
+        height: 40px;
+        font-size: 25px;
+    }
+    .FormSelect__arrows {
+        bottom: 3px;
+    }
+    .phrase-row .phrase-row {
+        height: 150px;
+    }
+    .phrase {
+        position: relative;
+        top: 15px;
+        font: 30px 'Roboto';
+        font-weight: bolder;
+        color: @main-color;
+        text-align: center;
+    }
+    .hits, .position {
+        font: 20px 'Roboto';
+    }
+    .phrase-row .selected-category {
+        font: 25px 'Roboto';
+    }
+    .select-row {
+        margin: 15px 0 25px 0;
+    }
+    .offline-row, .online-row {
+        font: 25px 'Roboto';
+        .offline-btn {
+            width: 70px;
+        }
+    }
+    .phrase-row .select-comp .btn-sunc, .phrase-row .btn-configure, .auth-btn .log-out-btn  {
+        width: 90px;
+        height: 40px;
+        border-radius: .5em;
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .btns-row .buttons {
+        margin: 0 10px 10px 0;
+        width: 250px;
+        height: 55px;
+        font: 30px 'Roboto';
+        font-weight: bolder;
+    }
+    .phrase-row .phrase-row {
+        height: 250px;
+    }
+    .phrase {
+        position: relative;
+        top: 35px;
+        font: 40px 'Roboto';
+        font-weight: bolder;
+        color: @main-color;
+        text-align: center;
+    }
+    .hits, .position, .offline-row {
+        font: 25px 'Roboto';
+    }
+    .phrase-row .selected-category {
+        font: 30px 'Roboto';
+    }
+}
 
 @import "form";
 @import "user";

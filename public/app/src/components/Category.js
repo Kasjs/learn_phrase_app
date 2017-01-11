@@ -46,7 +46,7 @@ class Category extends Component {
                     <header className='col-xs-12'>
                         <h2 className='category-header'> Add New Category</h2>
                     </header>
-                    <section className='col-xs-10 col-xs-offset-1' >
+                    <section className='col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4' >
                         <Form className='form' model="category" onSubmit={(category) => this.handleCreate(category)}>
                             <Field className='form-group email-label' model="category.name">
                                 <input className='form-control' type="text" placeholder='Category Name' />

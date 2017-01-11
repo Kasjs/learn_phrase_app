@@ -101,7 +101,7 @@ class categoryConfigure extends Component {
                     <header className='col-xs-12'>
                         <h2 className='configure-header'> Category configuration</h2>
                     </header>
-                    <section className='col-xs-offset-1 col-xs-10'>
+                    <section className='col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4'>
                         <Form action='' className='form' model="category">
                             <FormSelect className='configure-select' options={ setOptions() }
                                 onChange={ loadCategory.bind(this) }
@@ -115,7 +115,8 @@ class categoryConfigure extends Component {
                         <br/>
                         <span className='items-list-text'> Items of category:<ul className='items'>{ itemsInCategory }</ul></span>
                         <button className={ itemsInCategory.length === 0 ? 'hide del-selected-btn btn-danger btn' : 'del-selected-btn btn-danger btn' }
-                            onClick= { () => { deleteItemInSelectedCategory(that.props.category.itemsInCategory) }}>delete selected
+                            onClick= { () => { deleteItemInSelectedCategory(that.props.category.itemsInCategory) }}>
+                            <i className="fa fa-trash" aria-hidden="true"></i> Delete
                         </button>
                     </section>
                 </section>

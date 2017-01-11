@@ -4,8 +4,7 @@
 .login-btn {
     margin: 10px 0 0 0;
     position: absolute;
-    right: 9px;
-    width: 40px;
+    right: 10px;
     top: 30px;
     padding: 0 3px 0 3px;
     color: #ffffff;
@@ -17,7 +16,7 @@
     text-align: right;
     margin: 10px 0 0 0;
     position: absolute;
-    right: 56px;
+    right: 88px;
     background-image: none;
     background-color: @main-color;
     top: 30px;
@@ -26,21 +25,8 @@
     margin-left: 5px;
     display: inline-block;
 }
-.user-email {
-    text-align: center;
-    margin-left: 5%;
-    position: absolute;
-    width: 40px;
-    right: 57px;
-    top: 40px;
-    border: 1px solid @main-color;
-    color: #ffffff;
-    background-color: @main-color;
-    padding: 6px;
-    border-radius: 3px;
-}
 .log-out-btn {
-    .user-email;
+    position: absolute;
     height: 34px;
     right: 9px;
     width: 40px;
@@ -49,7 +35,7 @@
     color: #ffffff;
     background-color: @main-color;
     background-image: none;
-    border-radius: 3px;
+    border-radius: .3em;
 }
 .user-hidden {
     position: absolute;
@@ -66,20 +52,14 @@
     display: block;
     color: #00ff00;
 }
-
 .msg-server-error, .msg-client-error, .msg-category, {
     color: #ff0000;
 }
 
 @media screen and (max-width: 473px) {
-    .user-email,.log-out-btn {
+    .log-out-btn {
         top: 30px;
         right: 9px;
-    }
-    .user-email {
-        top: 40px;
-        right: 57px;
-        width: 40px;
     }
     .log-out-btn {
         width: 40px;
@@ -92,23 +72,18 @@
 }
 
 @media screen and (max-width: 375px) {
-    .user-email,.log-out-btn {
+    .log-out-btn {
         top: 40px;
         right: 9px;
     }
     .register-btn {
         top: 30px;
         padding: 6px 3px;
-        right: 56px;
+        right: 86px;
     }
     .login-btn {
         top: 30px;
         right: 9px;
-    }
-    .user-email {
-        top: 40px;
-        right: 57px;
-        width: 40px;
     }
     .log-out-btn {
         top: 40px;

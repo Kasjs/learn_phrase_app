@@ -7,7 +7,7 @@ import hashHistory from 'react-router/lib/hashHistory'
 import { getUserCategory, syncWithServer, getCategoryFromServer, getAllCategory,
     syncAllCategoryAndContent } from '../ajaxCalls/request'
 import { getEmailFromLocalStrg, getCategoryOptions, getSelectedCategory, setSelectedCategory,
-    setIsOfflineField, removeIsOfflineField } from '../localStorage/localStorageMethods'
+    setIsOfflineField, removeIsOfflineField, getHiddenFromLocalStrg } from '../localStorage/localStorageMethods'
 import { initialState } from '../reducers/page'
 import Buttons_Row from './sub-components/Buttons_Row'
 
@@ -77,55 +77,53 @@ export default class Page extends Component {
                 <header className='header'>
                     <p className='header-text'> Phrase generator </p>
                 </header>
-                <section className='select-comp row'>
-                    <div className='col-xs-6 col-sm-4 col-md-3 col-lg-4'>
+                <section className={ getEmailFromLocalStrg() ? 'select-comp row' : 'hide-block select-comp row' }>
+                    <div className='select-options col-xs-6 col-sm-4 col-md-3 col-lg-2'>
                         <FormSelect className='select-category' options={setOptions()}
                             onChange={this.selectCategory.bind(this)}
                         />
                     </div>
-                    <div className='col-xs-1 btn-sunc-col'>
+                    <div className='col-xs-4 btn-sunc-col'>
                         <button className='btn-sunc btn'
                             onClick={ this.addCategory.bind(this) }>
                             <i className="fa fa-plus" aria-hidden="truen"></i>
                         </button>
-                    </div>
-                </section>
-                <section className='row selected-row'>
-                    <div className='col-xs-6'>
-                        <span className='selected-category'> Now selected: <strong>{setSelectedOptions()}</strong></span>
-                    </div>
-                    <div className='col-xs-6 configure-col'>
                         <button className='btn-configure btn' onClick={ () => { hashHistory.push('configure') } }>
                             <span className="fa fa-wrench configure "></span>
                         </button>
                     </div>
                 </section>
+                <section className={ getEmailFromLocalStrg() ? 'select-row row' : 'hide-block select-row row' }>
+                    <div className='col-xs-6'>
+                        <span className='selected-category'> Now selected: <strong>{ setSelectedOptions() }</strong></span>
+                    </div>
+                </section>
                 <section className='phrase-row row'>
                     <div className='col-xs-6 position-col'>
-                        <span className='position'> Position: { counter } </span>
+                        <span className={ getEmailFromLocalStrg() ? 'position' : 'position hide' }> Position: <span className='counter'>{ counter }</span> </span>
                     </div>
                     <div className='col-xs-6 hits-col'>
-                        <span className='hits'> Hits: { hits } </span>
+                        <span className={ getEmailFromLocalStrg() ? 'hits' : 'hits hide' }> Hits: <span className='hits-number'> { hits } </span> </span>
                     </div>
                     <div className='phrase col-xs-12'>
                         <span className={ getEmailFromLocalStrg() ? 'col-xs-12 unauthorized-msg hide' : 'col-xs-12 unauthorized-msg' }>
-                            <span>{ unAuthorizedMsg }</span>
+                            <span className='unauthorized-msg'>{ unAuthorizedMsg }</span>
                         </span>
-                        <p><strong className='phrase'>{ phrase }</strong></p>
+                        <span><strong className='phrase'>{ phrase }</strong></span>
                     </div>
                 </section>
                 <section className={ isOffline ? 'row offline-row hide' : 'row offline-row' }>
-                    <div className='col-xs-6'>
-                        <span> Go OffLine </span>
-                        <button onClick={ this.preparingToOffline.bind(this) } className='btn btn-default offline-btn'>
-                            <i className="fa fa-toggle-on"></i>
+                    <div className={ getEmailFromLocalStrg() ? 'col-xs-6' : 'hide col-xs-6' }>
+                        <span> Go Offline </span>
+                        <button onClick={ this.preparingToOffline.bind(this) } className='offline-btn btn'>
+                            <i aria-hidden='true' className="fa fa-toggle-on fa-1x"></i>
                         </button>
                     </div>
                 </section>
                 <section className={ isOffline ? 'row online-row' : 'row online-row hide' }>
                     <div className='col-xs-12'>
                         <span> Go OnLine </span>
-                        <button onClick={ this.preparingToOffline.bind(this) } className='btn btn-default offline-btn'>
+                        <button onClick={ this.preparingToOffline.bind(this) } className='online-btn btn'>
                             <i className="fa fa-toggle-off"></i>
                         </button><span className='ready-msg'> Now you can go offline</span>
                     </div>
