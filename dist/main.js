@@ -12247,45 +12247,23 @@
 	                    ),
 	                    _react2['default'].createElement(
 	                        'section',
-	                        { className: 'select-comp row' },
+	                        { className: (0, _localStorageMethods.getEmailFromLocalStrg)() ? 'select-comp row' : 'hide-block select-comp row' },
 	                        _react2['default'].createElement(
 	                            'div',
-	                            { className: 'col-xs-6 col-sm-4 col-md-3 col-lg-4' },
+	                            { className: 'select-options col-xs-6 col-sm-4 col-md-3 col-lg-2' },
 	                            _react2['default'].createElement(_FormSelect2['default'], { className: 'select-category', options: setOptions(),
 	                                onChange: this.selectCategory.bind(this)
 	                            })
 	                        ),
 	                        _react2['default'].createElement(
 	                            'div',
-	                            { className: 'col-xs-1 btn-sunc-col' },
+	                            { className: 'col-xs-4 btn-sunc-col' },
 	                            _react2['default'].createElement(
 	                                'button',
 	                                { className: 'btn-sunc btn',
 	                                    onClick: this.addCategory.bind(this) },
 	                                _react2['default'].createElement('i', { className: 'fa fa-plus', 'aria-hidden': 'truen' })
-	                            )
-	                        )
-	                    ),
-	                    _react2['default'].createElement(
-	                        'section',
-	                        { className: 'row selected-row' },
-	                        _react2['default'].createElement(
-	                            'div',
-	                            { className: 'col-xs-6' },
-	                            _react2['default'].createElement(
-	                                'span',
-	                                { className: 'selected-category' },
-	                                ' Now selected: ',
-	                                _react2['default'].createElement(
-	                                    'strong',
-	                                    null,
-	                                    setSelectedOptions()
-	                                )
-	                            )
-	                        ),
-	                        _react2['default'].createElement(
-	                            'div',
-	                            { className: 'col-xs-6 configure-col' },
+	                            ),
 	                            _react2['default'].createElement(
 	                                'button',
 	                                { className: 'btn-configure btn', onClick: function () {
@@ -12301,15 +12279,37 @@
 	                    ),
 	                    _react2['default'].createElement(
 	                        'section',
+	                        { className: (0, _localStorageMethods.getEmailFromLocalStrg)() ? 'select-row row' : 'hide-block select-row row' },
+	                        _react2['default'].createElement(
+	                            'div',
+	                            { className: 'col-xs-6' },
+	                            _react2['default'].createElement(
+	                                'span',
+	                                { className: 'selected-category' },
+	                                ' Now selected: ',
+	                                _react2['default'].createElement(
+	                                    'strong',
+	                                    null,
+	                                    setSelectedOptions()
+	                                )
+	                            )
+	                        )
+	                    ),
+	                    _react2['default'].createElement(
+	                        'section',
 	                        { className: 'phrase-row row' },
 	                        _react2['default'].createElement(
 	                            'div',
 	                            { className: 'col-xs-6 position-col' },
 	                            _react2['default'].createElement(
 	                                'span',
-	                                { className: 'position' },
+	                                { className: (0, _localStorageMethods.getEmailFromLocalStrg)() ? 'position' : 'position hide' },
 	                                ' Position: ',
-	                                counter,
+	                                _react2['default'].createElement(
+	                                    'span',
+	                                    { className: 'counter' },
+	                                    counter
+	                                ),
 	                                ' '
 	                            )
 	                        ),
@@ -12318,9 +12318,15 @@
 	                            { className: 'col-xs-6 hits-col' },
 	                            _react2['default'].createElement(
 	                                'span',
-	                                { className: 'hits' },
+	                                { className: (0, _localStorageMethods.getEmailFromLocalStrg)() ? 'hits' : 'hits hide' },
 	                                ' Hits: ',
-	                                hits,
+	                                _react2['default'].createElement(
+	                                    'span',
+	                                    { className: 'hits-number' },
+	                                    ' ',
+	                                    hits,
+	                                    ' '
+	                                ),
 	                                ' '
 	                            )
 	                        ),
@@ -12332,12 +12338,12 @@
 	                                { className: (0, _localStorageMethods.getEmailFromLocalStrg)() ? 'col-xs-12 unauthorized-msg hide' : 'col-xs-12 unauthorized-msg' },
 	                                _react2['default'].createElement(
 	                                    'span',
-	                                    null,
+	                                    { className: 'unauthorized-msg' },
 	                                    unAuthorizedMsg
 	                                )
 	                            ),
 	                            _react2['default'].createElement(
-	                                'p',
+	                                'span',
 	                                null,
 	                                _react2['default'].createElement(
 	                                    'strong',
@@ -12352,16 +12358,16 @@
 	                        { className: isOffline ? 'row offline-row hide' : 'row offline-row' },
 	                        _react2['default'].createElement(
 	                            'div',
-	                            { className: 'col-xs-6' },
+	                            { className: (0, _localStorageMethods.getEmailFromLocalStrg)() ? 'col-xs-6' : 'hide col-xs-6' },
 	                            _react2['default'].createElement(
 	                                'span',
 	                                null,
-	                                ' Go OffLine '
+	                                ' Go Offline '
 	                            ),
 	                            _react2['default'].createElement(
 	                                'button',
-	                                { onClick: this.preparingToOffline.bind(this), className: 'btn btn-default offline-btn' },
-	                                _react2['default'].createElement('i', { className: 'fa fa-toggle-on' })
+	                                { onClick: this.preparingToOffline.bind(this), className: 'offline-btn btn' },
+	                                _react2['default'].createElement('i', { 'aria-hidden': 'true', className: 'fa fa-toggle-on fa-1x' })
 	                            )
 	                        )
 	                    ),
@@ -12378,7 +12384,7 @@
 	                            ),
 	                            _react2['default'].createElement(
 	                                'button',
-	                                { onClick: this.preparingToOffline.bind(this), className: 'btn btn-default offline-btn' },
+	                                { onClick: this.preparingToOffline.bind(this), className: 'online-btn btn' },
 	                                _react2['default'].createElement('i', { className: 'fa fa-toggle-off' })
 	                            ),
 	                            _react2['default'].createElement(
@@ -12524,7 +12530,7 @@
 	                        'section',
 	                        { className: 'row req-form-cont' },
 	                        _react2['default'].createElement(
-	                            'div',
+	                            'header',
 	                            { className: 'col-xs-12' },
 	                            _react2['default'].createElement(
 	                                'h2',
@@ -12533,8 +12539,8 @@
 	                            )
 	                        ),
 	                        _react2['default'].createElement(
-	                            'div',
-	                            { className: 'col-xs-offset-1 col-xs-10' },
+	                            'section',
+	                            { className: 'col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4' },
 	                            _react2['default'].createElement(
 	                                _formComponent2['default'],
 	                                { className: 'form', model: 'user', onSubmit: function () {
@@ -12790,7 +12796,7 @@
 	                        ),
 	                        _react2['default'].createElement(
 	                            'section',
-	                            { className: 'col-xs-offset-1 col-xs-10' },
+	                            { className: 'col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4' },
 	                            _react2['default'].createElement(
 	                                _reactReduxForm.Form,
 	                                { action: '', className: 'form', model: 'category' },
@@ -12840,7 +12846,8 @@
 
 	                                        return onClick;
 	                                    }() },
-	                                'delete selected'
+	                                _react2['default'].createElement('i', { className: 'fa fa-trash', 'aria-hidden': 'true' }),
+	                                ' Delete'
 	                            )
 	                        )
 	                    )
@@ -12974,28 +12981,28 @@
 	                    { className: 'row btns-row' },
 	                    _react2['default'].createElement(
 	                        'div',
-	                        { className: 'col-xs-12' },
+	                        { className: 'col-sm-12' },
 	                        _react2['default'].createElement(
 	                            'button',
-	                            { className: 'buttons btn-back btn btn-sm',
+	                            { className: 'buttons btn-back btn',
 	                                onClick: this.onBackPhraseBtnClick.bind(this) },
 	                            _react2['default'].createElement('i', { className: 'fa fa-arrow-left' })
 	                        ),
 	                        _react2['default'].createElement(
 	                            'button',
-	                            { className: 'buttons btn-next btn btn-sm',
+	                            { className: 'buttons btn-next btn',
 	                                onClick: this.onGetNextPhraseBtnClick.bind(this) },
 	                            _react2['default'].createElement('i', { className: 'fa fa-arrow-right' })
 	                        ),
 	                        _react2['default'].createElement(
 	                            'button',
-	                            { className: 'buttons btn-translate btn btn-sm',
+	                            { className: 'buttons btn-translate btn',
 	                                onClick: this.onSwitchLanguage.bind(this) },
 	                            'Translate'
 	                        ),
 	                        _react2['default'].createElement(
 	                            'button',
-	                            { className: 'buttons btn-random btn btn-sm',
+	                            { className: 'buttons btn-random btn',
 	                                onClick: this.onGetRandomPhraseBtnClick.bind(this) },
 	                            'Random'
 	                        )
@@ -21592,7 +21599,7 @@
 	                        ),
 	                        _react2['default'].createElement(
 	                            'section',
-	                            { className: 'col-xs-10 col-xs-offset-1' },
+	                            { className: 'col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4' },
 	                            _react2['default'].createElement(
 	                                _reactReduxForm.Form,
 	                                { className: 'form', model: 'category', onSubmit: function () {
@@ -21772,7 +21779,7 @@
 	                        ),
 	                        _react2['default'].createElement(
 	                            'section',
-	                            { className: 'col-xs-offset-1 col-xs-10' },
+	                            { className: 'col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4' },
 	                            _react2['default'].createElement(
 	                                _reactReduxForm.Form,
 	                                { className: 'form', model: 'user', onSubmit: function () {
@@ -21939,8 +21946,9 @@
 	                                    }
 
 	                                    return onClick;
-	                                }() },
-	                            _react2['default'].createElement('i', { className: 'fa fa-sign-in' })
+	                                }()
+	                            },
+	                            'Sign In'
 	                        ),
 	                        _react2['default'].createElement(
 	                            'button',
@@ -21956,13 +21964,8 @@
 	                        )
 	                    ),
 	                    _react2['default'].createElement(
-	                        'span',
-	                        { className: (0, _localStorageMethods.getHiddenFromLocalStrg)() ? 'show user-email' : 'hide user-email' },
-	                        _react2['default'].createElement('i', { className: 'fa fa-user' })
-	                    ),
-	                    _react2['default'].createElement(
 	                        'button',
-	                        { className: (0, _localStorageMethods.getHiddenFromLocalStrg)() ? 'show log-out-btn' : 'hide log-out-btn',
+	                        { className: (0, _localStorageMethods.getHiddenFromLocalStrg)() ? 'log-out-btn show btn' : 'hide log-out-btn btn',
 	                            onClick: function () {
 	                                function onClick() {
 	                                    return _this2.logoutAndClearPageInfo();
@@ -21970,7 +21973,7 @@
 
 	                                return onClick;
 	                            }() },
-	                        _react2['default'].createElement('i', { className: 'fa fa-sign-out' })
+	                        _react2['default'].createElement('i', { 'aria-hidden': 'true', className: 'fa fa-sign-out fa-1x' })
 	                    )
 	                );
 	            }
@@ -22200,7 +22203,7 @@
 	}));
 
 	var logger = (0, _reduxLogger2['default'])();
-	var store = (0, _redux.createStore)(reducer, (0, _redux.applyMiddleware)(_reduxThunk2['default']));
+	var store = (0, _redux.createStore)(reducer, (0, _redux.applyMiddleware)(logger, _reduxThunk2['default']));
 
 	var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.hashHistory, store);
 
@@ -24003,7 +24006,7 @@
 
 
 	// module
-	exports.push([module.id, "html{height:100%;overflow-x:hidden;min-width:357px}#app{font-family:Roboto,sans-serif}.header{height:30px;background-color:#1872ab;margin:0;width:105%}.header-text{color:#fff;margin-left:10px;padding-top:5px}.phrase{font-size:20px;color:#1872ab;text-align:center}.phrase-row .select-comp{margin:0}.phrase-row .select-comp .btn-sunc{background-color:#23c6c8;margin-top:10px;width:50px;height:34px;color:#fff;margin-left:-22px}.phrase-row .select-comp .select-category{font:14px Roboto;border-radius:5px;height:34px;margin:10px 0 10px -5px;font:Helvetica 15px #666;font-weight:700}.phrase-row .select-comp .select-category .FormSelect{color:#1872ab}.phrase-row .configure-col{text-align:right}.phrase-row .configure-col .btn-configure{text-align:center;position:relative;right:9px;bottom:2px;background-color:#666;color:#fff;width:40px;border-radius:3px}.phrase-row .selected-category{white-space:nowrap;display:inline;font:16px Roboto;margin:10px 0 0 10px;padding-top:10px;color:#1872ab;padding-right:70px}.phrase-row .phrase-row{height:70px;background-color:#fafafa;border-radius:5px;border:1px solid #ccc;margin:5px 9px 0 10px;color:#1872ab}.phrase-row .phrase-row .position{position:relative;text-align:left;left:0}.phrase-row .phrase-row .hits{position:absolute;right:15px}.btns-row{margin-top:0;text-align:center}.btns-row .buttons{margin:3px 8px 0 0;width:6em}.btns-row .btn-back,.btns-row .btn-next{background-color:#1872ab;border:1px solid #1872ab;color:#23c6c8;border-radius:3px}.btns-row .btn-random{margin-right:0}.btns-row .btn-random,.btns-row .btn-translate{font:15px Roboto;background-color:#23c6c8;border:1px solid #23c6c8;color:#fff;border-radius:3px}.offline-row{font:16px Roboto;padding:10px 0 0 10px;margin:0;color:#1872ab}.offline-row .fa-toggle-on{display:inline-block;color:#1872ab}.offline-row .offline-btn{border:none}.online-row{font:16px Roboto;padding:10px 0 0 10px;margin:0;color:#1872ab}.online-row .fa-toggle-on{display:inline-block;color:#1872ab}.online-row .offline-btn{border:none}.ready-msg{color:green;padding-left:10px}.phrase-col{padding-right:0}.footer{min-width:357px;background-color:#1872ab;height:30px;width:110%;position:absolute;bottom:-2px}.footer .footer-text{padding-top:5px;color:#fff;text-align:center}.footer .apple-icon{position:relative;right:-10px}.footer .android-icon{color:#9c3;position:relative;right:-20px}.unauthorized-msg{padding-top:0;text-align:center;color:red;font-size:20px}@media screen and (max-height:315px){.footer{display:none}}.req-form-cont{padding-top:40%;text-align:left;margin:1% auto 0;border-radius:5px}.reg-form .submit-btn{margin:0 0 10px}.login-header{text-align:center;margin:10px 0 0;color:#676565}.FormLabel{margin:10px 0 5px}.label-text{color:#1872ab}.email-label{padding-top:10px}.submit-btn{margin-bottom:15px;background-color:#23c6c8;color:#fff}.category-form{padding-top:30%}.category-form .category-header{text-align:center}.form-control:focus{box-shadow:inset 0 1px 1px #23c6c8;border-color:#23c6c8!important}.config-form{overflow-y:auto}.config-form .select-category{margin-top:10px}.config-form .configure-header{text-align:center;margin:10px 0 0;color:#676565}.config-form .submit-category-btn{margin-top:20px;background-color:#23c6c8;color:#fff}.configure-select{font:14px Roboto;font-weight:700;margin-top:10px;border:1px solid #23c6c8;border-radius:5px 5px}.configure-select .FormSelect{color:#1872ab}.selected-category{display:block-inline;margin-right:5px}.configure-category{display:block-inline;color:#fff;border-radius:2px 2px;background-color:#23c6c8;padding:4px}.configure-category .list-element{background-color:#1872ab}.category-name-text{font:16px Roboto;font-weight:700}.items-list-text{display:block;margin-top:5px;font:16px Roboto;color:#1872ab}.items-list-text .items{display:block;color:#23c6c8}.items-list-text .items .fa-times{background-image:none;color:red}.msg-category,.msg-client-error{padding-top:10px;display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;font:16px Roboto}.msg-category{color:red}.del-category-btn{background-color:#fff;clear:both}.del-category-btn .fa-times{background-image:none;color:red}.del-selected-btn{font:16px Roboto!important;padding:5px!important}.btn:hover{color:#fff!important}.login-btn{right:9px;width:40px;padding:0 3px}.login-btn,.register-btn{margin:10px 0 0;position:absolute;top:30px;color:#fff;background-image:none;background-color:#1872ab}.register-btn{text-align:right;right:56px}.fa-user-circle-o{margin-left:5px;display:inline-block}.user-email{right:57px;padding:6px}.log-out-btn,.user-email{text-align:center;margin-left:5%;position:absolute;width:40px;top:40px;border:1px solid #1872ab;color:#fff;background-color:#1872ab;border-radius:3px}.log-out-btn{right:57px;padding:6px;height:34px;right:9px;padding:0 3px;background-image:none}.user-hidden{position:absolute;right:33%;top:12%}.hide{visibility:hidden}.show{visibility:visible}.validation-msg-success{display:block;color:#0f0}.msg-category,.msg-client-error,.msg-server-error{color:red}@media screen and (max-width:473px){.log-out-btn,.user-email{top:30px;right:9px}.user-email{top:40px;right:57px;width:40px}.log-out-btn{width:40px;top:40px;right:9px}.login-btn{right:9px}}@media screen and (max-width:375px){.log-out-btn,.user-email{top:40px;right:9px}.register-btn{top:30px;padding:6px 3px;right:56px}.login-btn{top:30px;right:9px}.user-email{top:40px;right:57px;width:40px}.log-out-btn{top:40px;width:40px;right:9px}}", ""]);
+	exports.push([module.id, "html{height:100%;overflow-x:hidden;min-width:357px}.hide-block{visibility:hidden}#app{font-family:Roboto,sans-serif}.header{height:30px;background-color:#1872ab;margin:0;width:105%}.header-text{color:#fff;margin-left:10px;padding-top:5px}.phrase{position:relative;top:7px;font:20px Roboto;font-weight:bolder;color:#1872ab;text-align:center}.select-row{margin:5px 0 15px}.phrase-row .select-comp{min-width:384px;margin:0}.phrase-row .select-comp .btn-sunc{background-color:#23c6c8;margin-top:10px;width:50px;height:34px;color:#fff;margin-left:-20px;border-radius:.3em}.phrase-row .select-comp .select-category{font:14px Roboto;border-radius:5px;height:34px;margin:10px 0 10px -5px;font:Helvetica 15px #666;font-weight:700}.phrase-row .select-comp .select-category .FormSelect{color:#1872ab}.phrase-row .btn-configure{text-align:center;position:relative;left:10px;top:5px;background-color:#666;color:#fff;width:50px;border-radius:.3em}.phrase-row .selected-category{white-space:nowrap;display:inline;font:16px Roboto;margin:10px 0 0 10px;padding-top:10px;color:#1872ab;padding-right:70px}.phrase-row .phrase-row{height:100px;background-color:#fafafa;border-radius:5px;border:1px solid #23c6c8;margin:15px 9px 0 10px;color:#1872ab}.counter,.hits-number{color:#23c6c8}.hits{position:absolute;right:15px;top:0}.btns-row{min-width:420px;margin-top:0;text-align:center}.btns-row .buttons{margin:0 10px 10px 0;width:150px;height:45px;border-radius:.3em;outline:none!important;font:20px Roboto}.btns-row .btn-back{border-radius:.3em}.btns-row .btn-back,.btns-row .btn-next{background-color:#1872ab;border:1px solid #1872ab;color:#23c6c8}.btns-row .btn-random{margin-right:0}.btns-row .btn-random,.btns-row .btn-translate{background-color:#23c6c8;border:1px solid #23c6c8;color:#fff}.offline-row{font:16px Roboto;padding:10px 0 0 10px;margin:5px 0 10px;color:#1872ab}.offline-row .fa-toggle-on{display:inline-block;color:#1872ab}.offline-row .offline-btn,.offline-row .online-btn{border:none;background-color:transparent;outline:none!important}.offline-row .offline-btn:hover,.offline-row .online-btn:hover{background-color:transparent;box-shadow:none;color:#1872ab!important}.online-row{font:16px Roboto;padding:10px 0 0 10px;margin:5px 0 10px;color:#1872ab}.online-row .fa-toggle-on{display:inline-block;color:#1872ab}.online-row .offline-btn,.online-row .online-btn{border:none;background-color:transparent;outline:none!important}.online-row .offline-btn:hover,.online-row .online-btn:hover{background-color:transparent;box-shadow:none;color:#1872ab!important}.ready-msg{color:green;padding-left:10px}.phrase-col{padding-right:0}.footer{background-color:#1872ab;height:30px;width:110%;position:absolute;bottom:-2px}.footer .footer-text{padding-top:5px;color:#fff;text-align:center}.footer .apple-icon{position:relative;right:-10px}.footer .android-icon{color:#9c3;position:relative;right:-20px}.unauthorized-msg{padding-top:0;text-align:center;color:red;font-size:20px}@media screen and (max-height:315px){.footer{display:none}}@media screen and (max-width:605px){.btns-row .buttons{margin-right:10px;width:110px;height:40px;font:20px Roboto}}@media screen and (min-width:980px){.btns-row .buttons{margin:0 10px 10px 0;width:150px;height:45px;font:20px Roboto;font-weight:bolder;border-radius:.3em}.btns-row{margin-top:15px}.btn-configure,.btn-sunc,.log-out-btn{padding:0!important;height:34px}.fa-plus:before,.fa-sign-out:before,.fa-toggle-off:before,.fa-toggle-on:before,.fa-wrench:before,.FormInput{font-size:25px}.FormInput{height:40px}.FormSelect__arrows{bottom:3px}.phrase-row .phrase-row{height:150px}.phrase{position:relative;top:15px;font:30px Roboto;font-weight:bolder;color:#1872ab;text-align:center}.hits,.position{font:20px Roboto}.phrase-row .selected-category{font:25px Roboto}.select-row{margin:15px 0 25px}.offline-row,.online-row{font:25px Roboto}.offline-row .offline-btn,.online-row .offline-btn{width:70px}.auth-btn .log-out-btn,.phrase-row .btn-configure,.phrase-row .select-comp .btn-sunc{width:90px;height:40px;border-radius:.5em}}@media screen and (min-width:1500px){.btns-row .buttons{margin:0 10px 10px 0;width:250px;height:55px;font:30px Roboto;font-weight:bolder}.phrase-row .phrase-row{height:250px}.phrase{position:relative;top:35px;font:40px Roboto;font-weight:bolder;color:#1872ab;text-align:center}.hits,.offline-row,.position{font:25px Roboto}.phrase-row .selected-category{font:30px Roboto}}.req-form-cont{padding-top:4%;text-align:left;margin:1% auto 0;border-radius:5px}.reg-form .submit-btn{margin:0 0 10px}.login-header{text-align:center;margin:10px 0 0;color:#676565}.FormLabel{margin:10px 0 5px}.example-label{margin-bottom:0}.label-text{color:#1872ab}.email-label{padding-top:10px}.submit-btn{margin-bottom:15px;background-color:#23c6c8;color:#fff}.category-form{padding-top:4%}.category-form .category-header{text-align:center}.form-control:focus{box-shadow:inset 0 1px 1px #23c6c8;border-color:#23c6c8!important}.config-form{overflow-y:auto}.config-form .select-category{margin-top:10px}.config-form .configure-header{text-align:center;margin:10px 0 0;color:#676565}.config-form .submit-category-btn{margin-top:20px;background-color:#23c6c8;color:#fff}.configure-select{font:14px Roboto;font-weight:700;margin-top:10px;border:1px solid #23c6c8;border-radius:5px 5px}.configure-select .FormSelect{color:#1872ab}.selected-category{display:block-inline;margin-right:5px}.configure-category{display:block-inline;color:#fff;border-radius:2px 2px;background-color:#23c6c8;padding:4px}.configure-category .list-element{background-color:#1872ab}.category-name-text{font:16px Roboto;font-weight:700}.items-list-text{display:block;margin-top:5px;font:16px Roboto;color:#1872ab}.items-list-text .items{display:block;color:#23c6c8}.items-list-text .items .fa-times{background-image:none;color:red}.msg-category,.msg-client-error{padding-top:10px;display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;font:16px Roboto}.msg-category{color:red}.del-category-btn{background-color:#fff;clear:both}.del-category-btn .fa-times{background-image:none;color:red}.del-selected-btn{font:16px Roboto!important;padding:5px!important}.btn:hover{color:#fff!important}.login-btn{right:10px;padding:0 3px}.login-btn,.register-btn{margin:10px 0 0;position:absolute;top:30px;color:#fff;background-image:none;background-color:#1872ab}.register-btn{text-align:right;right:88px}.fa-user-circle-o{margin-left:5px;display:inline-block}.log-out-btn{position:absolute;height:34px;right:9px;width:40px;top:40px;padding:0 3px;color:#fff;background-color:#1872ab;background-image:none;border-radius:.3em}.user-hidden{position:absolute;right:33%;top:12%}.hide{visibility:hidden}.show{visibility:visible}.validation-msg-success{display:block;color:#0f0}.msg-category,.msg-client-error,.msg-server-error{color:red}@media screen and (max-width:473px){.log-out-btn{top:30px;right:9px;width:40px;top:40px}.login-btn{right:9px}}@media screen and (max-width:375px){.log-out-btn{top:40px;right:9px}.register-btn{top:30px;padding:6px 3px;right:86px}.login-btn{top:30px;right:9px}.log-out-btn{top:40px;width:40px;right:9px}}", ""]);
 
 	// exports
 
