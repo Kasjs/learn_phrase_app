@@ -20,7 +20,7 @@ export default class Buttons_Row  extends Component {
         const { getBackPhrase, getNextPhrase, getRandomPhrase, switchLanguage } = this.props;
         return (
             <div className='row btns-row'>
-                <div className='col-sm-12'>
+                <div className='col-xs-12 btn-col'>
                     <button className='buttons btn-back btn'
                         onClick={ this.onBackPhraseBtnClick.bind(this) }>
                         <i className="fa fa-arrow-left"></i>

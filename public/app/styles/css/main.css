@@ -1,5 +1,7 @@
 html {
   height: 100%;
+  min-width: 355px;
+  min-height: 350px;
   overflow-x: hidden;
 }
 .hide-block {
@@ -92,13 +94,15 @@ html {
   top: 0;
 }
 .btns-row {
-  min-width: 420px;
-  margin-top: 0;
+  margin: auto;
   text-align: center;
 }
+.btns-row .btn-col {
+  padding-right: 5px;
+}
 .btns-row .buttons {
-  margin: 0 10px 10px 0;
-  width: 150px;
+  margin: 0 10px 10px 0px;
+  width: 140px;
   height: 45px;
   border-radius: .3em;
   outline: none !important;
@@ -119,7 +123,6 @@ html {
   background-color: #23c6c8;
   border: 1px solid #23c6c8;
   color: #ffffff;
-  margin-right: 0;
 }
 .btns-row .btn-translate {
   background-color: #23c6c8;
@@ -209,18 +212,15 @@ html {
     display: none;
   }
 }
-@media screen and (max-width: 650px) {
-  .btns-row .buttons {
-    margin-right: 10px;
-    width: 110px;
-    height: 40px;
-    font: 20px 'Roboto';
+@media screen and (min-width: 360px) {
+  .btns-row {
+    margin: auto;
   }
 }
 @media screen and (min-width: 980px) {
   .btns-row .buttons {
     margin: 0 10px 10px 0;
-    width: 150px;
+    width: 170px;
     height: 45px;
     font: 20px 'Roboto';
     font-weight: bolder;

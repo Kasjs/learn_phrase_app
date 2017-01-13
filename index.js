@@ -20,8 +20,6 @@ port = isProduction ? process.env.PORT : process.env.PORT,
 app = express();
 app.use(passport.initialize());
 
-
-
 require('node-jsx').install();
 require('./server/models/User');
 require('./server/models/Category');
