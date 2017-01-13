@@ -76,12 +76,18 @@ export function switchOfflineOnLineMode() {
 export function showMsgUnauthorizedUsers() {
     return {
         type: 'SHOW_MSG_UNAUTHORIZED_UZERS',
-        payload: 'First you have to SignIn.'
+        payload: 'First you have to Sign In.'
     }
 }
 export function clearMsgUnauthorizedUsers() {
     return {
         type: 'CLEAR_MSG_UNAUTHORIZED_UZERS',
         payload: ''
+    }
+}
+export function getCategoryName(categoryName) {
+    return {
+        type: 'GET_CATEGORY_NAME',
+        payload: categoryName
     }
 }

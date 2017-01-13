@@ -1,10 +1,12 @@
 @main-color: #1872ab;
 @secondary-color: #23c6c8;
+@header-color: #676565;
 
 html {
     height: 100%;
-    overflow-x: hidden;
     min-width: 357px;
+    min-height: 350px;
+    overflow-x: hidden;
 }
 .hide-block {
     visibility: hidden;
@@ -26,7 +28,7 @@ html {
 .phrase {
     position: relative;
     top: 7px;
-    font: 20px 'Roboto';
+    font: 25px 'Roboto';
     font-weight: bolder;
     color: @main-color;
     text-align: center;
@@ -52,7 +54,6 @@ html {
             border-radius: 5px;
             height: 34px;
             margin: 10px 0 10px -5px;
-            font: Helvetica 15px #666;
             font-weight: 700;
             .FormSelect {
                 color: @main-color;
@@ -191,13 +192,13 @@ html {
     font-size: 20px;
 }
 
-@media screen and (max-height: 315px) {
+@media screen and (max-height: 400px) {
     .footer {
         display: none;
     }
 }
 
-@media screen and (max-width: 605px) {
+@media screen and (max-width: 650px) {
     .btns-row .buttons {
         margin-right: 10px;
         width: 110px;

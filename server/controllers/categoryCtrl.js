@@ -32,12 +32,25 @@ module.exports.postCategory = function(req, res) {
 
 module.exports.syncAllCategory = function(req, res) {
     User.findOne({email: req.body.email}, function(err, user) {
+        console.log(req.body.categoryData);
+        if ( req.body.categoryData === undefined ) {
+            console.log(user.category[0]);
+            user.category[0] = {};
+            user.markModified('category');
+            user.defaultCategory = [];
+            user.markModified('defaultCategory');
+            user.save();
+            console.log(user.category[0], user.defaultCategory);
+            return res.send({
+                data: user.category[0]
+            })
+        }
         user.category[0] = req.body.categoryData;
         user.markModified('category');
         user.defaultCategory = req.body.categoryNames;
         user.markModified('defaultCategory');
         user.save();
-        console.log(user.category[0]);
+        console.log(user.category[0], "sync all category");
         return res.send({
             data: user.category[0]
         })
@@ -47,6 +60,7 @@ module.exports.syncAllCategory = function(req, res) {
 module.exports.addNewCategory = function(req, res) {
     var same = false;
     User.findOne({ email: req.body.email }, function(err, user) {
+
         if ( user.category[0][req.body.name] ) {
             user.category[0][req.body.name].forEach(function(item) {
                 if (item.side_b === req.body.content.side_b) {

@@ -36,7 +36,7 @@ export default class Page extends Component {
     }
 
     selectCategory(val) {
-        if (getEmailFromLocalStrg()) {
+        if (getEmailFromLocalStrg() && val !== '...Select') {
             this.props.syncCatAndRating();
             setSelectedCategory(JSON.stringify(val));
             getCategoryFromServer(getSelectedCategory());
@@ -72,14 +72,14 @@ export default class Page extends Component {
         const { phrase, counter, hits, email, hidden, isOffline, clearErrorMsg,
             unAuthorizedMsg } = this.props
         return (
-                <div className='phrase-row'>
+            <div className='phrase-row'>
 
                 <header className='header'>
                     <p className='header-text'> Phrase generator </p>
                 </header>
                 <section className={ getEmailFromLocalStrg() ? 'select-comp row' : 'hide-block select-comp row' }>
                     <div className='select-options col-xs-6 col-sm-4 col-md-3 col-lg-2'>
-                        <FormSelect className='select-category' options={setOptions()}
+                        <FormSelect className='select-category' options={setOptions()} firstOption='Select...'
                             onChange={this.selectCategory.bind(this)}
                         />
                     </div>
@@ -88,7 +88,7 @@ export default class Page extends Component {
                             onClick={ this.addCategory.bind(this) }>
                             <i className="fa fa-plus" aria-hidden="truen"></i>
                         </button>
-                        <button className='btn-configure btn' onClick={ () => { hashHistory.push('configure') } }>
+                        <button className='btn-configure btn' onClick={ () => { getAllCategory(); hashHistory.push('configure') } }>
                             <span className="fa fa-wrench configure "></span>
                         </button>
                     </div>

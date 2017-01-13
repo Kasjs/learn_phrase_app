@@ -6,6 +6,7 @@ export const initialState = {
     isOffline: false,
     phrase: '',
     counter: 0,
+    category: '',
     side: 'side_a',
     hits: 0,
     unAuthorizedMsg: ''
@@ -116,6 +117,13 @@ export default function page( state = initialState, action) {
             return {
                 ...state,
                 unAuthorizedMsg: ''
+            }
+        }
+
+        case 'GET_CATEGORY_NAME': {
+            return {
+                ...state,
+                category: action.payload
             }
         }
         default:

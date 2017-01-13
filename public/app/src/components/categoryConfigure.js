@@ -41,22 +41,41 @@ class categoryConfigure extends Component {
     }
 
     render() {
+
         let that = this;
         let { selectedCategory, itemsInCategory } = this.props.category;
         let { deleteSelectedCategory, deleteItemInSelectedCategory, getSelectedCategoryForChange } = this.props.configureActions;
         let isOffline = localStorage.getItem('isOffline');
 
-        let loadCategory = function(val) {
+        function loadCategory(val) {
             let options = setOptions();
+            let listsOfCategoryItems = [];
             options.forEach(function(item) {
                 if (item.label === val) {
                     if (!isOffline) {
                         getAllCategory();
                     }
-                    let listsOfCategoryItems = setDataOfCategory(item.label);
+                    listsOfCategoryItems = setDataOfCategory(item.label);
                     getSelectedCategoryForChange(item.label, listsOfCategoryItems);
                 }
             })
+        }
+
+        let setDataOfCategory = function(category) {
+            let items = getCategoryField(category);
+            let lists = [];
+            if (items) {
+                items.map(function(item, index) {
+                    lists.push(
+                        <li className='list-element' key={ item.side_b }>{ item.side_b }
+                            <button onClick={ () => deleteItem(category, item.side_b) } className='del-category-btn btn'>
+                                <input type='checkbox'/>
+                            </button>
+                        </li>
+                    );
+                });
+                return lists;
+            }
         }
 
         function deleteItem(category, item) {
@@ -78,32 +97,15 @@ class categoryConfigure extends Component {
             return itemsOfCategory;
         }
 
-        function setDataOfCategory(category) {
-            let items = getCategoryField(category);
-            let lists = [];
-            if (items) {
-                items.map(function(item, index) {
-                    lists.push(
-                        <li className='list-element' key={ item.side_b }>{ item.side_b }
-                            <button onClick={ () => deleteItem(category, item.side_b) } className='del-category-btn btn'>
-                                <input type='checkbox'/>
-                            </button>
-                        </li>
-                    );
-                });
-                return lists;
-            }
-        }
-
         return (
             <div>
                 <section className='row config-form'>
                     <header className='col-xs-12'>
-                        <h2 className='configure-header'> Category configuration</h2>
+                        <h2 className='configure-header'> Category Configuration</h2>
                     </header>
                     <section className='col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4'>
                         <Form action='' className='form' model="category">
-                            <FormSelect className='configure-select' options={ setOptions() }
+                            <FormSelect className='configure-select' options={ setOptions() } firstOption='Select...'
                                 onChange={ loadCategory.bind(this) }
                             />
                         </Form>
