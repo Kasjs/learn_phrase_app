@@ -68,7 +68,7 @@ class categoryConfigure extends Component {
                 items.map(function(item, index) {
                     lists.push(
                         <li className='list-element' key={ item.side_b }>{ item.side_b }
-                            <button onClick={ () => deleteItem(category, item.side_b) } className='del-category-btn btn'>
+                            <button onClick={ () => deleteItem(category, item.side_b) } className='btn del-category-btn'>
                                 <input type='checkbox'/>
                             </button>
                         </li>

@@ -32,6 +32,7 @@
         margin-top: 20px;
         background-color: @secondary-color;
         color: #ffffff;
+        .unfocus;
     }
     overflow-y: auto;
     .configure-select {
@@ -78,16 +79,26 @@
         }
         background-color: #ffffff;
         clear: both;
+        &:active {
+            box-shadow: none;
+        }
+        &:focus {
+            outline: none;
+        }
     }
     .del-selected-btn {
         font: 16px 'Roboto' !important;
         padding: 5px 5px !important;
+        &:focus {
+            border-color: none;
+        }
     }
 }
 
 .reg-form {
     .submit-btn {
         margin: 0 0 10px 0;
+
     }
 }
 .login-header, .category-header, .configure-header {
@@ -109,6 +120,10 @@
     background-color: @secondary-color;
     color: #ffffff;
     font: 16px 'Roboto' !important;
+    &:focus {
+        outline: none;
+    }
+    .unfocus;
 }
 
 .form-control:focus {
