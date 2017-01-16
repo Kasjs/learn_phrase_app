@@ -74,7 +74,7 @@ export default class Page extends Component {
         return (
             <div className='phrase-row'>
 
-                <header className='header'>
+                <header className='header flex-item'>
                     <p className='header-text'> Phrase generator </p>
                 </header>
                 <section className={ getEmailFromLocalStrg() ? 'select-comp row' : 'hide-block select-comp row' }>

@@ -19,7 +19,7 @@ export default class Buttons_Row  extends Component {
     render() {
         const { getBackPhrase, getNextPhrase, getRandomPhrase, switchLanguage } = this.props;
         return (
-            <div className='row btns-row'>
+            <div className='flex-container btns-row'>
                 <div className='col-xs-12 btn-col'>
                     <button className='buttons btn-back btn'
                         onClick={ this.onBackPhraseBtnClick.bind(this) }>

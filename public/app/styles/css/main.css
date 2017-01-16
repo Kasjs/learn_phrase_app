@@ -10,6 +10,14 @@ html {
 #app {
   font-family: 'Roboto', sans-serif;
 }
+.flex-container {
+  display: flex-inline;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
 .header {
   height: 30px;
   background-color: #1872ab;
@@ -101,7 +109,7 @@ html {
   padding-right: 5px;
 }
 .btns-row .buttons {
-  margin: 0 10px 10px 0px;
+  margin: 0 10px 10px 0;
   width: 140px;
   height: 45px;
   border-radius: .3em;
