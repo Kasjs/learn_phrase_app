@@ -321,7 +321,7 @@ html {
   border-radius: 5px;
 }
 .category-form {
-  padding-top: 4%;
+  padding-top: 2%;
 }
 .category-form .category-header {
   text-align: center;
@@ -341,7 +341,12 @@ html {
   font-weight: 700;
 }
 .config-form {
+  padding-top: 2%;
   overflow-y: auto;
+}
+.config-form .FormInput {
+  height: 40px;
+  font-size: 16px;
 }
 .config-form .select-category {
   margin-top: 10px;
