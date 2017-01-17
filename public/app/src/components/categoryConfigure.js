@@ -9,6 +9,7 @@ import { deleteItemInSelectedCategory } from '../actions/configure'
 import { connect } from 'react-redux'
 import { getCategoryField, getCategoryOptions, setCategoryOptions, removeCategoryField, setCategoryField, getIsOfflineField } from '../localStorage/localStorageMethods'
 import { login, getCategoryFromServer, getAllCategory, syncAllCategoryAndContent  } from '../ajaxCalls/request'
+import hashHistory from 'react-router/lib/hashHistory'
 import { initialState } from '../reducers/configure'
 
 function setOptions() {
@@ -27,6 +28,7 @@ export function deleteCategory(category) {
         }
     });
     setCategoryOptions(options);
+    location.reload();
     if (!isOffline) {
         syncAllCategoryAndContent();
     }
@@ -100,10 +102,15 @@ class categoryConfigure extends Component {
         return (
             <div>
                 <section className='row config-form'>
+                    <div className='col-xs-12'>
+                        <button className='bnt btn-link back-link-btn' onClick={ () => hashHistory.push('/')}>
+                            <i className="fa fa-long-arrow-left" aria-hidden="true"></i> Back
+                        </button>
+                    </div>
                     <header className='col-xs-12'>
                         <h2 className='configure-header'> Category Configuration</h2>
                     </header>
-                    <section className='col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4'>
+                    <section className='panel panel-default col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4'>
                         <Form action='' className='form' model="category">
                             <FormSelect className='configure-select' options={ setOptions() } firstOption='Select...'
                                 onChange={ loadCategory.bind(this) }

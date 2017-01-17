@@ -1,6 +1,7 @@
 @main-color: #1872ab;
 @secondary-color: #23c6c8;
 @header-color: #676565;
+@success-color: #18a689;
 
 html {
     height: 100%;
@@ -21,17 +22,22 @@ html {
 }
 .flex-container-welcome {
     border-top: 2px solid @main-color;
+    border-bottom: 2px solid @main-color;
     display: flex;
-    padding-right: 30px;
+    background-color: #d1dade;
+    padding: 10px 30px 10px 30px;
     margin: 0 30px 0 0px;
     text-align: center;
     align-content: center;
     width: 100%;
-    color: @secondary-color;
+    color: @main-color;
 }
-.flex-item {
 
+.panel {
+    padding: 10px !important;
+    margin-top: 10px;
 }
+
 .header {
     height: 30px;
     background-color: @main-color;

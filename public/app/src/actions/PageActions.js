@@ -85,6 +85,21 @@ export function clearMsgUnauthorizedUsers() {
         payload: ''
     }
 }
+
+export function addNewCategoryAndItem() {
+    return {
+        type: 'ADD_NEW_CATEGORY_AND_ITEM',
+        payload: 'You have added new category or updated existing one'
+    }
+}
+
+export function clearAddNewCategoryMsg() {
+    return {
+        type: 'CLEAR_ADD_NEW_CATEGORY_MSG',
+        payload: ''
+    }
+}
+
 export function getCategoryName(categoryName) {
     return {
         type: 'GET_CATEGORY_NAME',

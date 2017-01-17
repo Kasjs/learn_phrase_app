@@ -9,7 +9,8 @@ export const initialState = {
     category: '',
     side: 'side_a',
     hits: 0,
-    unAuthorizedMsg: ''
+    unAuthorizedMsg: '',
+    addCategoryMsg: ''
 }
 
 export default function page( state = initialState, action) {
@@ -20,7 +21,7 @@ export default function page( state = initialState, action) {
                 return {
                     ...state,
                     phrase: action.payload[state.counter = 0][state.side],
-                    hits: ++action.payload[state.counter].hits,
+                    hits: ++action.payload[state.counter].hits
                 }
             }
             localSync(state.counter);
@@ -119,13 +120,25 @@ export default function page( state = initialState, action) {
                 unAuthorizedMsg: ''
             }
         }
-
         case 'GET_CATEGORY_NAME': {
             return {
                 ...state,
                 category: action.payload
             }
         }
+        case 'ADD_NEW_CATEGORY_AND_ITEM': {
+            return {
+                ...state,
+                addCategoryMsg: action.payload
+            }
+        }
+        case 'CLEAR_ADD_NEW_CATEGORY_MSG': {
+            return {
+                ...state,
+                addCategoryMsg: action.payload
+            }
+        }
+
         default:
         return state
     }

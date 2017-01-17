@@ -69,8 +69,8 @@ export default class Page extends Component {
     }
 
     render() {
-        const { phrase, counter, hits, email, hidden, isOffline, clearErrorMsg,
-            unAuthorizedMsg } = this.props
+        const { phrase, counter, hits, lengthOfCategory, email, hidden, isOffline, clearErrorMsg,
+            unAuthorizedMsg, } = this.props
         return (
             <div className='phrase-row'>
                 <header className='header flex-item'>
@@ -98,7 +98,7 @@ export default class Page extends Component {
                         <span className='selected-category'> Now selected: <strong>{ setSelectedOptions() }</strong></span>
                     </div>
                 </section>
-                <section className='phrase-row row'>
+                <section className={getEmailFromLocalStrg() ? 'phrase-row row' : 'phrase-row row hidden'}>
                     <div className='col-xs-6 position-col'>
                         <span className={ getEmailFromLocalStrg() ? 'position' : 'position hide' }> Position: <span className='counter'>{ counter }</span> </span>
                     </div>

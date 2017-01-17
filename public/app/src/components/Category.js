@@ -24,6 +24,7 @@ class Category extends Component {
     }
     loadCategory = function(val) {
         this.props.pageActions.getCategoryName(val);
+        this.props.pageActions.clearAddNewCategoryMsg();
     }
     handleCreate(category) {
 
@@ -41,6 +42,8 @@ class Category extends Component {
         if ( (category.name || categoryName) && category.side_a && category.side_b ) {
             updateCategory(newCategory, categoryContent);
             this.props.pageActions.updateCategoryContent();
+            this.props.pageActions.addNewCategoryAndItem();
+
         } else {
             this.props.userActions.showCategoryMassage();
         }
@@ -50,14 +53,21 @@ class Category extends Component {
 
         let { category } = this.props;
         let { msgCategory } = this.props.userAuth;
+        let { addCategoryMsg } = this.props.page;
 
         return (
             <div>
                 <section className='row category-form'>
+                    <div className='col-xs-10'>
+                        <button className='bnt btn-link back-link-btn' onClick={ () => hashHistory.push('/')}>
+                            <i className="fa fa-long-arrow-left" aria-hidden="true"></i> Back
+                        </button>
+                    </div>
                     <header className='col-xs-12'>
                         <h2 className='category-header'> Add New Category</h2>
                     </header>
-                    <section className='col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4' >
+                    <section className='panel panel-default col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4' >
+                    <span className={ addCategoryMsg ? 'add-category-msg' : 'add-category-msg hide' }>{ addCategoryMsg }</span>
                         <Form className='form' model="category" onSubmit={(category) => this.handleCreate(category)}>
                             <label className='update-label'>Update existing category</label>
                             <FormSelect className='update-select' options={ setOptions() } firstOption='Select...'
