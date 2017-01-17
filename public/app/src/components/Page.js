@@ -73,7 +73,6 @@ export default class Page extends Component {
             unAuthorizedMsg } = this.props
         return (
             <div className='phrase-row'>
-
                 <header className='header flex-item'>
                     <p className='header-text'> Phrase generator </p>
                 </header>
@@ -93,6 +92,7 @@ export default class Page extends Component {
                         </button>
                     </div>
                 </section>
+                <h3 className={ getEmailFromLocalStrg() ? 'hide' : 'show flex-container-welcome' }>Welcome to PG app, for continue please Sign In or Sign Up.</h3>
                 <section className={ getEmailFromLocalStrg() ? 'select-row row' : 'hide-block select-row row' }>
                     <div className='col-xs-6'>
                         <span className='selected-category'> Now selected: <strong>{ setSelectedOptions() }</strong></span>

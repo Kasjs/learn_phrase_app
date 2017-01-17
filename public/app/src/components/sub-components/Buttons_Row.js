@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 import * as pageActions from '../../actions/pageActions';
+import { getEmailFromLocalStrg } from '../../localStorage/localStorageMethods'
 export default class Buttons_Row  extends Component {
 
     onBackPhraseBtnClick() {
@@ -20,7 +21,7 @@ export default class Buttons_Row  extends Component {
         const { getBackPhrase, getNextPhrase, getRandomPhrase, switchLanguage } = this.props;
         return (
             <div className='flex-container btns-row'>
-                <div className='col-xs-12 btn-col'>
+                <div className={ getEmailFromLocalStrg() ? 'col-xs-12 btn-col' : 'col-xs-12 btn-col hide' }>
                     <button className='buttons btn-back btn'
                         onClick={ this.onBackPhraseBtnClick.bind(this) }>
                         <i className="fa fa-arrow-left"></i>

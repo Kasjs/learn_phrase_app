@@ -1,6 +1,6 @@
 html {
   height: 100%;
-  min-width: 355px;
+  min-width: 306px;
   min-height: 350px;
   overflow-x: hidden;
 }
@@ -17,6 +17,18 @@ html {
           justify-content: center;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
+}
+.flex-container-welcome {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-right: 20px;
+  margin: 0 0 0 10px;
+  text-align: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  width: 100%;
+  color: #23c6c8;
 }
 .header {
   height: 30px;
@@ -68,6 +80,7 @@ html {
   position: relative;
   left: 10px;
   top: 5px;
+  margin-right: 10px;
   background-color: #666666;
   color: #ffffff;
   width: 50px;
@@ -87,7 +100,7 @@ html {
   background-color: #fafafa;
   border-radius: 5px;
   border: 1px solid #23c6c8;
-  margin: 15px 9px 0 10px;
+  margin: 18px 10px 0 10px;
   color: #1872ab;
 }
 .counter {
@@ -106,7 +119,7 @@ html {
   text-align: center;
 }
 .btns-row .btn-col {
-  padding-right: 5px;
+  padding-right: 0;
 }
 .btns-row .buttons {
   margin: 0 10px 10px 0;
@@ -223,6 +236,24 @@ html {
 @media screen and (min-width: 360px) {
   .btns-row {
     margin: auto;
+  }
+}
+@media screen and (max-width: 385px) {
+  .btns-row .buttons {
+    margin: auto;
+    margin: 0 10px 10px 0;
+    width: 130px;
+    height: 40px;
+    font: 15px 'Roboto';
+  }
+  .phrase-row .select-comp .btn-sunc {
+    position: fixed;
+    right: 10px;
+    top: 74px;
+  }
+  .phrase-row .btn-configure {
+    left: -20px;
+    top: 10px;
   }
 }
 @media screen and (min-width: 980px) {
@@ -511,8 +542,8 @@ html {
 .log-out-btn {
   position: absolute;
   height: 34px;
-  right: 9px;
-  width: 40px;
+  right: 10px;
+  width: 50px;
   top: 40px;
   padding: 0 3px 0 3px;
   color: #ffffff;
@@ -542,23 +573,15 @@ html {
 }
 @media screen and (max-width: 473px) {
   .log-out-btn {
-    top: 30px;
-    right: 9px;
-  }
-  .log-out-btn {
-    width: 40px;
+    width: 50px;
     top: 40px;
-    right: 9px;
+    right: 10px;
   }
   .login-btn {
-    right: 9px;
+    right: 10px;
   }
 }
 @media screen and (max-width: 375px) {
-  .log-out-btn {
-    top: 40px;
-    right: 9px;
-  }
   .register-btn {
     top: 30px;
     padding: 6px 3px;
@@ -566,11 +589,11 @@ html {
   }
   .login-btn {
     top: 30px;
-    right: 9px;
+    right: 10px;
   }
   .log-out-btn {
     top: 40px;
-    width: 40px;
-    right: 9px;
+    width: 50px;
+    right: 10px;
   }
 }
