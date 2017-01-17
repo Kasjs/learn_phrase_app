@@ -19,11 +19,12 @@ html {
       flex-wrap: nowrap;
 }
 .flex-container-welcome {
+  border-top: 2px solid #1872ab;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding-right: 20px;
-  margin: 0 0 0 10px;
+  padding-right: 30px;
+  margin: 0 30px 0 0px;
   text-align: center;
   -ms-flex-line-pack: center;
       align-content: center;
@@ -254,6 +255,9 @@ html {
   .phrase-row .btn-configure {
     left: -20px;
     top: 10px;
+  }
+  .col-xs-4 {
+    height: 15px;
   }
 }
 @media screen and (min-width: 980px) {

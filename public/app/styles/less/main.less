@@ -20,9 +20,10 @@ html {
     flex-wrap: nowrap;
 }
 .flex-container-welcome {
+    border-top: 2px solid @main-color;
     display: flex;
-    padding-right: 20px;
-    margin: 0 0 0 10px;
+    padding-right: 30px;
+    margin: 0 30px 0 0px;
     text-align: center;
     align-content: center;
     width: 100%;
@@ -218,12 +219,14 @@ html {
 }
 
 @media screen and (min-width: 360px) {
+
     .btns-row {
         margin: auto;
     }
 }
 
 @media screen and (max-width: 385px) {
+
     .btns-row .buttons {
         margin: auto;
         margin: 0 10px 10px 0;
@@ -240,9 +243,13 @@ html {
         left: -20px;
         top: 10px;
     }
+    .col-xs-4 {
+        height: 15px;
+    }
 }
 
 @media screen and (min-width: 980px) {
+
     .btns-row .buttons {
         margin: 0 10px 10px 0;
         width: 170px;
@@ -302,6 +309,7 @@ html {
 }
 
 @media screen and (min-width: 1500px) {
+
     .btns-row .buttons {
         margin: 0 10px 10px 0;
         width: 250px;
