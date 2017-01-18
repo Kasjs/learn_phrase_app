@@ -12,12 +12,14 @@ import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg,
 import hashHistory from 'react-router/lib/hashHistory'
 import { updateCategory } from '../ajaxCalls/request'
 
+//working function
 function setOptions() {
     let optionsFromStorage;
     optionsFromStorage = JSON.parse(getCategoryOptions());
     return optionsFromStorage;
 }
 
+//class component
 class Category extends Component {
     constructor(props) {
         super(props);

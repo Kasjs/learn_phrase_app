@@ -12,6 +12,8 @@ import { login, getCategoryFromServer, getAllCategory, syncAllCategoryAndContent
 import hashHistory from 'react-router/lib/hashHistory'
 import { initialState } from '../reducers/configure'
 
+//working function
+
 function setOptions() {
     let optionsFromStorage;
     optionsFromStorage = JSON.parse(getCategoryOptions());
@@ -33,6 +35,8 @@ export function deleteCategory(category) {
         syncAllCategoryAndContent();
     }
 }
+
+// class component
 
 class categoryConfigure extends Component {
     constructor(props) {

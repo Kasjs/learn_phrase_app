@@ -14,6 +14,9 @@ export let localSync = function(index) {
 
 export function setCategory(response) {
     let selected = JSON.parse(getSelectedCategory());
+    if (!selected) {
+        return;
+    }
     setCategoryField(selected, response.data[selected]);
     setCat = getCategoryField(getSelected());
     return setCat;

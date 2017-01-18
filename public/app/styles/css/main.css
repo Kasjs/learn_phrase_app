@@ -363,6 +363,10 @@ html {
     font: 30px 'Roboto';
   }
 }
+.animation {
+  opacity: 1;
+  webkittransition: opacity 500ms ease-in;
+}
 .req-form-cont {
   padding-top: 4%;
   text-align: left;

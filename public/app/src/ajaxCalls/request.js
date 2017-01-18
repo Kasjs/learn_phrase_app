@@ -88,8 +88,6 @@ export function updateCategory(newCategoryName, categoryContent) {
         }).then(function(response) {
             setCategoryOptions(response.categoryNames);
             setCategoryField(newCategoryName.label, response.data[newCategoryName.label]);
-            // location.reload();
-            // hashHistory.push('/addCategory');
         }, function(error) {
             console.log('Error can\'t sync')
         });

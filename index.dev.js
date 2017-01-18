@@ -55,7 +55,6 @@ if (isDeveloping) {
     app.use(bodyParser.urlencoded({
         extended: true
     }));
-
     app.use(function(req, res, next) {
         res.header('Access-Control-Allow-Origin', process.env.allowOrigin || 'http://localhost');
         res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');

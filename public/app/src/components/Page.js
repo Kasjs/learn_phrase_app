@@ -10,6 +10,106 @@ import { getEmailFromLocalStrg, getCategoryOptions, getSelectedCategory, setSele
     setIsOfflineField, removeIsOfflineField, getHiddenFromLocalStrg } from '../localStorage/localStorageMethods'
 import { initialState } from '../reducers/page'
 import Buttons_Row from './sub-components/Buttons_Row'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+
+//hide show component function
+function hideOrShow(arayOfClass) {
+    const componentClass = arayOfClass;
+    if (!getEmailFromLocalStrg()) {
+        componentClass.push('hide-block');
+    }
+    return componentClass.join(' ');
+}
+//animation function
+function animation(arayOfClass) {
+    const componentClass = arayOfClass;
+    componentClass.push('animation');
+    return componentClass.join(' ');
+}
+
+//function components
+
+function Select(props) {
+    const componentClass = ['select-comp', 'row'];
+    return (
+        <section className={ hideOrShow(componentClass) }>
+            <div className='select-options col-xs-6 col-sm-4 col-md-3 col-lg-2'>
+                <FormSelect className='select-category' options={ setOptions() } firstOption='Select...'
+                    onChange={ props.selectCategory }
+                />
+            </div>
+            <div className='col-xs-4 btn-sunc-col'>
+                <button className='btn-sunc btn'
+                    onClick={ props.addCategory }>
+                    <i className="fa fa-plus" aria-hidden="true"></i>
+                </button>
+                <button className='btn-configure btn' onClick={ () => { getAllCategory(); hashHistory.push('configure') } }>
+                    <span className="fa fa-wrench configure "></span>
+                </button>
+            </div>
+        </section>
+    )
+}
+
+function SelectedRow(props) {
+    const componentClass = ['select-row', 'row'];
+    return (
+        <section className={ hideOrShow(componentClass) }>
+            <div className='col-xs-6'>
+                <span className='selected-category'> Now selected: <strong>{ setSelectedOptions() }</strong></span>
+            </div>
+        </section>
+    )
+}
+
+function PhraseRow(props) {
+    const componentClass = ['phrase-row', 'row'];
+    return (
+        <section className={ hideOrShow(componentClass) }>
+            <div className='col-xs-6 position-col'>
+                <span className='position'>
+                    Position: <span className='counter'>{ props.counter }</span>
+                </span>
+            </div>
+            <div className='col-xs-6 hits-col'>
+                <span className='hits'>
+                    Hits: <span className='hits-number'>{ props.hits }</span>
+                </span>
+            </div>
+            <div className='phrase col-xs-12'>
+                <span><strong className={ animation(['phrase']) }></strong>{ props.phrase }</span>
+            </div>
+        </section>
+    )
+}
+
+function OfflineRow(props) {
+    return (
+        <section className={ props.isOffline ? 'row offline-row hide' : 'row offline-row' }>
+            <div className={ hideOrShow(['col-xs-6']) }>
+                <span> Go Offline </span>
+                <button onClick={ props.preparingToOffline } className='offline-btn btn'>
+                    <i aria-hidden='true' className="fa fa-toggle-on fa-1x"></i>
+                </button>
+            </div>
+        </section>
+    )
+}
+
+function OnlineRow(props) {
+    return (
+        <section className={ props.isOffline ? 'row online-row' : 'row online-row hide' }>
+            <div className='col-xs-12'>
+                <span> Go OnLine </span>
+                <button onClick={ props.preparingToOffline } className='online-btn btn'>
+                    <i className="fa fa-toggle-off"></i>
+                </button><span className='ready-msg'> Now you can go offline</span>
+            </div>
+        </section>
+    )
+}
+
+//working functions
 
 function setOptions() {
     let optionsFromServer;
@@ -26,6 +126,8 @@ function setSelectedOptions() {
     let selectedOptions = JSON.parse(getSelectedCategory());
     return selectedOptions;
 }
+
+//class component
 
 export default class Page extends Component {
     constructor(props) {
@@ -70,65 +172,22 @@ export default class Page extends Component {
 
     render() {
         const { phrase, counter, hits, lengthOfCategory, email, hidden, isOffline, clearErrorMsg,
-            unAuthorizedMsg, } = this.props
+            unAuthorizedMsg } = this.props
         return (
             <div className='phrase-row'>
                 <header className='header flex-item'>
                     <p className='header-text'> Phrase generator </p>
                 </header>
-                <section className={ getEmailFromLocalStrg() ? 'select-comp row' : 'hide-block select-comp row' }>
-                    <div className='select-options col-xs-6 col-sm-4 col-md-3 col-lg-2'>
-                        <FormSelect className='select-category' options={setOptions()} firstOption='Select...'
-                            onChange={this.selectCategory.bind(this)}
-                        />
-                    </div>
-                    <div className='col-xs-4 btn-sunc-col'>
-                        <button className='btn-sunc btn'
-                            onClick={ this.addCategory.bind(this) }>
-                            <i className="fa fa-plus" aria-hidden="truen"></i>
-                        </button>
-                        <button className='btn-configure btn' onClick={ () => { getAllCategory(); hashHistory.push('configure') } }>
-                            <span className="fa fa-wrench configure "></span>
-                        </button>
-                    </div>
+                <section>
+                    <Select selectCategory={this.selectCategory.bind(this)} addCategory={this.addCategory.bind(this)} />
+                    <h3 className={ getEmailFromLocalStrg() ? 'hide' : 'show flex-container-welcome' }>
+                        Welcome to PG app, for continue please Sign In or Sign Up.
+                    </h3>
+                    <SelectedRow/>
+                    <PhraseRow counter={counter} hits={hits} email={email} phrase={phrase} unAuthorizedMsg={unAuthorizedMsg}/>
+                    <OfflineRow isOffline={isOffline} preparingToOffline={this.preparingToOffline.bind(this)} />
+                    <OnlineRow isOffline={isOffline} preparingToOffline={this.preparingToOffline.bind(this)} />
                 </section>
-                <h3 className={ getEmailFromLocalStrg() ? 'hide' : 'show flex-container-welcome' }>Welcome to PG app, for continue please Sign In or Sign Up.</h3>
-                <section className={ getEmailFromLocalStrg() ? 'select-row row' : 'hide-block select-row row' }>
-                    <div className='col-xs-6'>
-                        <span className='selected-category'> Now selected: <strong>{ setSelectedOptions() }</strong></span>
-                    </div>
-                </section>
-                <section className={getEmailFromLocalStrg() ? 'phrase-row row' : 'phrase-row row hidden'}>
-                    <div className='col-xs-6 position-col'>
-                        <span className={ getEmailFromLocalStrg() ? 'position' : 'position hide' }> Position: <span className='counter'>{ counter }</span> </span>
-                    </div>
-                    <div className='col-xs-6 hits-col'>
-                        <span className={ getEmailFromLocalStrg() ? 'hits' : 'hits hide' }> Hits: <span className='hits-number'> { hits } </span> </span>
-                    </div>
-                    <div className='phrase col-xs-12'>
-                        <span className={ getEmailFromLocalStrg() ? 'col-xs-12 unauthorized-msg hide' : 'col-xs-12 unauthorized-msg' }>
-                            <span className='unauthorized-msg'>{ unAuthorizedMsg }</span>
-                        </span>
-                        <span><strong className='phrase'>{ phrase }</strong></span>
-                    </div>
-                </section>
-                <section className={ isOffline ? 'row offline-row hide' : 'row offline-row' }>
-                    <div className={ getEmailFromLocalStrg() ? 'col-xs-6' : 'hide col-xs-6' }>
-                        <span> Go Offline </span>
-                        <button onClick={ this.preparingToOffline.bind(this) } className='offline-btn btn'>
-                            <i aria-hidden='true' className="fa fa-toggle-on fa-1x"></i>
-                        </button>
-                    </div>
-                </section>
-                <section className={ isOffline ? 'row online-row' : 'row online-row hide' }>
-                    <div className='col-xs-12'>
-                        <span> Go OnLine </span>
-                        <button onClick={ this.preparingToOffline.bind(this) } className='online-btn btn'>
-                            <i className="fa fa-toggle-off"></i>
-                        </button><span className='ready-msg'> Now you can go offline</span>
-                    </div>
-                </section>
-
                 <footer className='row footer'>
                     <div className='col-xs-12 footer-text'>
                         <span>
@@ -149,7 +208,7 @@ Page.propTypes = {
     hits: React.PropTypes.number,
     email : React.PropTypes.string,
     hidden : React.PropTypes.bool,
-    isOffline: React.PropTypes.bool,
+    isOffline: React.PropTypes.bool.isRequired,
     clearErrorMsg: React.PropTypes.func,
     unAuthorizedMsg: React.PropTypes.string
 }

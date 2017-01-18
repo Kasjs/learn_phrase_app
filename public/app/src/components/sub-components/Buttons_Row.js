@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 import * as pageActions from '../../actions/pageActions';
 import { getEmailFromLocalStrg } from '../../localStorage/localStorageMethods'
+
 export default class Buttons_Row  extends Component {
 
     onBackPhraseBtnClick() {
