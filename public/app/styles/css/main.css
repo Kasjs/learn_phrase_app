@@ -49,6 +49,7 @@ html {
   padding-top: 5px;
 }
 .phrase {
+  display: block;
   position: relative;
   top: 7px;
   font: 25px 'Roboto';
@@ -266,6 +267,26 @@ html {
     height: 15px;
   }
 }
+.backdrop {
+  opacity: 0.1;
+  z-index: 5;
+  -webkit-transition: opacity 1000ms ;
+  transition: opacity 1000ms ;
+}
+.fa-spinner {
+  z-index: 6;
+  opacity: 1;
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  color: #1872ab;
+}
+.clear {
+  z-index: 7;
+  opacity: 1;
+  -webkit-transition: opacity 1000ms ease-out;
+  transition: opacity 1000ms ease-out;
+}
 @media screen and (min-width: 980px) {
   .btns-row .buttons {
     margin: 0 10px 10px 0;
@@ -362,10 +383,6 @@ html {
   .phrase-row .selected-category {
     font: 30px 'Roboto';
   }
-}
-.animation {
-  opacity: 1;
-  webkittransition: opacity 500ms ease-in;
 }
 .req-form-cont {
   padding-top: 4%;

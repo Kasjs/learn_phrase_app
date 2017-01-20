@@ -14,6 +14,16 @@ import { initialState } from '../reducers/configure'
 
 //working function
 
+function fadeOn(className) {
+    let componentClass = ['row', 'config-form'];
+    if (className) {
+        componentClass.push(className);
+    } else {
+        return componentClass.join(' ');
+    }
+    return componentClass.join(' ');
+}
+
 function setOptions() {
     let optionsFromStorage;
     optionsFromStorage = JSON.parse(getCategoryOptions());
@@ -49,11 +59,15 @@ class categoryConfigure extends Component {
     render() {
 
         let that = this;
-        let { selectedCategory, itemsInCategory } = this.props.category;
-        let { deleteSelectedCategory, deleteItemInSelectedCategory, getSelectedCategoryForChange } = this.props.configureActions;
+        let { selectedCategory, itemsInCategory, showSpinner, hide } = this.props.category;
+        let { deleteSelectedCategory, deleteItemInSelectedCategory,
+            getSelectedCategoryForChange, FadeOn, fadeOff } = this.props.configureActions;
         let isOffline = localStorage.getItem('isOffline');
 
         function loadCategory(val) {
+
+            this.props.configureActions.fadeOn();
+            setTimeout(function() { fadeOff(); }, 1000);
             let options = setOptions();
             let listsOfCategoryItems = [];
             options.forEach(function(item) {
@@ -105,7 +119,10 @@ class categoryConfigure extends Component {
 
         return (
             <div>
-                <section className='row config-form'>
+                <span>
+                    <i className={ showSpinner ? 'fa fa-spinner fa-pulse fa-5x fa-fw' : 'fa fa-spinner fa-pulse fa-3x fa-fw hide' }></i>
+                </span>
+                <section className={ fadeOn(hide) }>
                     <div className='col-xs-12'>
                         <button className='bnt btn-link back-link-btn' onClick={ () => hashHistory.push('/')}>
                             <i className="fa fa-long-arrow-left" aria-hidden="true"></i> Back

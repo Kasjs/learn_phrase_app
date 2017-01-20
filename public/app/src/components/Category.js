@@ -19,6 +19,16 @@ function setOptions() {
     return optionsFromStorage;
 }
 
+function fadeIn(className) {
+    let componentClass = ['row', 'category-form'];
+    if (className) {
+        componentClass.push(className);
+    } else {
+        return componentClass.join(' ');
+    }
+    return componentClass.join(' ');
+}
+
 //class component
 class Category extends Component {
     constructor(props) {
@@ -45,7 +55,8 @@ class Category extends Component {
             updateCategory(newCategory, categoryContent);
             this.props.pageActions.updateCategoryContent();
             this.props.pageActions.addNewCategoryAndItem();
-
+            this.props.pageActions.toggleFade();
+            setTimeout(function() { this.props.pageActions.clearFade(); }.bind(this), 1500);
         } else {
             this.props.userActions.showCategoryMassage();
         }
@@ -55,18 +66,21 @@ class Category extends Component {
 
         let { category } = this.props;
         let { msgCategory } = this.props.userAuth;
-        let { addCategoryMsg } = this.props.page;
+        let { addCategoryMsg, hide, showSpinner } = this.props.page;
 
         return (
             <div>
-                <section className='row category-form'>
+                <span>
+                    <i className={ showSpinner ? 'fa fa-spinner fa-pulse fa-5x fa-fw' : 'fa fa-spinner fa-pulse fa-3x fa-fw hide' }></i>
+                </span>
+                <section className={ fadeIn(hide) }>
                     <div className='col-xs-10'>
                         <button className='bnt btn-link back-link-btn' onClick={ () => hashHistory.push('/')}>
                             <i className="fa fa-long-arrow-left" aria-hidden="true"></i> Back
                         </button>
                     </div>
                     <header className='col-xs-12'>
-                        <h2 className='category-header'> Add New Category</h2>
+                        <h2 className='category-header'> Add New Category </h2>
                     </header>
                     <section className='panel panel-default col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4' >
                     <span className={ addCategoryMsg ? 'add-category-msg' : 'add-category-msg hide' }>{ addCategoryMsg }</span>
@@ -94,6 +108,7 @@ class Category extends Component {
                             </Field>
                             <button type='submit' className='submit-btn btn col-xs-12'> Create</button>
                             <span className='msg-category'>{ msgCategory }</span>
+
                         </Form>
                     </section>
                 </section>

@@ -76,8 +76,8 @@ function PhraseRow(props) {
                     Hits: <span className='hits-number'>{ props.hits }</span>
                 </span>
             </div>
-            <div className='phrase col-xs-12'>
-                <span><strong className={ animation(['phrase']) }></strong>{ props.phrase }</span>
+            <div key='ph' className='phrase col-xs-12'>
+                <span className='phrase col-xs-12'>{ props.phrase }</span>
             </div>
         </section>
     )

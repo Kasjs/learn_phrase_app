@@ -1,6 +1,8 @@
 export const initialState = {
     selectedCategory: '',
-    itemsInCategory: []
+    itemsInCategory: [],
+    hide: '',
+    showSpinner: false
 }
 
 export default function category( state = initialState, action) {
@@ -23,6 +25,20 @@ export default function category( state = initialState, action) {
             return {
                 ...state,
                 itemsInCategory: action.payload
+            }
+        }
+        case 'FADE_ON': {
+            return {
+                ...state,
+                hide: action.payload,
+                showSpinner: !state.showSpinner
+            }
+        }
+        case 'FADE_OFF': {
+            return {
+                ...state,
+                hide: action.payload,
+                showSpinner: !state.showSpinner
             }
         }
         default:

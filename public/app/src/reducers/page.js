@@ -10,7 +10,9 @@ export const initialState = {
     side: 'side_a',
     hits: 0,
     unAuthorizedMsg: '',
-    addCategoryMsg: ''
+    addCategoryMsg: '',
+    hide: '',
+    showSpinner: false
 }
 
 export default function page( state = initialState, action) {
@@ -136,6 +138,20 @@ export default function page( state = initialState, action) {
             return {
                 ...state,
                 addCategoryMsg: action.payload
+            }
+        }
+        case 'TOGGLE_FADE': {
+            return {
+                ...state,
+                hide: action.payload,
+                showSpinner: !state.showSpinner
+            }
+        }
+        case 'CLEAR_FADE': {
+            return {
+                ...state,
+                hide: action.payload,
+                showSpinner: !state.showSpinner
             }
         }
 

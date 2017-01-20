@@ -106,3 +106,18 @@ export function getCategoryName(categoryName) {
         payload: categoryName
     }
 }
+
+export function toggleFade() {
+    return {
+        type: 'TOGGLE_FADE',
+        payload: 'backdrop'
+
+    }
+}
+export function clearFade() {
+    return {
+        type: 'CLEAR_FADE',
+        payload: 'clear'
+
+    }
+}

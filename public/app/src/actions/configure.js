@@ -19,3 +19,15 @@ export function deleteItemInSelectedCategory (itemsInCategory) {
         payload: itemsInCategory
     }
 }
+export function fadeOn () {
+    return {
+        type: 'FADE_ON',
+        payload: 'backdrop'
+    }
+}
+export function fadeOff () {
+    return {
+        type: 'FADE_OFF',
+        payload: 'clear'
+    }
+}

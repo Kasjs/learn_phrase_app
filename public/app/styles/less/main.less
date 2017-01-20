@@ -50,6 +50,7 @@ html {
     padding-top: 5px;
 }
 .phrase {
+    display: block;
     position: relative;
     top: 7px;
     font: 25px 'Roboto';
@@ -254,6 +255,25 @@ html {
     }
 }
 
+.backdrop {
+    opacity: 0.1;
+    z-index: 5;
+    transition: opacity 1000ms ;
+}
+.fa-spinner {
+    z-index: 6;
+    opacity: 1;
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    color: @main-color;
+}
+.clear {
+    z-index: 7;
+    opacity: 1;
+    transition: opacity 1000ms ease-out;
+}
+
 @media screen and (min-width: 980px) {
 
     .btns-row .buttons {
@@ -340,10 +360,6 @@ html {
     .phrase-row .selected-category {
         font: 30px 'Roboto';
     }
-}
-.animation {
-    opacity: 1;
-    webkit transition: opacity 500ms ease-in;
 }
 
 @import "form";
