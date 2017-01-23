@@ -65,9 +65,10 @@ class categoryConfigure extends Component {
         let isOffline = localStorage.getItem('isOffline');
 
         function loadCategory(val) {
-
-            this.props.configureActions.fadeOn();
-            setTimeout(function() { fadeOff(); }, 1000);
+            if(val !== '') {
+                this.props.configureActions.fadeOn();
+                setTimeout(function() { fadeOff(); }, 500);
+            }
             let options = setOptions();
             let listsOfCategoryItems = [];
             options.forEach(function(item) {
@@ -145,7 +146,7 @@ class categoryConfigure extends Component {
                         <br/>
                         <span className='items-list-text'> Items of category:<ul className='items'>{ itemsInCategory }</ul></span>
                         <button className={ itemsInCategory.length === 0 ? 'hide del-selected-btn btn-danger btn' : 'del-selected-btn btn-danger btn' }
-                            onClick= { () => { deleteItemInSelectedCategory(that.props.category.itemsInCategory) }}>
+                            onClick= { () => { deleteItemInSelectedCategory(that.props.category.itemsInCategory); fadeOn(hide); }}>
                             <i className="fa fa-trash" aria-hidden="true"></i> Delete
                         </button>
                     </section>

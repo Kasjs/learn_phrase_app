@@ -219,6 +219,25 @@ html {
     font-size: 20px;
 }
 
+.backdrop {
+    opacity: 0.1;
+    z-index: 5;
+    transition: opacity 700ms;
+}
+.fa-spinner {
+    z-index: 6;
+    opacity: 1;
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    color: @main-color;
+}
+.clear {
+    z-index: 7;
+    opacity: 1;
+    transition: opacity 500ms ease-out;
+}
+
 @media screen and (max-height: 400px) {
     .footer {
         display: none;
@@ -253,25 +272,6 @@ html {
     .col-xs-4 {
         height: 15px;
     }
-}
-
-.backdrop {
-    opacity: 0.1;
-    z-index: 5;
-    transition: opacity 1000ms ;
-}
-.fa-spinner {
-    z-index: 6;
-    opacity: 1;
-    position: absolute;
-    top: 20%;
-    left: 40%;
-    color: @main-color;
-}
-.clear {
-    z-index: 7;
-    opacity: 1;
-    transition: opacity 1000ms ease-out;
 }
 
 @media screen and (min-width: 980px) {

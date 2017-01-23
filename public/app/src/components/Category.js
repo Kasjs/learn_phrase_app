@@ -19,7 +19,7 @@ function setOptions() {
     return optionsFromStorage;
 }
 
-function fadeIn(className) {
+function fadeOn(className) {
     let componentClass = ['row', 'category-form'];
     if (className) {
         componentClass.push(className);
@@ -39,7 +39,6 @@ class Category extends Component {
         this.props.pageActions.clearAddNewCategoryMsg();
     }
     handleCreate(category) {
-
         let categoryName = this.props.page.category;
         let newCategory = {
             value: category.name ? category.name : categoryName,
@@ -52,11 +51,11 @@ class Category extends Component {
         };
 
         if ( (category.name || categoryName) && category.side_a && category.side_b ) {
+            this.props.pageActions.fadeOn();
             updateCategory(newCategory, categoryContent);
             this.props.pageActions.updateCategoryContent();
             this.props.pageActions.addNewCategoryAndItem();
-            this.props.pageActions.toggleFade();
-            setTimeout(function() { this.props.pageActions.clearFade(); }.bind(this), 1500);
+            setTimeout(function() { this.props.pageActions.fadeOff(); }.bind(this), 500);
         } else {
             this.props.userActions.showCategoryMassage();
         }
@@ -69,11 +68,11 @@ class Category extends Component {
         let { addCategoryMsg, hide, showSpinner } = this.props.page;
 
         return (
-            <div>
+            <section>
                 <span>
                     <i className={ showSpinner ? 'fa fa-spinner fa-pulse fa-5x fa-fw' : 'fa fa-spinner fa-pulse fa-3x fa-fw hide' }></i>
                 </span>
-                <section className={ fadeIn(hide) }>
+                <section className={ fadeOn(hide) }>
                     <div className='col-xs-10'>
                         <button className='bnt btn-link back-link-btn' onClick={ () => hashHistory.push('/')}>
                             <i className="fa fa-long-arrow-left" aria-hidden="true"></i> Back
@@ -83,7 +82,7 @@ class Category extends Component {
                         <h2 className='category-header'> Add New Category </h2>
                     </header>
                     <section className='panel panel-default col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4' >
-                    <span className={ addCategoryMsg ? 'add-category-msg' : 'add-category-msg hide' }>{ addCategoryMsg }</span>
+                        <span className={ addCategoryMsg ? 'add-category-msg' : 'add-category-msg hide' }>{ addCategoryMsg }</span>
                         <Form className='form' model="category" onSubmit={(category) => this.handleCreate(category)}>
                             <label className='update-label'>Update existing category</label>
                             <FormSelect className='update-select' options={ setOptions() } firstOption='Select...'
@@ -102,17 +101,15 @@ class Category extends Component {
                             <Field className='form-group' model="category.example">
                                 <label className='example-label'> Example of Content</label>
                                 <textarea rows='2' cols='5' maxLength='80' disabled className='form-control' type="text"
-                                    placeholder=' side_a: небо,
-                                                  side_b: sky'
+                                    placeholder='side_a: небо, side_b: sky'
                                 ></textarea>
                             </Field>
                             <button type='submit' className='submit-btn btn col-xs-12'> Create</button>
                             <span className='msg-category'>{ msgCategory }</span>
-
                         </Form>
                     </section>
                 </section>
-            </div>
+            </section>
         )
     }
 }

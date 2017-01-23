@@ -107,17 +107,16 @@ export function getCategoryName(categoryName) {
     }
 }
 
-export function toggleFade() {
+export function fadeOn() {
     return {
-        type: 'TOGGLE_FADE',
+        type: 'FADE_ON',
         payload: 'backdrop'
 
     }
 }
-export function clearFade() {
+export function fadeOff() {
     return {
-        type: 'CLEAR_FADE',
+        type: 'FADE_OFF',
         payload: 'clear'
-
     }
 }

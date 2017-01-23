@@ -17,24 +17,24 @@ import '../../styles/css/main.css';
 class App extends Component {
 
     render() {
-        const { page, userAuth, user, category } = this.props
+        const { page, userAuth, user, category, hide } = this.props
         return (
             <div className='row'>
                 <User
-                    {...page}
-                    {...userAuth}
-                    {...this.props.userActions}
+                    { ...page }
+                    { ...userAuth }
+                    { ...this.props.userActions }
                     clearPageInfo={this.props.pageActions.clearPageInfo}
                 />
                 <Page className='main'
-                    {...page}
-                    {...userAuth}
-                    {...this.props.userActions}
-                    {...this.props.pageActions}
+                    { ...page }
+                    { ...userAuth }
+                    { ...this.props.userActions }
+                    { ...this.props.pageActions }
                     registerNewUser={this.props.userActions.registerNewUser}
                 />
                 <Buttons_Row
-                    {...this.props.pageActions}
+                    { ...this.props.pageActions }
                 />
             </div>
         )

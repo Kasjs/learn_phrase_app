@@ -12,7 +12,7 @@ import { initialState } from '../reducers/page'
 import Buttons_Row from './sub-components/Buttons_Row'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
-//hide show component function
+//hide/show component function
 function hideOrShow(arayOfClass) {
     const componentClass = arayOfClass;
     if (!getEmailFromLocalStrg()) {
@@ -20,15 +20,18 @@ function hideOrShow(arayOfClass) {
     }
     return componentClass.join(' ');
 }
-//animation function
-function animation(arayOfClass) {
-    const componentClass = arayOfClass;
-    componentClass.push('animation');
+// fadeOn/Off effect function
+function fadeOn(className) {
+    let componentClass = ['phrase-row'];
+    if (className) {
+        componentClass.push(className);
+    } else {
+        return componentClass.join(' ');
+    }
     return componentClass.join(' ');
 }
 
 //function components
-
 function Select(props) {
     const componentClass = ['select-comp', 'row'];
     return (
@@ -110,7 +113,6 @@ function OnlineRow(props) {
 }
 
 //working functions
-
 function setOptions() {
     let optionsFromServer;
     let defaultOptions = [
@@ -128,7 +130,6 @@ function setSelectedOptions() {
 }
 
 //class component
-
 export default class Page extends Component {
     constructor(props) {
         super(props);
@@ -138,11 +139,14 @@ export default class Page extends Component {
     }
 
     selectCategory(val) {
-        if (getEmailFromLocalStrg() && val !== '...Select') {
+        let that = this;
+        if (getEmailFromLocalStrg() && val !== '') {
+            this.props.fadeOn();
             this.props.syncCatAndRating();
             setSelectedCategory(JSON.stringify(val));
             getCategoryFromServer(getSelectedCategory());
             this.props.clearMsgUnauthorizedUsers();
+            setTimeout(function() { that.props.fadeOff(); }, 700);
         }
         this.props.showMsgUnauthorizedUsers();
     }
@@ -171,33 +175,39 @@ export default class Page extends Component {
     }
 
     render() {
-        const { phrase, counter, hits, lengthOfCategory, email, hidden, isOffline, clearErrorMsg,
-            unAuthorizedMsg } = this.props
+        const { phrase, counter, hits, lengthOfCategory, email, hidden, isOffline,
+            clearErrorMsg, unAuthorizedMsg, showSpinner, hide } = this.props;
+
         return (
-            <div className='phrase-row'>
-                <header className='header flex-item'>
-                    <p className='header-text'> Phrase generator </p>
-                </header>
-                <section>
-                    <Select selectCategory={this.selectCategory.bind(this)} addCategory={this.addCategory.bind(this)} />
-                    <h3 className={ getEmailFromLocalStrg() ? 'hide' : 'show flex-container-welcome' }>
-                        Welcome to PG app, for continue please Sign In or Sign Up.
-                    </h3>
-                    <SelectedRow/>
-                    <PhraseRow counter={counter} hits={hits} email={email} phrase={phrase} unAuthorizedMsg={unAuthorizedMsg}/>
-                    <OfflineRow isOffline={isOffline} preparingToOffline={this.preparingToOffline.bind(this)} />
-                    <OnlineRow isOffline={isOffline} preparingToOffline={this.preparingToOffline.bind(this)} />
+            <section>
+                <span>
+                    <i className={ showSpinner ? 'fa fa-spinner fa-pulse fa-5x fa-fw' : 'fa fa-spinner fa-pulse fa-3x fa-fw hide' }></i>
+                </span>
+                <section className={ fadeOn(hide) }>
+                    <header className='header flex-item'>
+                        <p className='header-text'> Phrase generator </p>
+                    </header>
+                    <section>
+                        <Select selectCategory={this.selectCategory.bind(this)} addCategory={this.addCategory.bind(this)} />
+                        <h3 className={ getEmailFromLocalStrg() ? 'hide' : 'show flex-container-welcome' }>
+                            Welcome to PG app, for continue please Sign In or Sign Up.
+                        </h3>
+                        <SelectedRow/>
+                        <PhraseRow counter={counter} hits={hits} email={email} phrase={phrase} unAuthorizedMsg={unAuthorizedMsg}/>
+                        <OfflineRow isOffline={isOffline} preparingToOffline={this.preparingToOffline.bind(this)} />
+                        <OnlineRow isOffline={isOffline} preparingToOffline={this.preparingToOffline.bind(this)} />
+                    </section>
+                    <footer className='row footer'>
+                        <div className='col-xs-12 footer-text'>
+                            <span>
+                                2016 Phrase generator
+                                <i className="fa fa-apple apple-icon"></i>
+                                <i className="fa fa-android android-icon"></i>
+                            </span>
+                        </div>
+                    </footer>
                 </section>
-                <footer className='row footer'>
-                    <div className='col-xs-12 footer-text'>
-                        <span>
-                            2016 Phrase generator
-                            <i className="fa fa-apple apple-icon"></i>
-                            <i className="fa fa-android android-icon"></i>
-                        </span>
-                    </div>
-                </footer>
-            </div>
+            </section>
         )
     }
 }

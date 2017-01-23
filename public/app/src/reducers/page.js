@@ -140,14 +140,14 @@ export default function page( state = initialState, action) {
                 addCategoryMsg: action.payload
             }
         }
-        case 'TOGGLE_FADE': {
+        case 'FADE_ON': {
             return {
                 ...state,
                 hide: action.payload,
                 showSpinner: !state.showSpinner
             }
         }
-        case 'CLEAR_FADE': {
+        case 'FADE_OFF': {
             return {
                 ...state,
                 hide: action.payload,
