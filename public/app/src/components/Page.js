@@ -144,10 +144,13 @@ export default class Page extends Component {
         if (getEmailFromLocalStrg() && val !== '') {
             this.props.fadeOn();
             this.props.syncCatAndRating();
-            setSelectedCategory(JSON.stringify(val));
-            getCategoryFromServer(getSelectedCategory());
+            Promise.resolve(val).then(function(val) {
+                setSelectedCategory(JSON.stringify(val));
+            }).then(function(val) {
+                getCategoryFromServer(getSelectedCategory());
+                setTimeout(function() { that.props.fadeOff(); }, 700);
+            });
             this.props.clearMsgUnauthorizedUsers();
-            setTimeout(function() { that.props.fadeOff(); }, 700);
         }
         this.props.showMsgUnauthorizedUsers();
     }

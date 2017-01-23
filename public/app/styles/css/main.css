@@ -21,17 +21,13 @@ html {
 .flex-container-welcome {
   border-top: 2px solid #1872ab;
   border-bottom: 2px solid #1872ab;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  background-color: #d1dade;
+  background-color: #ffffff;
   padding: 10px 30px 10px 30px;
-  margin: 0 30px 0 0px;
+  margin: 10px 30px 0 0px;
   text-align: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
   width: 100%;
   color: #1872ab;
+  position: relative;
 }
 .panel {
   padding: 10px !important;

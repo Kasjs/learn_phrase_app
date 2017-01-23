@@ -6,7 +6,7 @@ export let setCat = [];
 export let localSync = function(index) {
     let selected = JSON.parse(getSelectedCategory());
     let categories = getCategoryField(selected);
-    let promise = Promise.resolve(selected, categories).then(function() {
+    let promise = Promise.resolve(selected, categories).then(function(selected, categories) {
         ++categories[index].hits;
         setCategoryField(selected, categories);
     });
@@ -135,14 +135,6 @@ export function setLoginWhenError() {
 export function logOut() {
     localStorage.clear();
     localStorage.setItem('isAuthButtonsHidden', false);
-}
-
-export function setAdminField(adminField) {
-    localStorage.setItem('admin', adminField);
-}
-
-export function getAdminField() {
-    return localStorage.getItem('admin');
 }
 
 export function getEmailErrorMsg() {

@@ -10,7 +10,7 @@ import { initialState } from '../reducers/userAuth'
 
 function RegButtons(props) {
     return (
-        <section className='col-xs-12 auth-btn'>
+        <section className='auth-btn'>
             <div className={ getHiddenFromLocalStrg()  ? 'hide' : 'show' }>
                 <button className='login-btn btn' onClick={() => {hashHistory.push('login'), props.clearErrorMsg()}}
                     >Sign In
