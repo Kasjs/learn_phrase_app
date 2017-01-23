@@ -14,10 +14,20 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import '../../styles/css/style.lib.css/style.lib.css';
 import '../../styles/css/main.css';
 
+function fadeOn(className) {
+    let componentClass = ['buttons-row'];
+    if (className) {
+        componentClass.push(className);
+    } else {
+        return componentClass.join(' ');
+    }
+    return componentClass.join(' ');
+}
+
 class App extends Component {
 
     render() {
-        const { page, userAuth, user, category, hide } = this.props
+        const { page, userAuth, user, category} = this.props
         return (
             <div className='row'>
                 <User
@@ -33,9 +43,12 @@ class App extends Component {
                     { ...this.props.pageActions }
                     registerNewUser={this.props.userActions.registerNewUser}
                 />
-                <Buttons_Row
+                <section className={ fadeOn(this.props.page.hide) }>
+                    <Buttons_Row
                     { ...this.props.pageActions }
-                />
+                    { ...page }
+                    />
+                </section>
             </div>
         )
 	}

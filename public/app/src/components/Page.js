@@ -20,6 +20,7 @@ function hideOrShow(arayOfClass) {
     }
     return componentClass.join(' ');
 }
+
 // fadeOn/Off effect function
 function fadeOn(className) {
     let componentClass = ['phrase-row'];
@@ -79,7 +80,7 @@ function PhraseRow(props) {
                     Hits: <span className='hits-number'>{ props.hits }</span>
                 </span>
             </div>
-            <div key='ph' className='phrase col-xs-12'>
+            <div className='phrase col-xs-12'>
                 <span className='phrase col-xs-12'>{ props.phrase }</span>
             </div>
         </section>
