@@ -7,6 +7,7 @@ import { getUserCategory, syncWithServer, getCategoryFromServer, getAllCategory,
 import { getEmailFromLocalStrg, getCategoryOptions, getSelectedCategory, setSelectedCategory,
     setIsOfflineField, removeIsOfflineField, getHiddenFromLocalStrg } from '../localStorage/localStorageMethods'
 import { initialState } from '../reducers/page'
+import { defaultCatagories } from '../constants/defaultCatagories'
 import Buttons_Row from './pageSubComponents/Buttons_Row'
 import OnlineRow from './pageSubComponents/OnlineRow'
 import OfflineRow from './pageSubComponents/OfflineRow'
@@ -37,13 +38,8 @@ function fadeOn(className) {
 // working functions
 export function setOptions() {
     let optionsFromServer;
-    let defaultOptions = [
-        {value : 'Sport', label: 'Sport'},
-        {value : 'Food', label: 'Food'},
-        {value : 'Nature', label: 'Nature'}
-    ];
     optionsFromServer = JSON.parse(getCategoryOptions());
-    return optionsFromServer ? optionsFromServer : defaultOptions;
+    return optionsFromServer ? optionsFromServer : defaultCatagories;
 }
 
 export function setSelectedOptions() {
@@ -104,7 +100,7 @@ export default class Page extends Component {
             clearErrorMsg, unAuthorizedMsg, showSpinner, hide } = this.props;
 
         return (
-            <section>
+            <section className='page'>
                 <span>
                     <i className={ showSpinner ? 'fa fa-spinner fa-pulse fa-5x fa-fw' : 'fa fa-spinner fa-pulse fa-3x fa-fw hide' }></i>
                 </span>
@@ -113,14 +109,17 @@ export default class Page extends Component {
                         <p className='header-text'> Phrase generator </p>
                     </header>
                     <section>
-                        <Select selectCategory={this.selectCategory.bind(this)} addCategory={this.addCategory.bind(this)} />
+                        <Select selectCategory={this.selectCategory.bind(this)} addCategory={ this.addCategory.bind(this) } />
                         <h3 className={ getEmailFromLocalStrg() ? 'hide' : 'show flex-container-welcome' }>
                             Welcome to PG app, for continue please Sign In or Sign Up.
                         </h3>
                         <SelectedRow/>
-                        <PhraseRow counter={counter} hits={hits} email={email} phrase={phrase} unAuthorizedMsg={unAuthorizedMsg}/>
-                        <OfflineRow isOffline={isOffline} preparingToOffline={this.preparingToOffline.bind(this)} />
-                        <OnlineRow isOffline={isOffline} preparingToOffline={this.preparingToOffline.bind(this)} />
+                        <PhraseRow counter={ counter } hits={ hits } email={ email }
+                            phrase={ phrase } unAuthorizedMsg={ unAuthorizedMsg }/>
+                        <OfflineRow isOffline={ isOffline }
+                            preparingToOffline={ this.preparingToOffline.bind(this) } />
+                        <OnlineRow isOffline={ isOffline }
+                            preparingToOffline={ this.preparingToOffline.bind(this) } />
                     </section>
                     <footer className='row footer'>
                         <div className='col-xs-12 footer-text'>

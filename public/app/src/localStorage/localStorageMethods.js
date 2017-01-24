@@ -1,7 +1,13 @@
 'use scrict'
 import { getSelected } from '../actions/pageActions'
 
-export let setCat = [];
+export function setCat (categories) {
+    let setCat = [];
+    if (categories) {
+        setCat = categories;
+    }
+    return setCat;
+}
 
 export let localSync = function(index) {
     let selected = JSON.parse(getSelectedCategory());
@@ -19,56 +25,57 @@ export function setCategory(response) {
     }
     Promise.resolve(selected, response).then(function() {
         setCategoryField(selected, response.data[selected]);
-        setCat = getCategoryField(getSelected());
     });
-    return setCat;
+    return setCat(getCategoryField(getSelected()));
 }
 
 function createNewCategory(newCategoryName, categoryContent) {
-    let categoryNames = JSON.parse(getCategoryOptions());
-    categoryNames.push(newCategoryName);
-    setCategoryOptions(categoryNames);
-    let newCategoryField = [];
-    newCategoryField.push(categoryContent);
-    Promise.resolve(newCategoryName, categoryContent).then(function() {
+    Promise.resolve(newCategoryName, categoryContent).then(function(response) {
+        let categoryNames = JSON.parse(getCategoryOptions());
+        categoryNames.push(newCategoryName);
+        setCategoryOptions(categoryNames);
+        let newCategoryField = [];
+        newCategoryField.push(categoryContent);
         setCategoryField(newCategoryName.label, newCategoryField);
     });
 }
 
 export function offlineUpdateCategory(newCategoryName, categoryContent) {
-    let categoryNames = JSON.parse(getCategoryOptions()),
-    sameContent = false,
-    sameCategory = false,
-    categoryData = [];
-    categoryNames.forEach(function(item) {
-        if( item.label === newCategoryName.label ) {
-            sameCategory = true;
-            categoryData = getCategoryField(item.label);
-            categoryData.forEach(function(itemData) {
-                if ( itemData.side_b === categoryContent.side_b ) {
-                    sameContent = true;
-                }
-            });
+    Promise.resolve(newCategoryName, categoryContent).then(function() {
+        let categoryNames = JSON.parse(getCategoryOptions()),
+        sameContent = false,
+        sameCategory = false,
+        categoryData = [];
+        categoryNames.forEach(function(item) {
+            if ( item.label === newCategoryName.label ) {
+                sameCategory = true;
+                categoryData = getCategoryField(item.label);
+                categoryData.forEach(function(itemData) {
+                    if ( itemData.side_b === categoryContent.side_b ) {
+                        sameContent = true;
+                    }
+                });
+            }
+        });
+        if (sameContent) {
+            setCategoryOptions(categoryNames);
+            setCategoryField(newCategoryName.label, categoryData);
+        } else {
+            setCategoryOptions(categoryNames);
+            categoryData.push(categoryContent);
+            setCategoryField(newCategoryName.label, categoryData);
+        }
+        if (!sameCategory) {
+            createNewCategory(newCategoryName, categoryContent);
         }
     });
-    if (sameContent) {
-        setCategoryOptions(categoryNames);
-        setCategoryField(newCategoryName.label, categoryData);
-    } else {
-        setCategoryOptions(categoryNames);
-        categoryData.push(categoryContent);
-        setCategoryField(newCategoryName.label, categoryData);
-    }
-    if (!sameCategory) {
-        createNewCategory(newCategoryName, categoryContent);
-    }
 }
 
 export function setCategoryOffline() {
     let selected = JSON.parse(getSelectedCategory());
     localStorage.setItem('categories_' + selected, localStorage.getItem('categories_' + getSelected()));
-    setCat = getCategoryField(getSelected());
-    return setCat;
+    // setCat = ;
+    return setCat(getCategoryField(getSelected()));
 }
 
 export function setCategoryOptions(response) {

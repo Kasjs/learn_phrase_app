@@ -71,7 +71,7 @@ describe('PageAction', () => {
     it('should create an action to showMsgUnauthorizedUsers', () => {
         const expectedAction = {
             type: "SHOW_MSG_UNAUTHORIZED_UZERS",
-            payload: "First you have to SignIn."
+            payload: "First you have to Sign In."
         }
     expect(PageAction.showMsgUnauthorizedUsers()).to.eql(expectedAction);
     });

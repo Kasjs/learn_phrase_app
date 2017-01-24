@@ -26,8 +26,8 @@ function calculateAllCategoryAndContent() {
         categoryData[categoryNames[i].label] = getCategoryField(categoryNames[i].label);
     }
     return {
-        categoryNames : categoryNames,
-        categoryData : categoryData
+        categoryNames: categoryNames,
+        categoryData: categoryData
     }
 }
 
@@ -43,7 +43,7 @@ export function getCategoryFromServer(value) {
 }
 
 let getCategory = (value) => {
-    $.get('/category', { email : getEmailFromLocalStrg() }).then(function(response) {
+    $.get('/category', { email: getEmailFromLocalStrg() }).then(function(response) {
         switch(value) {
             case getSelectedCategory() : {
                 setCategory(response);
@@ -82,7 +82,7 @@ export function updateCategory(newCategoryName, categoryContent) {
     } else {
         $.post('/addNewCategory',
         {
-            name : newCategoryName.value,
+            name: newCategoryName.value,
             content: categoryContent,
             email: getEmailFromLocalStrg()
         }).then(function(response) {
@@ -95,7 +95,7 @@ export function updateCategory(newCategoryName, categoryContent) {
 }
 
 export function getAllCategory() {
-    $.get('/category', { email : getEmailFromLocalStrg() }).then(function(res) {
+    $.get('/category', { email: getEmailFromLocalStrg() }).then(function(res) {
         calculateAllCategory(res);
     }, function(error) {
         console.log('Error can\'t get the data')
@@ -106,9 +106,9 @@ export function syncAllCategoryAndContent() {
     calculateAllCategoryAndContent();
     $.post('/syncAllCategory',
         {
-            email : getEmailFromLocalStrg(),
-            categoryNames : calculateAllCategoryAndContent().categoryNames,
-            categoryData : calculateAllCategoryAndContent().categoryData
+            email: getEmailFromLocalStrg(),
+            categoryNames: calculateAllCategoryAndContent().categoryNames,
+            categoryData: calculateAllCategoryAndContent().categoryData
         }).then(function(res) {
     }, function(error) {
         console.log('Error can\'t get the data')

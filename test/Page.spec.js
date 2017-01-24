@@ -7,21 +7,26 @@ import sinon, { spy } from 'sinon';
 import { page } from '../public/app/src/reducers/page'
 
 chai.use(chaiEnzyme())
-import  Page  from '../public/app/src/components/Page';
+import Page from '../public/app/src/components/Page';
+import PhraseRow from '../public/app/src/components/pageSubComponents/PhraseRow';
 
 describe ('<Page/>', () => {
     it('should have a class named phrase-row', () => {
         const wrapper = shallow(<Page />);
-        expect(wrapper.is('.phrase-row')).to.equal(true);
+        expect(wrapper.is('.page')).to.equal(true);
     });
-    it('should have 7 children', () => {
+    it('should have 2 children', () => {
         const wrapper = shallow(<Page />);
-        expect(wrapper.children().length).to.equal(7)
+        expect(wrapper.children().length).to.equal(2)
+    })
+    it('should have PhraseRow component', () => {
+        const wrapper = shallow(<PhraseRow />);
+        expect(wrapper.children().length).to.equal(3);
+        expect(wrapper.is('.phrase-row row')).to.equal(true);
     })
     it('should have children with a class named header', () => {
         const wrapper = shallow(<Page />);
-        expect(wrapper.children('.header').length).to.equal(1);
-        expect(wrapper.children('.select-comp').length).to.equal(1);
+        expect(wrapper.children('.phrase-row').length).to.equal(1);
     });
     it('should have this.props with an hits value', () => {
         const wrapper = shallow(<Page />);

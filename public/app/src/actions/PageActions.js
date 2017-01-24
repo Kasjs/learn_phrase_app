@@ -12,21 +12,21 @@ function getCategoryFromStorage() {
 export function getBackPhrase() {
     return {
         type: 'GET_BACK_PHRASE_REQUEST',
-        payload: setCat.length === 0 ? getCategoryFromStorage() : setCat
+        payload: setCat().length === 0 ? getCategoryFromStorage() : setCat()
     }
 }
 
 export function getNextPhrase() {
     return {
         type: 'GET_NEXT_PHRASE_REQUEST',
-        payload: setCat.length === 0 ? getCategoryFromStorage() : setCat
+        payload: setCat().length === 0 ? getCategoryFromStorage() : setCat()
     }
 }
 
 export function getRandomPhrase() {
     return {
         type: 'GET_RANDOM_PHRASE_REQUEST',
-        payload: setCat.length === 0 ? getCategoryFromStorage() : setCat
+        payload: setCat().length === 0 ? getCategoryFromStorage() : setCat()
     }
 }
 
@@ -39,7 +39,7 @@ export function switchLanguage() {
 export function getPhrase() {
     return {
         type: 'GET_PHRASE',
-        payload: setCat.length === 0 ? getCategoryFromStorage() : setCat
+        payload: setCat().length === 0 ? getCategoryFromStorage() : setCat()
     }
 }
 

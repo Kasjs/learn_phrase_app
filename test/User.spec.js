@@ -7,20 +7,20 @@ import sinon from 'sinon';
 
 chai.use(chaiEnzyme());
 import User from '../public/app/src/components/User';
+import RegButtons from '../public/app/src/components/User';
 
 describe ('<User/>', () => {
     it('should have a class named auth-btn', () => {
         const wrapper = shallow(<User />);
-        expect(wrapper.is('.auth-btn')).to.equal(true);
+        expect(wrapper.is('.user')).to.equal(true);
     });
-    it('should have 3 children', () => {
+    it('should have 0 children', () => {
         const wrapper = shallow(<User />);
-        expect(wrapper.children().length).to.equal(3)
+        expect(wrapper.children().length).to.equal(0)
     });
     it('should have children with a class named user-email and log-out-btn', () => {
-        const wrapper = shallow(<User />);
-        expect(wrapper.children('.user-email').length).to.equal(1);
-        expect(wrapper.children('.log-out-btn').length).to.equal(1);
+        const wrapper = mount(<RegButtons />);
+        expect(wrapper.children().length).to.equal(2);
     });
     it('should don\'t have children with a class named register-btn and login-btn', () => {
         const wrapper = shallow(<User />);
@@ -31,10 +31,6 @@ describe ('<User/>', () => {
         const wrapper = mount(<User />);
         wrapper.setState({ email : 'test@test.com' });
         expect(wrapper.state('email')).to.equal('test@test.com');
-    });
-    it('should  have email, logOutUser props', () => {
-        const wrapper = mount(<User />);
-        expect(wrapper.find('span')).to.have.className('user-email');
     });
 });
 

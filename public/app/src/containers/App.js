@@ -5,7 +5,7 @@ import { Router } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import User from '../components/User';
-import Buttons_Row from '../components/sub-components/Buttons_Row';
+import Buttons_Row from '../components/pageSubComponents/Buttons_Row';
 import Page from '../components/Page';
 import RegisterForm from '../components/RegisterForm';
 import * as pageActions from '../actions/pageActions';
@@ -34,7 +34,8 @@ class App extends Component {
                     { ...page }
                     { ...userAuth }
                     { ...this.props.userActions }
-                    clearPageInfo={this.props.pageActions.clearPageInfo}
+                    clearPageInfo={ this.props.pageActions.clearPageInfo }
+                    preparingToOffline={ this.props.pageActions.preparingToOffline }
                 />
                 <Page className='main'
                     { ...page }

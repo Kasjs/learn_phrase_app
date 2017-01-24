@@ -7,7 +7,7 @@ import sinon, { spy } from 'sinon';
 import { page } from '../public/app/src/reducers/page'
 
 chai.use(chaiEnzyme())
-import  Buttons_Row  from '../public/app/src/components/sub-components/Buttons_Row';
+import  Buttons_Row  from '../public/app/src/components/pageSubComponents/Buttons_Row';
 
 describe('<Buttons_Row />', () => {
     it('should have 4 buttons', () => {

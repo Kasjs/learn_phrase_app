@@ -7,7 +7,7 @@ import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHi
 import { initialState } from '../reducers/userAuth'
 
 // function component
-function RegButtons(props) {
+export function RegButtons(props) {
     return (
         <section className='auth-btn'>
             <div className={ getHiddenFromLocalStrg()  ? 'hide' : 'show' }>
@@ -36,6 +36,7 @@ export default class User extends Component {
         this.logoutAndClearPageInfo.bind(this);
     }
     logoutAndClearPageInfo() {
+        console.log(this.props);
         this.props.logOutUser();
         return function(dispatch) {
             dispatch({
@@ -47,7 +48,7 @@ export default class User extends Component {
     render() {
         const { email, logOutUser, clearErrorMsg } = this.props;
         return (
-            <RegButtons logOutUser={ logOutUser } clearErrorMsg={ clearErrorMsg }
+            <RegButtons className='user' logOutUser={ logOutUser } clearErrorMsg={ clearErrorMsg }
                 logoutAndClearPageInfo={ this.logoutAndClearPageInfo.bind(this) }
             />
         )
