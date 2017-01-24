@@ -6,7 +6,7 @@ export let setCat = [];
 export let localSync = function(index) {
     let selected = JSON.parse(getSelectedCategory());
     let categories = getCategoryField(selected);
-    let promise = Promise.resolve(selected, categories).then(function(selected, categories) {
+    Promise.resolve(selected, categories).then(function() {
         ++categories[index].hits;
         setCategoryField(selected, categories);
     });
@@ -17,8 +17,10 @@ export function setCategory(response) {
     if (!selected) {
         return;
     }
-    setCategoryField(selected, response.data[selected]);
-    setCat = getCategoryField(getSelected());
+    Promise.resolve(selected, response).then(function() {
+        setCategoryField(selected, response.data[selected]);
+        setCat = getCategoryField(getSelected());
+    });
     return setCat;
 }
 
@@ -28,7 +30,9 @@ function createNewCategory(newCategoryName, categoryContent) {
     setCategoryOptions(categoryNames);
     let newCategoryField = [];
     newCategoryField.push(categoryContent);
-    setCategoryField(newCategoryName.label, newCategoryField);
+    Promise.resolve(newCategoryName, categoryContent).then(function() {
+        setCategoryField(newCategoryName.label, newCategoryField);
+    });
 }
 
 export function offlineUpdateCategory(newCategoryName, categoryContent) {

@@ -7,7 +7,6 @@ import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHi
 import { initialState } from '../reducers/userAuth'
 
 // function component
-
 function RegButtons(props) {
     return (
         <section className='auth-btn'>
@@ -27,8 +26,7 @@ function RegButtons(props) {
     )
 }
 
-//class component
-
+// class component
 export default class User extends Component {
     constructor(props){
         super(props);

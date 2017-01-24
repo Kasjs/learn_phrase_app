@@ -12,7 +12,7 @@ import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg,
 import hashHistory from 'react-router/lib/hashHistory'
 import { updateCategory } from '../ajaxCalls/request'
 
-//working function
+// working function
 function setOptions() {
     let optionsFromStorage;
     optionsFromStorage = JSON.parse(getCategoryOptions());
@@ -29,7 +29,7 @@ function fadeOn(className) {
     return componentClass.join(' ');
 }
 
-//class component
+// class component
 class Category extends Component {
     constructor(props) {
         super(props);
@@ -52,7 +52,10 @@ class Category extends Component {
 
         if ( (category.name || categoryName) && category.side_a && category.side_b ) {
             this.props.pageActions.fadeOn();
-            updateCategory(newCategory, categoryContent);
+            Promise.resolve(category).then(function(category) {
+                console.log(category);
+                updateCategory(newCategory, categoryContent);
+            });
             this.props.pageActions.updateCategoryContent();
             this.props.pageActions.addNewCategoryAndItem();
             setTimeout(function() { this.props.pageActions.fadeOff(); }.bind(this), 500);

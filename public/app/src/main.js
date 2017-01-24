@@ -28,7 +28,7 @@ const reducer = combineReducers({
     categoryForm: formReducer('category'),
     configureCat: modelReducer('configureCat'),
     configureCatForm: formReducer('configureCat')
-})
+});
 
 const logger = createLogger();
 const store = createStore(

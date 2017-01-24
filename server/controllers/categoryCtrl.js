@@ -1,4 +1,5 @@
 'use scrict'
+
 const mongoose = require('mongoose'),
 bcrypt = require('bcryptjs'),
 User = mongoose.model('User'),

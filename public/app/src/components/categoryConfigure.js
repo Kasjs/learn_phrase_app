@@ -12,7 +12,7 @@ import { login, getCategoryFromServer, getAllCategory, syncAllCategoryAndContent
 import hashHistory from 'react-router/lib/hashHistory'
 import { initialState } from '../reducers/configure'
 
-//working function
+// working function
 
 function fadeOn(className) {
     let componentClass = ['row', 'config-form'];
