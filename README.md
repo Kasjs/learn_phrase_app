@@ -5,9 +5,9 @@ For use this app please follow to [phrase-generator](https://phrase-generator.he
 For contributing or investigation this app do next:
 
 * **Download or clone repository**
-* **Open command line and type:** npm install
-* **In command line type:** npm run dev
-* **Then go to browser and type:** localhost:3000
+* **Then open command line and type:** npm install
+* **After that in command line type:** npm run dev
+* **Finally go to browser and type:** localhost:3000
 
 ### Structure of application
 ```
