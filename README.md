@@ -16,7 +16,7 @@ For contributing or investigation this app do next:
 +---dist
 |    +---appcache
 |
-+---public
++---public                                // Client side
 |   +---app
 |   |    +---src
 |   |    |    +---actions
@@ -29,9 +29,9 @@ For contributing or investigation this app do next:
 |   |    |    +---reducers
 |   |    \---styles
 |   |    |    +---css
-|   |    |        +---style.lib.css
+|   |    |        +---style.lib.css           
 |   |    |   \---less
-+---server
++---server                                 // Server side                          
 |   +---assets
 |   +---controllers
 |   +---middlewares
