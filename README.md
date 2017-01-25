@@ -6,7 +6,7 @@ For contributing or investigation this app do next:
 
 * **Download or clone repository**
 * **Then open command line and type:** npm install
-* **After that in command line type:** npm run dev
+* **After that type in command line:** npm run dev
 * **Finally go to browser and type:** localhost:3000
 
 ### Structure of application
