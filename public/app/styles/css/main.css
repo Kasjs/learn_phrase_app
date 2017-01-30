@@ -457,6 +457,7 @@ html {
   padding: 4px;
 }
 .config-form .select-to-del {
+  font: 16px 'Roboto';
   display: flex-inline;
   font-weight: bold;
   color: #1872ab;
