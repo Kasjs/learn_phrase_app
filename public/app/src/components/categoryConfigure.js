@@ -90,6 +90,8 @@ class categoryConfigure extends Component {
                             that.props.category.itemsInCategory.splice(index, 1);
                             deleteItemInSelectedCategory(that.props.category.itemsInCategory);
                             setCategoryField(props.category, that.props.category.itemsInCategory);
+                            that.props.configureActions.fadeOn();
+                            setTimeout(function() { fadeOff(); }, 500);
                         }
                     }
                 });
