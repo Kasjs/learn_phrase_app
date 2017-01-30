@@ -79,6 +79,13 @@ export function setCategoryOffline() {
 }
 
 export function setCategoryOptions(response) {
+    // let allOptions = getCategoryOptions();
+    // allOptions.map((item) => {
+    //     if (item.label === ) {
+    //
+    //     }
+    // });
+    console.log(response);
     localStorage.setItem('options', JSON.stringify(response));
 }
 

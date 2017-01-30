@@ -93,6 +93,7 @@ export function updateCategory(newCategoryName, categoryContent) {
                 email: getEmailFromLocalStrg()
             })
             .then(function(response) {
+
                 setCategoryOptions(response.categoryNames);
                 setCategoryField(newCategoryName.label, response.data[newCategoryName.label]);
             },

@@ -70,6 +70,13 @@ export function updateCategoryContent() {
     }
 }
 
+export function addNewCategoryAndItem() {
+    return {
+        type: 'ADD_NEW_CATEGORY_AND_ITEM',
+        payload: 'You have added new category or updated existing one'
+    }
+}
+
 export function switchOfflineOnLineMode() {
     return {
         type: 'SWITCH_OFFLINE_ONLINE_MODE'
@@ -90,12 +97,6 @@ export function clearMsgUnauthorizedUsers() {
     }
 }
 
-export function addNewCategoryAndItem() {
-    return {
-        type: 'ADD_NEW_CATEGORY_AND_ITEM',
-        payload: 'You have added new category or updated existing one'
-    }
-}
 
 export function clearAddNewCategoryMsg() {
     return {

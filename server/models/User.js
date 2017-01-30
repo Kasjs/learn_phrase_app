@@ -17,6 +17,16 @@ var UserSchema = new mongoose.Schema({
 	},
     defaultCategory: {
         type: Array,
+        nested: {
+            value: {
+                type: String,
+                unique: true
+            },
+            label: {
+                type: String,
+                unique: true
+            }
+        },
         default: [
             { value : 'Sport', label: 'Sport' },
             { value : 'Food', label: 'Food' },
