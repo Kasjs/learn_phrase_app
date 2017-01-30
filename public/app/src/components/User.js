@@ -1,11 +1,42 @@
-import { Button, Row, Col, Container, FormSelect, } from 'elemental'
+'use scrict'
+
 import React, { PropTypes, Component } from 'react'
-import { Link, browserHistory, hashHistory } from 'react-router'
+import browserHistory from 'react-router/lib/browserHistory'
+import hashHistory from 'react-router/lib/hashHistory'
 import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHiddenFromLocalStrg } from '../localStorage/localStorageMethods'
+import { initialState } from '../reducers/userAuth'
 
+// function component
+export function RegButtons(props) {
+    return (
+        <section className='auth-btn'>
+            <div className={ getHiddenFromLocalStrg()  ? 'hide' : 'show' }>
+                <button className='login-btn btn' onClick={() => {hashHistory.push('login'), props.clearErrorMsg()}}
+                    >Sign In
+                </button>
+                <button className='register-btn btn' onClick={() => {hashHistory.push('register'), props.clearErrorMsg()}}
+                    >Sign Up
+                </button>
+            </div>
+            <button className={ getHiddenFromLocalStrg() ? 'log-out-btn show btn' : 'hide log-out-btn btn'}
+                onClick={() => props.logoutAndClearPageInfo() } >
+                <i aria-hidden='true' className="fa fa-sign-out fa-1x"></i>
+            </button>
+        </section>
+    )
+}
+
+// class component
 export default class User extends Component {
-
+    constructor(props){
+        super(props);
+        this.state = {
+            user: initialState
+        }
+        this.logoutAndClearPageInfo.bind(this);
+    }
     logoutAndClearPageInfo() {
+        console.log(this.props);
         this.props.logOutUser();
         return function(dispatch) {
             dispatch({
@@ -17,29 +48,15 @@ export default class User extends Component {
     render() {
         const { email, logOutUser, clearErrorMsg } = this.props;
         return (
-            <Col xs='1/3'>
-                <div className={ getHiddenFromLocalStrg()  ? 'hide' : 'show' }>
-                    <Button className='login-btn' onClick={() => {hashHistory.push('login'), clearErrorMsg()}}>
-                        <i className="fa fa-sign-in" aria-hidden="true"></i>
-                    </Button>
-                    <Button className='register-btn' onClick={() => {hashHistory.push('register'), clearErrorMsg()}}
-                        >Sign Up
-                    </Button>
-                </div>
-                <span className={ getHiddenFromLocalStrg() ? 'show user-email' : 'hide user-email' }>
-                    <i className='fa fa-user' aria-hiden='true'></i>
-                </span>
-                <Button className={ getHiddenFromLocalStrg() ? 'show log-out-btn' : 'hide log-out-btn'}
-                    onClick={() => this.logoutAndClearPageInfo() } >
-                    <i className="fa fa-sign-out" aria-hidden="true"></i>
-                </Button>
-            </Col>
+            <RegButtons className='user' logOutUser={ logOutUser } clearErrorMsg={ clearErrorMsg }
+                logoutAndClearPageInfo={ this.logoutAndClearPageInfo.bind(this) }
+            />
         )
     }
 }
 
 User.propTypes = {
     email : React.PropTypes.string,
-    logOutUser : React.PropTypes.func
-
+    logOutUser : React.PropTypes.func,
+    clearErrorMsg: React.PropTypes.func
 }

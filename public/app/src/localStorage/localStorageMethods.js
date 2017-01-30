@@ -1,72 +1,101 @@
+'use scrict'
 import { getSelected } from '../actions/pageActions'
 
-export let setCat = [];
+export function setCat (categories) {
+    let setCat = [];
+    if (categories) {
+        setCat = categories;
+    }
+    return setCat;
+}
 
 export let localSync = function(index) {
-    let selected = JSON.parse(localStorage.getItem('selected'));
-    let categories = JSON.parse(localStorage.getItem('categories_' + selected ));
-    let promise = Promise.resolve(selected, categories).then(function() {
+    let selected = JSON.parse(getSelectedCategory());
+    let categories = getCategoryField(selected);
+    Promise.resolve(selected, categories).then(function() {
         ++categories[index].hits;
         setCategoryField(selected, categories);
     });
 }
 
 export function setCategory(response) {
-    let selected = JSON.parse(localStorage.getItem('selected'));
-    setCategoryField(selected, response.data[selected]);
-    setCat = JSON.parse(localStorage.getItem('categories_' + getSelected()));
-    return setCat;
+    let selected = JSON.parse(getSelectedCategory());
+    if (!selected) {
+        return;
+    }
+    Promise.resolve(selected, response).then(function() {
+        setCategoryField(selected, response.data[selected]);
+    });
+    return setCat(getCategoryField(getSelected()));
 }
 
 function createNewCategory(newCategoryName, categoryContent) {
-    let categoryNames = JSON.parse(localStorage.getItem('options'));
-    categoryNames.push(newCategoryName);
-    localStorage.setItem('options', JSON.stringify(categoryNames));
-    let newCategoryField = [];
-    newCategoryField.push(categoryContent);
-    setCategoryField(newCategoryName.label, newCategoryField);
+    Promise.resolve(newCategoryName, categoryContent).then(function(response) {
+        let categoryNames = JSON.parse(getCategoryOptions());
+        categoryNames.push(newCategoryName);
+        setCategoryOptions(categoryNames);
+        let newCategoryField = [];
+        newCategoryField.push(categoryContent);
+        setCategoryField(newCategoryName.label, newCategoryField);
+    });
 }
 
 export function offlineUpdateCategory(newCategoryName, categoryContent) {
-    var categoryNames = JSON.parse(localStorage.getItem('options'));
-    var same = false;
-    categoryNames.forEach(function(item) {
-        if (item.label === newCategoryName.label) {
-            let categoryData = getCategoryField(item.label);
-            categoryData.forEach(function(item) {
-                if (item.side_b === categoryContent.side_b) {
-                    setCategoryField(newCategoryName.label, categoryData);
-                }
-            });
+    Promise.resolve(newCategoryName, categoryContent).then(function() {
+        let categoryNames = JSON.parse(getCategoryOptions()),
+        sameContent = false,
+        sameCategory = false,
+        categoryData = [];
+        categoryNames.forEach(function(item) {
+            if ( item.label === newCategoryName.label ) {
+                sameCategory = true;
+                categoryData = getCategoryField(item.label);
+                categoryData.forEach(function(itemData) {
+                    if ( itemData.side_b === categoryContent.side_b ) {
+                        sameContent = true;
+                    }
+                });
+            }
+        });
+        if (sameContent) {
+            setCategoryOptions(categoryNames);
+            setCategoryField(newCategoryName.label, categoryData);
+        } else {
+            setCategoryOptions(categoryNames);
             categoryData.push(categoryContent);
             setCategoryField(newCategoryName.label, categoryData);
-            setCategoryOptions(categoryNames);
-            same = true;
+        }
+        if (!sameCategory) {
+            createNewCategory(newCategoryName, categoryContent);
         }
     });
-    if (!same) {
-        createNewCategory(newCategoryName, categoryContent);
-    }
 }
 
 export function setCategoryOffline() {
-    let selected = JSON.parse(localStorage.getItem('selected'));
+    let selected = JSON.parse(getSelectedCategory());
     localStorage.setItem('categories_' + selected, localStorage.getItem('categories_' + getSelected()));
-    setCat = JSON.parse(localStorage.getItem('categories_' + getSelected()));
-    return setCat;
+    // setCat = ;
+    return setCat(getCategoryField(getSelected()));
 }
 
 export function setCategoryOptions(response) {
     localStorage.setItem('options', JSON.stringify(response));
 }
 
+export function getCategoryOptions() {
+    return localStorage.getItem('options');
+}
+
 export function setCategoryField(name, data) {
     localStorage.setItem('categories_' + name , JSON.stringify(data));
 }
 
+export function removeCategoryField(name) {
+    localStorage.removeItem('categories_' + name);
+}
+
 export function getCategoryField(category) {
     return JSON.parse(localStorage.getItem('categories_' + category));
-
 }
 
 export function getEmailFromLocalStrg() {
@@ -75,6 +104,22 @@ export function getEmailFromLocalStrg() {
 
 export function getSelectedCategory() {
     return localStorage.getItem('selected');
+}
+
+export function setSelectedCategory(selected) {
+    localStorage.setItem('selected', selected);
+}
+
+export function setIsOfflineField(isOffline) {
+    localStorage.setItem('isOffline', isOffline);
+}
+
+export function getIsOfflineField() {
+    return localStorage.getItem('isOffline');
+}
+
+export function removeIsOfflineField() {
+    localStorage.removeItem('isOffline');
 }
 
 export function getHiddenFromLocalStrg() {

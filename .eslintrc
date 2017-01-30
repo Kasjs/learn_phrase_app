@@ -1,34 +1,39 @@
 {
   "extends": "eslint:recommended",
   "parser": "babel-eslint",
+  {
+    "root": true,
+  },
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "es6": true
   },
   "plugins": [
     "react"
   ],
+  "globals": {
+      "setCat": true
+    },
   "rules": {
-    "no-debugger": 0,
     "no-console": 0,
-    "no-alert": 0,
+    "no-const-assign": 2,
+    "no-unused-vars": 0,
+    "no-undef": 0,
+    "no-var": 1,
+    "no-debugger": 0,
+    "no-alert": 2,
     "no-new": 0,
+    "no-new-wrappers": 1,
+    "no-path-concat": 0,
+    "no-process-env": 0,
+    "no-eval": 2,
     "no-new-func": 0,
     "no-new-object": 0,
     "new-cap": 0,
-    "strict": 0,
-    "no-underscore-dangle": 0,
-    "no-use-before-define": 0,
-    "eol-last": 0,
-    "quotes": [2, "single"],
-    "jsx-quotes": [1, "prefer-single"],
-    "react/jsx-no-undef": 1,
-    "react/jsx-uses-react": 1,
-    "react/jsx-uses-vars": 1,
-    "space-after-keywords": [0, "always"],
-    "space-before-keywords": [0, "always"],
-    "space-before-blocks": [0, "always"],
-    "vars-on-top": 0,
-    "max-len": [0, 80, 4]
+    "strict": 1,
+    "eqeqeq": 1,
+    "max-len": [0, 80, 4],
+    "prefer-const": 0
   }
 }

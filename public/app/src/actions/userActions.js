@@ -1,5 +1,6 @@
+'use scrict'
 import { register, login, transferServerMsg } from '../ajaxCalls/request'
-import { getEmailFromLocalStrg, getHiddenFromLocalStrg, getStatusFromLocalStrg, logOut } from '../localStorage/localStorageMethods'
+import { getEmailFromLocalStrg, getHiddenFromLocalStrg, getStatusFromLocalStrg, logOut, getAdminField } from '../localStorage/localStorageMethods'
 import { browserHistory, hashHistory } from 'react-router'
 
 export function registerNewUser (user) {
@@ -15,7 +16,7 @@ export function loginUser (user) {
     return {
         type: 'LOGIN_USER',
         status: getStatusFromLocalStrg(),
-        email: getEmailFromLocalStrg(),
+        email: user.email,
         isAuthButtonsHidden: getHiddenFromLocalStrg()
     }
 }

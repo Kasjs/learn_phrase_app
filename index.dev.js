@@ -1,3 +1,4 @@
+/*eslint-disable*/
 const path = require('path'),
 fs = require('fs'),
 express = require('express'),
@@ -11,8 +12,6 @@ bodyParser = require('body-parser'),
 webpackMiddleware = require('webpack-dev-middleware'),
 webpackHotMiddleware = require('webpack-hot-middleware'),
 webpackConfig = require('./webpack.config.js'),
-React = require('react'),
-Router = require('react-router'),
 config = require('./config'),
 
 isDeveloping = process.env.NODE_ENV !== 'production',
@@ -31,7 +30,7 @@ const authCheckMiddleware = require('./server/middlewares/auth-check')(config);
 
 if (isDeveloping) {
     const compiler = webpack(webpackConfig);
-    const middleware = webpackMiddleware(compiler, {
+    var middleware = webpackMiddleware(compiler, {
         publicPath: webpackConfig.output.publicPath,
         contentBase: 'app',
         stats: {
@@ -56,26 +55,11 @@ if (isDeveloping) {
     app.use(bodyParser.urlencoded({
         extended: true
     }));
-
     app.use(function(req, res, next) {
         res.header('Access-Control-Allow-Origin', process.env.allowOrigin || 'http://localhost');
         res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
         res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
         next();
-    });
-
-    app.get('/', function(req, res) {
-        res.write(middleware.fileSystem.readFileSync(path.join(__dirname, './dist/index.html')));
-        res.end();
-    });
-
-    app.use('/', routes);
-
-} else {
-
-    app.use(express.static(__dirname + './dist'));
-    app.get('*', function response(req, res) {
-      res.sendFile(path.join(__dirname, './dist/index.html'));
     });
 
     app.use('/', routes);

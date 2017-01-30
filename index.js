@@ -11,15 +11,14 @@ bodyParser = require('body-parser'),
 webpackMiddleware = require('webpack-dev-middleware'),
 webpackHotMiddleware = require('webpack-hot-middleware'),
 webpackConfig = require('./webpack.production.config.js'),
+config = require('./config'),
 React = require('react'),
 Router = require('react-router'),
-config = require('./config'),
 
-isProduction = process.env.NODE_ENV === 'production',
+isProduction = process.env.NODE_ENV !== 'developing',
 port = isProduction ? process.env.PORT : process.env.PORT,
 app = express();
 app.use(passport.initialize());
-
 
 require('node-jsx').install();
 require('./server/models/User');
@@ -70,16 +69,6 @@ if (isProduction) {
         res.write(middleware.fileSystem.readFileSync(path.join(__dirname, './dist/index.html')));
         res.end();
     });
-
-    app.use('/', routes);
-
-} else {
-
-    app.use(express.static(__dirname + '/dist'));
-    app.get('*', function response(req, res) {
-      res.sendFile(path.join(__dirname, 'dist/index.html'));
-    });
-
     app.use('/', routes);
 }
 

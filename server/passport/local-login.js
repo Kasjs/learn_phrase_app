@@ -1,3 +1,4 @@
+'use scrict'
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('mongoose').model('User');
@@ -13,7 +14,7 @@ module.exports = function(config) {
   }, function(req, email, password, done) {
     let userData = {
         email: email.trim(),
-        password: password.trim(),
+        password: password.trim()
     };
 
     User.findOne({email: userData.email}, function(err, user) {
@@ -40,7 +41,6 @@ module.exports = function(config) {
             email: user.email,
             defaultCategory: user.defaultCategory
         };
-
         return done(null, token, userData);
       });
     });

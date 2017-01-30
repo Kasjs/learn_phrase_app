@@ -1,15 +1,18 @@
+'use scrict'
+
 import { browserHistory, hashHistory } from 'react-router'
 import { register } from '../ajaxCalls/request'
 import { getEmailFromLocalStrg, getHiddenFromLocalStrg } from '../localStorage/localStorageMethods'
 
-const initialState = {
-    email: getEmailFromLocalStrg() !== '' ?  getEmailFromLocalStrg() : '',
+export const initialState = {
+    email: '',
     password: '',
     status: 0,
-    isAuthButtonsHidden: getHiddenFromLocalStrg() !== '' ? getHiddenFromLocalStrg() : '',
+    isAuthButtonsHidden: false,
     clientMsg: '',
     serverMsg: '',
     msgCategory: ''
+
 }
 
 export default function userAuth(state = initialState, action) {
@@ -31,7 +34,7 @@ export default function userAuth(state = initialState, action) {
             } else {
                 return {
                     ...state,
-                    email: localStorage.getItem('email'),
+                    email: action.email,
                     isAuthButtonsHidden: localStorage.getItem('isAuthButtonsHidden'),
                     status: 200
                 }
@@ -56,9 +59,9 @@ export default function userAuth(state = initialState, action) {
         case 'CLEAR_ERROR_MESSAGE': {
             return {
                 ...state,
-                clientMsg: action.clientMsg,
-                serverMsg: action.serverMsg,
-                msgCategory: action.clientMsg
+                clientMsg: '',
+                serverMsg: '',
+                msgCategory: ''
             }
         }
 

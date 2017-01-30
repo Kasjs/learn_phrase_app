@@ -1,13 +1,14 @@
+'use scrict'
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import App from './containers/App'
 import Register from './components/RegisterForm'
+import categoryConfigure from './components/categoryConfigure'
 import Login from './components/LoginForm'
 import Category from './components/Category'
 import Home from './components/Page'
-import injectTapEventPlugin from 'react-tap-event-plugin'
-import { Router, Route, hashHistory, IndexRoute, browserHistory, useRouterHistory  } from 'react-router'
+import { Router, Route, browserHistory, hashHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import Bootstrap from 'bootstrap/dist/css/bootstrap.css'
 import FontAwesome from 'font-awesome/css/font-awesome.css'
@@ -18,25 +19,21 @@ import createLogger from 'redux-logger'
 import thunk from 'redux-thunk'
 import { modelReducer, formReducer } from 'react-redux-form';
 
-const initialUserState= {
-    email: '',
-    password: ''
-}
-
 const reducer = combineReducers({
     ...reducers,
     routing: routerReducer,
     user: modelReducer('user'),
     userForm: formReducer('user'),
     category: modelReducer('category'),
-    categoryForm: formReducer('category')
-})
+    categoryForm: formReducer('category'),
+    configureCat: modelReducer('configureCat'),
+    configureCatForm: formReducer('configureCat')
+});
 
-injectTapEventPlugin();
 const logger = createLogger();
 const store = createStore(
     reducer,
-    applyMiddleware(thunk, logger)
+    applyMiddleware(thunk)
 );
 
 const history = syncHistoryWithStore(hashHistory, store);
@@ -49,6 +46,7 @@ render(
                 <Route path="login" component={Login}/>
                 <Route path="register" component={Register}/>
                 <Route path="addCategory" component={Category}/>
+                <Route path="configure" component={categoryConfigure}/>
             </Router>
         </div>
     </Provider>,
