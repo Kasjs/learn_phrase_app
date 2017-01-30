@@ -5,6 +5,7 @@ import { setCat } from '../localStorage/localStorageMethods'
 export function getSelected() {
     return JSON.parse(localStorage.getItem('selected'));
 }
+
 function getCategoryFromStorage() {
     return JSON.parse(localStorage.getItem('categories_' + getSelected()));
 }
@@ -68,17 +69,20 @@ export function updateCategoryContent() {
         type: 'UPDATE_CATEGORY_CONTENT'
     }
 }
+
 export function switchOfflineOnLineMode() {
     return {
         type: 'SWITCH_OFFLINE_ONLINE_MODE'
     }
 }
+
 export function showMsgUnauthorizedUsers() {
     return {
         type: 'SHOW_MSG_UNAUTHORIZED_UZERS',
         payload: 'First you have to Sign In.'
     }
 }
+
 export function clearMsgUnauthorizedUsers() {
     return {
         type: 'CLEAR_MSG_UNAUTHORIZED_UZERS',
@@ -114,6 +118,7 @@ export function fadeOn() {
 
     }
 }
+
 export function fadeOff() {
     return {
         type: 'FADE_OFF',

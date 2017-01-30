@@ -87,22 +87,24 @@ class Category extends Component {
                     <section className='panel panel-default col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4' >
                         <span className={ addCategoryMsg ? 'add-category-msg' : 'add-category-msg hide' }>{ addCategoryMsg }</span>
                         <Form className='form' model="category" onSubmit={(category) => this.handleCreate(category)}>
-                            <label className='update-label'>Update existing category</label>
+                            <label className='category-label'>Update existing category</label>
                             <FormSelect className='update-select' options={ setOptions() } firstOption='Select...'
                                 onChange={ this.loadCategory.bind(this) }
                             />
                             <Field className='form-group' model="category.name">
-                                <label className='add-label'>Or add new category</label>
+                                <label className='category-label'>Or add new category</label>
                                 <input className='form-control' type="text" placeholder='Category Name' />
                             </Field>
                             <Field className='form-group' model="category.side_a">
+                                <label className='category-label'>Side_a value (native language)</label>
                                 <input className='form-control' type="text" placeholder='side_a value (native language)' />
                             </Field>
                             <Field className='form-group' model="category.side_b">
+                                <label className='category-label'>Side_b value (foreign language)</label>
                                 <input className='form-control' type="text" placeholder='side_b value (foreign language)' />
                             </Field>
                             <Field className='form-group' model="category.example">
-                                <label className='example-label'> Example of Content</label>
+                                <label className='category-label'> Example of Content</label>
                                 <textarea rows='2' cols='5' maxLength='80' disabled className='form-control' type="text"
                                     placeholder='side_a: небо, side_b: sky'
                                 ></textarea>

@@ -41,7 +41,6 @@ module.exports = function(config) {
             email: user.email,
             defaultCategory: user.defaultCategory
         };
-
         return done(null, token, userData);
       });
     });

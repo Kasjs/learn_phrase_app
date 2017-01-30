@@ -11,7 +11,7 @@
         text-align: center;
         margin-bottom: 5px;
     }
-    .update-label, .add-label, .example-label {
+    .category-label {
         margin-bottom: 0;
         font: 14px 'Roboto';
         font-weight: 700;
@@ -70,9 +70,21 @@
         border-radius: 2px 2px;
         background-color: @secondary-color;
         padding: 4px;
-        .list-element {
-            background-color: @main-color;
-        }
+    }
+    .select-to-del {
+        display: flex-inline;
+        font-weight: bold;
+        color: @main-color;
+        margin-bottom: 0;
+    }
+    .list-element {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: @secondary-color;
+        font: 16px 'Roboto';
+        list-style-type: square;
+        margin: 0;
     }
     .back-link-btn{
         font: 16px 'Roboto';
@@ -81,6 +93,17 @@
     .category-name-text {
         font: 16px 'Roboto';
         font-weight: bold;
+    }
+    .list-item {
+        display: flex-inline;
+        padding-right: 10px;
+        justify-content: flex-start;
+        margin: 5px;
+        .input-item {
+            margin: 0 0 0 15px;
+            display: inline-flex;
+            paddin-top: 4px;
+        }
     }
     .items-list-text {
         display: block;
@@ -97,7 +120,7 @@
         }
     }
     .del-category-btn {
-        .fa-times {
+        .fa-trash {
             background-image: none;
             color: #ff0000;
         }
@@ -112,10 +135,12 @@
     }
     .del-selected-btn {
         font: 16px 'Roboto' !important;
-        padding: 5px 5px !important;
+        padding: 5px 5px;
         &:focus {
             border-color: none;
         }
+        margin: 10px 0 0 30px;
+
     }
 }
 

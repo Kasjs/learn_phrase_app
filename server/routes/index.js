@@ -5,6 +5,7 @@ router = express.Router(),
 auth = require('../controllers/auth');
 categoryCtrl = require('../controllers/categoryCtrl');
 
+// Routes 
 router.post('/login', auth.signIn);
 router.post('/register', auth.signUp);
 router.get('/category', categoryCtrl.getCategory);

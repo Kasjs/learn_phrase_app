@@ -5,7 +5,7 @@ import FormSelect from 'elemental/lib/components/FormSelect'
 import { Field, Form, actions } from 'react-redux-form'
 import { bindActionCreators } from 'redux'
 import * as configureActions from '../actions/configure'
-import { deleteItemInSelectedCategory } from '../actions/configure'
+import { deleteItemInSelectedCategory, addLeftedItem } from '../actions/configure'
 import { connect } from 'react-redux'
 import { getCategoryField, getCategoryOptions, setCategoryOptions, removeCategoryField, setCategoryField, getIsOfflineField } from '../localStorage/localStorageMethods'
 import { login, getCategoryFromServer, getAllCategory, syncAllCategoryAndContent  } from '../ajaxCalls/request'
@@ -13,7 +13,6 @@ import hashHistory from 'react-router/lib/hashHistory'
 import { initialState } from '../reducers/configure'
 
 // working function
-
 function fadeOn(className) {
     let componentClass = ['row', 'config-form'];
     if (className) {
@@ -47,7 +46,6 @@ export function deleteCategory(category) {
 }
 
 // class component
-
 class categoryConfigure extends Component {
     constructor(props) {
         super(props);
@@ -76,46 +74,46 @@ class categoryConfigure extends Component {
                     if (!isOffline) {
                         getAllCategory();
                     }
-                    listsOfCategoryItems = setDataOfCategory(item.label);
-                    getSelectedCategoryForChange(item.label, listsOfCategoryItems);
+                    getSelectedCategoryForChange(item.label, getCategoryField(item.label));
                 }
             })
         }
 
-        let setDataOfCategory = function(category) {
-            let items = getCategoryField(category);
-            let lists = [];
-            if (items) {
-                items.map(function(item, index) {
-                    lists.push(
-                        <li className='list-element' key={ item.side_b }>{ item.side_b }
-                            <button onClick={ () => deleteItem(category, item.side_b) } className='btn del-category-btn'>
-                                <input type='checkbox'/>
-                            </button>
-                        </li>
-                    );
+        function ListContainer(props) {
+            let isChecked = props.isChecked;
+            let itemsOfCategory = that.props.category.itemsInCategory;
+            function computationCategory () {
+                isChecked = !isChecked;
+                var newCategoryName = itemsOfCategory.map((item, index) => {
+                    if (isChecked) {
+                        if (item.side_b === props.value) {
+                            that.props.category.itemsInCategory.splice(index, 1);
+                            deleteItemInSelectedCategory(that.props.category.itemsInCategory);
+                            setCategoryField(props.category, that.props.category.itemsInCategory);
+                        }
+                    }
                 });
-                return lists;
+                if (!isOffline) {
+                    syncAllCategoryAndContent();
+                }
             }
+            return (
+                <li className='list-item' key={ props.value }>{ props.value }
+                    <input className='input-item' type='checkbox'
+                    onChange={ () => { computationCategory() } }/>
+                </li>
+            );
         }
 
-        function deleteItem(category, item) {
-            let itemsOfCategory = getCategoryField(category);
-            itemsOfCategory.map(function(element, index) {
-                if ( element.side_b === item) {
-                    itemsOfCategory.splice(index, 1);
-                    that.props.category.itemsInCategory.map(function(item, index) {
-                        if (item.key === element.side_b) {
-                            that.props.category.itemsInCategory.splice(index, 1);
-                        }
-                    });
-                }
-            });
-            setCategoryField(category, itemsOfCategory);
-            if (!isOffline) {
-                syncAllCategoryAndContent();
+        function ListItems(props) {
+            var category = props.category;
+            let items = props.lists;
+            if( items ) {
+                var listItems = items.map((item) =>
+                    <ListContainer category={category} isChecked={false} key={ item.side_b } value={ item.side_b } />
+                );
+                return (<ul className='list-element'>{ listItems }</ul>);
             }
-            return itemsOfCategory;
         }
 
         return (
@@ -141,14 +139,11 @@ class categoryConfigure extends Component {
                         <span className='category-name-text'> Category name: </span>
                         <span className={ selectedCategory ? 'configure-category' : 'configure-category hide'}>{ selectedCategory }</span>
                         <button onClick={ () => deleteSelectedCategory(selectedCategory) } className='del-category-btn btn'>
-                            <i className={ selectedCategory ? 'fa fa-times' : 'fa fa-times hide' } aria-hidden="true"></i>
+                            <i className={ selectedCategory ? 'fa fa-trash' : 'fa fa-trash hide' } aria-hidden="true"></i>
                         </button>
+                        <h5 className='select-to-del'>Select item to delete:</h5>
                         <br/>
-                        <span className='items-list-text'> Items of category:<ul className='items'>{ itemsInCategory }</ul></span>
-                        <button className={ itemsInCategory.length === 0 ? 'hide del-selected-btn btn-danger btn' : 'del-selected-btn btn-danger btn' }
-                            onClick= { () => { deleteItemInSelectedCategory(that.props.category.itemsInCategory); fadeOn(hide); }}>
-                            <i className="fa fa-trash" aria-hidden="true"></i> Delete
-                        </button>
+                        <ListItems lists={ itemsInCategory } category={ selectedCategory } />
                     </section>
                 </section>
             </div>

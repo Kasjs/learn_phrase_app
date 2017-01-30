@@ -2,13 +2,11 @@ import { getSelected } from '../actions/pageActions'
 import { showMassage } from '../actions/userActions'
 import { browserHistory, hashHistory } from 'react-router'
 import { registerNewUser, loginUser } from '../actions/userActions'
-import { setLoginWhenSuccess, setLoginWhenError, setCategory, getSelectedCategory,
-        getEmailFromLocalStrg, setCategoryOptions, setCategoryOffline, offlineUpdateCategory,
-        setCategoryField, getCategoryField, setAdminField, getIsOfflineField,
-        setSelectedCategory, getCategoryOptions
-    } from '../localStorage/localStorageMethods'
-
-export let msgErrorObj = {};
+import {    setLoginWhenSuccess, setLoginWhenError, setCategory, getSelectedCategory,
+            getEmailFromLocalStrg, setCategoryOptions, setCategoryOffline, offlineUpdateCategory,
+            setCategoryField, getCategoryField, setAdminField, getIsOfflineField,
+            setSelectedCategory, getCategoryOptions
+        } from '../localStorage/localStorageMethods'
 
 function calculateAllCategory(res) {
     let categoryLength = res.categoryNames.length
@@ -43,16 +41,20 @@ export function getCategoryFromServer(value) {
 }
 
 let getCategory = (value) => {
-    $.get('/category', { email: getEmailFromLocalStrg() }).then(function(response) {
-        switch(value) {
-            case getSelectedCategory() : {
-                setCategory(response);
+    $.get('/category',
+        {
+            email: getEmailFromLocalStrg()
+        })
+        .then(function(response) {
+            switch(value) {
+                case getSelectedCategory() : {
+                    setCategory(response);
+                }
             }
-        }
-    }, function(error) {
-        console.log('Error can\'t get data')
-
-    })
+        },
+        function(error) {
+            console.log('Error can\'t get data')
+        });
 }
 
 export function syncWithServer() {
@@ -66,13 +68,17 @@ export function syncWithServer() {
 
 let changeCategory = () => {
     $.post('/category',
-    {
-        data : getCategoryField(getSelected()),
-        category: getSelected(),
-        email: getEmailFromLocalStrg()
-    }).then(function(response) {}, function(error) {
-        console.log('Error can\'t sync')
-    });
+        {
+            data : getCategoryField(getSelected()),
+            category: getSelected(),
+            email: getEmailFromLocalStrg()
+        })
+        .then(function(response) {
+
+        },
+        function(error) {
+            console.log('Error can\'t synchronize data')
+        });
 }
 
 export function updateCategory(newCategoryName, categoryContent) {
@@ -81,16 +87,18 @@ export function updateCategory(newCategoryName, categoryContent) {
         offlineUpdateCategory(newCategoryName, categoryContent);
     } else {
         $.post('/addNewCategory',
-        {
-            name: newCategoryName.value,
-            content: categoryContent,
-            email: getEmailFromLocalStrg()
-        }).then(function(response) {
-            setCategoryOptions(response.categoryNames);
-            setCategoryField(newCategoryName.label, response.data[newCategoryName.label]);
-        }, function(error) {
-            console.log('Error can\'t sync')
-        });
+            {
+                name: newCategoryName.value,
+                content: categoryContent,
+                email: getEmailFromLocalStrg()
+            })
+            .then(function(response) {
+                setCategoryOptions(response.categoryNames);
+                setCategoryField(newCategoryName.label, response.data[newCategoryName.label]);
+            },
+            function(error) {
+                console.log('Error can\'t synchronize data')
+            });
     }
 }
 
@@ -109,8 +117,8 @@ export function syncAllCategoryAndContent() {
             email: getEmailFromLocalStrg(),
             categoryNames: calculateAllCategoryAndContent().categoryNames,
             categoryData: calculateAllCategoryAndContent().categoryData
-        }).then(function(res) {
-    }, function(error) {
+        })
+        .then(function(res) {}, function(error) {
         console.log('Error can\'t get the data')
     })
 }
@@ -122,7 +130,8 @@ export function register(user) {
             password: user.password,
             repPassword: user.repPassword,
             secretWord: user.secretWord
-        }).then(function(response) {
+        })
+        .then(function(response) {
             hashHistory.push('/login');
         }, function(response) {
             let errorMsg = response.responseJSON.errors.email ?
@@ -137,7 +146,8 @@ export function login(user) {
         {
             email: user.email,
             password: user.password
-        }).then(function(response) {
+        })
+        .then(function(response) {
             setCategoryOptions(response.user.defaultCategory);
             setLoginWhenSuccess(response);
             hashHistory.push('/');

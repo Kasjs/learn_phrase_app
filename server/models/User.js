@@ -18,9 +18,9 @@ var UserSchema = new mongoose.Schema({
     defaultCategory: {
         type: Array,
         default: [
-            {value : 'Sport', label: 'Sport'},
-            {value : 'Food', label: 'Food'},
-            {value : 'Nature', label: 'Nature'}
+            { value : 'Sport', label: 'Sport' },
+            { value : 'Food', label: 'Food' },
+            { value : 'Nature', label: 'Nature' }
         ]
     }
 });
