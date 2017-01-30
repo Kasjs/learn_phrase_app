@@ -1,13 +1,13 @@
-# [learn_phrase_app](https://phrase-generator.herokuapp.com)
+# [Learn_phrase_app](https://phrase-generator.herokuapp.com)
 
 ### Welcome to learn_phrase_app, application created for learning and improving English skills.
 For use this app please follow to [phrase-generator](https://phrase-generator.herokuapp.com).
 For contributing or investigation this app do next:
 
 * **Download or clone repository**
-* **Open command line and type:** npm install
-* **In command line type:** npm run dev
-* **Then go to browser and type:** localhost:3000
+* **Then open command line and type:** npm install
+* **After that type in command line:** npm run dev
+* **Finally go to browser and type:** localhost:3000
 
 ### Structure of application
 ```
@@ -16,7 +16,7 @@ For contributing or investigation this app do next:
 +---dist
 |    +---appcache
 |
-+---public
++---public                                // Client side
 |   +---app
 |   |    +---src
 |   |    |    +---actions
@@ -29,9 +29,9 @@ For contributing or investigation this app do next:
 |   |    |    +---reducers
 |   |    \---styles
 |   |    |    +---css
-|   |    |        +---style.lib.css
+|   |    |        +---style.lib.css           
 |   |    |   \---less
-+---server
++---server                                 // Server side                          
 |   +---assets
 |   +---controllers
 |   +---middlewares
