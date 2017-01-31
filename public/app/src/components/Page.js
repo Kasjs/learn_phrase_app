@@ -67,8 +67,8 @@ export default class Page extends Component {
                 getCategoryFromServer(getSelectedCategory());
                 setTimeout(function() { that.props.fadeOff(); }, 700);
             });
-            this.props.getNextPhrase();
             this.props.clearMsgUnauthorizedUsers();
+            setTimeout(function() { that.props.getNextPhrase(); }, 400);
         }
         this.props.showMsgUnauthorizedUsers();
     }
