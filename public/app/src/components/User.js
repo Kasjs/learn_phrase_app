@@ -36,7 +36,6 @@ export default class User extends Component {
         this.logoutAndClearPageInfo.bind(this);
     }
     logoutAndClearPageInfo() {
-        console.log(this.props);
         this.props.logOutUser();
         return function(dispatch) {
             dispatch({
