@@ -1,8 +1,8 @@
 html {
   height: 100%;
-  min-width: 306px;
   min-height: 350px;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 .hide-block {
   visibility: hidden;
@@ -47,7 +47,8 @@ html {
 .phrase {
   display: block;
   position: relative;
-  top: 7px;
+  top: 0;
+  margin: 2px 0 5px 0;
   font: 25px 'Roboto';
   font-weight: bolder;
   color: #1872ab;
@@ -100,11 +101,12 @@ html {
   padding-right: 70px;
 }
 .phrase-row .phrase-row {
-  height: 100px;
+  height: auto;
+  top: 0;
   background-color: #fafafa;
   border-radius: 5px;
   border: 1px solid #23c6c8;
-  margin: 18px 10px 0 10px;
+  margin: 0 10px 0 10px;
   color: #1872ab;
 }
 .counter {
@@ -252,6 +254,18 @@ html {
   -webkit-transition: opacity 500ms ease-out;
   transition: opacity 500ms ease-out;
 }
+@media screen and (max-width: 306px) {
+  .phrase-row .btn-configure {
+    width: 36px;
+    margin-left: -4px;
+  }
+  .log-out-btn {
+    width: 36px !important;
+  }
+  .phrase-row .select-comp .btn-sunc {
+    width: 36px;
+  }
+}
 @media screen and (max-height: 400px) {
   .footer {
     display: none;
@@ -270,10 +284,13 @@ html {
     height: 40px;
     font: 15px 'Roboto';
   }
-  .phrase-row .select-comp .btn-sunc {
+  .select-comp .btn-sunc {
     position: fixed;
     right: 10px;
     top: 74px;
+  }
+  .select-comp .btn-sunc.phrase-row {
+    top: 0;
   }
   .phrase-row .btn-configure {
     left: -20px;
@@ -316,11 +333,11 @@ html {
     bottom: 3px;
   }
   .phrase-row .phrase-row {
-    height: 150px;
+    height: auto;
   }
   .phrase {
     position: relative;
-    top: 15px;
+    top: 0;
     font: 30px 'Roboto';
     font-weight: bolder;
     color: #1872ab;
@@ -361,11 +378,11 @@ html {
     font-weight: bolder;
   }
   .phrase-row .phrase-row {
-    height: 250px;
+    height: auto;
   }
   .phrase {
     position: relative;
-    top: 35px;
+    top: 0;
     font: 40px 'Roboto';
     font-weight: bolder;
     color: #1872ab;

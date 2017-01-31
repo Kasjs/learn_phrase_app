@@ -7,7 +7,8 @@ import { bindActionCreators } from 'redux'
 import * as configureActions from '../actions/configure'
 import { deleteItemInSelectedCategory, addLeftedItem } from '../actions/configure'
 import { connect } from 'react-redux'
-import { getCategoryField, getCategoryOptions, setCategoryOptions, removeCategoryField, setCategoryField, getIsOfflineField } from '../localStorage/localStorageMethods'
+import { getCategoryField, getCategoryOptions, setCategoryOptions, removeCategoryField,
+    setCategoryField, getIsOfflineField, setSelectedCategory } from '../localStorage/localStorageMethods'
 import { login, getCategoryFromServer, getAllCategory, syncAllCategoryAndContent  } from '../ajaxCalls/request'
 import hashHistory from 'react-router/lib/hashHistory'
 import { initialState } from '../reducers/configure'
@@ -125,7 +126,7 @@ class categoryConfigure extends Component {
                 </span>
                 <section className={ fadeOn(hide) }>
                     <div className='col-xs-12'>
-                        <button className='bnt btn-link back-link-btn' onClick={ () => hashHistory.push('/')}>
+                        <button className='bnt btn-link back-link-btn' onClick={() => hashHistory.push('/')}>
                             <i className="fa fa-long-arrow-left" aria-hidden="true"></i> Back
                         </button>
                     </div>

@@ -74,18 +74,10 @@ export function offlineUpdateCategory(newCategoryName, categoryContent) {
 export function setCategoryOffline() {
     let selected = JSON.parse(getSelectedCategory());
     localStorage.setItem('categories_' + selected, localStorage.getItem('categories_' + getSelected()));
-    // setCat = ;
     return setCat(getCategoryField(getSelected()));
 }
 
 export function setCategoryOptions(response) {
-    // let allOptions = getCategoryOptions();
-    // allOptions.map((item) => {
-    //     if (item.label === ) {
-    //
-    //     }
-    // });
-    console.log(response);
     localStorage.setItem('options', JSON.stringify(response));
 }
 

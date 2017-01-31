@@ -67,6 +67,7 @@ export default class Page extends Component {
                 getCategoryFromServer(getSelectedCategory());
                 setTimeout(function() { that.props.fadeOff(); }, 700);
             });
+            this.props.getNextPhrase();
             this.props.clearMsgUnauthorizedUsers();
         }
         this.props.showMsgUnauthorizedUsers();
@@ -98,6 +99,7 @@ export default class Page extends Component {
     render() {
         const { phrase, counter, hits, lengthOfCategory, email, hidden, isOffline,
             clearErrorMsg, unAuthorizedMsg, showSpinner, hide } = this.props;
+        const { getBackPhrase, getNextPhrase, switchLanguage, getPhrase } = this.props;
 
         return (
             <section className='page'>
@@ -114,8 +116,11 @@ export default class Page extends Component {
                             Welcome to PG app, for continue please Sign In or Sign Up.
                         </h3>
                         <SelectedRow/>
-                        <PhraseRow counter={ counter } hits={ hits } email={ email }
-                            phrase={ phrase } unAuthorizedMsg={ unAuthorizedMsg }/>
+                        <PhraseRow getBackPhrase={ getBackPhrase } getNextPhrase={ getNextPhrase }
+                            switchLanguage={ switchLanguage } getPhrase={ getPhrase }
+                            counter={ counter } hits={ hits } email={ email }
+                            phrase={ phrase } unAuthorizedMsg={ unAuthorizedMsg }
+                        />
                         <OfflineRow isOffline={ isOffline }
                             preparingToOffline={ this.preparingToOffline.bind(this) } />
                         <OnlineRow isOffline={ isOffline }

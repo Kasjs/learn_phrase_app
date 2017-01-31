@@ -43,7 +43,6 @@ module.exports.syncAllCategory = function(req, res) {
                 data: user.category[0]
             })
         }
-        console.log('sync all category', req.body.categoryData);
         user.category[0] = req.body.categoryData;
         user.markModified('category');
         user.defaultCategory = req.body.categoryNames;
@@ -59,7 +58,6 @@ module.exports.addNewCategory = function(req, res) {
     var same = false;
     User.findOne({ email: req.body.email }, function(err, user) {
         if ( user.category[0][req.body.name] ) {
-            console.log('existing category part', user.category[0]);
             user.category[0][req.body.name].forEach(function(item) {
                 if (item.side_b === req.body.content.side_b) {
                     same = true;
@@ -94,7 +92,6 @@ module.exports.addNewCategory = function(req, res) {
                 value : req.body.name,
                 label: req.body.name
             };
-            // var isDublicate = false;
             var allCategory = user.defaultCategory;
             allCategory.map((item, index) => {
                 if (item.value === newCategoryOption.value) {
@@ -102,11 +99,6 @@ module.exports.addNewCategory = function(req, res) {
                     isDublicate = true;
                 }
             });
-            // if (isDublicate) {
-            //     console.log('is dublicate = true', user.defaultCategory)
-            //     user.defaultCategory.pop();
-            //     // user.defaultCategory = allCategory;
-            // }
             user.defaultCategory.push(newCategoryOption);
             user.markModified('defaultCategory');
             user.save(function(err, result) {
