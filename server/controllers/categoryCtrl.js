@@ -58,7 +58,6 @@ module.exports.syncAllCategory = function(req, res) {
 module.exports.addNewCategory = function(req, res) {
     var same = false;
     User.findOne({ email: req.body.email }, function(err, user) {
-
         if ( user.category[0][req.body.name] ) {
             console.log('existing category part', user.category[0]);
             user.category[0][req.body.name].forEach(function(item) {
@@ -87,9 +86,6 @@ module.exports.addNewCategory = function(req, res) {
                 });
             }
         } else {
-
-            console.log('new category part', user.category[0]);
-            console.log('user category is: ' + user.category[0], 'defaultCategory is :' + user.defaultCategory.length );
             user.category[0][req.body.name] = [];
             user.markModified('category');
             user.category[0][req.body.name].push(req.body.content);
@@ -97,18 +93,20 @@ module.exports.addNewCategory = function(req, res) {
             let newCategoryOption = {
                 value : req.body.name,
                 label: req.body.name
-
             };
-            console.log(user.defaultCategory);
-            let allCategory = user.defaultCategory;
-            allCategory.map((item) => {
+            // var isDublicate = false;
+            var allCategory = user.defaultCategory;
+            allCategory.map((item, index) => {
                 if (item.value === newCategoryOption.value) {
-                    console.log(item.value);
-                    user.defaultCategory.pop();
-                    user.markModified('defaultCategory');
-                    user.save();
+                    allCategory.splice(index, 1);
+                    isDublicate = true;
                 }
             });
+            // if (isDublicate) {
+            //     console.log('is dublicate = true', user.defaultCategory)
+            //     user.defaultCategory.pop();
+            //     // user.defaultCategory = allCategory;
+            // }
             user.defaultCategory.push(newCategoryOption);
             user.markModified('defaultCategory');
             user.save(function(err, result) {
