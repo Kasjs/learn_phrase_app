@@ -10,6 +10,7 @@ import * as userActions from '../actions/userActions'
 import { register, transferMessages } from '../ajaxCalls/request'
 import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHiddenFromLocalStrg,
     getEmailErrorMsg, getPasswordErrorMsg } from '../localStorage/localStorageMethods'
+import hashHistory from 'react-router/lib/hashHistory'
 
 class RegisterForm extends Component {
     constructor(props) {
@@ -33,6 +34,11 @@ class RegisterForm extends Component {
         return (
             <div>
                 <section className='row req-form-cont'>
+                    <div className='col-xs-12'>
+                        <button className='bnt btn-link back-link-btn' onClick={() => hashHistory.push('/')}>
+                            <i className="fa fa-long-arrow-left" aria-hidden="true"></i> Back
+                        </button>
+                    </div>
                     <header className='col-xs-12'>
                         <h2 className='login-header'>Register</h2>
                     </header>

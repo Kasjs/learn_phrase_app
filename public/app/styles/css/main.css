@@ -12,23 +12,22 @@ html {
   font-family: 'Roboto', sans-serif;
 }
 .flex-container {
-  display: flex-inline;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 .flex-container-welcome {
-  border-top: 2px solid #1872ab;
-  border-bottom: 2px solid #1872ab;
+  border-top: 2px solid #23c6c8;
+  border-bottom: 2px solid #23c6c8;
   background-color: #ffffff;
   padding: 10px 30px 10px 30px;
   margin: 10px 30px 0 0px;
   text-align: center;
   width: 100%;
   color: #1872ab;
-  position: relative;
 }
 .panel {
   padding: 10px !important;
@@ -399,10 +398,14 @@ html {
   }
 }
 .req-form-cont {
-  padding-top: 4%;
+  padding-top: 1%;
   text-align: left;
   margin: 1% auto 0 auto;
   border-radius: 5px;
+}
+.req-form-cont .back-link-btn {
+  font: 16px 'Roboto';
+  font-weight: bold;
 }
 .category-form {
   padding-top: 2%;
@@ -641,6 +644,11 @@ html {
   margin-left: 5px;
   display: inline-block;
 }
+.back-link-btn {
+  color: #1872ab;
+  font: 16px Roboto;
+  font-weight: 700;
+}
 .log-out-btn {
   position: absolute;
   height: 34px;
@@ -683,6 +691,45 @@ html {
     right: 10px;
   }
 }
+@media screen and (min-width: 980px) {
+  .register-btn {
+    width: 150px;
+    height: 40px;
+    top: 30px;
+    padding: 6px 3px;
+    right: 171px;
+  }
+  .register-btn.btn {
+    font: 20px 'Roboto';
+    border-radius: .3em;
+  }
+  .login-btn {
+    width: 150px;
+    height: 40px;
+    top: 30px;
+    padding: 6px 3px;
+    right: 171px;
+    right: 10px;
+  }
+  .login-btn.btn {
+    font: 20px 'Roboto';
+    border-radius: .3em;
+  }
+  .flex-container-welcome {
+    margin-top: 200px;
+  }
+  .flex-container-welcome .welcome-text {
+    font: 35px 'Roboto';
+  }
+}
+@media screen and (max-width: 980px) {
+  .flex-container-welcome {
+    margin-top: 200px;
+  }
+  .flex-container-welcome .welcome-text {
+    font: 25px 'Roboto';
+  }
+}
 @media screen and (max-width: 375px) {
   .register-btn {
     top: 30px;
@@ -697,5 +744,9 @@ html {
     top: 40px;
     width: 50px;
     right: 10px;
+  }
+  .flex-container-welcome {
+    margin-top: 150px;
+    font: 20px 'Roboto';
   }
 }

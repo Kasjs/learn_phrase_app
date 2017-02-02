@@ -12,7 +12,8 @@ export const initialState = {
     unAuthorizedMsg: '',
     addCategoryMsg: '',
     hide: '',
-    showSpinner: false
+    showSpinner: false,
+    welcomeText: 'Welcome to PG app, for continue please Sign In or Sign Up.'
 }
 
 export default function page( state = initialState, action) {

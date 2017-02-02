@@ -32,6 +32,11 @@
     margin-left: 5px;
     display: inline-block;
 }
+.back-link-btn {
+    color: @main-color;
+    font: 16px Roboto;
+    font-weight: 700;
+}
 .log-out-btn {
     position: absolute;
     height: 34px;
@@ -74,9 +79,44 @@
         right: 10px;
     }
 }
+@media screen and (min-width: 980px) {
+    .register-btn {
+        width: 150px;
+        height: 40px;
+        top: 30px;
+        padding: 6px 3px;
+        right: 171px;
+        &.btn {
+            font: 20px 'Roboto';
+            border-radius: .3em;
+        }
+    }
+    .login-btn {
+        .register-btn;
+        right: 10px;
+    }
+    .flex-container-welcome {
+        margin-top: 200px;
+        .welcome-text {
+            font: 35px 'Roboto';
+        }
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .flex-container-welcome {
+        margin-top: 200px;
+        .welcome-text {
+            font: 25px 'Roboto';
+        }
+    }
+}
 
 @media screen and (max-width: 375px) {
 
+    // html, section, .row {
+    //     background-color: #cccccc;
+    // }
     .register-btn {
         top: 30px;
         padding: 6px 3px;
@@ -90,5 +130,9 @@
         top: 40px;
         width: 50px;
         right: 10px;
+    }
+    .flex-container-welcome {
+        margin-top: 150px;
+        font: 20px 'Roboto';
     }
 }

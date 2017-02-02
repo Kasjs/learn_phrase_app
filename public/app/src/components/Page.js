@@ -14,6 +14,7 @@ import OfflineRow from './pageSubComponents/OfflineRow'
 import PhraseRow from './pageSubComponents/PhraseRow'
 import SelectedRow from './pageSubComponents/SelectedRow'
 import Select from './pageSubComponents/Select'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 // hide/show component function
 export function hideOrShow(arayOfClass) {
@@ -33,6 +34,13 @@ function fadeOn(className) {
         return componentClass.join(' ');
     }
     return componentClass.join(' ');
+}
+
+export function WelcomeText(props) {
+    let text = props.welcomeText;
+    return (
+        <h3 className='welcome-text'>{ text }</h3>
+    )
 }
 
 // working functions
@@ -99,7 +107,7 @@ export default class Page extends Component {
     render() {
         const { phrase, counter, hits, lengthOfCategory, email, hidden, isOffline,
             clearErrorMsg, unAuthorizedMsg, showSpinner, hide } = this.props;
-        const { getBackPhrase, getNextPhrase, switchLanguage, getPhrase } = this.props;
+        const { getBackPhrase, getNextPhrase, switchLanguage, getPhrase, welcomeText } = this.props;
 
         return (
             <section className='page'>
@@ -112,9 +120,9 @@ export default class Page extends Component {
                     </header>
                     <section>
                         <Select selectCategory={this.selectCategory.bind(this)} addCategory={ this.addCategory.bind(this) } />
-                        <h3 className={ getEmailFromLocalStrg() ? 'hide' : 'show flex-container-welcome' }>
-                            Welcome to PG app, for continue please Sign In or Sign Up.
-                        </h3>
+                        <div className={ getEmailFromLocalStrg() ? 'hide' : 'show flex-container-welcome' }>
+                            <WelcomeText welcomeText={welcomeText}/>
+                        </div>
                         <SelectedRow/>
                         <PhraseRow getBackPhrase={ getBackPhrase } getNextPhrase={ getNextPhrase }
                             switchLanguage={ switchLanguage } getPhrase={ getPhrase }
