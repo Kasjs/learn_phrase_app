@@ -1,5 +1,6 @@
 html {
   height: 100%;
+  min-width: 306px !important;
   min-height: 350px;
   overflow-x: hidden;
   overflow-y: auto;
@@ -49,7 +50,7 @@ html {
   position: relative;
   top: 0;
   margin: 2px 0 5px 0;
-  font: 25px 'Roboto';
+  font: 18px 'Roboto';
   font-weight: bolder;
   color: #1872ab;
   text-align: center;
