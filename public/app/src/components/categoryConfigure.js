@@ -80,30 +80,31 @@ class categoryConfigure extends Component {
             })
         }
 
-        function ListContainer(props) {
+        function computationCategory (props) {
             let isChecked = props.isChecked;
             let itemsOfCategory = that.props.category.itemsInCategory;
-            function computationCategory () {
-                isChecked = !isChecked;
-                var newCategoryName = itemsOfCategory.map((item, index) => {
-                    if (isChecked) {
-                        if (item.side_b === props.value) {
-                            that.props.category.itemsInCategory.splice(index, 1);
-                            deleteItemInSelectedCategory(that.props.category.itemsInCategory);
-                            setCategoryField(props.category, that.props.category.itemsInCategory);
-                            that.props.configureActions.fadeOn();
-                            setTimeout(function() { fadeOff(); }, 500);
-                        }
+            isChecked = !isChecked;
+            var newCategoryName = itemsOfCategory.map((item, index) => {
+                if (isChecked) {
+                    if (item.side_b === props.value) {
+                        that.props.category.itemsInCategory.splice(index, 1);
+                        deleteItemInSelectedCategory(that.props.category.itemsInCategory);
+                        setCategoryField(props.category, that.props.category.itemsInCategory);
+                        that.props.configureActions.fadeOn();
+                        setTimeout(function() { fadeOff(); }, 500);
                     }
-                });
-                if (!isOffline) {
-                    syncAllCategoryAndContent();
                 }
+            });
+            if (!isOffline) {
+                syncAllCategoryAndContent();
             }
+        }
+
+        function ListContainer(props) {
             return (
                 <li className='list-item' key={ props.value }>{ props.value }
                     <input className='input-item' type='checkbox'
-                    onChange={ () => { computationCategory() } }/>
+                    onChange={ () => { computationCategory(props) } }/>
                 </li>
             );
         }
