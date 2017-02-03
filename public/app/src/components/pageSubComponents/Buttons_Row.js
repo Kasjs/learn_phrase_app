@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 import * as pageActions from '../../actions/pageActions';
 import { getEmailFromLocalStrg } from '../../localStorage/localStorageMethods'
+import ReactTouchEvents from "react-touch-events";
 
 export default class Buttons_Row  extends Component {
 
@@ -39,6 +40,7 @@ export default class Buttons_Row  extends Component {
                     </button>
                 </div>
             </div>
+
         )
     }
 }

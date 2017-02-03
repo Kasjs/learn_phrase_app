@@ -74,7 +74,6 @@ export function offlineUpdateCategory(newCategoryName, categoryContent) {
 export function setCategoryOffline() {
     let selected = JSON.parse(getSelectedCategory());
     localStorage.setItem('categories_' + selected, localStorage.getItem('categories_' + getSelected()));
-    // setCat = ;
     return setCat(getCategoryField(getSelected()));
 }
 

@@ -120,7 +120,7 @@ export function syncAllCategoryAndContent() {
         })
         .then(function(res) {}, function(error) {
         console.log('Error can\'t get the data')
-    })
+    });
 }
 
 export function register(user) {

@@ -5,9 +5,9 @@
 
 html {
     height: 100%;
-    min-width: 306px;
     min-height: 350px;
     overflow-x: hidden;
+    overflow-y: auto;
 }
 .hide-block {
     visibility: hidden;
@@ -15,31 +15,25 @@ html {
 #app {
     font-family: 'Roboto', sans-serif;
 }
-
 .flex-container {
-    display: flex-inline;
-    justify-content: center;
-    flex-wrap: nowrap;
-}
+    display: flex;
+    justify-content: flex-end;
 
+}
 .flex-container-welcome {
-    border-top: 2px solid @main-color;
-    border-bottom: 2px solid @main-color;
-    position: relative;
+    border-top: 2px solid @secondary-color;
+    border-bottom: 2px solid @secondary-color;
     background-color: #ffffff;
     padding: 10px 30px 10px 30px;
     margin: 10px 30px 0 0px;
     text-align: center;
     width: 100%;
     color: @main-color;
-    position: relative;
 }
-
 .panel {
     padding: 10px !important;
     margin-top: 10px;
 }
-
 .header {
     height: 30px;
     background-color: @main-color;
@@ -54,14 +48,15 @@ html {
 .phrase {
     display: block;
     position: relative;
-    top: 7px;
-    font: 25px 'Roboto';
+    top: 0;
+    margin: 2px 0 5px 0;
+    font: 18px 'Roboto';
     font-weight: bolder;
     color: @main-color;
     text-align: center;
 }
 .select-row {
-    margin: 5px 0 15px 0;
+    margin: 5px 0 18px 0;
 }
 .phrase-row {
     .select-comp {
@@ -73,7 +68,7 @@ html {
             width: 50px;
             height: 34px;
             color: #ffffff;
-            margin-left: -20px;
+            margin: 10px 0 0 -20px;
             border-radius: .3em;
         }
         .select-category {
@@ -108,11 +103,12 @@ html {
         padding-right: 70px;
     }
     .phrase-row {
-        height: 100px;
+        height: auto;
+        top: 0;
         background-color: #fafafa;
         border-radius: 5px;
         border: 1px solid @secondary-color;
-        margin: 18px 10px 0 10px;
+        margin: 0 10px 0 10px;
         color: @main-color;
     }
 }
@@ -166,7 +162,7 @@ html {
 .offline-row {
     font: 16px 'Roboto';
     padding: 10px 0 0 10px;
-    margin: 5px 0 10px 0;
+    margin: 0 0 10px 0;
     color: @main-color;
     .fa-toggle-on {
         display: inline-block;
@@ -239,6 +235,63 @@ html {
     opacity: 1;
     transition: opacity 500ms ease-out;
 }
+#nested-dropdown {
+    display: none;
+}
+
+@media screen and (max-width: 325px) {
+    .phrase-row .btn-configure {
+        width: 37px;
+        margin-left: 0;
+        .hide;
+    }
+    .log-out-btn {
+        width: 37px !important;
+        top: 40px !important;
+        right: 10px !important;
+    }
+    .phrase-row .select-comp .btn-sunc {
+        .hide;
+        width: 36px;
+    }
+    #nested-dropdown {
+        display: block;
+        top: 10px;
+        left: -161px;
+        background-color: @secondary-color;
+        border: none;
+        width: 37px;
+        height: 34px;
+        color: #ffffff;
+    }
+    .ready-msg {
+        font: 14px 'Roboto';
+        display: inline-flex;
+    }
+    .select-category {
+        width: 139px;
+    }
+}
+.dropdown .dropdown-menu {
+    li > a {
+        padding: 2px 5px 2px 5px;
+    }
+    left: -167px;
+    top: 42px;
+    border: 1px solid #cccccc;
+    min-width: 50px;
+    position: flex;
+    flex-direction: row;
+    .btn-add-drop {
+        background-color: @secondary-color;
+        color: #ffffff;
+    }
+    .btn-configure-drop {
+        background-color: #666666;
+        color: #ffffff;
+        width: 37px;
+    }
+}
 
 @media screen and (max-height: 400px) {
     .footer {
@@ -247,7 +300,6 @@ html {
 }
 
 @media screen and (min-width: 360px) {
-
     .btns-row {
         margin: auto;
     }
@@ -262,10 +314,13 @@ html {
         height: 40px;
         font: 15px 'Roboto';
     }
-    .phrase-row .select-comp .btn-sunc {
+    .select-comp .btn-sunc {
         position: fixed;
         right: 10px;
         top: 74px;
+        &.phrase-row {
+            top: 0;
+        }
     }
     .phrase-row .btn-configure {
         left: -20px;
@@ -304,11 +359,11 @@ html {
         bottom: 3px;
     }
     .phrase-row .phrase-row {
-        height: 150px;
+        height: auto;
     }
     .phrase {
         position: relative;
-        top: 15px;
+        top: 0;
         font: 30px 'Roboto';
         font-weight: bolder;
         color: @main-color;
@@ -346,11 +401,11 @@ html {
         font-weight: bolder;
     }
     .phrase-row .phrase-row {
-        height: 250px;
+        height: auto;
     }
     .phrase {
         position: relative;
-        top: 35px;
+        top: 0;
         font: 40px 'Roboto';
         font-weight: bolder;
         color: @main-color;

@@ -53,7 +53,6 @@ class Category extends Component {
         if ( (category.name || categoryName) && category.side_a && category.side_b ) {
             this.props.pageActions.fadeOn();
             Promise.resolve(category).then(function(category) {
-                console.log(category);
                 updateCategory(newCategory, categoryContent);
             });
             this.props.pageActions.updateCategoryContent();

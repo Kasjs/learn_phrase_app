@@ -49,12 +49,10 @@ function validateSignupForm(payload) {
         isFormValid = false;
         errors.email = "Please provide a correct email address.";
     }
-
     if (!payload.password || !validator.isLength(payload.password, 8)) {
         isFormValid = false;
         errors.password = "Password must have at least 8 characters.";
     }
-
     if ( payload.password !== payload.repPassword ) {
         isFormValid = false;
         errors.password = "Your passwords does't match"
@@ -63,7 +61,6 @@ function validateSignupForm(payload) {
         isFormValid = false;
         errors.secretWord = "Your secretWord does't correct";
     }
-
     if (!isFormValid) {
         message = "Check the form for errors.";
     }
@@ -84,16 +81,13 @@ function validateLoginForm(payload) {
         isFormValid = false;
         errors.email = "Please provide your email address.";
     }
-
     if (!payload.password || payload.password.trim().length === 0) {
         isFormValid = false;
         errors.password = "Please provide your password.";
     }
-
     if (!isFormValid) {
         message = "Check the form for errors.";
     }
-
     return {
         success: isFormValid,
         message: message,

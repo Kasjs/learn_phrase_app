@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 import { setEmailToLocalStrg, setHiddenToLocalStrg, getEmailFromLocalStrg, getHiddenFromLocalStrg } from '../localStorage/localStorageMethods'
 import { login } from '../ajaxCalls/request'
 import { initialState } from '../reducers/userAuth'
+import hashHistory from 'react-router/lib/hashHistory'
 
 class LoginForm extends Component {
     constructor(props) {
@@ -33,6 +34,11 @@ class LoginForm extends Component {
         return (
             <div >
                 <section className='row req-form-cont'>
+                    <div className='col-xs-12'>
+                        <button className='bnt btn-link back-link-btn' onClick={() => hashHistory.push('/')}>
+                            <i className="fa fa-long-arrow-left" aria-hidden="true"></i> Back
+                        </button>
+                    </div>
                     <header className='col-xs-12'>
                         <h2 className='login-header'>Login</h2>
                     </header>
