@@ -3,7 +3,9 @@ import FormSelect from 'elemental/lib/components/FormSelect'
 import { hideOrShow, setOptions } from '../Page'
 import hashHistory from 'react-router/lib/hashHistory'
 import { getAllCategory } from '../../ajaxCalls/request'
-import { DropdownButton, MenuItem, ButtonGroup } from 'react-bootstrap'
+import DropdownButton from 'react-bootstrap/lib/DropdownButton'
+import MenuItem from 'react-bootstrap/lib/MenuItem'
+import ButtonGroup from 'react-bootstrap/lib/ButtonGroup'
 
 export default function Select(props) {
     const componentClass = ['select-comp', 'row'];
