@@ -1,6 +1,5 @@
 html {
   height: 100%;
-  min-width: 306px !important;
   min-height: 350px;
   overflow-x: hidden;
   overflow-y: auto;
@@ -254,17 +253,66 @@ html {
   -webkit-transition: opacity 500ms ease-out;
   transition: opacity 500ms ease-out;
 }
+#nested-dropdown {
+  display: none;
+}
 @media screen and (max-width: 325px) {
   .phrase-row .btn-configure {
-    width: 36px;
+    width: 37px;
     margin-left: 0;
+    visibility: hidden;
   }
   .log-out-btn {
-    width: 36px !important;
+    width: 37px !important;
+    top: 40px !important;
+    right: 10px !important;
   }
   .phrase-row .select-comp .btn-sunc {
+    visibility: hidden;
     width: 36px;
   }
+  #nested-dropdown {
+    display: block;
+    top: 10px;
+    left: -161px;
+    background-color: #23c6c8;
+    border: none;
+    width: 37px;
+    height: 34px;
+    color: #ffffff;
+  }
+  .ready-msg {
+    font: 14px 'Roboto';
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+  }
+  .select-category {
+    width: 139px;
+  }
+}
+.dropdown .dropdown-menu {
+  left: -167px;
+  top: 42px;
+  border: 1px solid #cccccc;
+  min-width: 50px;
+  position: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+.dropdown .dropdown-menu li > a {
+  padding: 2px 5px 2px 5px;
+}
+.dropdown .dropdown-menu .btn-add-drop {
+  background-color: #23c6c8;
+  color: #ffffff;
+}
+.dropdown .dropdown-menu .btn-configure-drop {
+  background-color: #666666;
+  color: #ffffff;
+  width: 37px;
 }
 @media screen and (max-height: 400px) {
   .footer {

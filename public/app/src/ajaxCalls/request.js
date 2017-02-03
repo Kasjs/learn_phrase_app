@@ -93,7 +93,6 @@ export function updateCategory(newCategoryName, categoryContent) {
                 email: getEmailFromLocalStrg()
             })
             .then(function(response) {
-
                 setCategoryOptions(response.categoryNames);
                 setCategoryField(newCategoryName.label, response.data[newCategoryName.label]);
             },
@@ -121,7 +120,7 @@ export function syncAllCategoryAndContent() {
         })
         .then(function(res) {}, function(error) {
         console.log('Error can\'t get the data')
-    })
+    });
 }
 
 export function register(user) {

@@ -3,6 +3,7 @@ import FormSelect from 'elemental/lib/components/FormSelect'
 import { hideOrShow, setOptions } from '../Page'
 import hashHistory from 'react-router/lib/hashHistory'
 import { getAllCategory } from '../../ajaxCalls/request'
+import { DropdownButton, MenuItem, ButtonGroup } from 'react-bootstrap'
 
 export default function Select(props) {
     const componentClass = ['select-comp', 'row'];
@@ -22,6 +23,21 @@ export default function Select(props) {
                     <span className="fa fa-wrench configure "></span>
                 </button>
             </div>
+            <ButtonGroup className="dropdown">
+                <DropdownButton title="" id="nested-dropdown">
+                    <MenuItem eventKey="1">
+                        <button className='btn-add-drop btn'
+                            onClick={ props.addCategory }>
+                            <i className="fa fa-plus" aria-hidden="true"></i>
+                        </button>
+                    </MenuItem>
+                    <MenuItem eventKey="2">
+                        <button className='btn-configure-drop btn' onClick={ () => { getAllCategory(); hashHistory.push('configure') } }>
+                            <span className="fa fa-wrench configure "></span>
+                        </button>
+                    </MenuItem>
+                </DropdownButton>
+            </ButtonGroup>
         </section>
     )
 }

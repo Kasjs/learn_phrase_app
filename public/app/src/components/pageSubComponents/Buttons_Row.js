@@ -5,19 +5,6 @@ import ReactTouchEvents from "react-touch-events";
 
 export default class Buttons_Row  extends Component {
 
-    handleTap () {
-        this.onSwitchLanguage();
-    }
-
-    handleSwipe (direction) {
-        switch (direction) {
-            case "left":
-            case "right":
-            default:
-            console.log(`you swiped ${direction}`)
-        }
-    }
-
     onBackPhraseBtnClick() {
         this.props.getBackPhrase();
     }
