@@ -71,9 +71,9 @@ class Category extends Component {
 
         return (
             <section>
-                <span>
+                <div className='spinner-container'>
                     <i className={ showSpinner ? 'fa fa-spinner fa-pulse fa-5x fa-fw' : 'fa fa-spinner fa-pulse fa-3x fa-fw hide' }></i>
-                </span>
+                </div>
                 <section className={ fadeOn(hide) }>
                     <div className='col-xs-10'>
                         <button className='bnt btn-link back-link-btn' onClick={ () => hashHistory.push('/')}>
