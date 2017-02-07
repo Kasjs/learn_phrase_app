@@ -111,9 +111,9 @@ export default class Page extends Component {
 
         return (
             <section className='page'>
-                <span>
+                <div className='spinner-container'>
                     <i className={ showSpinner ? 'fa fa-spinner fa-pulse fa-5x fa-fw' : 'fa fa-spinner fa-pulse fa-3x fa-fw hide' }></i>
-                </span>
+                </div>
                 <section className={ fadeOn(hide) }>
                     <header className='header flex-item'>
                         <p className='header-text'> Phrase generator </p>

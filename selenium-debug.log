@@ -1,0 +1,378 @@
+13:51:30.951 INFO - Selenium build info: version: '3.0.0', revision: '350cf60'
+13:51:30.951 INFO - Launching a standalone Selenium Server
+2017-02-07 13:51:30.970:INFO::main: Logging initialized @216ms
+13:51:31.009 INFO - Driver class not found: com.opera.core.systems.OperaDriver
+13:51:31.009 INFO - Driver provider com.opera.core.systems.OperaDriver registration is skipped:
+Unable to create new instances on this machine.
+13:51:31.010 INFO - Driver class not found: com.opera.core.systems.OperaDriver
+13:51:31.010 INFO - Driver provider com.opera.core.systems.OperaDriver is not registered
+13:51:31.015 INFO - Driver provider org.openqa.selenium.safari.SafariDriver registration is skipped:
+ registration capabilities Capabilities [{browserName=safari, version=, platform=MAC}] does not match the current platform WIN10
+2017-02-07 13:51:31.043:INFO:osjs.Server:main: jetty-9.2.15.v20160210
+2017-02-07 13:51:31.064:INFO:osjsh.ContextHandler:main: Started o.s.j.s.ServletContextHandler@51081592{/,null,AVAILABLE}
+2017-02-07 13:51:31.110:INFO:osjs.ServerConnector:main: Started ServerConnector@3e6fa38a{HTTP/1.1}{0.0.0.0:4444}
+2017-02-07 13:51:31.110:INFO:osjs.Server:main: Started @357ms
+13:51:31.110 INFO - Selenium Server is up and running
+13:51:31.410 INFO - SessionCleaner initialized with insideBrowserTimeout 0 and clientGoneTimeout 1800000 polling every 180000
+13:51:31.437 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, marionette=true, name=Add New Category Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+13:51:31.442 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, marionette=true, name=Add New Category Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9) on port 13310
+Only local connections are allowed.
+13:51:32.191 INFO - Attempting bi-dialect session, assuming Postel's Law holds true on the remote end
+13:51:33.591 INFO - Detected dialect: OSS
+13:51:33.604 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, marionette=true, name=Add New Category Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+13:51:33.616 INFO - Executing: [get: localhost:3000])
+13:51:34.975 INFO - Done: [get: localhost:3000]
+13:51:34.983 INFO - Executing: [find elements: By.cssSelector: body])
+13:51:35.013 INFO - Done: [find elements: By.cssSelector: body]
+13:51:35.019 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: body]])
+13:51:35.041 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: body]]
+13:51:35.047 INFO - Executing: [find element: By.cssSelector: .login-btn])
+13:51:35.063 INFO - Done: [find element: By.cssSelector: .login-btn]
+13:51:35.066 INFO - Executing: [click: 1 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .login-btn]])
+13:51:35.132 INFO - Done: [click: 1 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .login-btn]]
+13:51:35.139 INFO - Executing: [find elements: By.cssSelector: .row])
+13:51:35.160 INFO - Done: [find elements: By.cssSelector: .row]
+13:51:35.163 INFO - Executing: [is displayed: 2 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .row]])
+13:51:35.178 INFO - Done: [is displayed: 2 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .row]]
+13:51:35.182 INFO - Executing: [find element: By.cssSelector: .form-control])
+13:51:35.201 INFO - Done: [find element: By.cssSelector: .form-control]
+13:51:35.206 INFO - Executing: [send keys: 3 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .form-control], [t, e, s, t, @, t, e, s, t, ., c, o, m]])
+13:51:35.309 INFO - Done: [send keys: 3 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .form-control], [t, e, s, t, @, t, e, s, t, ., c, o, m]]
+13:51:35.814 INFO - Executing: [find element: By.cssSelector: input[type=password]])
+13:51:35.847 INFO - Done: [find element: By.cssSelector: input[type=password]]
+13:51:35.852 INFO - Executing: [send keys: 4 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: input[type=password]], [1, 2, 3, 4, 5, 6, 7, 8]])
+13:51:35.925 INFO - Done: [send keys: 4 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: input[type=password]], [1, 2, 3, 4, 5, 6, 7, 8]]
+13:51:36.432 INFO - Executing: [find element: By.cssSelector: .submit-btn])
+13:51:36.460 INFO - Done: [find element: By.cssSelector: .submit-btn]
+13:51:36.463 INFO - Executing: [click: 5 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .submit-btn]])
+13:51:36.526 INFO - Done: [click: 5 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .submit-btn]]
+13:51:37.530 INFO - Executing: [find element: By.cssSelector: .btn-sunc])
+13:51:37.548 INFO - Done: [find element: By.cssSelector: .btn-sunc]
+13:51:37.551 INFO - Executing: [click: 6 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .btn-sunc]])
+13:51:37.615 INFO - Done: [click: 6 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .btn-sunc]]
+13:51:37.620 INFO - Executing: [find elements: By.cssSelector: .category-form])
+13:51:37.647 INFO - Done: [find elements: By.cssSelector: .category-form]
+13:51:37.650 INFO - Executing: [is displayed: 7 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .category-form]])
+13:51:37.668 INFO - Done: [is displayed: 7 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .category-form]]
+13:51:37.672 INFO - Executing: [find element: By.cssSelector: .new-category])
+13:51:37.694 INFO - Done: [find element: By.cssSelector: .new-category]
+13:51:37.697 INFO - Executing: [send keys: 8 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .new-category], [N, e, w, 3, 8, 4, 3]])
+13:51:37.763 INFO - Done: [send keys: 8 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .new-category], [N, e, w, 3, 8, 4, 3]]
+13:51:37.968 INFO - Executing: [find element: By.cssSelector: .side_a])
+13:51:37.994 INFO - Done: [find element: By.cssSelector: .side_a]
+13:51:37.999 INFO - Executing: [send keys: 9 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .side_a], [�, �, �, �, �, 6, 7, 6, 5]])
+13:51:38.163 INFO - Done: [send keys: 9 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .side_a], [�, �, �, �, �, 6, 7, 6, 5]]
+13:51:38.370 INFO - Executing: [find element: By.cssSelector: .side_b])
+13:51:38.386 INFO - Done: [find element: By.cssSelector: .side_b]
+13:51:38.390 INFO - Executing: [send keys: 10 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .side_b], [w, o, r, d, 6, 7, 6, 5]])
+13:51:38.502 INFO - Done: [send keys: 10 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .side_b], [w, o, r, d, 6, 7, 6, 5]]
+13:51:39.108 INFO - Executing: [find element: By.cssSelector: .submit-btn])
+13:51:39.122 INFO - Done: [find element: By.cssSelector: .submit-btn]
+13:51:39.125 INFO - Executing: [click: 11 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .submit-btn]])
+13:51:39.199 INFO - Done: [click: 11 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .submit-btn]]
+13:51:42.204 INFO - Executing: [find element: By.cssSelector: .btn-link])
+13:51:42.221 INFO - Done: [find element: By.cssSelector: .btn-link]
+13:51:42.224 INFO - Executing: [click: 12 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .btn-link]])
+13:51:42.285 INFO - Done: [click: 12 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .btn-link]]
+13:51:42.289 INFO - Executing: [find elements: By.cssSelector: body])
+13:51:42.304 INFO - Done: [find elements: By.cssSelector: body]
+13:51:42.309 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: body]])
+13:51:42.315 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: body]]
+13:51:42.319 INFO - Executing: [find element: By.cssSelector: select])
+13:51:42.336 INFO - Done: [find element: By.cssSelector: select]
+13:51:42.340 INFO - Executing: [send keys: 13 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: select], [N, e, w, 3, 8, 4, 3]])
+13:51:42.448 INFO - Done: [send keys: 13 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: select], [N, e, w, 3, 8, 4, 3]]
+13:51:43.453 INFO - Executing: [find element: By.cssSelector: strong])
+13:51:43.476 INFO - Done: [find element: By.cssSelector: strong]
+13:51:43.482 INFO - Executing: [get text: 14 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: strong]])
+13:51:43.501 INFO - Done: [get text: 14 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: strong]]
+13:51:44.506 INFO - Executing: [find element: By.cssSelector: .btn-sunc])
+13:51:44.515 INFO - Done: [find element: By.cssSelector: .btn-sunc]
+13:51:44.518 INFO - Executing: [click: 15 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .btn-sunc]])
+13:51:44.586 INFO - Done: [click: 15 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .btn-sunc]]
+13:51:45.589 INFO - Executing: [find element: By.cssSelector: select])
+13:51:45.598 INFO - Done: [find element: By.cssSelector: select]
+13:51:45.603 INFO - Executing: [send keys: 16 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: select], [N, e, w, 3, 8, 4, 3]])
+13:51:45.680 INFO - Done: [send keys: 16 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: select], [N, e, w, 3, 8, 4, 3]]
+13:51:46.184 INFO - Executing: [find element: By.cssSelector: .new-category])
+13:51:46.193 INFO - Done: [find element: By.cssSelector: .new-category]
+13:51:46.196 INFO - Executing: [clear: 17 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .new-category]])
+13:51:46.224 INFO - Done: [clear: 17 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .new-category]]
+13:51:46.228 INFO - Executing: [find element: By.cssSelector: .new-category])
+13:51:46.246 INFO - Done: [find element: By.cssSelector: .new-category]
+13:51:46.250 INFO - Executing: [send keys: 17 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .new-category], []])
+13:51:46.284 INFO - Done: [send keys: 17 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .new-category], []]
+13:51:46.787 INFO - Executing: [find element: By.cssSelector: .side_a])
+13:51:46.799 INFO - Done: [find element: By.cssSelector: .side_a]
+13:51:46.802 INFO - Executing: [clear: 18 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .side_a]])
+13:51:46.834 INFO - Done: [clear: 18 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .side_a]]
+13:51:47.340 INFO - Executing: [find element: By.cssSelector: .side_a])
+13:51:47.349 INFO - Done: [find element: By.cssSelector: .side_a]
+13:51:47.352 INFO - Executing: [send keys: 18 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .side_a], [a, n, o, t, h, e, r]])
+13:51:47.414 INFO - Done: [send keys: 18 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .side_a], [a, n, o, t, h, e, r]]
+13:51:48.018 INFO - Executing: [find element: By.cssSelector: .side_b])
+13:51:48.036 INFO - Done: [find element: By.cssSelector: .side_b]
+13:51:48.039 INFO - Executing: [clear: 19 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .side_b]])
+13:51:48.077 INFO - Done: [clear: 19 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .side_b]]
+13:51:48.681 INFO - Executing: [find element: By.cssSelector: .side_b])
+13:51:48.689 INFO - Done: [find element: By.cssSelector: .side_b]
+13:51:48.692 INFO - Executing: [send keys: 19 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .side_b], [a, n, o, t, h, e, r]])
+13:51:48.751 INFO - Done: [send keys: 19 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .side_b], [a, n, o, t, h, e, r]]
+13:51:49.355 INFO - Executing: [find element: By.cssSelector: .submit-btn])
+13:51:49.373 INFO - Done: [find element: By.cssSelector: .submit-btn]
+13:51:49.377 INFO - Executing: [click: 20 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .submit-btn]])
+13:51:49.448 INFO - Done: [click: 20 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .submit-btn]]
+13:51:51.453 INFO - Executing: [find element: By.cssSelector: .btn-link])
+13:51:51.461 INFO - Done: [find element: By.cssSelector: .btn-link]
+13:51:51.465 INFO - Executing: [click: 21 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .btn-link]])
+13:51:51.529 INFO - Done: [click: 21 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .btn-link]]
+13:51:51.534 INFO - Executing: [find element: By.cssSelector: select])
+13:51:51.543 INFO - Done: [find element: By.cssSelector: select]
+13:51:51.547 INFO - Executing: [send keys: 22 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: select], [N, e, w, 3, 8, 4, 3]])
+13:51:51.640 INFO - Done: [send keys: 22 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: select], [N, e, w, 3, 8, 4, 3]]
+13:51:52.643 INFO - Executing: [find element: By.cssSelector: .btn-next])
+13:51:52.664 INFO - Done: [find element: By.cssSelector: .btn-next]
+13:51:52.667 INFO - Executing: [click: 23 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .btn-next]])
+13:51:52.720 INFO - Done: [click: 23 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .btn-next]]
+13:51:52.724 INFO - Executing: [find element: By.cssSelector: .btn-next])
+13:51:52.732 INFO - Done: [find element: By.cssSelector: .btn-next]
+13:51:52.734 INFO - Executing: [click: 23 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .btn-next]])
+13:51:52.764 INFO - Done: [click: 23 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .btn-next]]
+13:51:52.767 INFO - Executing: [find element: By.cssSelector: .phrase])
+13:51:52.784 INFO - Done: [find element: By.cssSelector: .phrase]
+13:51:52.788 INFO - Executing: [get text: 24 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .phrase]])
+13:51:52.807 INFO - Done: [get text: 24 [[ChromeDriver: chrome on XP (cd8fa23a530fd9177d60355aeef0c3dd)] -> css selector: .phrase]]
+13:51:55.818 INFO - Executing: [delete session: a93568e0-e433-4ed7-953d-567974db1004])
+13:51:56.717 INFO - Done: [delete session: a93568e0-e433-4ed7-953d-567974db1004]
+13:51:56.752 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, marionette=true, name=Delete Category And Item Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+13:51:56.753 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, marionette=true, name=Delete Category And Item Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9) on port 18001
+Only local connections are allowed.
+13:51:57.272 INFO - Attempting bi-dialect session, assuming Postel's Law holds true on the remote end
+13:51:58.635 INFO - Detected dialect: OSS
+13:51:58.636 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, marionette=true, name=Delete Category And Item Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+13:51:58.639 INFO - Executing: [get: localhost:3000])
+13:52:00.146 INFO - Done: [get: localhost:3000]
+13:52:00.149 INFO - Executing: [find elements: By.cssSelector: body])
+13:52:00.181 INFO - Done: [find elements: By.cssSelector: body]
+13:52:00.185 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on XP (46792c7f42c15547f0b8a4aa7d0e5990)] -> css selector: body]])
+13:52:00.200 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on XP (46792c7f42c15547f0b8a4aa7d0e5990)] -> css selector: body]]
+13:52:00.204 INFO - Executing: [find element: By.cssSelector: .login-btn])
+13:52:00.222 INFO - Done: [find element: By.cssSelector: .login-btn]
+13:52:00.225 INFO - Executing: [click: 1 [[ChromeDriver: chrome on XP (46792c7f42c15547f0b8a4aa7d0e5990)] -> css selector: .login-btn]])
+13:52:00.301 INFO - Done: [click: 1 [[ChromeDriver: chrome on XP (46792c7f42c15547f0b8a4aa7d0e5990)] -> css selector: .login-btn]]
+13:52:00.304 INFO - Executing: [find elements: By.cssSelector: .row])
+13:52:00.329 INFO - Done: [find elements: By.cssSelector: .row]
+13:52:00.331 INFO - Executing: [is displayed: 2 [[ChromeDriver: chrome on XP (46792c7f42c15547f0b8a4aa7d0e5990)] -> css selector: .row]])
+13:52:00.345 INFO - Done: [is displayed: 2 [[ChromeDriver: chrome on XP (46792c7f42c15547f0b8a4aa7d0e5990)] -> css selector: .row]]
+13:52:00.348 INFO - Executing: [find element: By.cssSelector: .form-control])
+13:52:00.365 INFO - Done: [find element: By.cssSelector: .form-control]
+13:52:00.368 INFO - Executing: [send keys: 3 [[ChromeDriver: chrome on XP (46792c7f42c15547f0b8a4aa7d0e5990)] -> css selector: .form-control], [t, e, s, t, @, t, e, s, t, ., c, o, m]])
+13:52:00.469 INFO - Done: [send keys: 3 [[ChromeDriver: chrome on XP (46792c7f42c15547f0b8a4aa7d0e5990)] -> css selector: .form-control], [t, e, s, t, @, t, e, s, t, ., c, o, m]]
+13:52:00.973 INFO - Executing: [find element: By.cssSelector: input[type=password]])
+13:52:01.006 INFO - Done: [find element: By.cssSelector: input[type=password]]
+13:52:01.011 INFO - Executing: [send keys: 4 [[ChromeDriver: chrome on XP (46792c7f42c15547f0b8a4aa7d0e5990)] -> css selector: input[type=password]], [1, 2, 3, 4, 5, 6, 7, 8]])
+13:52:01.084 INFO - Done: [send keys: 4 [[ChromeDriver: chrome on XP (46792c7f42c15547f0b8a4aa7d0e5990)] -> css selector: input[type=password]], [1, 2, 3, 4, 5, 6, 7, 8]]
+13:52:01.588 INFO - Executing: [find element: By.cssSelector: .submit-btn])
+13:52:01.618 INFO - Done: [find element: By.cssSelector: .submit-btn]
+13:52:01.621 INFO - Executing: [click: 5 [[ChromeDriver: chrome on XP (46792c7f42c15547f0b8a4aa7d0e5990)] -> css selector: .submit-btn]])
+13:52:01.681 INFO - Done: [click: 5 [[ChromeDriver: chrome on XP (46792c7f42c15547f0b8a4aa7d0e5990)] -> css selector: .submit-btn]]
+13:52:02.685 INFO - Executing: [find element: By.cssSelector: .btn-configure])
+13:52:02.704 INFO - Done: [find element: By.cssSelector: .btn-configure]
+13:52:02.707 INFO - Executing: [click: 6 [[ChromeDriver: chrome on XP (46792c7f42c15547f0b8a4aa7d0e5990)] -> css selector: .btn-configure]])
+13:52:02.775 INFO - Done: [click: 6 [[ChromeDriver: chrome on XP (46792c7f42c15547f0b8a4aa7d0e5990)] -> css selector: .btn-configure]]
+13:52:03.280 INFO - Executing: [find element: By.cssSelector: select])
+13:52:03.298 INFO - Done: [find element: By.cssSelector: select]
+13:52:03.301 INFO - Executing: [send keys: 7 [[ChromeDriver: chrome on XP (46792c7f42c15547f0b8a4aa7d0e5990)] -> css selector: select], [F, o, o, d]])
+13:52:03.356 INFO - Done: [send keys: 7 [[ChromeDriver: chrome on XP (46792c7f42c15547f0b8a4aa7d0e5990)] -> css selector: select], [F, o, o, d]]
+13:52:03.860 INFO - Executing: [find element: By.cssSelector: .input-item])
+13:52:03.877 INFO - Done: [find element: By.cssSelector: .input-item]
+13:52:03.880 INFO - Executing: [click: 8 [[ChromeDriver: chrome on XP (46792c7f42c15547f0b8a4aa7d0e5990)] -> css selector: .input-item]])
+13:52:03.937 INFO - Done: [click: 8 [[ChromeDriver: chrome on XP (46792c7f42c15547f0b8a4aa7d0e5990)] -> css selector: .input-item]]
+13:52:05.940 INFO - Executing: [delete session: 15b739c2-1d98-4da1-8436-eb3f4f17378a])
+13:52:06.718 INFO - Done: [delete session: 15b739c2-1d98-4da1-8436-eb3f4f17378a]
+13:52:06.744 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, marionette=true, name=Log In Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+13:52:06.749 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, marionette=true, name=Log In Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9) on port 18722
+Only local connections are allowed.
+13:52:07.266 INFO - Attempting bi-dialect session, assuming Postel's Law holds true on the remote end
+13:52:08.646 INFO - Detected dialect: OSS
+13:52:08.647 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, marionette=true, name=Log In Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+13:52:08.651 INFO - Executing: [get: localhost:3000])
+13:52:10.757 INFO - Done: [get: localhost:3000]
+13:52:10.762 INFO - Executing: [find elements: By.cssSelector: body])
+13:52:10.780 INFO - Done: [find elements: By.cssSelector: body]
+13:52:10.783 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on XP (8868d5e68654150a03a3cd59b5f32223)] -> css selector: body]])
+13:52:10.797 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on XP (8868d5e68654150a03a3cd59b5f32223)] -> css selector: body]]
+13:52:10.803 INFO - Executing: [find element: By.cssSelector: .login-btn])
+13:52:10.824 INFO - Done: [find element: By.cssSelector: .login-btn]
+13:52:10.826 INFO - Executing: [click: 1 [[ChromeDriver: chrome on XP (8868d5e68654150a03a3cd59b5f32223)] -> css selector: .login-btn]])
+13:52:10.893 INFO - Done: [click: 1 [[ChromeDriver: chrome on XP (8868d5e68654150a03a3cd59b5f32223)] -> css selector: .login-btn]]
+13:52:10.898 INFO - Executing: [find elements: By.cssSelector: .row])
+13:52:10.920 INFO - Done: [find elements: By.cssSelector: .row]
+13:52:10.923 INFO - Executing: [is displayed: 2 [[ChromeDriver: chrome on XP (8868d5e68654150a03a3cd59b5f32223)] -> css selector: .row]])
+13:52:10.938 INFO - Done: [is displayed: 2 [[ChromeDriver: chrome on XP (8868d5e68654150a03a3cd59b5f32223)] -> css selector: .row]]
+13:52:10.941 INFO - Executing: [find element: By.cssSelector: .form-control])
+13:52:10.959 INFO - Done: [find element: By.cssSelector: .form-control]
+13:52:10.962 INFO - Executing: [send keys: 3 [[ChromeDriver: chrome on XP (8868d5e68654150a03a3cd59b5f32223)] -> css selector: .form-control], [t, e, s, t, @, t, e, s, t, ., c, o, m]])
+13:52:11.058 INFO - Done: [send keys: 3 [[ChromeDriver: chrome on XP (8868d5e68654150a03a3cd59b5f32223)] -> css selector: .form-control], [t, e, s, t, @, t, e, s, t, ., c, o, m]]
+13:52:11.562 INFO - Executing: [find element: By.cssSelector: input[type=password]])
+13:52:11.597 INFO - Done: [find element: By.cssSelector: input[type=password]]
+13:52:11.600 INFO - Executing: [send keys: 4 [[ChromeDriver: chrome on XP (8868d5e68654150a03a3cd59b5f32223)] -> css selector: input[type=password]], [1, 2, 3, 4, 5, 6, 7, 8]])
+13:52:11.672 INFO - Done: [send keys: 4 [[ChromeDriver: chrome on XP (8868d5e68654150a03a3cd59b5f32223)] -> css selector: input[type=password]], [1, 2, 3, 4, 5, 6, 7, 8]]
+13:52:12.176 INFO - Executing: [find element: By.cssSelector: .submit-btn])
+13:52:12.203 INFO - Done: [find element: By.cssSelector: .submit-btn]
+13:52:12.206 INFO - Executing: [click: 5 [[ChromeDriver: chrome on XP (8868d5e68654150a03a3cd59b5f32223)] -> css selector: .submit-btn]])
+13:52:12.268 INFO - Done: [click: 5 [[ChromeDriver: chrome on XP (8868d5e68654150a03a3cd59b5f32223)] -> css selector: .submit-btn]]
+13:52:13.272 INFO - Executing: [find element: By.cssSelector: .log-out-btn])
+13:52:13.290 INFO - Done: [find element: By.cssSelector: .log-out-btn]
+13:52:13.294 INFO - Executing: [click: 6 [[ChromeDriver: chrome on XP (8868d5e68654150a03a3cd59b5f32223)] -> css selector: .log-out-btn]])
+13:52:13.345 INFO - Done: [click: 6 [[ChromeDriver: chrome on XP (8868d5e68654150a03a3cd59b5f32223)] -> css selector: .log-out-btn]]
+13:52:14.349 INFO - Executing: [delete session: a11449b9-0d24-4fe5-b623-b0aa072da947])
+13:52:15.141 INFO - Done: [delete session: a11449b9-0d24-4fe5-b623-b0aa072da947]
+13:52:15.153 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, marionette=true, name=Log In Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+13:52:15.159 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, marionette=true, name=Log In Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9) on port 36215
+Only local connections are allowed.
+13:52:15.674 INFO - Attempting bi-dialect session, assuming Postel's Law holds true on the remote end
+13:52:17.039 INFO - Detected dialect: OSS
+13:52:17.040 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, marionette=true, name=Log In Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+13:52:17.051 INFO - Executing: [get: localhost:3000])
+13:52:18.409 INFO - Done: [get: localhost:3000]
+13:52:18.414 INFO - Executing: [find elements: By.cssSelector: body])
+13:52:18.433 INFO - Done: [find elements: By.cssSelector: body]
+13:52:18.436 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on XP (11156f6292d12e1fac04e199d2e8b470)] -> css selector: body]])
+13:52:18.454 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on XP (11156f6292d12e1fac04e199d2e8b470)] -> css selector: body]]
+13:52:18.458 INFO - Executing: [find element: By.cssSelector: .login-btn])
+13:52:18.476 INFO - Done: [find element: By.cssSelector: .login-btn]
+13:52:18.482 INFO - Executing: [click: 1 [[ChromeDriver: chrome on XP (11156f6292d12e1fac04e199d2e8b470)] -> css selector: .login-btn]])
+13:52:18.548 INFO - Done: [click: 1 [[ChromeDriver: chrome on XP (11156f6292d12e1fac04e199d2e8b470)] -> css selector: .login-btn]]
+13:52:18.952 INFO - Executing: [find element: By.cssSelector: .form-control])
+13:52:18.969 INFO - Done: [find element: By.cssSelector: .form-control]
+13:52:18.972 INFO - Executing: [clear: 2 [[ChromeDriver: chrome on XP (11156f6292d12e1fac04e199d2e8b470)] -> css selector: .form-control]])
+13:52:19.001 INFO - Done: [clear: 2 [[ChromeDriver: chrome on XP (11156f6292d12e1fac04e199d2e8b470)] -> css selector: .form-control]]
+13:52:20.005 INFO - Executing: [find element: By.cssSelector: input[type=password]])
+13:52:20.021 INFO - Done: [find element: By.cssSelector: input[type=password]]
+13:52:20.024 INFO - Executing: [clear: 3 [[ChromeDriver: chrome on XP (11156f6292d12e1fac04e199d2e8b470)] -> css selector: input[type=password]]])
+13:52:20.058 INFO - Done: [clear: 3 [[ChromeDriver: chrome on XP (11156f6292d12e1fac04e199d2e8b470)] -> css selector: input[type=password]]]
+13:52:21.062 INFO - Executing: [find element: By.cssSelector: .submit-btn])
+13:52:21.078 INFO - Done: [find element: By.cssSelector: .submit-btn]
+13:52:21.082 INFO - Executing: [click: 4 [[ChromeDriver: chrome on XP (11156f6292d12e1fac04e199d2e8b470)] -> css selector: .submit-btn]])
+13:52:21.141 INFO - Done: [click: 4 [[ChromeDriver: chrome on XP (11156f6292d12e1fac04e199d2e8b470)] -> css selector: .submit-btn]]
+13:52:23.146 INFO - Executing: [find element: By.cssSelector: .msg-client-error])
+13:52:23.163 INFO - Done: [find element: By.cssSelector: .msg-client-error]
+13:52:23.165 INFO - Executing: [get text: 5 [[ChromeDriver: chrome on XP (11156f6292d12e1fac04e199d2e8b470)] -> css selector: .msg-client-error]])
+13:52:23.184 INFO - Done: [get text: 5 [[ChromeDriver: chrome on XP (11156f6292d12e1fac04e199d2e8b470)] -> css selector: .msg-client-error]]
+13:52:23.188 INFO - Executing: [delete session: 11bb3177-f6e9-430f-b044-0b75a18ead17])
+13:52:24.019 INFO - Done: [delete session: 11bb3177-f6e9-430f-b044-0b75a18ead17]
+13:52:24.042 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, marionette=true, name=Sign Up Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+13:52:24.043 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, marionette=true, name=Sign Up Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9) on port 44233
+Only local connections are allowed.
+13:52:24.548 INFO - Attempting bi-dialect session, assuming Postel's Law holds true on the remote end
+13:52:25.946 INFO - Detected dialect: OSS
+13:52:25.946 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, marionette=true, name=Sign Up Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+13:52:25.950 INFO - Executing: [get: localhost:3000])
+13:52:28.069 INFO - Done: [get: localhost:3000]
+13:52:28.075 INFO - Executing: [find elements: By.cssSelector: body])
+13:52:28.097 INFO - Done: [find elements: By.cssSelector: body]
+13:52:28.099 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on XP (7c7c8b12c932a1e4226663c4c1299973)] -> css selector: body]])
+13:52:28.115 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on XP (7c7c8b12c932a1e4226663c4c1299973)] -> css selector: body]]
+13:52:28.118 INFO - Executing: [find element: By.cssSelector: .register-btn])
+13:52:28.140 INFO - Done: [find element: By.cssSelector: .register-btn]
+13:52:28.144 INFO - Executing: [click: 1 [[ChromeDriver: chrome on XP (7c7c8b12c932a1e4226663c4c1299973)] -> css selector: .register-btn]])
+13:52:28.212 INFO - Done: [click: 1 [[ChromeDriver: chrome on XP (7c7c8b12c932a1e4226663c4c1299973)] -> css selector: .register-btn]]
+13:52:28.215 INFO - Executing: [find elements: By.cssSelector: .row])
+13:52:28.246 INFO - Done: [find elements: By.cssSelector: .row]
+13:52:28.248 INFO - Executing: [is displayed: 2 [[ChromeDriver: chrome on XP (7c7c8b12c932a1e4226663c4c1299973)] -> css selector: .row]])
+13:52:28.263 INFO - Done: [is displayed: 2 [[ChromeDriver: chrome on XP (7c7c8b12c932a1e4226663c4c1299973)] -> css selector: .row]]
+13:52:28.266 INFO - Executing: [find element: By.cssSelector: .email])
+13:52:28.281 INFO - Done: [find element: By.cssSelector: .email]
+13:52:28.284 INFO - Executing: [send keys: 3 [[ChromeDriver: chrome on XP (7c7c8b12c932a1e4226663c4c1299973)] -> css selector: .email], [t, e, s, t, @, t, e, s, t, 6, 3, 9, 4, ., c, o, m]])
+13:52:28.372 INFO - Done: [send keys: 3 [[ChromeDriver: chrome on XP (7c7c8b12c932a1e4226663c4c1299973)] -> css selector: .email], [t, e, s, t, @, t, e, s, t, 6, 3, 9, 4, ., c, o, m]]
+13:52:28.876 INFO - Executing: [find element: By.cssSelector: .password])
+13:52:28.917 INFO - Done: [find element: By.cssSelector: .password]
+13:52:28.921 INFO - Executing: [send keys: 4 [[ChromeDriver: chrome on XP (7c7c8b12c932a1e4226663c4c1299973)] -> css selector: .password], [1, 2, 3, 4, 5, 6, 7, 8]])
+13:52:29.056 INFO - Done: [send keys: 4 [[ChromeDriver: chrome on XP (7c7c8b12c932a1e4226663c4c1299973)] -> css selector: .password], [1, 2, 3, 4, 5, 6, 7, 8]]
+13:52:29.561 INFO - Executing: [find element: By.cssSelector: .rep-password])
+13:52:29.578 INFO - Done: [find element: By.cssSelector: .rep-password]
+13:52:29.581 INFO - Executing: [send keys: 5 [[ChromeDriver: chrome on XP (7c7c8b12c932a1e4226663c4c1299973)] -> css selector: .rep-password], [1, 2, 3, 4, 5, 6, 7, 8]])
+13:52:29.712 INFO - Done: [send keys: 5 [[ChromeDriver: chrome on XP (7c7c8b12c932a1e4226663c4c1299973)] -> css selector: .rep-password], [1, 2, 3, 4, 5, 6, 7, 8]]
+13:52:30.217 INFO - Executing: [find element: By.cssSelector: .secret-word])
+13:52:30.233 INFO - Done: [find element: By.cssSelector: .secret-word]
+13:52:30.240 INFO - Executing: [send keys: 6 [[ChromeDriver: chrome on XP (7c7c8b12c932a1e4226663c4c1299973)] -> css selector: .secret-word], [s, o, f, t, s, e, r, v, e]])
+13:52:30.393 INFO - Done: [send keys: 6 [[ChromeDriver: chrome on XP (7c7c8b12c932a1e4226663c4c1299973)] -> css selector: .secret-word], [s, o, f, t, s, e, r, v, e]]
+13:52:30.906 INFO - Executing: [find element: By.cssSelector: .submit-btn])
+13:52:30.922 INFO - Done: [find element: By.cssSelector: .submit-btn]
+13:52:30.925 INFO - Executing: [click: 7 [[ChromeDriver: chrome on XP (7c7c8b12c932a1e4226663c4c1299973)] -> css selector: .submit-btn]])
+13:52:30.991 INFO - Done: [click: 7 [[ChromeDriver: chrome on XP (7c7c8b12c932a1e4226663c4c1299973)] -> css selector: .submit-btn]]
+13:52:34.003 INFO - Executing: [find element: By.cssSelector: .submit-btn])
+13:52:34.013 INFO - Done: [find element: By.cssSelector: .submit-btn]
+13:52:34.019 INFO - Executing: [click: 8 [[ChromeDriver: chrome on XP (7c7c8b12c932a1e4226663c4c1299973)] -> css selector: .submit-btn]])
+13:52:34.068 INFO - Done: [click: 8 [[ChromeDriver: chrome on XP (7c7c8b12c932a1e4226663c4c1299973)] -> css selector: .submit-btn]]
+13:52:35.073 INFO - Executing: [delete session: e1b872f3-03da-4363-a152-c3f24e58e2dd])
+13:52:35.921 INFO - Done: [delete session: e1b872f3-03da-4363-a152-c3f24e58e2dd]
+13:52:35.948 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, marionette=true, name=Switch Category Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+13:52:35.951 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, marionette=true, name=Switch Category Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9) on port 21925
+Only local connections are allowed.
+13:52:36.465 INFO - Attempting bi-dialect session, assuming Postel's Law holds true on the remote end
+13:52:37.834 INFO - Detected dialect: OSS
+13:52:37.834 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, marionette=true, name=Switch Category Test, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+13:52:37.839 INFO - Executing: [get: localhost:3000])
+13:52:39.321 INFO - Done: [get: localhost:3000]
+13:52:39.324 INFO - Executing: [find elements: By.cssSelector: body])
+13:52:39.342 INFO - Done: [find elements: By.cssSelector: body]
+13:52:39.344 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on XP (384bdb4a591b8813d2a81960f86756bb)] -> css selector: body]])
+13:52:39.357 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on XP (384bdb4a591b8813d2a81960f86756bb)] -> css selector: body]]
+13:52:39.361 INFO - Executing: [find element: By.cssSelector: .login-btn])
+13:52:39.380 INFO - Done: [find element: By.cssSelector: .login-btn]
+13:52:39.385 INFO - Executing: [click: 1 [[ChromeDriver: chrome on XP (384bdb4a591b8813d2a81960f86756bb)] -> css selector: .login-btn]])
+13:52:39.455 INFO - Done: [click: 1 [[ChromeDriver: chrome on XP (384bdb4a591b8813d2a81960f86756bb)] -> css selector: .login-btn]]
+13:52:39.458 INFO - Executing: [find elements: By.cssSelector: .row])
+13:52:39.479 INFO - Done: [find elements: By.cssSelector: .row]
+13:52:39.481 INFO - Executing: [is displayed: 2 [[ChromeDriver: chrome on XP (384bdb4a591b8813d2a81960f86756bb)] -> css selector: .row]])
+13:52:39.496 INFO - Done: [is displayed: 2 [[ChromeDriver: chrome on XP (384bdb4a591b8813d2a81960f86756bb)] -> css selector: .row]]
+13:52:39.500 INFO - Executing: [find element: By.cssSelector: .form-control])
+13:52:39.516 INFO - Done: [find element: By.cssSelector: .form-control]
+13:52:39.519 INFO - Executing: [send keys: 3 [[ChromeDriver: chrome on XP (384bdb4a591b8813d2a81960f86756bb)] -> css selector: .form-control], [t, e, s, t, @, t, e, s, t, ., c, o, m]])
+13:52:39.600 INFO - Done: [send keys: 3 [[ChromeDriver: chrome on XP (384bdb4a591b8813d2a81960f86756bb)] -> css selector: .form-control], [t, e, s, t, @, t, e, s, t, ., c, o, m]]
+13:52:40.105 INFO - Executing: [find element: By.cssSelector: input[type=password]])
+13:52:40.146 INFO - Done: [find element: By.cssSelector: input[type=password]]
+13:52:40.150 INFO - Executing: [send keys: 4 [[ChromeDriver: chrome on XP (384bdb4a591b8813d2a81960f86756bb)] -> css selector: input[type=password]], [1, 2, 3, 4, 5, 6, 7, 8]])
+13:52:40.288 INFO - Done: [send keys: 4 [[ChromeDriver: chrome on XP (384bdb4a591b8813d2a81960f86756bb)] -> css selector: input[type=password]], [1, 2, 3, 4, 5, 6, 7, 8]]
+13:52:40.792 INFO - Executing: [find element: By.cssSelector: .submit-btn])
+13:52:40.810 INFO - Done: [find element: By.cssSelector: .submit-btn]
+13:52:40.812 INFO - Executing: [click: 5 [[ChromeDriver: chrome on XP (384bdb4a591b8813d2a81960f86756bb)] -> css selector: .submit-btn]])
+13:52:40.872 INFO - Done: [click: 5 [[ChromeDriver: chrome on XP (384bdb4a591b8813d2a81960f86756bb)] -> css selector: .submit-btn]]
+13:52:41.876 INFO - Executing: [find element: By.cssSelector: select])
+13:52:41.894 INFO - Done: [find element: By.cssSelector: select]
+13:52:41.897 INFO - Executing: [send keys: 6 [[ChromeDriver: chrome on XP (384bdb4a591b8813d2a81960f86756bb)] -> css selector: select], [S, p, o, r, t]])
+13:52:41.962 INFO - Done: [send keys: 6 [[ChromeDriver: chrome on XP (384bdb4a591b8813d2a81960f86756bb)] -> css selector: select], [S, p, o, r, t]]
+13:52:42.965 INFO - Executing: [find element: By.cssSelector: .btn-next])
+13:52:42.983 INFO - Done: [find element: By.cssSelector: .btn-next]
+13:52:42.987 INFO - Executing: [click: 7 [[ChromeDriver: chrome on XP (384bdb4a591b8813d2a81960f86756bb)] -> css selector: .btn-next]])
+13:52:43.046 INFO - Done: [click: 7 [[ChromeDriver: chrome on XP (384bdb4a591b8813d2a81960f86756bb)] -> css selector: .btn-next]]
+13:52:43.549 INFO - Executing: [find element: By.cssSelector: .btn-next])
+13:52:43.557 INFO - Done: [find element: By.cssSelector: .btn-next]
+13:52:43.560 INFO - Executing: [click: 7 [[ChromeDriver: chrome on XP (384bdb4a591b8813d2a81960f86756bb)] -> css selector: .btn-next]])
+13:52:43.585 INFO - Done: [click: 7 [[ChromeDriver: chrome on XP (384bdb4a591b8813d2a81960f86756bb)] -> css selector: .btn-next]]
+13:52:44.089 INFO - Executing: [find element: By.cssSelector: .btn-translate])
+13:52:44.105 INFO - Done: [find element: By.cssSelector: .btn-translate]
+13:52:44.110 INFO - Executing: [click: 8 [[ChromeDriver: chrome on XP (384bdb4a591b8813d2a81960f86756bb)] -> css selector: .btn-translate]])
+13:52:44.162 INFO - Done: [click: 8 [[ChromeDriver: chrome on XP (384bdb4a591b8813d2a81960f86756bb)] -> css selector: .btn-translate]]
+13:52:44.166 INFO - Executing: [find element: By.cssSelector: .phrase])
+13:52:44.182 INFO - Done: [find element: By.cssSelector: .phrase]
+13:52:44.185 INFO - Executing: [get text: 9 [[ChromeDriver: chrome on XP (384bdb4a591b8813d2a81960f86756bb)] -> css selector: .phrase]])
+13:52:44.202 INFO - Done: [get text: 9 [[ChromeDriver: chrome on XP (384bdb4a591b8813d2a81960f86756bb)] -> css selector: .phrase]]
+13:52:44.706 INFO - Executing: [find element: By.cssSelector: .btn-random])
+13:52:44.723 INFO - Done: [find element: By.cssSelector: .btn-random]
+13:52:44.725 INFO - Executing: [click: 10 [[ChromeDriver: chrome on XP (384bdb4a591b8813d2a81960f86756bb)] -> css selector: .btn-random]])
+13:52:44.776 INFO - Done: [click: 10 [[ChromeDriver: chrome on XP (384bdb4a591b8813d2a81960f86756bb)] -> css selector: .btn-random]]
+13:52:45.279 INFO - Executing: [find element: By.cssSelector: .btn-random])
+13:52:45.286 INFO - Done: [find element: By.cssSelector: .btn-random]
+13:52:45.289 INFO - Executing: [click: 10 [[ChromeDriver: chrome on XP (384bdb4a591b8813d2a81960f86756bb)] -> css selector: .btn-random]])
+13:52:45.314 INFO - Done: [click: 10 [[ChromeDriver: chrome on XP (384bdb4a591b8813d2a81960f86756bb)] -> css selector: .btn-random]]
+13:52:45.316 INFO - Executing: [delete session: f067c187-bd86-4584-8a3d-ef6762bdc0c8])
+13:52:46.128 INFO - Done: [delete session: f067c187-bd86-4584-8a3d-ef6762bdc0c8]

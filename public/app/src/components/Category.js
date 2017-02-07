@@ -92,15 +92,15 @@ class Category extends Component {
                             />
                             <Field className='form-group' model="category.name">
                                 <label className='category-label'>Or add new category</label>
-                                <input className='form-control' type="text" placeholder='Category Name' />
+                                <input className='form-control new-category' type="text" placeholder='Category Name' />
                             </Field>
                             <Field className='form-group' model="category.side_a">
                                 <label className='category-label'>Side_a value (native language)</label>
-                                <input className='form-control' type="text" placeholder='side_a value (native language)' />
+                                <input className='form-control side_a ' type="text" placeholder='side_a value (native language)' />
                             </Field>
                             <Field className='form-group' model="category.side_b">
                                 <label className='category-label'>Side_b value (foreign language)</label>
-                                <input className='form-control' type="text" placeholder='side_b value (foreign language)' />
+                                <input className='form-control side_b' type="text" placeholder='side_b value (foreign language)' />
                             </Field>
                             <Field className='form-group' model="category.example">
                                 <label className='category-label'> Example of Content</label>

@@ -45,16 +45,16 @@ class RegisterForm extends Component {
                     <section className='col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4'>
                         <Form className='form' model="user" onSubmit={(user) => this.handleSubmit(user)}>
                             <Field className='form-group email-label' model="user.email">
-                                <input className='form-control register-input' type="email" placeholder='Email' />
+                                <input className='form-control register-input email' type="email" placeholder='Email' />
                             </Field>
                             <Field className='form-group' model="user.password">
-                                <input className='form-control register-input' type="password" placeholder='Password' />
+                                <input className='form-control register-input password' type="password" placeholder='Password' />
                             </Field>
                             <Field className='form-group' model="user.repPassword">
-                                <input className='form-control register-input' type="password" placeholder='Repeat Password' />
+                                <input className='form-control register-input rep-password' type="password" placeholder='Repeat Password' />
                             </Field>
                             <Field className='form-group' model="user.secretWord">
-                                <input className='form-control register-input' type="password" placeholder='Secret Word' />
+                                <input className='form-control register-input secret-word' type="password" placeholder='Secret Word' />
                             </Field>
                             <button type='submit' className='submit-btn btn col-xs-12'>Submit</button>
                             <span className='msg-client-error'>{ clientMsg }</span>

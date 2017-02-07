@@ -239,12 +239,21 @@ html {
   -webkit-transition: opacity 700ms;
   transition: opacity 700ms;
 }
-.fa-spinner {
+.spinner-container {
+  width: 100%;
+  position: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.spinner-container .fa-spinner {
+  width: 100%;
   z-index: 6;
   opacity: 1;
   position: absolute;
-  top: 20%;
-  left: 40%;
+  top: 15%;
   color: #1872ab;
 }
 .clear {
