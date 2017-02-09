@@ -39,14 +39,14 @@ const store = createStore(
 const history = syncHistoryWithStore(hashHistory, store);
 
 render(
-    <Provider store={store}>
+    <Provider store={ store }>
         <div className='main container-fluid'>
-            <Router history={history}>
-                <Route path="/" component={App}/>
-                <Route path="login" component={Login}/>
-                <Route path="register" component={Register}/>
-                <Route path="addCategory" component={Category}/>
-                <Route path="configure" component={categoryConfigure}/>
+            <Router history={ history }>
+                <Route path="/" component={ App }/>
+                <Route path="login" component={ Login }/>
+                <Route path="register" component={ Register }/>
+                <Route path="addCategory" component={ Category }/>
+                <Route path="configure" component={ categoryConfigure }/>
             </Router>
         </div>
     </Provider>,
