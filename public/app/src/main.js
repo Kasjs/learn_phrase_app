@@ -33,7 +33,7 @@ const reducer = combineReducers({
 const logger = createLogger();
 const store = createStore(
     reducer,
-    applyMiddleware(thunk, logger)
+    applyMiddleware(thunk)
 );
 
 const history = syncHistoryWithStore(hashHistory, store);

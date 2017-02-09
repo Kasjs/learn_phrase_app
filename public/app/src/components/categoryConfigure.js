@@ -114,7 +114,7 @@ class categoryConfigure extends Component {
             let items = props.lists;
             if( items ) {
                 var listItems = items.map((item) =>
-                    <ListContainer category={category} isChecked={false} key={ item.side_b } value={ item.side_b } />
+                    <ListContainer category={ category } isChecked={ false } key={ item.side_b } value={ item.side_b } />
                 );
                 return (<ul className='list-element'>{ listItems }</ul>);
             }

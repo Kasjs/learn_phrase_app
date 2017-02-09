@@ -8,7 +8,7 @@ export default function OnlineRow(props) {
                 <span> Go OnLine </span>
                 <button onClick={ props.preparingToOffline } className='online-btn btn'>
                     <i className="fa fa-toggle-off"></i>
-                </button><span className='ready-msg'> Now you can go offline</span>
+                </button><span className='ready-msg'> Now you are in offline</span>
             </div>
         </section>
     )
