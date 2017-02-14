@@ -4,7 +4,7 @@ export const initialState = {
     hide: '',
     showSpinner: false,
     isClicked: false,
-    isEmpty: false
+    message: ''
 }
 
 export default function category( state = initialState, action) {
@@ -58,7 +58,13 @@ export default function category( state = initialState, action) {
         case 'SHOW_MESSAGE': {
             return {
                 ...state,
-                isEmpty: action.payload
+                message: action.payload
+            }
+        }
+        case 'HIDE_MESSAGE': {
+            return {
+                ...state,
+                message: action.payload
             }
         }
         default:

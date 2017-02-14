@@ -43,9 +43,15 @@ export function hideForm() {
         payload: false
     }
 }
-export function showMessages(isEmpty) {
+export function showMessage() {
     return {
         type: 'SHOW_MESSAGE',
-        payload: !isEmpty
+        payload: 'You have successed changed category name'
+    }
+}
+export function hideMessage() {
+    return {
+        type: 'HIDE_MESSAGE',
+        payload: ''
     }
 }

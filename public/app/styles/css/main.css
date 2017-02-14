@@ -632,6 +632,9 @@ html {
   border-top: 1px solid #cccccc;
   margin-top: 10px;
 }
+.config-form .change-form-container .success-msg-change {
+  color: #00ff00;
+}
 .config-form .first-btn-container {
   margin: 10px 0 0 0;
 }

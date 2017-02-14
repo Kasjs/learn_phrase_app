@@ -103,6 +103,12 @@ export function updateCategory(newCategoryName, categoryContent) {
 }
 
 export function changeCategoryName(oldName, newName, categoryField) {
+    let isOffline = getIsOfflineField();
+    if (isOffline) {
+        console.log('offline');
+        removeCategoryField(oldName);
+        setCategoryField(newName, categoryField);
+    }
     $.post('/changeName', {
         oldName: oldName,
         newName: newName,

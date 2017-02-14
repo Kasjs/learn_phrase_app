@@ -59,9 +59,10 @@ class categoryConfigure extends Component {
     render() {
 
         let that = this;
-        let { selectedCategory, itemsInCategory, isClicked, showSpinner, hide, isEmpty } = this.props.category;
+        let { selectedCategory, itemsInCategory, isClicked, showSpinner, hide, isEmpty, message } = this.props.category;
         let { deleteSelectedCategory, deleteItemInSelectedCategory,
-            getSelectedCategoryForChange, FadeOn, fadeOff, changeButtonState, hideForm } = this.props.configureActions;
+            getSelectedCategoryForChange, FadeOn, fadeOff, changeButtonState, hideForm,
+            showMessage, hideMessage } = this.props.configureActions;
         let isOffline = localStorage.getItem('isOffline');
 
         function updateName(name) {
@@ -77,7 +78,8 @@ class categoryConfigure extends Component {
                     });
                     setCategoryOptions(categoryOptions);
                     changeCategoryName(selectedCategory, name.updated, categoryField);
-                    location.reload();
+                    showMessage();
+                    setTimeout(function() { hideMessage(); hashHistory.push('/') }, 2000);
                 });
             }
             return;
@@ -100,6 +102,7 @@ class categoryConfigure extends Component {
                             <Field model='category.updated'
                                 validators={{ isRequired: (val) => val && val.length }}>
                                 <input className='input-name form-control' type="text" placeholder={ selectedCategory } />
+                                <span className='success-msg-change'>{ message }</span>
                                 <Errors wrapper="span" show={{ touched: true, focus: false }}
                                     model='category.updated'
                                     messages={{
