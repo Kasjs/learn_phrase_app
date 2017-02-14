@@ -86,32 +86,35 @@ class categoryConfigure extends Component {
         function UpdateButton(props) {
             return (
                 <button  onClick={ changeButtonState }
-                    className={ selectedCategory ? 'update-btn btn-primary' : 'update-btn btn-primary hide' }>Change Name
+                    className={ selectedCategory ? 'update-btn btn-primary' : 'update-btn btn-primary hide' }>
+                    <span className="fa fa-wrench"></span>
                 </button>
-            );
+            )
         }
 
         function InputForName(props) {
             return (
-                <Form className='change-name-form' model='category' onSubmit={ (name) => updateName(name) }>
-                    <div className='col-xs-6 col-sm-6 col-md-6 col-lg-6 change-name-container'>
-                        <Field model='category.updated'
-                            validators={{ isRequired: (val) => val && val.length }}>
-                            <input className='input-name form-control' type="text" placeholder={ selectedCategory } />
-                            <Errors wrapper="span" show={{ touched: true, focus: false }}
-                                model='category.updated'
-                                messages={{
-                                    isRequired: 'Category name can\'t be empty'
-                                }}/>
-                        </Field>
-                    </div>
-                    <div className='col-xs-6 first-btn-container'>
-                        <button type='submit' className='btn-change'>Change name</button>
-                    </div>
-                    <div className='col-xs-12 hide-btn-container'>
-                        <button  onClick={ hideForm } className='btn hide-btn'>Hide Field</button>
-                    </div>
-                </Form>
+                <div className='change-form-container'>
+                    <Form className='change-name-form' model='category' onSubmit={ (name) => updateName(name) }>
+                        <div className='col-xs-6 col-sm-6 col-md-6 col-lg-6 change-name-container'>
+                            <Field model='category.updated'
+                                validators={{ isRequired: (val) => val && val.length }}>
+                                <input className='input-name form-control' type="text" placeholder={ selectedCategory } />
+                                <Errors wrapper="span" show={{ touched: true, focus: false }}
+                                    model='category.updated'
+                                    messages={{
+                                        isRequired: 'Category name can\'t be empty'
+                                    }}/>
+                            </Field>
+                        </div>
+                        <div className='col-xs-6 first-btn-container'>
+                            <button type='submit' className='btn-change'>Change name</button>
+                        </div>
+                        <div className='col-xs-12 hide-btn-container'>
+                            <button  onClick={ hideForm } className='btn hide-btn'>Hide</button>
+                        </div>
+                    </Form>
+                </div>
             )
         }
 

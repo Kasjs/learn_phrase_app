@@ -628,9 +628,16 @@ html {
 .config-form .unsuccess-msg {
   color: #ff0000;
 }
+.config-form .change-form-container {
+  border-top: 1px solid #cccccc;
+  margin-top: 10px;
+}
+.config-form .first-btn-container {
+  margin: 10px 0 0 0;
+}
 .config-form .change-name-container {
   padding: 0 0 0 0;
-  margin: 5px 0 15px 0;
+  margin: 15px 0 15px 0;
 }
 .config-form .change-name-container .input-name {
   border-radius: .3em;
@@ -645,10 +652,12 @@ html {
   color: #ff0000;
 }
 .config-form .hide-btn-container {
+  border-bottom: 1px solid #cccccc;
   padding-left: 0;
+  margin-bottom: 15px;
 }
 .config-form .hide-btn-container .hide-btn {
-  margin: 0 0 10px 0;
+  margin: 0 0 15px 0;
   background-color: #1872ab;
   color: #ffffff;
   height: 32px;
@@ -666,6 +675,7 @@ html {
   border-radius: .3em;
   border: none;
   height: 32px;
+  width: 32px;
 }
 .config-form .btn-change {
   margin-top: 5px;
