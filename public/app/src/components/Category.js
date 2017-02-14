@@ -34,10 +34,12 @@ class Category extends Component {
     constructor(props) {
         super(props);
     }
+
     loadCategory = function(val) {
         this.props.pageActions.getCategoryName(val);
         this.props.pageActions.clearAddNewCategoryMsg();
     }
+
     handleCreate(category) {
         let categoryName = this.props.page.category;
         let newCategory = {
@@ -49,7 +51,6 @@ class Category extends Component {
             side_a: category.side_a,
             side_b: category.side_b
         };
-
         if ( (category.name || categoryName) && category.side_a && category.side_b ) {
             this.props.pageActions.fadeOn();
             Promise.resolve(category).then(function(category) {

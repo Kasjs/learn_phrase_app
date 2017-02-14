@@ -69,6 +69,31 @@ module.exports.addNewCategory = function(req, res) {
     });
 };
 
+module.exports.changeName = function(req, res) {
+    User.findOne({ email: req.body.email }, function(err, user) {
+        user.defaultCategory.map((item) => {
+            if (item.label === req.body.oldName) {
+                item.label = item.value = req.body.newName;
+            }
+        });
+        delete user.category[0][req.body.oldName];
+        user.category[0][req.body.newName] = [];
+        user.category[0][req.body.newName] = req.body.categoryField;
+        user.markModified('category');
+        user.markModified('defaultCategory');
+        user.save(function(err) {
+            if (err) {
+                res.send({
+                    msg: 'Can\'t change name'
+                });
+            }
+            res.send({
+                msg: 'Name has changed'
+            });
+        });
+    });
+}
+
 // category computation functions
 function updateExistingCategory(req, res, user) {
 

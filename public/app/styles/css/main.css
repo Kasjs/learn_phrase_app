@@ -271,6 +271,9 @@ html {
     margin-left: 0;
     visibility: hidden;
   }
+  .del-category-btn {
+    width: 30px !important;
+  }
   .log-out-btn {
     width: 37px !important;
     top: 40px !important;
@@ -539,7 +542,8 @@ html {
   display: flex-inline;
   font-weight: bold;
   color: #1872ab;
-  margin-bottom: 0;
+  margin: 10px 0 0 0;
+  clear: both;
 }
 .config-form .list-element {
   display: -webkit-box;
@@ -556,6 +560,7 @@ html {
   font: 16px 'Roboto';
   list-style-type: square;
   margin: 0;
+  clear: both;
 }
 .config-form .back-link-btn {
   font: 16px 'Roboto';
@@ -564,6 +569,7 @@ html {
 .config-form .category-name-text {
   font: 16px 'Roboto';
   font-weight: bold;
+  margin: 0 0 0 0;
 }
 .config-form .list-item {
   display: flex-inline;
@@ -615,6 +621,66 @@ html {
 }
 .config-form .del-selected-btn:focus {
   border-color: none;
+}
+.config-form .success-msg {
+  color: #5cb85c;
+}
+.config-form .unsuccess-msg {
+  color: #ff0000;
+}
+.config-form .change-name-container {
+  padding: 0 0 0 0;
+  margin: 5px 0 15px 0;
+}
+.config-form .change-name-container .input-name {
+  border-radius: .3em;
+}
+.config-form .change-name-container .change-name-label {
+  font: 16px 'Roboto';
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.config-form .change-name-container span {
+  color: #ff0000;
+}
+.config-form .hide-btn-container {
+  padding-left: 0;
+}
+.config-form .hide-btn-container .hide-btn {
+  margin: 0 0 10px 0;
+  background-color: #1872ab;
+  color: #ffffff;
+  height: 32px;
+}
+.config-form .msg-container {
+  padding-left: 0;
+  margin-top: 0;
+  font: 14px 'Roboto';
+}
+.config-form .first-btn-container {
+  padding: 0 0 0 10px;
+}
+.config-form .update-btn {
+  background-color: #1872ab;
+  border-radius: .3em;
+  border: none;
+  height: 34px;
+}
+.config-form .btn-change {
+  margin-top: 5px;
+  font: 14px 'Roboto';
+  height: 34px;
+  width: 100%;
+  background-color: #23c6c8;
+  color: #ffffff;
+  line-height: 12px;
+  border: none;
+  border-radius: .3em;
+  text-shadow: none;
+}
+.config-form .btn-change:hover {
+  background-color: none;
 }
 .reg-form .submit-btn {
   margin: 0 0 10px 0;

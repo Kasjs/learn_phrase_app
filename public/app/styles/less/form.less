@@ -80,7 +80,8 @@
         display: flex-inline;
         font-weight: bold;
         color: @main-color;
-        margin-bottom: 0;
+        margin: 10px 0 0 0;
+        clear: both;
     }
     .list-element {
         display: flex;
@@ -90,6 +91,7 @@
         font: 16px 'Roboto';
         list-style-type: square;
         margin: 0;
+        clear: both;
     }
     .back-link-btn{
         font: 16px 'Roboto';
@@ -98,6 +100,7 @@
     .category-name-text {
         font: 16px 'Roboto';
         font-weight: bold;
+        margin: 0 0 0 0;
     }
     .list-item {
         display: flex-inline;
@@ -147,6 +150,64 @@
         margin: 10px 0 0 30px;
 
     }
+    .success-msg {
+        color: #5cb85c;
+    }
+    .unsuccess-msg {
+        color: #ff0000;
+    }
+    .change-name-container {
+        padding: 0 0 0 0;
+        margin: 5px 0 15px 0;
+        .input-name {
+            border-radius: .3em;
+        }
+        .change-name-label {
+            font: 16px 'Roboto';
+            display: flex;
+        }
+        span {
+            color: #ff0000;
+        }
+    }
+    .hide-btn-container {
+        padding-left: 0;
+        .hide-btn {
+            margin: 0 0 10px 0;
+            background-color: @main-color;
+            color: #ffffff;
+            height: 32px;
+        }
+    }
+    .msg-container {
+        padding-left: 0;
+        margin-top: 0;
+        font: 14px 'Roboto';
+    }
+    .first-btn-container {
+        padding: 0 0 0 10px;
+    }
+    .update-btn {
+        background-color: @main-color;
+        border-radius: .3em;
+        border: none;
+        height: 34px;
+    }
+    .btn-change {
+        margin-top: 5px;
+        font: 14px 'Roboto';
+        height: 34px;
+        width: 100%;
+        background-color: @secondary-color;
+        color: #ffffff;
+        line-height: 12px;
+        border: none;
+        border-radius: .3em;
+        text-shadow: none;
+    }
+    .btn-change:hover {
+        background-color: none;
+    }
 }
 
 .reg-form {
@@ -178,12 +239,10 @@
     }
     .unfocus;
 }
-
 .form-control:focus {
     box-shadow: inset 0 1px 1px  @secondary-color;
     border-color: @secondary-color !important;
 }
-
 .selected-category {
     display: block-inline;
     margin-right: 5px;

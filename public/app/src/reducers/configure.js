@@ -2,7 +2,9 @@ export const initialState = {
     selectedCategory: '',
     itemsInCategory: [],
     hide: '',
-    showSpinner: false
+    showSpinner: false,
+    isClicked: false,
+    isEmpty: false
 }
 
 export default function category( state = initialState, action) {
@@ -39,6 +41,24 @@ export default function category( state = initialState, action) {
                 ...state,
                 hide: action.payload,
                 showSpinner: !state.showSpinner
+            }
+        }
+        case 'CHANGE_BUTTON_STATE': {
+            return {
+                ...state,
+                isClicked: action.payload
+            }
+        }
+        case 'HIDE_FORM': {
+            return {
+                ...state,
+                isClicked: action.payload
+            }
+        }
+        case 'SHOW_MESSAGE': {
+            return {
+                ...state,
+                isEmpty: action.payload
             }
         }
         default:

@@ -19,12 +19,16 @@ import createLogger from 'redux-logger'
 import thunk from 'redux-thunk'
 import { modelReducer, formReducer } from 'react-redux-form';
 
+const initialNameState = {
+    updated: ''
+}
+
 const reducer = combineReducers({
     ...reducers,
     routing: routerReducer,
     user: modelReducer('user'),
     userForm: formReducer('user'),
-    category: modelReducer('category'),
+    category: modelReducer('category', initialNameState),
     categoryForm: formReducer('category'),
     configureCat: modelReducer('configureCat'),
     configureCatForm: formReducer('configureCat')

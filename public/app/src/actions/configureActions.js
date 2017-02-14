@@ -31,3 +31,21 @@ export function fadeOff () {
         payload: 'clear'
     }
 }
+export function changeButtonState() {
+    return {
+        type: 'CHANGE_BUTTON_STATE',
+        payload: true
+    }
+}
+export function hideForm() {
+    return {
+        type: 'HIDE_FORM',
+        payload: false
+    }
+}
+export function showMessages(isEmpty) {
+    return {
+        type: 'SHOW_MESSAGE',
+        payload: !isEmpty
+    }
+}
