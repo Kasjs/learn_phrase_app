@@ -84,7 +84,7 @@ class categoryConfigure extends Component {
                     changeCategoryName(selectedCategory, name.updated, categoryField);
                     disableButton();
                     showMessage();
-                    // setTimeout(function() { hideMessage(); hashHistory.push('/') }, 2000);
+                    setTimeout(function() { hideMessage() }, 2000);
                 });
             }
             return;
