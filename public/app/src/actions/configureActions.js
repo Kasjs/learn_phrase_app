@@ -55,3 +55,15 @@ export function hideMessage() {
         payload: ''
     }
 }
+export function disableButton() {
+    return {
+        type: 'DISABLE_BUTTON',
+        payload: true
+    }
+}
+export function activateButton() {
+    return {
+        type: 'ACTIVATE_BUTTON',
+        payload: false
+    }
+}

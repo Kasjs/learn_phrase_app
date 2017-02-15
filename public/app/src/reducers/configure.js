@@ -4,6 +4,7 @@ export const initialState = {
     hide: '',
     showSpinner: false,
     isClicked: false,
+    isSubmit: false,
     message: ''
 }
 
@@ -65,6 +66,18 @@ export default function category( state = initialState, action) {
             return {
                 ...state,
                 message: action.payload
+            }
+        }
+        case 'DISABLE_BUTTON': {
+            return {
+                ...state,
+                isSubmit: action.payload
+            }
+        }
+        case 'ACTIVATE_BUTTON': {
+            return {
+                ...state,
+                isSubmit: action.payload
             }
         }
         default:

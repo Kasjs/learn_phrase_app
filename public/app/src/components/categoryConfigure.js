@@ -59,13 +59,17 @@ class categoryConfigure extends Component {
     render() {
 
         let that = this;
-        let { selectedCategory, itemsInCategory, isClicked, showSpinner, hide, isEmpty, message } = this.props.category;
+        let { selectedCategory, itemsInCategory, isClicked, showSpinner, hide,
+            isEmpty, message, isSubmit } = this.props.category;
+
         let { deleteSelectedCategory, deleteItemInSelectedCategory,
             getSelectedCategoryForChange, FadeOn, fadeOff, changeButtonState, hideForm,
-            showMessage, hideMessage } = this.props.configureActions;
+            showMessage, hideMessage, disableButton, activateButton } = this.props.configureActions;
+
         let isOffline = localStorage.getItem('isOffline');
 
         function updateName(name) {
+            activateButton();
             if (name.updated) {
                 let categoryOptions = JSON.parse(getCategoryOptions());
                 let categoryField = getCategoryField(selectedCategory);
@@ -78,8 +82,9 @@ class categoryConfigure extends Component {
                     });
                     setCategoryOptions(categoryOptions);
                     changeCategoryName(selectedCategory, name.updated, categoryField);
+                    disableButton();
                     showMessage();
-                    setTimeout(function() { hideMessage(); hashHistory.push('/') }, 2000);
+                    // setTimeout(function() { hideMessage(); hashHistory.push('/') }, 2000);
                 });
             }
             return;
@@ -111,7 +116,7 @@ class categoryConfigure extends Component {
                             </Field>
                         </div>
                         <div className='col-xs-6 first-btn-container'>
-                            <button type='submit' className='btn-change'>Change name</button>
+                            <button disabled={ isSubmit } type='submit' className='btn-change'>Change name</button>
                         </div>
                         <div className='col-xs-12 hide-btn-container'>
                             <button  onClick={ hideForm } className='btn hide-btn'>Hide</button>
@@ -130,6 +135,7 @@ class categoryConfigure extends Component {
         }
 
         function loadCategory(val) {
+            activateButton();
             if(val !== '') {
                 this.props.configureActions.fadeOn();
                 setTimeout(function() { fadeOff(); }, 500);
