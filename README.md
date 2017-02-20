@@ -3,7 +3,7 @@
 ### Welcome to learn_phrase_app, application created for learning and improving English skills.
 You can learn new world or phrases, add category, add items in category, remove category, rename category, remove items, add new items.
 This application work in offline and online mode.
-![Dashboard](https://drive.google.com/file/d/0B74hhWi3aRfJOUtXTjVZQlZWSmc/view "Dashboard")
+![Dashboard](https://drive.google.com/file/d/0B74hhWi3aRfJOUtXTjVZQlZWSmc/view/dashboard.png)
 For use this app please follow to [phrase-generator](https://phrase-generator.herokuapp.com).
 For contributing or investigation this app do next:
 ### Code coverage(Mocha, Chai, Enzyme): 44% [show coverage](http://www.awesomescreenshot.com/image/2192875/de678037e2eb41e3908be6d9ad7a0c72)
