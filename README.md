@@ -3,6 +3,7 @@
 ### Welcome to learn_phrase_app, application created for learning and improving English skills.
 You can learn new world or phrases, add category, add items in category, remove category, rename category, remove items, add new items.
 This application work in offline and online mode. For front-end we used React and Redux and back-end was made on Node.js with MongoDB.
+
 ![Dashboard](/images/dashboard.png)
 ![Category configuration](/images/categories_configure.png)
 
