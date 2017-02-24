@@ -31,3 +31,39 @@ export function fadeOff () {
         payload: 'clear'
     }
 }
+export function changeButtonState() {
+    return {
+        type: 'CHANGE_BUTTON_STATE',
+        payload: true
+    }
+}
+export function hideForm() {
+    return {
+        type: 'HIDE_FORM',
+        payload: false
+    }
+}
+export function showMessage() {
+    return {
+        type: 'SHOW_MESSAGE',
+        payload: 'You have successed changed category name'
+    }
+}
+export function hideMessage() {
+    return {
+        type: 'HIDE_MESSAGE',
+        payload: ''
+    }
+}
+export function disableButton() {
+    return {
+        type: 'DISABLE_BUTTON',
+        payload: true
+    }
+}
+export function activateButton() {
+    return {
+        type: 'ACTIVATE_BUTTON',
+        payload: false
+    }
+}

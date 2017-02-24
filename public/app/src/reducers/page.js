@@ -30,7 +30,7 @@ export default function page( state = initialState, action) {
             localSync(state.counter);
             return {
                 ...state,
-                phrase: action.payload[state.counter = ++state.counter][state.side],
+                phrase: action.payload[++state.counter][state.side],
                 hits: ++action.payload[state.counter].hits
             }
         }
@@ -47,7 +47,7 @@ export default function page( state = initialState, action) {
             localSync(state.counter);
             return {
                 ...state,
-                phrase: action.payload[state.counter = --state.counter][state.side],
+                phrase: action.payload[--state.counter][state.side],
                 hits: ++action.payload[state.counter].hits
             }
         }
@@ -78,13 +78,13 @@ export default function page( state = initialState, action) {
         case 'GET_SELECTED_CATEGORY': {
             return {
                 ...state,
-                phrase: state.phrase = action.payload
+                phrase: action.payload
             }
         }
         case 'SYNC_CAT_AND_RATING': {
             return {
                 ...state,
-                phrase: state.phrase = action.payload
+                phrase: action.payload
             }
         }
 

@@ -1,7 +1,9 @@
 logs/*
 !.gitkeep
 node_modules/
+bin/
 coverage/
+reports/
 bower_components/
 .DS_Store
 .idea

@@ -19,12 +19,16 @@ import createLogger from 'redux-logger'
 import thunk from 'redux-thunk'
 import { modelReducer, formReducer } from 'react-redux-form';
 
+const initialNameState = {
+    updated: ''
+}
+
 const reducer = combineReducers({
     ...reducers,
     routing: routerReducer,
     user: modelReducer('user'),
     userForm: formReducer('user'),
-    category: modelReducer('category'),
+    category: modelReducer('category', initialNameState),
     categoryForm: formReducer('category'),
     configureCat: modelReducer('configureCat'),
     configureCatForm: formReducer('configureCat')
@@ -33,20 +37,20 @@ const reducer = combineReducers({
 const logger = createLogger();
 const store = createStore(
     reducer,
-    applyMiddleware(thunk)
+    applyMiddleware(thunk, logger)
 );
 
 const history = syncHistoryWithStore(hashHistory, store);
 
 render(
-    <Provider store={store}>
+    <Provider store={ store }>
         <div className='main container-fluid'>
-            <Router history={history}>
-                <Route path="/" component={App}/>
-                <Route path="login" component={Login}/>
-                <Route path="register" component={Register}/>
-                <Route path="addCategory" component={Category}/>
-                <Route path="configure" component={categoryConfigure}/>
+            <Router history={ history }>
+                <Route path="/" component={ App }/>
+                <Route path="login" component={ Login }/>
+                <Route path="register" component={ Register }/>
+                <Route path="addCategory" component={ Category }/>
+                <Route path="configure" component={ categoryConfigure }/>
             </Router>
         </div>
     </Provider>,

@@ -42,33 +42,42 @@ function createNewCategory(newCategoryName, categoryContent) {
 
 export function offlineUpdateCategory(newCategoryName, categoryContent) {
     Promise.resolve(newCategoryName, categoryContent).then(function() {
-        let categoryNames = JSON.parse(getCategoryOptions()),
-        sameContent = false,
-        sameCategory = false,
-        categoryData = [];
-        categoryNames.forEach(function(item) {
-            if ( item.label === newCategoryName.label ) {
-                sameCategory = true;
-                categoryData = getCategoryField(item.label);
-                categoryData.forEach(function(itemData) {
-                    if ( itemData.side_b === categoryContent.side_b ) {
-                        sameContent = true;
-                    }
-                });
-            }
-        });
-        if (sameContent) {
-            setCategoryOptions(categoryNames);
-            setCategoryField(newCategoryName.label, categoryData);
+        let dublicate = checkDublicateCategory(newCategoryName, categoryContent);
+
+        if (dublicate.sameContent) {
+            setCategoryOptions(dublicate.categoryNames);
+            setCategoryField(newCategoryName.label, dublicate.categoryData);
         } else {
-            setCategoryOptions(categoryNames);
-            categoryData.push(categoryContent);
-            setCategoryField(newCategoryName.label, categoryData);
+            setCategoryOptions(dublicate.categoryNames);
+            dublicate.categoryData.push(categoryContent);
+            setCategoryField(newCategoryName.label, dublicate.categoryData);
         }
-        if (!sameCategory) {
+        if (!dublicate.sameCategory) {
             createNewCategory(newCategoryName, categoryContent);
         }
     });
+}
+
+function checkDublicateCategory(newCategoryName, categoryContent) {
+    let categoryNames = JSON.parse(getCategoryOptions()),
+    sameContent = false, sameCategory = false, categoryData = [];
+    categoryNames.forEach(function(item) {
+        if ( item.label === newCategoryName.label ) {
+            sameCategory = true;
+            categoryData = getCategoryField(item.label);
+            categoryData.forEach(function(itemData) {
+                if ( itemData.side_b === categoryContent.side_b ) {
+                    sameContent = true;
+                }
+            });
+        }
+    });
+    return {
+        sameContent : sameContent,
+        sameCategory: sameCategory,
+        categoryNames : categoryNames,
+        categoryData : categoryData
+    }
 }
 
 export function setCategoryOffline() {

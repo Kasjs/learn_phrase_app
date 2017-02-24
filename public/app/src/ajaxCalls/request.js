@@ -5,7 +5,7 @@ import { registerNewUser, loginUser } from '../actions/userActions'
 import {    setLoginWhenSuccess, setLoginWhenError, setCategory, getSelectedCategory,
             getEmailFromLocalStrg, setCategoryOptions, setCategoryOffline, offlineUpdateCategory,
             setCategoryField, getCategoryField, setAdminField, getIsOfflineField,
-            setSelectedCategory, getCategoryOptions
+            setSelectedCategory, getCategoryOptions, removeCategoryField
         } from '../localStorage/localStorageMethods'
 
 function calculateAllCategory(res) {
@@ -100,6 +100,26 @@ export function updateCategory(newCategoryName, categoryContent) {
                 console.log('Error can\'t synchronize data')
             });
     }
+}
+
+export function changeCategoryName(oldName, newName, categoryField) {
+    let isOffline = getIsOfflineField();
+    if (isOffline) {
+        console.log('offline');
+        removeCategoryField(oldName);
+        setCategoryField(newName, categoryField);
+    }
+    $.post('/changeName', {
+        oldName: oldName,
+        newName: newName,
+        categoryField: categoryField,
+        email: getEmailFromLocalStrg()
+    }).then(function(res) {
+        removeCategoryField(oldName);
+        setCategoryField(newName, categoryField);
+    }, function(error) {
+        console.log('Can\'t change category name');
+    });
 }
 
 export function getAllCategory() {

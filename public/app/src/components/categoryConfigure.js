@@ -2,16 +2,17 @@
 
 import React, { PropTypes, Component } from 'react'
 import FormSelect from 'elemental/lib/components/FormSelect'
-import { Field, Form, actions } from 'react-redux-form'
+import { Field, Form, actions, Errors, modelReducer } from 'react-redux-form'
 import { bindActionCreators } from 'redux'
-import * as configureActions from '../actions/configure'
-import { deleteItemInSelectedCategory, addLeftedItem } from '../actions/configure'
+import * as configureActions from '../actions/configureActions'
+import { deleteItemInSelectedCategory, addLeftedItem } from '../actions/configureActions'
 import { connect } from 'react-redux'
 import { getCategoryField, getCategoryOptions, setCategoryOptions, removeCategoryField,
     setCategoryField, getIsOfflineField, setSelectedCategory } from '../localStorage/localStorageMethods'
-import { login, getCategoryFromServer, getAllCategory, syncAllCategoryAndContent  } from '../ajaxCalls/request'
+import { login, getCategoryFromServer, getAllCategory, syncAllCategoryAndContent, changeCategoryName  } from '../ajaxCalls/request'
 import hashHistory from 'react-router/lib/hashHistory'
 import { initialState } from '../reducers/configure'
+import validator from 'validator'
 
 // working function
 function fadeOn(className) {
@@ -58,12 +59,83 @@ class categoryConfigure extends Component {
     render() {
 
         let that = this;
-        let { selectedCategory, itemsInCategory, showSpinner, hide } = this.props.category;
+        let { selectedCategory, itemsInCategory, isClicked, showSpinner, hide,
+            isEmpty, message, isSubmit } = this.props.category;
+
         let { deleteSelectedCategory, deleteItemInSelectedCategory,
-            getSelectedCategoryForChange, FadeOn, fadeOff } = this.props.configureActions;
+            getSelectedCategoryForChange, FadeOn, fadeOff, changeButtonState, hideForm,
+            showMessage, hideMessage, disableButton, activateButton } = this.props.configureActions;
+
         let isOffline = localStorage.getItem('isOffline');
 
+        function updateName(name) {
+            activateButton();
+            if (name.updated) {
+                let categoryOptions = JSON.parse(getCategoryOptions());
+                let categoryField = getCategoryField(selectedCategory);
+                Promise.resolve(categoryOptions).then(function(categoryOptions){
+                    categoryOptions.map((item) => {
+                        if (item.label === selectedCategory) {
+                            item.label = name.updated;
+                            item.value = name.updated;
+                        }
+                    });
+                    setCategoryOptions(categoryOptions);
+                    changeCategoryName(selectedCategory, name.updated, categoryField);
+                    disableButton();
+                    showMessage();
+                    setTimeout(function() { hideMessage() }, 3000);
+                });
+            }
+            return;
+        }
+
+        function UpdateButton(props) {
+            return (
+                <button  onClick={ changeButtonState }
+                    className={ selectedCategory ? 'update-btn btn-primary' : 'update-btn btn-primary hide' }>
+                    <span className="fa fa-wrench"></span>
+                </button>
+            )
+        }
+
+        function InputForName(props) {
+            return (
+                <div className='change-form-container'>
+                    <Form className='change-name-form' model='category' onSubmit={ (name) => updateName(name) }>
+                        <div className='col-xs-6 col-sm-6 col-md-6 col-lg-6 change-name-container'>
+                            <Field model='category.updated'
+                                validators={{ isRequired: (val) => val && val.length }}>
+                                <input className='input-name form-control' type="text" placeholder={ selectedCategory } />
+                                <span className='success-msg-change'>{ message }</span>
+                                <Errors wrapper="span" show={{ touched: true, focus: false }}
+                                    model='category.updated'
+                                    messages={{
+                                        isRequired: 'Category name can\'t be empty'
+                                    }}/>
+                            </Field>
+                        </div>
+                        <div className='col-xs-6 first-btn-container'>
+                            <button disabled={ isSubmit } type='submit' className='btn-change'>Change name</button>
+                        </div>
+                        <div className='col-xs-12 hide-btn-container'>
+                            <button  onClick={ hideForm } className='btn hide-btn'>Hide</button>
+                        </div>
+                    </Form>
+                </div>
+            )
+        }
+
+        function UpdateField(props) {
+            const isButtonClicked = props.isClicked;
+            if (isButtonClicked) {
+                return <InputForName/>;
+            }
+            return <UpdateButton />;
+        }
+
         function loadCategory(val) {
+            activateButton();
             if(val !== '') {
                 this.props.configureActions.fadeOn();
                 setTimeout(function() { fadeOff(); }, 500);
@@ -114,7 +186,7 @@ class categoryConfigure extends Component {
             let items = props.lists;
             if( items ) {
                 var listItems = items.map((item) =>
-                    <ListContainer category={category} isChecked={false} key={ item.side_b } value={ item.side_b } />
+                    <ListContainer category={ category } isChecked={ false } key={ item.side_b } value={ item.side_b } />
                 );
                 return (<ul className='list-element'>{ listItems }</ul>);
             }
@@ -122,9 +194,9 @@ class categoryConfigure extends Component {
 
         return (
             <div>
-                <span>
+                <div className='spinner-container'>
                     <i className={ showSpinner ? 'fa fa-spinner fa-pulse fa-5x fa-fw' : 'fa fa-spinner fa-pulse fa-3x fa-fw hide' }></i>
-                </span>
+                </div>
                 <section className={ fadeOn(hide) }>
                     <div className='col-xs-12'>
                         <button className='bnt btn-link back-link-btn' onClick={() => hashHistory.push('/')}>
@@ -145,8 +217,8 @@ class categoryConfigure extends Component {
                         <button onClick={ () => deleteSelectedCategory(selectedCategory) } className='del-category-btn btn'>
                             <i className={ selectedCategory ? 'fa fa-trash' : 'fa fa-trash hide' } aria-hidden="true"></i>
                         </button>
+                        <UpdateField isClicked={ isClicked } />
                         <h5 className='select-to-del'>Select item to delete:</h5>
-                        <br/>
                         <ListItems lists={ itemsInCategory } category={ selectedCategory } />
                     </section>
                 </section>
@@ -170,7 +242,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 		return {
-			configureActions: bindActionCreators(configureActions, dispatch)
+			configureActions: bindActionCreators(configureActions,  dispatch)
 		}
 }
 
